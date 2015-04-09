@@ -1,0 +1,42 @@
+---
+title: "Authentication"
+anchor: "authentication"
+type: "apiDoc"
+---
+
+```bash
+% curl https://api.paymill.com/v2.1/clients \
+    -u <YOUR_PRIVATE_KEY>
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/authentication/authentication.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/authentication/authentication.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/authentication/authentication.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/authentication/authentication.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/authentication/authentication.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/authentication/authentication.cs') %>
+```
+
+To authenticate at the Paymill API, you need the private key of your test or live account. You have to use http basic access authentication. Your key has to be set as the username. A password isn’t required and you don’t have to insert one. But if you want, feel free to insert an arbitrary string.
+
+Note:
+
+  - Please keep your private keys secure and don’t pass them to anybody. These private keys have extreme secure information for handling the transactions of your shop.
+
+  - All your requests must be made via https. Requests which will be made in another way will fail. This is for security reasons of the submitted data.

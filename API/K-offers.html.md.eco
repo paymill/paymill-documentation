@@ -1,0 +1,423 @@
+---
+title: "Offers"
+anchor: "offers"
+type: "apiDoc"
+---
+
+An offer is a recurring plan which a user can subscribe to. You can create different offers with different plan attributes e.g. a monthly or a yearly based paid offer/plan.
+
+## `Clients` object
+
+> Example
+
+```nohighlight
+{
+    "id" : "offer_40237e20a7d5a231d99b",
+    "name" : "Nerd Special",
+    "amount" : 4200,
+    "currency": "EUR",
+    "interval" : "1 WEEK",
+    "trial_period_days" : 0,
+    "created_at" : 1341935129,
+    "updated_at" : 1341935129,
+    "subscription_count": {
+        "active": "3",
+        "inactive": 0
+    },
+    "app_id": null
+}
+```
+
+
+Attribute         | Type                | Description 
+------------------|---------------------|-----------------
+id                | string              | Unique identifier of this offer
+name              | string              | Your name for this offer
+amount            | integer (>0)        | Every interval the specified amount will be charged. Only integer values are allowed (e.g. 42.00 = 4200)
+interval          | string              | Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR Example: 2 DAY
+trial_period_days | integer / null      | Define an optional trial period in number of days
+created_at        | integer             | Unix-Timestamp for the creation Date
+updated_at        | integer             | Unix-Timestamp for the last update
+subscription      | subscription_count  | Attributes: (integer) if zero, else (string) active, (integer) if zero, else (string) inactive
+app_id            | string / null       | App (ID) that created this client or null if created by yourself
+
+
+## Create new `Offer`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/offers \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "amount=4200" \
+  -d "currency=EUR" \
+  -d "interval=1 WEEK" \
+  -d "name=Nerd Special"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/offers/create_new_offer.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/offers/create_new_offer.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/offers/create_new_offer.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/offers/create_new_offer.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/offers/create_new_offer.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/offers/create_new_offer.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id" : "offer_40237e20a7d5a231d99b",
+        "name" : "Nerd Special",
+        "amount" : "4200",
+        "currency": "EUR",
+        "interval" : "1 WEEK",
+        "trial_period_days" : 0,
+        "created_at" : 1341935129,
+        "updated_at" : 1341935129,
+        "subscription_count": {
+            "active": "3",
+            "inactive": 0
+        },
+        "app_id": null
+    },
+    "mode" : "test"
+}
+```
+
+With this call you can create an offer via the API. You can also create an offer with the Merchant Centre
+
+Parameter         | Type            | Description 
+------------------|-----------------|-----------------
+amount            | integer (>0)    | Amount (in cents)
+currency          | string          | ISO 4217 formatted currency code
+interval          | string          | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR Example: 2 DAY
+name              | string          | Your name for this offer
+trial_period_days | integer / null  | Define an optional trial period in number of days
+
+
+## `Offer` details
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
+  -u <YOUR_PRIVATE_KEY>: \
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/offers/get_offer_details.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/offers/get_offer_details.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/offers/get_offer_details.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/offers/get_offer_details.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/offers/get_offer_details.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/offers/get_offer_details.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data": {
+        "id" : "offer_40237e20a7d5a231d99b",
+        "name" : "Nerd Special",
+        "amount" : 4200,
+        "currency": "EUR",
+        "interval" : "1 WEEK",
+        "trial_period_days" : 0,
+        "created_at" : 1341935129,
+        "updated_at" : 1341935129,
+        "subscription_count": {
+            "active": 3,
+            "inactive": 0
+        },
+        "app_id": null
+    },
+    "mode" : "test"
+}
+```
+
+Getting detailed information about an offer requested with the offer ID.
+
+Parameter         | Type            | Description 
+------------------|-----------------|-----------------
+id                | string          | Unique identifier for the offer
+
+
+## Update `Offer`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "name=Extended Special" \
+  -d "interval=1 MONTH" \
+  -d "amount=3333" \
+  -d "currency=USD" \
+  -d "trial_period_days=33" \
+  -d "update_subscriptions=true" \
+  -X PUT
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/offers/update_offer.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/offers/update_offer.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/offers/update_offer.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/offers/update_offer.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/offers/update_offer.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/offers/update_offer.cs') %>
+```
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id" : "offer_40237e20a7d5a231d99b",
+        "name" : "Extended Special",
+        "amount" : 3333,
+        "currency": "USD",
+        "interval" : "1 MONTH",
+        "trial_period_days" : 33,
+        "created_at" : 1341935129,
+        "updated_at" : 1341938129,
+        "subscription_count": {
+            "active": "3",
+            "inactive": 0
+        },
+        "app_id": null
+    },
+    "mode" : "test"
+}
+```
+
+Updates the offer. With the update_subscriptions attribute all related subscriptions could be updated too.
+
+Parameter             | Type            | Description 
+----------------------|-----------------|-----------------
+id                    | string          | Unique identifier for the offer
+name                  | string          | Your name for this offer (optional)
+interval              | string          | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR (optional)
+amount                | string          | Your amount of the offer in cents (optional)
+currency              | string          | ISO 4217 formatted currency code (optional)
+trial_period_days     | integer         | Your trial period in number of days (optional)
+update_subscriptions  | boolean         | Definition, if all related subscriptions also should be updated
+
+## Remove `Offer`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "remove_with_subscriptions=false" \
+  -X DELETE
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/offers/remove_offer.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/offers/remove_offer.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/offers/remove_offer.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/offers/remove_offer.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/offers/remove_offer.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/offers/remove_offer.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data":[
+
+    ],
+    "mode" : "test"
+}
+```
+
+You only can delete an offer and decide, if all related subscriptions also should be deleted or not.
+
+Parameter                 | Type            | Description 
+--------------------------|-----------------|-----------------
+id                        | string          | Unique identifier for the offer
+remove_with_subscriptions | boolean         | Definition if all related subscriptions also should be deleted
+
+
+## [GET] List `Offers`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/offers \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/offers/list_offers.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/offers/list_offers.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/offers/list_offers.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/offers/list_offers.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/offers/list_offers.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/offers/list_offers.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : [
+        {
+            "id" : "offer_40237e20a7d5a231d99b",
+            "name" : "Nerd Special",
+            "amount" : 4200,
+            "currency": "EUR",
+            "interval" : "1 WEEK",
+            "trial_period_days" : 0,
+            "created_at" : 1341935129,
+            "updated_at" : 1341935129,
+            "subscription_count": {
+                "active": "3",
+                "inactive": 0
+            },
+            "app_id": null
+        }
+    ],
+    "data_count" : "1",
+    "mode" : "test",
+}
+```
+
+This function returns a JSON object with a list of offers. In which order this list are returned depends on the optional parameter order. The following parameters can be used:
+
+  - count
+  - offset
+  - interval
+  - amount
+  - created_at
+  - trial_period_days
+
+Available filters:
+
+  - `name=<name>`
+  - `trial_period_days=<integer>`
+  - `amount=[>|<]<integer> e.g. “300” or with prefix: “>300” or “<300”`
+  - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+  - `updated_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+
+
+## Export `Offers` List
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/offers \
+  -u <YOUR_PRIVATE_KEY>: \
+  -H "Accept: text/csv"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/offers/export_offers_list.rb') %>
+```
+
+> Response
+
+```nohighlight
+"id";"name";"amount";"currency";"interval";"trial_period_days";"created_at";"updated_at";"subscription_count_active";"subscription_count_inactive";"app_id"
+"offer_1a5d80dc75db9b5c0c64";"Example Offer";"499";"EUR";"3 WEEK";"22";"1342427064";"1342427064";"1";"8";""
+```
+
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - amount
+  - created_at
+  - currency
+  - interval
+  - name
+  - trial_period_days
+  - updated_at
+
+Available filters:
+
+  - amount
+  - created_at
+  - currency
+  - interval
+  - name
+  - trial_period_days
+  - updated_at

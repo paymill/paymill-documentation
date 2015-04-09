@@ -1,0 +1,942 @@
+---
+title: "Subscriptions"
+anchor: "subscriptions"
+type: "apiDoc"
+---
+
+Subscriptions allow you to charge recurring payments on a client’s credit card / to a client’s direct debit. A subscription connects a client to the offers-object. A client can have several subscriptions to different offers, but only one subscription to the same offer.
+
+## `Subscriptions` object
+
+> Example
+
+```nohighlight
+{
+     "id":"sub_09a1944830b7e37e2005",
+     "offer":"<Object>",
+     "livemode":false,
+     "amount":299,
+     "temp_amount":null,
+     "currency":"USD",
+     "name":"Testing",
+     "interval":"1 DAY",
+     "trial_start":1400555454,
+     "trial_end":null,
+     "period_of_validity":null,
+     "end_of_period":null,
+     "next_capture_at":1400642826,
+     "created_at":1400555454,
+     "updated_at":1400556426,
+     "canceled_at":null,
+     "payment":"<Object>",
+     "app_id":null,
+     "is_canceled":false,
+     "is_deleted":false,
+     "status":"failed",
+     "client":"<Object>"
+ }
+```
+
+> Sub objects
+
+```eco
+- subscription.offer returns an offer object
+- subscription.payment returns a payment object for credit card or a payment object for direct debit
+- subscription.client returns a client object
+```
+
+
+Attribute             | Type                                                              | Description 
+----------------------|-------------------------------------------------------------------|-----------------
+id                    | string                                                            | Unique identifier of this subscription
+livemode              | boolean                                                           | Whether this subscription was issued while being in live mode or not
+offer                 | offer object                                                      |
+amount                | integer                                                           | the amount of the subscription in cents
+temp_amount           | integer / null                                                    | a one-time amount in cents, will charge once only
+currency              | string                                                            | ISO 4217 formatted currency code
+interval              | string                                                            | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY
+name                  | string / null                                                     | name of the subscription
+trial_start           | integer / null                                                    | Unix-Timestamp for the trial period start
+trial_end             | integer / null                                                    | Unix-Timestamp for the trial period end
+period_of_validity    | string / null                                                     | limit the validity of the subscription, format: integer MONTH|YEAR|WEEK|DAY
+end_of_period         | Unix-Timestamp / null                                             | expiring date of the subscription
+next_capture_at       | integer                                                           | Unix-Timestamp for the next charge
+created_at            | integer                                                           | Unix-Timestamp for the creation Date
+updated_at            | integer                                                           | Unix-Timestamp for the last update
+canceled_at           | integer / null                                                    | Unix-Timestamp for the cancel date
+payment               | payment object for credit card / payment object for direct debit  | payment object for credit card or payment object for direct debit
+client                | client object                                                     | client object
+app_id                | string / null                                                     | App (ID) that created this subscription or null if created by yourself
+is_canceled           | boolean                                                           | subscription is marked as canceled or not
+is_deleted            | boolean                                                           | subscription is marked as deleted or not
+status                | string                                                            | shows, if subscription is “active”, “inactive”, “expired” or “failed”
+
+## Create new `Subscription`
+
+> ### Without an offer
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "client=client_81c8ab98a8ac5d69f749" \
+  -d "payment=pay_5e078197cde8a39e4908f8aa" \
+  -d "amount=3000" \
+  -d "currency=EUR" \
+  -d "interval=1 week,monday" \
+  -d "name=Example Subscription" \
+  -d "period_of_validity=2 YEAR" \
+  -d "start_at=1400575533"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/create_new_subscription_without_an_offer.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/create_new_subscription_without_an_offer.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/create_new_subscription_without_an_offer.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/create_new_subscription_without_an_offer.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/create_new_subscription_without_an_offer.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/create_new_subscription_without_an_offer.cs') %>
+```
+> Response
+
+```nohighlight
+{
+    "data":{
+            "id":"sub_dea86e5c65b2087202e3",
+            "offer":{<Object>},
+            "livemode":false,
+            "amount":3000,
+            "temp_amount":null,
+            "currency":"EUR",
+            "name":"Example Subscription",
+            "interval":"1 WEEK,MONDAY",
+            "trial_start":1399908040,
+            "trial_end":1400575532,
+            "period_of_validity":"2 YEAR",
+            "end_of_period":1461429607,
+            "next_capture_at":1400575532,
+            "created_at":1398271207,
+            "updated_at":1398271207,
+            "canceled_at":null,
+            "payment":{<Object>},
+            "app_id":null,
+            "is_canceled":false,
+            "is_deleted":false,
+            "status":"active",
+            "client":{<Object>}
+    },
+    "mode":"test"
+}
+```
+
+> ### With an offer
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "client=client_64b025ee5955abd5af66" \
+  -d "offer=offer_40237e20a7d5a231d99b" \
+  -d "payment=pay_95ba26ba2c613ebb0ca8" \
+  -d "period_of_validity=2 YEAR" \
+  -d "start_at=1400575533"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/create_new_subscription_with_an_offer.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/create_new_subscription_with_an_offer.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/create_new_subscription_with_an_offer.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/create_new_subscription_with_an_offer.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/create_new_subscription_with_an_offer.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/create_new_subscription_with_an_offer.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data":{
+            "id":"sub_dea86e5c65b2087202e3",
+            "offer":{<Object>},
+            "livemode":false,
+            "amount":3333,
+            "temp_amount":null,
+            "currency":"USD",
+            "name":"Offer Name",
+            "interval":"2 WEEK",
+            "trial_start":1399908040,
+            "trial_end":1400575532,
+            "period_of_validity":"2 YEAR",
+            "end_of_period":1461429607,
+            "next_capture_at":1400575532,
+            "created_at":1398271207,
+            "updated_at":1398271207,
+            "canceled_at":null,
+            "payment":{<Object>},
+            "app_id":null,
+            "is_canceled":false,
+            "is_deleted":false,
+            "status":"active",
+            "client":{<Object>}
+    },
+    "mode":"test"
+}
+```
+
+> ### With offer and different values
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "client=client_81c8ab98a8ac5d69f749" \
+  -d "payment=pay_5e078197cde8a39e4908f8aa" \
+  -d "offer=offer_b33253c73ae0dae84ff4" \
+  -d "amount=3000" \
+  -d "currency=EUR" \
+  -d "interval=1 week,monday" \
+  -d "name=Example Subscription" \
+  -d "period_of_validity=2 YEAR" \
+  -d "start_at=1400575533"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/create_new_subscription_with_an_offer_and_different_values.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/create_new_subscription_with_an_offer_and_different_values.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/create_new_subscription_with_an_offer_and_different_values.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/create_new_subscription_with_an_offer_and_different_values.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/create_new_subscription_with_an_offer_and_different_values.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/create_new_subscription_with_an_offer_and_different_values.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data":{
+            "id":"sub_dea86e5c65b2087202e3",
+            "offer":{<Object>},
+            "livemode":false,
+            "amount":3000,
+            "temp_amount":null,
+            "currency":"EUR",
+            "name":"Example Subscription",
+            "interval":"1 WEEK,MONDAY",
+            "trial_start":1399908040,
+            "trial_end":1400575532,
+            "period_of_validity":"2 YEAR",
+            "end_of_period":1461429607,
+            "next_capture_at":1400575532,
+            "created_at":1398271207,
+            "updated_at":1398271207,
+            "canceled_at":null,
+            "payment":{<Object>},
+            "app_id":null,
+            "is_canceled":false,
+            "is_deleted":false,
+            "status":"active",
+            "client":{<Object>}
+    },
+    "mode":"test"
+}
+```
+
+This function creates a subscription between a client and an offer. A client can have several subscriptions to different offers, but only one subscription to the same offer. The clients is charged for each billing interval entered.
+
+Parameter           | Type            | Description 
+--------------------|-----------------|-----------------
+offer               | string          | Unique offer identifier (if no offer is given, amount, currency and interval are required)
+payment             | string          | Unique payment identifier
+client              | string          | Unique client identifier. If not provided the client from the payment is being used
+amount              | integer (>0)    | the amount of the subscription in cents (is required if no offer id is given)
+currency            | string          | ISO 4217 formatted currency code (is required if no offer id is given)
+interval            | string          | charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY ( is required if no offer id is given)
+name                | string / null   | name of the subscription (optional)
+period_of_validity  | string / null   | limit the validity of the subscription, format: integer MONTH|YEAR|WEEK|DAY (optional)
+start_at            | integer / null  | Unix-Timestamp for the subscription start date, if trial_end > start_at, the trial_end will be set to start_at (optional)
+
+
+## `Subscription` details
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions/sub_dc180b755d10da324864 \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/get_subscription_details.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/get_subscription_details.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/get_subscription_details.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/get_subscription_details.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/get_subscription_details.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/get_subscription_details.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" :{
+            "id":"sub_dea86e5c65b2087202e3",
+            "offer":{<Object>},
+            "livemode":false,
+            "amount":3000,
+            "temp_amount":null,
+            "currency":"EUR",
+            "name":"Example Subscription",
+            "interval":"1 WEEK,MONDAY",
+            "trial_start":1399908040,
+            "trial_end":1400575532,
+            "period_of_validity":"2 YEAR",
+            "end_of_period":1461429607,
+            "next_capture_at":1400575532,
+            "created_at":1398271207,
+            "updated_at":1398271207,
+            "canceled_at":null,
+            "payment":{<Object>},
+            "app_id":null,
+            "is_canceled":false,
+            "is_deleted":false,
+            "status":"active",
+            "client":{<Object>}
+    },
+    "mode" : "test"
+}
+```
+
+This function returns the detailed information of the concrete requested subscription.
+
+Parameter         | Type            | Description 
+------------------|-----------------|-----------------
+id                | string          | Unique identifier for the subscription
+
+
+## Update `Subscription`
+
+> ### General
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "payment=pay_95ba26ba2c613ebb0ca8" \
+  -d "currency=USD" \
+  -d "interval=1 month,friday" \
+  -d "name=Changed Subscription" \
+  -d "period_of_validity=14 MONTH" \
+  -d "trial_end=false" \
+  -X PUT
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/update_subscription.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/update_subscription.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/update_subscription.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/update_subscription.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/update_subscription.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/update_subscription.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" :{
+            "id":"sub_dea86e5c65b2087202e3",
+            "offer":{<Object>},
+            "livemode":false,
+            "amount":3000,
+            "temp_amount":null,
+            "currency":"USD",
+            "name":"Changed Subscription",
+            "interval":"1 MONTH,FRIDAY",
+            "trial_start":1399908040,
+            "trial_end":null,
+            "period_of_validity":"12 MONTH",
+            "end_of_period":1435063506,
+            "next_capture_at":1400575532,
+            "created_at":1398271207,
+            "updated_at":1398343548,
+            "canceled_at":null,
+            "payment":{<Object>},
+            "app_id":null,
+            "is_canceled":false,
+            "is_deleted":false,
+            "status":"active",
+            "client":{<Object>}
+    },
+    "mode" : "test"
+}
+```
+
+> ### Amount
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "amount=1234" \
+  -d "amount_change_type=0" \
+  -X PUT
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/update_subscription_amount.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/update_subscription_amount.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/update_subscription_amount.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/update_subscription_amount.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/update_subscription_amount.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/update_subscription_amount.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id":"sub_dea86e5c65b2087202e3",
+        "offer" : "<Object>",
+        "livemode":false,
+        "amount":3000,
+        "temp_amount":"1234",
+        "currency":"EUR",
+        "name":"Example Subscription",
+        "interval":"1 WEEK,MONDAY",
+        "trial_start":1398271207,
+        "trial_end":1399196896,
+        "period_of_validity":"2 YEAR",
+        "end_of_period":1461429607,
+        "next_capture_at":1399308007,
+        "created_at":1398271207,
+        "updated_at":1398271302,
+        "canceled_at":null,
+        "payment": "<Object>",
+        "app_id":null,
+        "is_canceled":false,
+        "is_deleted":false,
+        "status":"active",
+        "client" : "<Object>"
+    },
+    "mode" : "test"
+}
+```
+
+> ### Offer
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "offer=offer_d7e9813a25e89c5b78bd" \
+  -d "offer_change_type=2" \
+  -X PUT
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/update_subscription_offer.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/update_subscription_offer.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/update_subscription_offer.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/update_subscription_offer.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/update_subscription_offer.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/update_subscription_offer.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id":"sub_dea86e5c65b2087202e3",
+        "offer" : "<Object>",
+        "livemode":false,
+        "amount":3000,
+        "temp_amount":null,
+        "currency":"EUR",
+        "name":"Example Subscription",
+        "interval":"1 WEEK,MONDAY",
+        "trial_start":1398271207,
+        "trial_end":1399196896,
+        "period_of_validity":"2 YEAR",
+        "end_of_period":1461429607,
+        "next_capture_at":1399308007,
+        "created_at":1398271207,
+        "updated_at":1398271302,
+        "canceled_at":null,
+        "payment": "<Object>",
+        "app_id":null,
+        "is_canceled":false,
+        "is_deleted":false,
+        "status":"active",
+        "client" : "<Object>"
+    },
+    "mode" : "test"
+}
+```
+> ### Pause
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "pause=true" \
+  -X PUT
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/pause_subscription.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/pause_subscription.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/pause_subscription.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/pause_subscription.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/pause_subscription.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/pause_subscription.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id":"sub_dea86e5c65b2087202e3",
+        "offer" : "<Object>",
+        "livemode":false,
+        "amount":3000,
+        "temp_amount":null,
+        "currency":"EUR",
+        "name":"Example Subscription",
+        "interval":"1 WEEK,MONDAY",
+        "trial_start":1398271207,
+        "trial_end":1399196896,
+        "period_of_validity":"2 YEAR",
+        "end_of_period":1461429607,
+        "next_capture_at":1399308007,
+        "created_at":1398271207,
+        "updated_at":1398271302,
+        "canceled_at":null,
+        "payment": "<Object>",
+        "app_id":null,
+        "is_canceled":false,
+        "is_deleted":false,
+        "status":"inactive",
+        "client" : "<Object>"
+    },
+    "mode" : "test"
+}
+```
+
+This function updates the subscription of a client. You can change e.g. the trial_end attribute to stop the trial period. Or you can assign the subscription to another offer (offer=<new_offer_id>), change the amount or pause it. NOTE: changing the amount and offer within one request is not possible (throw an exception).
+
+Attribute             | Type                | Description 
+----------------------|---------------------|-----------------
+id                    | string              | Unique identifier for the subscription
+payment               | string              | Unique identifier describing a payment of the client
+offer                 | string              | Unique identifier describing the offer which is subscribed to the client (optional)
+offer_change_type     | integer / null      | permitted values: 0,1,2; linked and required with ‘offer’, default: 0 (optional)
+amount                | integer (>0)        | the amount of the subscription in cents (optional)
+amount_change_type    | int                 | permitted values: 0,1; linked and required with ‘amount’ (optional)
+pause                 | boolean             | deactivate a subscription or reactivate it, false: reactivate, true: deactivate (optional)
+currency              | string              | ISO 4217 formatted currency code (optional)
+interval              | string              | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] (optional)
+name                  | string              | name of the subscription (optional)
+period_of_validity    | string              | limit the validity of the subscription, format: integer MONTH|YEAR|WEEK|DAY, set to “remove” to unlimit the validity period (optional)
+trial_end             | boolean             | set to false to stop the trial period immediatly (optional)
+
+
+## Cancel or Delete `Subscription`
+
+> ### Cancel
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "remove=false" \
+  -X DELETE
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/cancel_subscription.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/cancel_subscription.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/cancel_subscription.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/cancel_subscription.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/cancel_subscription.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/cancel_subscription.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id":"sub_dea86e5c65b2087202e3",
+        "offer" : "<Object>",
+        "livemode":false,
+        "amount":3000,
+        "temp_amount":null,
+        "currency":"EUR",
+        "name":"Example Subscription",
+        "interval":"1 WEEK,MONDAY",
+        "trial_start":1398271207,
+        "trial_end":1399196896,
+        "period_of_validity":"2 YEAR",
+        "end_of_period":1461429607,
+        "next_capture_at":1399308007,
+        "created_at":1398271207,
+        "updated_at":1398271302,
+        "canceled_at":1401194748,
+        "payment": "<Object>",
+        "app_id":null,
+        "is_canceled":true,
+        "is_deleted":false,
+        "status":"active",
+        "client" : "<Object>"
+    },
+    "mode" : "test"
+}
+```
+
+> ### Delete
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "remove=true" \
+  -X DELETE
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/delete_subscription.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/delete_subscription.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/delete_subscription.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/delete_subscription.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/delete_subscription.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/delete_subscription.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id":"sub_dea86e5c65b2087202e3",
+        "offer" : "<Object>",
+        "livemode":false,
+        "amount":3000,
+        "temp_amount":null,
+        "currency":"EUR",
+        "name":"Example Subscription",
+        "interval":"1 WEEK,MONDAY",
+        "trial_start":1398271207,
+        "trial_end":1399196896,
+        "period_of_validity":"2 YEAR",
+        "end_of_period":1461429607,
+        "next_capture_at":1399308007,
+        "created_at":1398271207,
+        "updated_at":1398271302,
+        "canceled_at":1401194748,
+        "payment": "<Object>",
+        "app_id":null,
+        "is_canceled":true,
+        "is_deleted":true,
+        "status":"active",
+        "client" : "<Object>"
+    },
+    "mode" : "test"
+}
+```
+
+This function cancels or remove an existing subscription. The subscription will be directly terminated or deleted and no pending transactions will be charged. Deleted subscriptions will not be displayed.
+
+Attribute             | Type                | Description 
+----------------------|---------------------|-----------------
+id                    | string              | Unique identifier for the subscription
+remove                | boolean             | cancel (false) or delete (true) a subscription
+
+
+## List `Subscriptions`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/list_subscriptions.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/list_subscriptions.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/list_subscriptions.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/list_subscriptions.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/list_subscriptions.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/list_subscriptions.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : [
+        {
+            "id":"sub_dc180b755d10da324864",
+            "offer" : "<Object>",
+            "livemode" : false,
+            "cancel_at_period_end" : false,
+            "trial_start": null,
+            "trial_end": null,
+            "next_capture_at": 1369563095,
+            "created_at" : 1341935490,
+            "updated_at" : 1349948303,
+            "canceled_at" : 1349948303,
+            "payment": "<Object>",
+            "client" : "<Object>",
+            "app_id" : null
+        }
+    ],
+    "data_count" : "1",
+    "mode" : "test"
+}
+```
+
+This function returns a JSON object with a list of subscriptions. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - count
+  - offset
+  - offer
+  - canceled_at
+  - created_at
+
+Available filters:
+
+  - `offer=<offer id>`
+  - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+
+
+## Export `Subscriptions` List
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/subscriptions \
+  -u <YOUR_PRIVATE_KEY>: \
+  -H "Accept: text/csv"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/subscriptions/export_subscriptions_list.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/subscriptions/export_subscriptions_list.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/subscriptions/export_subscriptions_list.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/subscriptions/export_subscriptions_list.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/subscriptions/export_subscriptions_list.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/subscriptions/export_subscriptions_list.cs') %>
+```
+
+> Response
+
+```nohighlight
+"id";"livemode";"amount";"temp_amount";"currency";"name";"interval";"trial_start";"trial_end";"period_of_validity";"end_of_period";"next_capture_at";"created_at";"updated_at";"canceled_at";"app_id";"is_canceled";"is_deleted";"status";"offer_id";"client_id";"payment_id"
+"sub_c84aadd0c1c7529158ee";"";"499";"";"EUR";"Example Subscription";"3 WEEK";"1401983620";"1404575620";"";"";"";"1342427064";"1342427064";"1402640050";"";"";"";"active";"offer_1a5d80dc75db9b5c0c64";"client_33c8f8c13d759d00b144";"pay_2311e5a076ab0b9c2cdb0399"
+```
+
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of subscriptions. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - created_at
+  - updated_at
+
+Available filters:
+
+  - offer
+  - currency
+  - created_at
+  - canceled_at
+  - updated_at

@@ -1,0 +1,428 @@
+---
+title: "Preauthorizations"
+anchor: "preauthorizations"
+type: "apiDoc"
+---
+
+If you’d like to reserve some money from the client’s credit card but you’d also like to execute the transaction itself a bit later, then use preauthorizations. This is NOT possible with direct debit.
+
+A preauthorization is valid for 7 days.
+
+## `Preauthorization` object
+
+> Example
+
+```nohighlight
+{
+    "id":"preauth_0b771c503680c341548e",
+    "amount":"4200",
+    "currency":"EUR",
+    "description":null,
+    "status":"closed",
+    "livemode":false,
+    "created_at":1349950324,
+    "updated_at":1349950324,
+    "app_id":null,
+    "payment":"<Obejct>",
+    "client":"<Obejct>",
+    "transaction":"<Obejct>"
+}
+```
+
+> Sub objects
+
+```eco
+- preauthorization.payment returns a payment object for credit card
+- preauthorization.client returns a client object
+- preauthorization.transaction returns a transaction object
+```
+
+Attribute      | Type                                                    | Description 
+---------------|---------------------------------------------------------|-----------------
+id             | string                                                  | Unique identifier for this preauthorization
+description    | string / null                                           | Description for this preauthorization (max. 255 chars)
+amount         | string                                                  | Formatted amount which will be reserved for further transactions
+status         | enum (open, pending, closed, failed, deleted, preauth)  | Indicates the current status of this preauthorization
+livemode       | boolean                                                 | Whether this preauthorization was issued while being in live mode or not
+payment        | payment object for credit card / null                   |
+client         | client object / null                                    |
+created_at     | integer                                                 | Unix-Timestamp for the creation date
+updated_at     | integer                                                 | Unix-Timestamp for the last update
+app_id         | string / null                                           | App (ID) that created this preauthorization or null if created by yourself
+
+
+## Create new `Preauthorization`
+
+> ### With token
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/preauthorizations \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "amount=4200" \
+  -d "currency=EUR" \
+  -d "description=description example"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/preauthorizations/create_new_preauthorization_with_token.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/preauthorizations/create_new_preauthorization_with_token.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/preauthorizations/create_new_preauthorization_with_token.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/preauthorizations/create_new_preauthorization_with_token.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/preauthorizations/create_new_preauthorization_with_token.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/preauthorizations/create_new_preauthorization_with_token.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data":{
+        "id":"preauth_e396d56e773f745dfbd3",
+        "amount":"4200",
+        "currency":"EUR",
+        "description":"description example",
+        "status":"closed",
+        "livemode":false,
+        "created_at":1350324120,
+        "updated_at":1350324120,
+        "app_id":null,
+        "payment""<Obejct>",
+        "client":"<Obejct>",
+        "transaction":"<Obejct>"
+    },
+    "mode":"test"
+}
+```
+
+> ### With payment
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/preauthorizations \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "payment=pay_d43cf0ee969d9847512b" \
+  -d "amount=4200" \
+  -d "currency=EUR" \
+  -d "description=description example"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/preauthorizations/create_new_preauthorization_with_payment.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/preauthorizations/create_new_preauthorization_with_payment.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/preauthorizations/create_new_preauthorization_with_payment.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/preauthorizations/create_new_preauthorization_with_payment.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/preauthorizations/create_new_preauthorization_with_payment.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/preauthorizations/create_new_preauthorization_with_payment.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data":{
+        "id":"preauth_0b771c503680c341548e",
+        "amount":"4200",
+        "currency":"EUR",
+        "description":"description example",
+        "status":"closed",
+        "livemode":false,
+        "created_at":1349948920,
+        "updated_at":1349948920,
+        "app_id":null,
+        "payment""<Obejct>",
+        "client":"<Obejct>",
+        "transaction":"<Obejct>"
+    },
+    "mode":"test"
+}
+```
+
+Use either a token or an existing payment to authorize the given amount.
+
+
+
+Parameter      | Type                     | Description 
+---------------|--------------------------|-----------------
+amount         | integer (>0)             | Amount (in cents) which will be charged
+currency       | string                   | ISO 4217 formatted currency code
+token          | string                   | The identifier of a token
+payment        | string                   | The identifier of a payment (only creditcard-object)
+description    | string / null            | Description for this preauthorization (max. 255 chars)
+
+
+## `Preauthorization` details
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/preauthorizations/preauth_31eb90495837447f76b7 \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/preauthorizations/get_preauthorization_details.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/preauthorizations/get_preauthorization_details.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/preauthorizations/get_preauthorization_details.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/preauthorizations/get_preauthorization_details.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/preauthorizations/get_preauthorization_details.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/preauthorizations/get_preauthorization_details.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data":{
+        "id":"preauth_0b771c503680c341548e",
+        "amount":"4200",
+        "currency":"EUR",
+        "description":"description example",
+        "status":"closed",
+        "livemode":false,
+        "created_at":1349948920,
+        "updated_at":1349948920,
+        "app_id":null,
+        "payment""<Obejct>",
+        "client":"<Obejct>",
+        "transaction":"<Obejct>"
+    },
+    "mode":"test"
+}
+```
+
+Returns data of a specific preauthorization.
+
+
+Parameter      | Type                     | Description 
+---------------|--------------------------|-----------------
+id             | string                   | Unique identifier of this preauthorization
+
+
+## Remove `Preauthrization`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/preauthorizations/preauth_31eb90495837447f76b7 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -X DELETE
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/preauthorizations/remove_preauthorization.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/preauthorizations/remove_preauthorization.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/preauthorizations/remove_preauthorization.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/preauthorizations/remove_preauthorization.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/preauthorizations/remove_preauthorization.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/preauthorizations/remove_preauthorization.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data":[
+
+    ],
+    "mode" : "test"
+}
+```
+
+This function deletes a preauthorization.
+
+
+Parameter      | Type                     | Description 
+---------------|--------------------------|-----------------
+id             | string                   | Unique identifier of this preauthorization
+
+## List `Preauthrizations`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/preauthorizations \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/preauthorizations/list_preauthorizations.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/preauthorizations/list_preauthorizations.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/preauthorizations/list_preauthorizations.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/preauthorizations/list_preauthorizations.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/preauthorizations/list_preauthorizations.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/preauthorizations/list_preauthorizations.cs') %>
+```
+
+> Response
+
+```nohighlight
+
+{
+    "data" : [
+        {
+            "id":"preauth_0b771c503680c341548e",
+            "amount":"4200",
+            "currency":"EUR",
+            "description":"description example",
+            "status":"closed",
+            "livemode":false,
+            "created_at":1349948920,
+            "updated_at":1349948920,
+            "app_id":null,
+            "payment""<Obejct>",
+            "client":"<Obejct>",
+            "transaction":"<Obejct>"
+        }
+    ],
+    "data_count" : "1",
+    "mode" : "test"
+}
+```
+
+This function returns a JSON object with a list of preauthorizations. In which order this list is returned depends on the optional parameter order:
+
+  - count
+  - offset
+  - created_at
+
+Available filters:
+
+  - `client=<client id>``
+  - `payment=<payment id>``
+  - `amount=[>|<]<integer> e.g. “300” or with prefix: “>300” or “<300”``
+  - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+
+
+## Export `Preauthorizations` List
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/preauthorizations \
+  -u <YOUR_PRIVATE_KEY>: \
+  -H "Accept: text/csv"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/preauthorizations/export_preauthorizations_list.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/preauthorizations/export_preauthorizations_list.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/preauthorizations/export_preauthorizations_list.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/preauthorizations/export_preauthorizations_list.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/preauthorizations/export_preauthorizations_list.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/preauthorizations/export_preauthorizations_list.cs') %>
+```
+
+> Response
+
+```nohighlight
+"id";"amount";"currency";"description";"status";"livemode";"created_at";"updated_at";"app_id";"payment_id";"client_id";"transaction_id"
+"preauth_595d96437ad81d5ca965";"499";"EUR";"Subscription#sub_5dd7af6fa6d58c60a4e9";"preauth_subscription";"";"1342427064";"1342427064";"";"pay_2311e5a076ab0b9c2cdb0399";"client_33c8f8c13d759d00b144";""
+```
+
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of preauthorizations. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - amount
+  - created_at
+  - updated_at
+
+Available filters:
+
+  - amount
+  - client
+  - created_at
+  - payment
+  - updated_at

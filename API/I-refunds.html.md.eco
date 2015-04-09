@@ -1,0 +1,295 @@
+---
+title: "Refunds"
+anchor: "refunds"
+type: "apiDoc"
+---
+
+## `Transaction` object
+
+> Example
+
+```nohighlight
+{
+    "id" : "refund_87bc404a95d5ce616049",
+    "amount" : "042",
+    "status" : "refunded",
+    "description" : null,
+    "livemode" : false,
+    "created_at" : 1349947042,
+    "updated_at" : 1349947042,
+    "response_code" : 20000,
+    "transaction" : "<Object>",
+    "app_id": null
+}
+```
+
+> Sub objects
+
+```eco
+- refund.transaction returns a transaction object
+```
+
+Attribute                 | Type                             | Description 
+--------------------------|----------------------------------|-----------------
+id                        | string                           | Unique identifier for this refund
+transaction               | transaction object               |
+amount                    | integer (>0)                     | The refunded amount
+status                    | enum  (open, pending, refunded)  | Indicates the current status of this transaction
+description               | string or null                   | The description given for this refund
+livemode                  | boolean                          | Whether this refund happend in test or in livemode
+created_at                | integer                          | Unix-Timestamp for the creation date
+updated_at                | integer                          | Unix-Timestamp for the last update
+app_id                    | string / null                    | App (ID) that created this refund or null if created by yourself
+
+
+Refunds are own objects with own calls for existing transactions. The refunded amount will be credited to the account of the client.
+
+## `Refund` Transaction
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/refunds/tran_023d3b5769321c649435 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "amount=4200"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/refunds/create_new_refund.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/refunds/create_new_refund.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/refunds/create_new_refund.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/refunds/create_new_refund.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/refunds/create_new_refund.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/refunds/create_new_refund.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id" : "refund_70392dc6a734a8233130",
+        "amount" : "010",
+        "status" : "refunded",
+        "description" : null,
+        "livemode" : false,
+        "created_at" : 1365154751,
+        "updated_at" : 1365154751,
+        "response_code" : 20000,
+        "transaction" : "<Object>",
+        "app_id" :  null
+    },
+    "mode" : "test"
+}
+```
+
+This function refunds a transaction that has been created previously and was refunded in parts or wasn’t refunded at all. The inserted amount will be refunded to the credit card / direct debit of the original transaction. There will be some fees for the merchant for every refund.
+
+Note
+
+  - You can refund parts of a transaction until the transaction amount is fully refunded. But be careful there will be a fee for every refund
+  - There is no need to define a currency for refunds, because they will be in the same currency as the original transaction
+
+
+Parameter      | Type            | Description 
+---------------|-----------------|-----------------
+amount         | integer (>0)    | Amount (in cents) which will be charged
+description    | string / null   | Additional description for this refund
+
+## `Refund` Details
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/refunds/refund_87bc404a95d5ce616049 \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/refunds/get_refund_details.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/refunds/get_refund_details.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/refunds/get_refund_details.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/refunds/get_refund_details.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/refunds/get_refund_details.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/refunds/get_refund_details.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id" : "refund_87bc404a95d5ce616049",
+        "amount" : "042",
+        "status" : "refunded",
+        "description" : null,
+        "livemode" : false,
+        "created_at" : 1349947042,
+        "updated_at" : 1349947042,
+        "response_code" : 20000,
+        "transaction" : "<Object>",
+        "app_id" : null
+    },
+    "mode" : "test"
+}
+```
+
+Returns detailed informations of a specific refund.
+
+## List`Refunds`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/refunds \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/refunds/list_refunds.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/refunds/list_refunds.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/refunds/list_refunds.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/refunds/list_refunds.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/refunds/list_refunds.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/refunds/list_refunds.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : [
+        {
+            "id" : "refund_87bc404a95d5ce616049",
+            "amount" : "042",
+            "status" : "refunded",
+            "description" : null,
+            "livemode" : false,
+            "created_at" : 1349947042,
+            "updated_at" : 1349947042,
+            "response_code" : 20000,
+            "transaction" : "<Object>",
+            "app_id" : null
+        }
+    ],
+    "data_count" : "1",
+    "mode" : "test"
+}
+```
+
+This function returns a list of existing refunds. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - count
+  - offset
+  - transaction
+  - client
+  - amount
+  - created_at
+
+Available filters:
+
+  - `client=<client id>`
+  - `transaction=<transaction id>`
+  - `amount=[>|<]<integer> e.g. “300” or with prefix: “>300” or “<300”`
+  - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+
+
+## Export `Refunds` List
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/refunds \
+  -u <YOUR_PRIVATE_KEY>: \
+  -H "Accept: text/csv"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/refunds/export_refunds_list.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/refunds/export_refunds_list.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/refunds/export_refunds_list.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/refunds/export_refunds_list.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/refunds/export_refunds_list.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/refunds/export_refunds_list.cs') %>
+```
+
+> Response
+
+```nohighlight
+"id";"amount";"status";"description";"livemode";"created_at";"updated_at";"response_code";"app_id";"transaction_id"
+"refund_a7c4a0b9d09d9833a5d5";"2222";"refunded";"";"";"1342427064";"1342427064";"20000";"";"tran_27a814bfbc7f3af580143713f80e"
+```
+
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of refunds. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - amount
+  - created_at
+  - updated_at
+
+Available filters:
+
+  - amount
+  - client
+  - created_at
+  - transaction
+  - updated_at

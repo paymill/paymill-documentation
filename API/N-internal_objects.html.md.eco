@@ -1,0 +1,110 @@
+---
+title: "Internal Objects"
+anchor: "internal-objects"
+type: "apiDoc"
+---
+
+Here you find the internal objects which do not have a public API endpoint yet.
+
+## `Fee` object
+
+> Example
+
+```nohighlight
+{
+    "type": "application",
+    "application": "app_1d70acbf80c8c35ce83680715c06be0d15c06be0d",
+    "payment": "pay_917018675b21ca03c4fb",
+    "amount": 420,
+    "currency": "EUR",
+    "billed_at": null
+}
+```
+
+Parameter     | Type                  | Description 
+--------------|-----------------------|-----------------
+url           | string                | Recipient of the fee
+application   | string                | If App fee, app object ID (optional)
+payment       | string                | Payment object ID from which the fee gets paid
+amount        | integer               | Formatted fee amount
+currency      | string                | ISO 4217 formatted currency code
+billed_at     | integer               | Unix-Timestamp for the creation date
+
+
+## `Invoice` object
+
+> Example
+
+```nohighlight
+{
+    "invoice_nr": "1293724",
+    "netto": 12399,
+    "brutto": 14755,
+    "status": "sent",
+    "period_from": 1349946151,
+    "period_until": 1352538151,
+    "currency": "EUR",
+    "vat_rate": 19,
+    "billing_date": 1353142951,
+    "invoice_type": "paymill",
+    "last_reminder_date": null
+}
+```
+
+Parameter           | Type                                          | Description 
+--------------------|-----------------------------------------------|-----------------
+invoice_nr          | string                                        | invoice number
+netto               | integer                                       | Formatted netto amount
+brutto              | integer                                       | Formatted brutto amount
+status              | string                                        | Invoice status (e.g. sent, trx_ok, trx_failed, invalid_payment, success, 1st_reminder, 2nd_reminder, 3rd_reminder, suspend, canceled, transferred)
+period_from         | integer                                       | Unix-Timestamp for the start of this invoice period
+period_until        | integer                                       | Unix-Timestamp for the end of this invoice period
+currency            | string                                        | ISO 4217 formatted currency code
+vat_rate            | integer                                       | VAT rate of the brutto amount
+billing_date        | integer                                       | Unix-Timestamp for the billing date
+invoice_type        | enum (paymill, wirecard, acceptance etc.)     | Indicates if it”s a PAYMILL invoice or an acquirer payout
+last_reminder_date  | integer                                       | Unix-Timestamp for last payment reminder
+
+
+## `Merchant` object
+
+> Example
+
+```nohighlight
+{
+    "identifier_key": "mer_123456789",
+    "email": "mail@example.com",
+    "locale": "de_DE",
+    "country": "DEU",
+    "currencies": ["EUR", "GPB"],
+    "methods": ["visa", "mastercard"]
+}
+```
+
+Parameter       | Type                                                | Description 
+--------------- |-----------------------------------------------------|-----------------
+identifier_key  | string                                              | Unique identifier of this merchant
+email           | string                                              | email address
+locale          | string                                              | culture setting
+county          | string / null                                       | country code
+currencies      | List of activated currencies (ISO 4217 formatted)   | Deprecated. This information is now part of payment_methods
+methods         | List of activated card brands                       | List of activated card brands
+
+
+## `Payment method` object
+
+> Example
+
+```nohighlight
+{
+    "type": "visa",
+    "currency": "EUR",
+    "acquirer": "wirecard"
+}
+```
+
+Parameter       | Type     | Description 
+--------------- |----------|-----------------
+type            | string   | Card brand (e.g. visa, mastercard, amex, elv, sepa etc.)
+currency        | string   | ISO 4217 formatted currency code
+acquier         | string   | Acquiring bank enum(wirecard, acceptance, none)

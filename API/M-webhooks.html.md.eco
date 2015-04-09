@@ -1,0 +1,536 @@
+---
+title: "Webhooks"
+anchor: "webhooks"
+type: "apiDoc"
+---
+
+With webhooks we give you the possibility to react automatically to certain events which happen within our system. A webhook is basically a URL where we send an HTTP POST request to, every time one of the events attached to that webhook is triggered. Alternatively you can define an email address where we send the event’s information to You can manage your webhooks via the API as explained below or you can use the web interface inside our Merchant Centre.
+
+Our call to the webhook / email includes a JSON encoded event object with detailed information about the event in it’s POST body.
+
+**Webhooks details**
+
+  - we expect a http status code of 200 in the response of our webhook call.
+  - every content in the body will be discarded, so you might just leave that blank.
+  - if we receive another code or a timeout, we will retry to call the same webhook every hour up to five times. emails will be sent only once.
+  - if the webhook call to one webhook fails 5 times, we automatically deactivate the webhook. You can still see them in your settings.
+  - the webhook will be called asynchronously within a few minutes after the actual event has happened.
+
+### Events
+
+> Example event
+
+```nohighlight
+{
+    "event": {
+        "event_type": "subscription.succeeded",
+        "event_resource": {
+           "subscription": "<Object>",
+           "transaction": "<Object>"
+        },
+        "created_at": "1358027174",
+        "app_id": null
+    }
+ }
+```
+
+There are a number of events you can react to. Each webhook can be configured to catch any kind of event individually, so you can create different webhooks for different events. Each Webhook needs to be attached to at least one event.
+
+For example the event subscription.succeeded is triggered every time a successful transaction has been made in our system that is based on a subscription. Shortly after that has been triggered, we will call every webhook you defined for this event and send detailed information to it.
+
+  - chargeback.executed: returns a transaction-object with state set to chargeback
+  - transaction.created: returns a transaction-object
+  - transaction.succeeded: returns a transaction-object
+  - transaction.failed: returns a transaction-object
+  - client.updated: returns a client-object if a client was updated
+  - subscription.created: returns a subscription-object
+  - subscription.updated: returns a subscription-object
+  - subscription.deleted: returns a subscription-object
+  - subscription.succeeded: returns a transaction-object and a subscription-object
+  - subscription.failed: returns a transaction-object and a subscription-object
+  - subscription.expiring: returns a subscription-object
+  - subscription.deactivated: returns a subscription-object
+  - subscription.activated: returns a subscription-object
+  - subscription.canceled: returns a subscription-object
+  - refund.created: returns a refund-object
+  - refund.succeeded: returns a refunds-object
+  - refund.failed: returns a refunds-object
+  - payout.transferred: returns an invoice-object with the payout sum for the invoice period
+  - invoice.available: returns an invoice-object with the fees sum for the invoice period
+  - app.merchant.activated: returns a merchant-object if a connected merchant was activated
+  - app.merchant.deactivated: returns a merchant-object if a connected merchant was deactivated
+  - app.merchant.rejected: returns a merchant-object if a connected merchant was rejected
+  - app.merchant.live_requests_allowed: returns a merchant-object if a connected merchant allows live requests
+  - app.merchant.live_requests_not_allowed: returns a merchant-object if a connected merchant denys live requests
+  - app.merchant.app.disabled: returns a merchant object if a connected merchant disabled your app
+  - payment.expired: returns a payment-object if a creditcard is going to expire next month
+
+
+## `Webhook` Object
+
+> Example URL webhook
+
+```nohighlight
+{
+     "id":"hook_40237e20a7d5a231d99b",
+     "url":"<your-webhook-url>",
+     "livemode":false,
+     "event_types":[
+         "transaction.succeeded",
+         "transaction.failed"
+     ],
+     "created_at":1358982000,
+     "updated_at":1358982000,
+     "active":true,
+     "app_id":null
+}
+```
+
+> Example e-mail webhook
+
+```nohighlight
+{
+     "id":"hook_40237e20a7d5a231d99b",
+     "email":"<your-webhook-email>",
+     "livemode":false,
+     "event_types":[
+         "transaction.succeeded",
+         "transaction.failed"
+     ],
+     "created_at":1358982000,
+     "updated_at":1358982000,
+     "active":true,
+     "app_id":null
+}
+```
+
+Attribute             | Type                      | Description 
+----------------------|---------------------------|-----------------
+id                    | string                    | Unique identifier of this webhook
+url                   | string                    | the url of the webhook
+email                 | string                    | either the email OR the url have to be set and will be returned
+livemode              | boolean                   | you can create webhooks for livemode and testmode
+event_types           | array of event_types      |
+active                | boolean                   | if false, no events will be dispatched to this webhook anymore
+app_id                | string / null             | App (ID) that created this webhook or null if created by yourself
+
+
+## Create new `URL Webhook`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/webhooks \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "url=<your-webhook-url>" \
+  -d "event_types[]=transaction.succeeded" \
+  -d "event_types[]=transaction.failed"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/webhooks/create_new_url_webhook.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/webhooks/create_new_url_webhook.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/webhooks/create_new_url_webhook.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/webhooks/create_new_url_webhook.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/webhooks/create_new_url_webhook.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/webhooks/create_new_url_webhook.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+            "id":"hook_40237e20a7d5a231d99b",
+            "url":"<your-webhook-url>",
+            "livemode":false,
+            "event_types":[
+                "transaction.succeeded",
+                "transaction.failed"
+            ],
+            "created_at":1358982000,
+            "updated_at":1358982000,
+            "active" : true,
+            "app_id" : null
+        },
+        "mode" : "test"
+}
+```
+
+With this call you can create a webhook to a url via the API.
+
+Parameter     | Type      | Description 
+--------------|-----------|-----------------
+url           | string    | the url of the webhook
+event_types   | array     | includes a set of webhook event types as strings
+active        | boolean   | can be used to create an inactive webhook in the beginning
+
+
+## Create new `E-Mail Webhook`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/webhooks \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "email=<your-webhook-email>" \
+  -d "event_types[]=subscription.succeeded" \
+  -d "event_types[]=subscription.failed"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/webhooks/create_new_email_webhook.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/webhooks/create_new_email_webhook.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/webhooks/create_new_email_webhook.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/webhooks/create_new_email_webhook.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/webhooks/create_new_email_webhook.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/webhooks/create_new_email_webhook.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+            "id" : "hook_40237e20a7d5a231d99b",
+            "email" : "<your-webhook-email>",
+            "livemode" : false,
+            "event_types" : [
+                "transaction.succeeded",
+                "transaction.failed"
+            ],
+            "created_at" : 1358982000,
+            "updated_at" : 1358982000,
+            "active" : true,
+            "app_id" : null
+        },
+        "mode" : "test"
+}
+```
+
+With this call you can create a webhook to a url via the API.
+
+Parameter     | Type      | Description 
+--------------|-----------|-----------------
+email         | string    | the webhooks email. must be a valid mail address
+event_types   | array     | includes a set of webhook event types as strings
+active        | boolean   | can be used to create an inactive webhook in the beginning
+
+
+## `Webhook` details
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/webhooks/hook_40237e20a7d5a231d99b \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/webhooks/get_webhook_details.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/webhooks/get_webhook_details.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/webhooks/get_webhook_details.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/webhooks/get_webhook_details.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/webhooks/get_webhook_details.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/webhooks/get_webhook_details.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+   "data" : {
+       "id":"hook_40237e20a7d5a231d99b",
+       "url":"<your-webhook-url>",
+       "livemode":false,
+       "event_types":[
+           "transaction.succeeded",
+           "transaction.failed"
+       ],
+       "created_at":1358982000,
+       "updated_at":1358982000,
+       "active" : true,
+       "app_id" : null
+   },
+   "mode" : "test"
+}
+```
+
+> Response of an e-mail webhook
+
+```
+{
+   "data" : {
+       "id":"hook_40237e20a7d5a231d99b",
+       "email":"<your-webhook-email>",
+       "livemode":false,
+       "event_types":[
+           "transaction.succeeded",
+           "transaction.failed"
+       ],
+       "created_at":1358982000,
+       "updated_at":1358982000,
+       "active" : true,
+       "app_id" : null
+   },
+   "mode" : "test"
+}
+```
+
+
+Getting detailed information about a webhook requested with the webhook id.
+
+Parameter         | Type            | Description 
+------------------|-----------------|-----------------
+id                | string          | Unique identifier for the webhook
+
+
+## Update `Webhook`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/webhooks/hook_40237e20a7d5a231d99b \
+   -u <YOUR_PRIVATE_KEY>: \
+   -d "url=<new-webhook-url>" \
+   -X PUT
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/webhooks/update_webhook.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/webhooks/update_webhook.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/webhooks/update_webhook.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/webhooks/update_webhook.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/webhooks/update_webhook.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/webhooks/update_webhook.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id":"hook_40237e20a7d5a231d99b",
+        "url":"<your-webhook-url>",
+        "livemode":false,
+        "event_types":[
+            "transaction.succeeded",
+            "transaction.failed"
+        ],
+        "created_at":1358982000,
+        "updated_at":1358982000,
+        "active" : true,
+        "app_id" : null
+    },
+    "mode" : "test"
+}
+```
+
+Updates the webhook. You can change the url/email, the event types and the active state.
+
+Parameter     | Type                  | Description 
+--------------|-----------------------|-----------------
+url           | string                | the url of the webhook
+email         | string                | the email for the webhook
+event_types   | array of event_types  |
+active        | boolean               | activate / deactivate webhook
+
+
+## List `Webhooks`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/webhooks/ \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/webhooks/list_webhooks.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/webhooks/list_webhooks.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/webhooks/list_webhooks.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/webhooks/list_webhooks.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/webhooks/list_webhooks.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/webhooks/list_webhooks.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : [
+        {
+            "id":"hook_40237e20a7d5a231d99b",
+            "url":"<your-webhook-url>",
+            "livemode":false,
+            "event_types":[
+                "transaction.succeeded",
+                "transaction.failed"
+            ],
+            "created_at":1358982000,
+            "updated_at":1358982000,
+            "active" : true,
+            "app_id" : null
+        },
+        {
+            "id":"hook_40237e20a7d5skt6d99b",
+            "email":"<your-webhook-email>",
+            "livemode":false,
+            "event_types":[
+                "subscription.succeeded",
+                "subscription.failed"
+            ],
+            "created_at":1358911000,
+            "updated_at":1358913000,
+            "active" : true,
+            "app_id" : null
+        }
+    ],
+    "data_count" : "2",
+    "mode" : "test"
+}
+```
+
+This function returns a JSON object with a list of subscriptions. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - count
+  - offset
+  - url
+  - email
+  - created_at
+
+Available filters:
+
+  - `email=<email>`
+  - `url=<url>`
+  - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+
+
+## Export `Webhooks` List
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/webhooks \
+  -u <YOUR_PRIVATE_KEY>: \
+  -H "Accept: text/csv"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/webhooks/export_webhooks_list.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/webhooks/export_webhooks_list.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/webhooks/export_webhooks_list.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/webhooks/export_webhooks_list.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/webhooks/export_webhooks_list.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/webhooks/export_webhooks_list.cs') %>
+```
+
+> Response
+
+```nohighlight
+"id";"livemode";"created_at";"updated_at";"active";"app_id";"version";"url";"event_types"
+"hook_f0f84bc71b86f16fa1f5";"";"1342427064";"1342427064";"1";"";"2.1";;"refund.succeeded"
+```
+
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of webhooks. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - created_at
+  - email
+  - updated_at
+  - url
+
+Available filters:
+
+  - email
+  - url
+  - created_at

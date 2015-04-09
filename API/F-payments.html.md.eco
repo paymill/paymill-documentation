@@ -1,0 +1,554 @@
+---
+title: "Payments"
+anchor: "payments"
+type: "apiDoc"
+---
+
+The Payment object represents a payment with a credit card or via direct debit. It is used for several function calls (e.g. transactions, subscriptions, clients, ...). To be PCI compliant these information is encoded by our Paymill PSP. You only get in touch with safe data (token) and needn’t care about the security problematic of informations like credit card data.
+
+## `Payment` object for credit card payments
+
+> Example
+
+```nohighlight
+{
+    "id"           : "pay_3af44644dd6d25c820a8",
+    "type"         : "creditcard",
+    "client"       : null,
+    "card_type"    : "visa",
+    "country"      : null,
+    "expire_month" : "10",
+    "expire_year"  : "2013",
+    "card_holder"  : "",
+    "last4"        : "1111",
+    "created_at"   : 1349942085,
+    "updated_at"   : 1349942085,
+    "app_id"       : null,
+    "is_recurring" : true,
+    "is_usable_for_preauthorization" : true
+}
+```
+
+Attribute      | Type                     | Description 
+---------------|--------------------------|-----------------
+id             | string                   | Unique identifier for this credit card payment
+type           | enum (creditcard, debit) |
+client         | client object / null     |
+card_type      | string                   | Card type. eg. visa, mastercard ...
+country        | string / null            | Country
+expire_month   | string                   | Expiry month of the credit card
+expire_year    | string                   | Expiry year of the credit card
+card_holder    | string                   | Name of the card holder
+last4          | string                   | The last four digits of the credit card
+created_at     | integer                  | Unix-Timestamp for the creation date
+updated_at     | integer                  | Unix-Timestamp for the last update
+app_id         | string / null            | App (ID) that created this payment or null if created by yourself
+is_recurring   | boolean                  | The payment is recurring (can be used more than once)
+is_usable_for  | boolean                  | The payment is usable for preauthorization
+
+
+## `Payment` object for direct debit payments
+
+> Example
+
+```nohighlight
+{
+    "id"           : "pay_917018675b21ca03c4fb",
+    "type"         : "debit",
+    "client"       : null,
+    "code"         : "12345678",
+    "holder"       : "Max Mustermann",
+    "account"      : "******2345",
+    "created_at"   : 1349944973,
+    "updated_at"   : 1349944973,
+    "app_id"       : null,
+    "is_recurring" : true,
+    "is_usable_for_preauthorization" : true
+}
+```
+
+Attribute      | Type                     | Description 
+---------------|--------------------------|-----------------
+id             | string                   | Unique identifier for this direct debit payment
+type           | enum (creditcard, debit) |
+code           | string                   | The used Bank Code
+account        | string                   | The used account number. For security reasons the number is masked
+holder         | string                   | Name of the account holder
+created_at     | integer                  | Unix-Timestamp for the creation date
+updated_at     | integer                  | Unix-Timestamp for the last update
+app_id         | string / null            | App (ID) that created this payment or null if created by yourself
+is_recurring   | boolean                  | The payment is recurring (can be used more than once)
+is_usable_for  | boolean                  | The payment is usable for preauthorization
+
+
+## Create new `Credit Card Payment`
+
+> ### With token
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/payments \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "token=098f6bcd4621d373cade4e832627b4f6"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/payments/create_new_credit_card_payment_with_token.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/payments/create_new_credit_card_payment_with_token.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/payments/create_new_credit_card_payment_with_token.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/payments/create_new_credit_card_payment_with_token.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/payments/create_new_credit_card_payment_with_token.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/payments/create_new_credit_card_payment_with_token.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id"           : "pay_3af44644dd6d25c820a8",
+        "type"         : "creditcard",
+        "client"       : null,
+        "card_type"    : "visa",
+        "country"      : null,
+        "expire_month" : "10",
+        "expire_year"  : "2013",
+        "card_holder"  : "",
+        "last4"        : "1111",
+        "created_at"   : 1349942085,
+        "updated_at"   : 1349942085,
+        "app_id"       : null,
+        "is_recurring" : true,
+        "is_usable_for_preauthorization" : true
+    },
+    "mode" : "test"
+}
+```
+
+> ### With token + client
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/payments \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "client=client_88a388d9dd48f86c3136"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/payments/create_new_credit_card_payment_with_token_and_client.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/payments/create_new_credit_card_payment_with_token_and_client.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/payments/create_new_credit_card_payment_with_token_and_client.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/payments/create_new_credit_card_payment_with_token_and_client.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/payments/create_new_credit_card_payment_with_token_and_client.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/payments/create_new_credit_card_payment_with_token_and_client.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id"           : "pay_3af44644dd6d25c820a9",
+        "type"         : "creditcard",
+        "client"       : "<Object>",
+        "card_type"    : "visa",
+        "country"      : null,
+        "expire_month" : "10",
+        "expire_year"  : "2013",
+        "card_holder"  : "",
+        "last4"        : "1111",
+        "created_at"   : 1349942085,
+        "updated_at"   : 1349942085,
+        "app_id"       : null,
+        "is_recurring" : true,
+        "is_usable_for_preauthorization" : true
+    },
+    "mode" : "test"
+}
+```
+
+Parameter      | Type                     | Description 
+---------------|--------------------------|-----------------
+token          | string                   | Unique credit card token
+client         | client object / null     |
+
+
+Creates a credit card payment from a given token, if you’re providing the client-property, the payment will be created and subsequently be added to the client.
+
+Note
+
+- You always need a token to create a new credit card payment.
+
+
+## Create new `Debit Payment`
+
+
+> ### With token
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/payments \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "token=12a46bcd462sd3r3care4e8336ssb4f5"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/payments/create_new_debit_payment_with_token.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/payments/create_new_debit_payment_with_token.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/payments/create_new_debit_payment_with_token.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/payments/create_new_debit_payment_with_token.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/payments/create_new_debit_payment_with_token.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/payments/create_new_debit_payment_with_token.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id"           : "pay_917018675b21ca03c4fb",
+        "type"         : "debit",
+        "client"       : null,
+        "code"         : "12345678",
+        "holder"       : "Max Mustermann",
+        "account"      : "******2345",
+        "created_at"   : 1349944973,
+        "updated_at"   : 1349944973,
+        "app_id"       : null,
+        "is_recurring" : true,
+        "is_usable_for_preauthorization" : true
+    },
+    "mode" : "test"
+}
+```
+
+> ### With token + client
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/payments \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "token=12a46bcd462sd3r3care4e8336ssb4f5" \
+  -d "client=client_88a388d9dd48f86c3136"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/payments/create_new_debit_payment_with_token_and_client.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/payments/create_new_debit_payment_with_token_and_client.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/payments/create_new_debit_payment_with_token_and_client.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/payments/create_new_debit_payment_with_token_and_client.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/payments/create_new_debit_payment_with_token_and_client.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/payments/create_new_debit_payment_with_token_and_client.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id"           : "pay_917018675b21ca03c4fc",
+        "type"         : "debit",
+        "client"       : "<Object>",
+        "code"         : "12345678",
+        "holder"       : "Max Mustermann",
+        "account"      : "******2345",
+        "created_at"   : 1349944973,
+        "updated_at"   : 1349944973,
+        "app_id"       : null,
+        "is_recurring" : true,
+        "is_usable_for_preauthorization" : true
+    },
+    "mode" : "test"
+}
+```
+
+Parameter      | Type                     | Description 
+---------------|--------------------------|-----------------
+token          | string                   | Unique direct debit token
+client         | client object / null     |
+
+Creates a direct debit payment from a given token, if you’re providing the client-property, the payment will be created and subsequently be added to the client.
+
+
+## `Payment` details
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/payments/pay_3af44644dd6d25c820a8 \
+  -u <YOUR_PRIVATE_KEY>
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/payments/get_payment_details.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/payments/get_payment_details.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/payments/get_payment_details.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/payments/get_payment_details.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/payments/get_payment_details.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/payments/get_payment_details.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id"           : "pay_3af44644dd6d25c820a8",
+        "type"         : "creditcard",
+        "client"       : null,
+        "card_type"    : "visa",
+        "country"      : null,
+        "expire_month" : "10",
+        "expire_year"  : "2013",
+        "card_holder"  : "",
+        "last4"        : "1111",
+        "created_at"   : 1349942085,
+        "updated_at"   : 1349942085,
+        "app_id"       : null,
+        "is_recurring" : true,
+        "is_usable_for_preauthorization" : true
+    },
+    "mode" : "test"
+}
+```
+
+Returns data of a specific payment.
+
+Parameter      | Type                     | Description 
+---------------|--------------------------|-----------------
+id             | string                   | Unique identifier for the payment
+
+
+
+## List `Payments`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/payments \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/payments/list_payments.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/payments/list_payments.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/payments/list_payments.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/payments/list_payments.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/payments/list_payments.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/payments/list_payments.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : [
+        {
+            "id"           : "pay_3af44644dd6d25c820a8",
+            "type"         : "creditcard",
+            "client"       : null,
+            "card_type"    : "visa",
+            "country"      : null,
+            "expire_month" : "10",
+            "expire_year"  : "2013",
+            "card_holder"  : "",
+            "last4"        : "1111",
+            "created_at"   : 1349942085,
+            "updated_at"   : 1349942085,
+            "app_id"       : null,
+            "is_recurring" : true,
+            "is_usable_for_preauthorization" : true
+        }
+    ],
+    "data_count" : "1",
+    "mode" : "test"
+}
+```
+
+This function returns a JSON object with a list of payments. In which order this list is returned depends on the optional parameter order:
+
+  - count
+  - offset
+  - created_at
+
+Available filters
+
+  - `card_type=<card_type>`
+  - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+  - `type=creditcard | debit`
+
+Available status for card_type:
+
+  - visa
+  - mastercard
+  - maestro
+  - amex
+  - jcb
+  - diners
+  - discover
+  - china_union_pay
+  - unknown (= other not supported brand)
+
+
+## Remove `Payment`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/payments/pay_3af44644dd6d25c820a8 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -X DELETE
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/payments/remove_payment.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/payments/remove_payment.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/payments/remove_payment.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/payments/remove_payment.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/payments/remove_payment.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/payments/remove_payment.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data":[
+
+    ],
+    "mode" : "test"
+}
+```
+
+Deletes the specified payment.
+
+Parameter      | Type                     | Description 
+---------------|--------------------------|-----------------
+id             | string                   | Unique identifier for the payment
+
+
+## Export `Payment` list
+
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - card_type
+  - created_at
+  - type
+  - updated_at
+
+Available filters:
+
+  - card_type
+  - created_at
+  - type
+  - updated_at

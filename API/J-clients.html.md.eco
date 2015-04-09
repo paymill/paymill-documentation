@@ -1,0 +1,404 @@
+---
+title: "Clients"
+anchor: "clients"
+type: "apiDoc"
+---
+
+The clients object is used to edit, delete, update clients as well as to permit refunds, subscriptions, insert credit card details for a client, edit client details and of course make transactions. Clients can be created individually by you or they will be automatically generated with the transaction if there is no client ID transmitted.
+
+## `Client` object
+
+> Example
+
+```nohighlight
+{
+    "id"           :  "client_88a388d9dd48f86c3136",
+    "email"        :  "lovely-client@example.com",
+    "description"  :  null,
+    "created_at"   :  1340199740,
+    "updated_at"   :  1340199760,
+    "payment"      :  "[ <Object>, ... ] or null",
+    "subscription" :  "[ <Object>, ... ] or null",
+    "app_id"       :  null
+}
+```
+
+> Sub objects
+
+```eco
+- client.payment returns payment objects for credit card or direct debit
+- client.subscription returns subscription objects or null
+```
+
+Attribute         | Type              | Description 
+------------------|-------------------|-----------------
+id                | string            | Unique identifier of this client
+email             | string / null     | Mail address of this client
+description       | string / null     | Additional description for this client, perhaps the identifier from your CRM system?
+created_at        | integer           | Unix-Timestamp for the creation date
+updated_at        | integer           | Unix-Timestamp for the last update
+payment           | list              | creditcard-object or directdebit-object
+subscription      | list / null       | subscriptions-object
+app_id            | string / null     | App (ID) that created this client or null if created by yourself
+
+
+## Create new `Client`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/clients \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "email=lovely-client@example.com" \
+  -d "description=Lovely Client"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/clients/create_new_client.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/clients/create_new_client.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/clients/create_new_client.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/clients/create_new_client.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/clients/create_new_client.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/clients/create_new_client.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id"           : "client_88a388d9dd48f86c3136",
+        "email"        : "lovely-client@example.com",
+        "description"  : "Lovely Client",
+        "created_at"   : 1342438695,
+        "updated_at"   : 1342438695,
+        "payment"      : "[ <Object>, ... ]",
+        "subscription" : "<Object>",
+        "app_id"       : null
+    },
+    "mode" : "test"
+}
+```
+
+This function creates a client object.
+
+Parameter         | Type            | Description 
+------------------|-----------------|-----------------
+email             | string / null   | Mail address of the client, is optional if the transaction creates an user itself
+description       | string / null   | Description for the client
+
+
+## `Client` details
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/clients/get_client_details.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/clients/get_client_details.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/clients/get_client_details.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/clients/get_client_details.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/clients/get_client_details.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/clients/get_client_details.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id"           : "client_88a388d9dd48f86c3136",
+        "email"        : "client@example.com",
+        "description"  : "Lovely Client",
+        "created_at"   : 1342438695,
+        "updated_at"   : 1342438695,
+        "payment"      : "[ <Object>, ... ] or null",
+        "subscription" : "<Object>",
+        "app_id"       : null
+    },
+    "mode" : "test"
+}
+```
+
+To get the details of an existing client you’ll need to supply the client ID. The client ID is returned by creating a client.
+
+Parameter         | Type            | Description 
+------------------|-----------------|-----------------
+id                | string          | Unique identifier for the client
+
+
+## Update `Client`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -d "email=lovely-client@example.com" \
+  -d "description=My Lovely Client" \
+  -X PUT
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/clients/update_client.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/clients/update_client.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/clients/update_client.js') %>
+```
+
+```pyhton
+<%- @partial('snippets/python/samples/clients/update_client.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/clients/update_client.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/clients/update_client.cs') %>
+```
+> Response
+
+```nohighlight
+{
+    "data" : {
+        "id"           : "client_88a388d9dd48f86c3136",
+        "email"        : "lovely-client@example.com",
+        "description"  : "My Lovely Client",
+        "created_at"   : 1342438695,
+        "updated_at"   : 1342439774,
+        "payment"      : "[ <Object>, ... ] or null",
+        "subscription" : "<Object>",
+        "app_id"       : null
+    },
+    "mode" : "test"
+}
+```
+
+This function updates the data of a client. To change only a specific attribute you can set this attribute in the update request. All other attributes that shouldn’t be edited aren’t inserted. You can only edit the description, email and credit card. The subscription can’t be changed by updating the client data. This has to be done in the subscription call.
+
+Parameter         | Type            | Description 
+------------------|-----------------|-----------------
+id                | string          | Unique identifier for the client
+email             | string / null   | Mail address of the client
+description       | string / null   | Description for the client
+
+
+## Remove `Client`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
+  -u <YOUR_PRIVATE_KEY>: \
+  -X DELETE
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/clients/remove_client.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/clients/remove_client.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/clients/remove_client.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/clients/remove_client.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/clients/remove_client.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/clients/remove_client.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data": null
+    "mode": "test"
+}
+```
+
+This function deletes a client, but your transactions aren’t deleted.
+
+Parameter         | Type            | Description 
+------------------|-----------------|-----------------
+id                | string          | Unique identifier for the client
+
+## List`Clients`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/clients \
+  -u <YOUR_PRIVATE_KEY>:
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/clients/list_clients.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/clients/list_clients.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/clients/list_clients.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/clients/list_clients.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/clients/list_clients.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/clients/list_clients.cs') %>
+```
+
+> Response
+
+```nohighlight
+{
+    "data" : [
+        {
+            "id"           : "client_bc798246e32ce7e66dbe",
+            "email"        : null,
+            "description"  : null,
+            "created_at"   : 1342427064,
+            "updated_at"   : 1342427064,
+            "payment"      : "[ <Object>, ... ] or null",
+            "subscription" : "<Object>",
+            "app_id"       : null
+        }
+    ],
+    "data_count" : "1",
+    "mode" : "test"
+}
+```
+
+This function returns a JSON object with a list of clients. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - count
+  - offset
+  - creditcard
+  - email
+  - created_at
+
+Available filters:
+
+  - `payment=<payment id>`
+  - `subscription=<subscription id>`
+  - `offer=<offer id>`
+  - `description=<string>`
+  - `email=<email>`
+  - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+  - `updated_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
+
+
+## Export `Clients` List
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/clients \
+  -u <YOUR_PRIVATE_KEY>: \
+  -H "Accept: text/csv"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/clients/export_clients_list.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/clients/export_clients_list.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/clients/export_clients_list.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/clients/export_clients_list.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/clients/export_clients_list.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/clients/export_clients_list.cs') %>
+```
+
+> Response
+
+```nohighlight
+"id";"email";"description";"app_id";"updated_at";"created_at";"payment";"subscription"
+"client_33c8f8c13d759d00b144";"testclient@paymill.de";"test client";"";"1342427064";"1342427064";"pay_2311e5a076ab0b9c2cdb0399";"sub_c84aadd0c1c7529158ee,sub_c36362f70bb78d53e145,sub_11cc72a3a759d5ce7f47"
+```
+
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+
+  - created_at
+  - description
+  - email
+  - updated_at
+
+Available filters:
+
+  - `created_at`
+  - `description=<string>`
+  - `email=<email>`
+  - `offer=<offer id>`
+  - `payment=<payment id>`
+  - `subscription=<subscription id>`
+  - `updated_at`
