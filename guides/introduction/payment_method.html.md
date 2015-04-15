@@ -2,6 +2,7 @@
 title: "Payment Method"
 menu: "Payment Method"
 type: "guide"
+status: "draft"
 ---
 
 ## Store a payment method through payment object

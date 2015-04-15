@@ -2,6 +2,7 @@
 title: "Subscriptions"
 menu: "Subscriptions"
 type: "guide"
+status: "draft"
 ---
 
 ## 1. Setting up a Subscription

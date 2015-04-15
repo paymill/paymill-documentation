@@ -2,6 +2,7 @@
 title: "Bridge"
 menu: "Bridge"
 type: "guide"
+status: "draft"
 ---
 
 How exactly does the PAYMILL bridge work and what are its features? These and similar questions are answered in this section.

@@ -2,6 +2,7 @@
 title: "Data Export to 3rd Party PSP"
 menu: "Data Export to 3rd Party PSP"
 type: "guide"
+status: "draft"
 ---
 
 This document describes the process for a data export, which means transaction data shall be exported in a PCI compliant way and transferred to a third party system. The reason for a data export is the switch of a merchant using PAYMILL to another PSP.

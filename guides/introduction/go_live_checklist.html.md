@@ -2,6 +2,7 @@
 title: "Check-List for Go-Live"
 menu: "Check-List for Go-Live"
 type: "guide"
+status: "draft"
 ---
 
 You are almost ready to switch to live-mode and and accept payments from your customers. To ensure a smooth transition, please make sure to consider the following requirements:
