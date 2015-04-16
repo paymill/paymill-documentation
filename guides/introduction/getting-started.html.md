@@ -18,15 +18,15 @@ Please note too that this service is only available in Germany right now!
 
 On our homepage, go to **My Account** and click on **Register** or use the **Register Now** button.
 
-![Login Form](/Guides/images/getting_started-01.jpg)
+![Login Form](/guides/images/getting_started-01.jpg)
 
 Now fill out the **registration form**, after which you will receive an activation e-mail that you will need to confirm.
 
-![Registration Form](/Guides/images/getting_started-02.jpg)
+![Registration Form](/guides/images/getting_started-02.jpg)
 
 Once your Paymill account has been set up successfully, you will be transferred to the merchant centre. In this area you can view your test key and live key transactions. There is a switch at the upper right to toggle between them.
 
-![Merchant Centre](/Guides/images/getting_started-03.jpg)
+![Merchant Centre](/guides/images/getting_started-03.jpg)
 
 ## 2. API Keys
 
@@ -53,7 +53,7 @@ If you do not have a test system, you will need to replace the two test keys wit
 
 In the **Development > API keys tab** of the sidebar you will find your test keys for performing test payments. Before the live keys are displayed, you will have to activate your account. In order to do so, you have to provide some information of your product, your business and your relationship to the company.
 
-![API Keys](/Guides/images/getting_started-04.jpg)
+![API Keys](/guides/images/getting_started-04.jpg)
 
 **Quick guide to integrate PAYMILL**
 

@@ -21,7 +21,7 @@ In order to store the credit card data of a client, you must create his profile 
 
 On the homepage, go to **Clients** and click **New client**
 
-![Create Client](/Guides/images/payment_method-01.jpg)
+![Create Client](/guides/images/payment_method-01.jpg)
 
 
 ## 2. Create payment method
@@ -30,16 +30,16 @@ Store the credit card data.
 
 Go to the details page of your client and click on **Create payment method** in the **Means of payment** section.
 
-![Create Payment Method](/Guides/images/payment_method-02.jpg)
+![Create Payment Method](/guides/images/payment_method-02.jpg)
 
 
 Select your desired payment type and enter the applicable information. Only specific credit card information / bank details are allowed in test mode. You can find the list here. Usage of any other data will result in error.
 
-![Payment Method Form](/Guides/images/payment_method-03.jpg)
+![Payment Method Form](/guides/images/payment_method-03.jpg)
 
 You can store several payment methods for a client.
 
-![Payment Method Details](/Guides/images/payment_method-04.jpg)
+![Payment Method Details](/guides/images/payment_method-04.jpg)
 
 <p class="important">
 **Important:**
@@ -61,7 +61,7 @@ Create a new transaction with one of the payment types that are assigned to your
 
 On the detail page of your **client**, you can now create a new transaction by clicking on **Create transaction** in the **Transactions** section. If you have created several payment methods, they are made available for you to select from under **Payment type**.
 
-![Create Transaction](/Guides/images/payment_method-05.jpg)
+![Create Transaction](/guides/images/payment_method-05.jpg)
 
 <p class="important">
 You can find additional information in our FAQ's

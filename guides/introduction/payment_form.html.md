@@ -39,7 +39,7 @@ Click on Development and go to the API Keys point. At first you will find your t
 
 
 
-![Test Keys](/Guides/images/payment_form-01.jpg)
+![Test Keys](/guides/images/payment_form-01.jpg)
 
 
 ## 2. Setting up and Integrating a Payment Form
