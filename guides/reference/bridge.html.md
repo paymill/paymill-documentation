@@ -159,7 +159,7 @@ Following error codes can be returned with direct debit:
 
 If a credit card, which is activated for 3-D Secure is used, the customer has to enter it's password on the bank's website. This process must be completed during the creation of the token. For this reason, an iFrame is displayed during the creation of the token, which enables to enter the password, which is placed in the middle of the page.
 
-![3D Secure](/guides/images/paymill_bridge-01.jpg)
+![3D Secure](/Guides/images/paymill_bridge-01.jpg)
 
 You can customize the look and feel of the iframe to match your website by providing two callbacks to the createToken method, named tdsInit and tdsCleanup in the following example:
 

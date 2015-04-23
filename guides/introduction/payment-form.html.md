@@ -2,22 +2,23 @@
 title: "Payment Form"
 menu: "Payment Form"
 type: "guide"
-status: "draft"
+status: "published"
+order: 2
 ---
 
-Paymill enables you to integrate credit card payments quickly, securely, simply and individually on your website. Our service is surely adhered with the credit card guidelines regarding sensitive customer payment data. You therefore do not have to worry about issues such as credit card information security.
+Paymill enables you to integrate credit card payments quickly, securely, simply and individually on your website. Our service is surely adhered with the credit card guidelines regarding sensitive customer payment data. You therefore do not have to worry about issues such as credit card information [security](/guides/security/security-standards.html).
 
 You can integrate our Paymill payment form in your own website in three easy steps for the purpose of receiving credit card payments without any problems. This will save you from dealing with a complicated technical integration process.
 
 ## 1. Collecting Credit Card Data
 
-At first, the Paymill Bridge (a JS integration) has to be integrated in your website. Ideally, it should be integrated before the closing </body> tag.
+At first, the [Paymill Bridge (a JS integration)](/guides/reference/paymill-bridge.html) has to be integrated in your website. Ideally, it should be integrated before the closing </body> tag.
 
-The Paymill bridge is required to create a unique token from the credit card. The credit card number can be verified if desired.
+The Paymill bridge is required to create a unique [token](/guides/reference/paymill-bridge.html) from the credit card. The credit card number can be verified if desired.
 
 
 <p class="important">
-You should always use your test key for non-live transactions, like the ones described in the documentation. Using your live key will be considered as a real request, and funds will be drawn from your account and/or credit card.
+You should always use your **test key** for non-live transactions, like the ones described in the documentation. Using your **live key** will be considered as a real request, and funds will be drawn from your account and/or credit card.
 </p>
 
 The public key that has been assigned will identify your website in Paymill for the unique creation of a token and will be given to you when you register on Paymill. Your complete code should look similar to this code snippet:
@@ -30,21 +31,21 @@ The public key that has been assigned will identify your website in Paymill for 
 ```
 
 <p class="info">
-You will find your test keys and live keys in your account. It is important to always differentiate between the two keys in your own account. The key that you use and the activation status of your account will determine whether you employ the live key on your website, for instance. This will lead to real payment which involves costs.
+You will find your test keys and live keys in [your account](http://app.paymill.com). It is important to always differentiate between the two keys in your own account. The key that you use and the activation status of your account will determine whether you employ the live key on your website, for instance. This will lead to real payment which involves costs.
 </p>
 
 Where do I find my keys?
 
-Click on Development and go to the API Keys point. At first you will find your test keys that you can use to process test payments. As far as the live keys are concerned, you will have to activate your account first.
+Click on **Development** and go to the **API Keys** point. At first you will find your **test keys** that you can use to process test payments. As far as the **live keys** are concerned, you will have to activate your account first.
 
 
 
-![Test Keys](/guides/images/payment_form-01.jpg)
+![Test Keys](/Guides/images/payment_form-01.jpg)
 
 
 ## 2. Setting up and Integrating a Payment Form
 
-In order for your website to meet legal standards, credit card information cannot be stored or transferred to your server. For this reason, the data are replaced with a token before being transferred to your server. Your server thus does not receives any sensitive credit card information!
+In order for your website to meet [legal standards](http://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard), credit card information cannot be stored or transferred to your server. For this reason, the data are replaced with a token before being transferred to your server. Your server thus does not receives any sensitive credit card information!
 
 The data are only referenced via the token and your private key. The token can be stored on your web server without you having to have a PCI compliance certification.
 
@@ -52,7 +53,7 @@ The data are only referenced via the token and your private key. The token can b
 Please note that the bridge sends the request data to our PCI-compliant server, which in turn talks with the credit card institutions. For this reason, the bridge might take a few seconds to deliver a response to your code. Therefore, please do not specify any fixed timeouts in your Javascript code when dealing with the Paymill bridge.
 </p>
 
-The data is referenced via the token and your private key only. The token can be stored on your server, without the need of getting PCI Compliance certified.
+The data is referenced via the token and your private key only. The token can be stored on your server, without the need of getting [PCI Compliance](http://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) certified.
 
 In order to obtain the necessary mandatory information for the token, you may use the following credit card form:
 
@@ -90,31 +91,33 @@ In order to obtain the necessary mandatory information for the token, you may us
 </form>
 ```
 
-You can find more information on optional fields that can be transferred in our API Reference.
+You can find more information on optional fields that can be transferred in our [API Reference](/API).
 
 <p class="info">
 In order to test the payment process, you may use the following credit card numbers:
-
-**Visa**:       4111111111111111
-**Mastercard**: 5105105105105100
-**Maestro UK**: 6799851000000032
-**Discover**:   6011587918359498 (Support by Paymill is planned)
-**Solo**:       6334580500000000 (Support by Paymill is planned)
-
+<br><br>
+**Visa**:       4111111111111111 <br>
+**Mastercard**: 5105105105105100 <br>
+**Maestro UK**: 6799851000000032 <br>
+**Discover**:   6011587918359498 (Support by Paymill is planned) <br>
+**Solo**:       6334580500000000 (Support by Paymill is planned) <br>
+<br>
 Please, always enter an expiration date in the future. Expiration dates in the past will cause the transaction to fail.
-
+<br><br>
 **3-D Secure credit card**
-
+<br>
 **Visa**:4012888888881881
-
+<br><br>
 You can use this test card number to run a test against a 3-D Secure enabled transaction. Using 3-D secure adds an additional layer of security to your transactions and helps to protect merchants against fraud.
+<br>
 **Note that the 3-D Secure test card can only be used when using your API live key.**
+<br>
 Using the 3-D Secure test card while using the API test key will cause an error to be thrown. As it is a test card, there's no need to worry about being charged when testing with the API live key.
 </p>
 
 <p class="info">
 **Important information for test data**
-Only specific credit card information / bank details are allowed in test mode. You can find the list here. Usage of any other data will result in error.
+Only specific credit card information / bank details are allowed in test mode. You can find the list [here](/guides/reference/testing.html). Usage of any other data will result in error.
 </p>
 
 Data validation
@@ -171,7 +174,7 @@ paymill.validateBankCode('50010517'); // true
 paymill.validateBankCode('foo'); // false
 ```
 
-`validateIban(iban, verbose)`: Checks, if value returns a correct German IBAN. If the parameter verbose is set and the IBAN is not valid, it returns an exception.
+`validateIban(iban, verbose)`: Checks, if value returns a correct German IBAN. If the parameter **verbose** is set and the IBAN is not valid, it returns an exception.
 
 ```javascript
 paymill.validateIban('DE89 3704 0044 0532 0130 00'); // true
@@ -182,9 +185,9 @@ paymill.validateIban('GB29 NWBK 6016 1331 9268 19', true);
 ```
 
 <p class="important">
-Payments may only be processed via the Paymill bridge.
+Payments may only be processed via the [PAYMILL bridge](/guides/reference/paymill-bridge.html).
 Credit card data may not be transferred, logged, or saved to your server. In order to guarantee that you simply need to **leave out the name attribute in the form fields**. Then this form field will not be transferred to the merchant’s server either.
-Every payment form that you send to Paymill should be sent via SSL for security reasons. If you do not have an SSL certificate, you can still use our services. However, we urge you to integrate SSL.
+Every payment form that you send to Paymill should be sent via SSL for security reasons. If you do not have an SSL certificate, you can still use our services. However, we urge you to integrate [SSL](http://en.wikipedia.org/wiki/Transport_Layer_Security).
 </p>
 
 ## 3. Setting up and Integrating a Payment Form
@@ -193,9 +196,9 @@ Creating a Token
 
 In order to create a unique token, the credit card data needs to be verified and converted.
 
-The credit card information is sent via SSL to the Paymill Payment Service Provider (PSP), which converts the credit card information to a token. A JavaScript function in your payment form is triggered, and this deactivates the Submit button and calls up a JavaScript event that is then sent to the Paymill Payment Service Provider (PSP).
+The credit card information is sent via SSL to the Paymill Payment Service Provider ([PSP](http://en.wikipedia.org/wiki/Payment_service_provider)), which converts the credit card information to a token. A JavaScript function in your payment form is triggered, and this deactivates the Submit button and calls up a JavaScript event that is then sent to the Paymill Payment Service Provider (PSP).
 
-The credit card number and the credit card expiration date have to be set as mandatory variables. Other fields are optional. Here is a sample code for securely transferring credit card data that you can use in any JavaScript framework (not just in jQuery):
+The credit card number and the credit card expiration date have to be set as mandatory variables. Other fields are optional. Here is a sample code for securely transferring credit card data that you can use in any [JavaScript framework](http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks) (not just in jQuery):
 
 ```javascript
 $(document).ready(function() {
@@ -218,9 +221,9 @@ $(document).ready(function() {
 });
 ```
 
-The data is transferred via SSL to the Paymill Payment Service Provider (PSP). The Paymill PSP validates the data and returns a unique token to you as a token object together with an empty error report object. In the event of an error, the token object would be empty and the error report object filled.
+The data is transferred via SSL to the Paymill Payment Service Provider (PSP). The Paymill PSP validates the data and returns a unique [token](/guides/reference/paymill-bridge.html) to you as a token object together with an empty error report object. In the event of an error, the token object would be empty and the error report object filled.
 
-The data transfer is picked up by the PaymillResponseHandler function in your form in the browser. A JSON object is returned as a result. There are always 2 objects that are issued: error and result. One of the two is always a NULL value and thus functional/non-functional.
+The data transfer is picked up by the PaymillResponseHandler function in your form in the browser. A [JSON object](http://en.wikipedia.org/wiki/JSON) is returned as a result. There are always 2 objects that are issued: error and result. One of the two is always a NULL value and thus functional/non-functional.
 
 For example, a successful response (response object) with the following characteristics:
 
@@ -250,4 +253,4 @@ function PaymillResponseHandler(error, result) {
 }
 ```
 
-In order to integrate a complete Paymill payment form on your website for testing, copy our entire code from our GitHub repository.
+In order to integrate a complete Paymill payment form on your website for testing, copy our entire code from our [GitHub repository](https://github.com/Paymill/Zahlungsformular).
