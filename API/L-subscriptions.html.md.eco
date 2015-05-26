@@ -4,7 +4,7 @@ anchor: "subscriptions"
 type: "apiDoc"
 ---
 
-Subscriptions allow you to charge recurring payments on a client’s credit card / to a client’s direct debit. A subscription connects a client to the offers-object. A client can have several subscriptions to different offers, but only one subscription to the same offer.
+Subscriptions allow you to charge recurring payments on a client’s credit card / to a client’s direct debit. A subscription connects a client to the [offers-object](#-offer-object). A client can have several subscriptions to different offers, but only one subscription to the same offer.
 
 ## `Subscriptions` object
 
@@ -39,21 +39,21 @@ Subscriptions allow you to charge recurring payments on a client’s credit card
 
 > Sub objects
 
-```eco
-- subscription.offer returns an offer object
-- subscription.payment returns a payment object for credit card or a payment object for direct debit
-- subscription.client returns a client object
-```
+<pre>
+  subscription.offer returns an <a href="#-offer-object">offer object</a>
+  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  subscription.client returns a <a href="#-client-object">client object</a>
+</pre>
 
 
 Attribute             | Type                                                              | Description 
 ----------------------|-------------------------------------------------------------------|-----------------
 id                    | string                                                            | Unique identifier of this subscription
 livemode              | boolean                                                           | Whether this subscription was issued while being in live mode or not
-offer                 | offer object                                                      |
+offer                 | [offer object](#-offer-object)                                    |
 amount                | integer                                                           | the amount of the subscription in cents
 temp_amount           | integer / null                                                    | a one-time amount in cents, will charge once only
-currency              | string                                                            | ISO 4217 formatted currency code
+currency              | string                                                            | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
 interval              | string                                                            | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY
 name                  | string / null                                                     | name of the subscription
 trial_start           | integer / null                                                    | Unix-Timestamp for the trial period start
@@ -64,8 +64,10 @@ next_capture_at       | integer                                                 
 created_at            | integer                                                           | Unix-Timestamp for the creation Date
 updated_at            | integer                                                           | Unix-Timestamp for the last update
 canceled_at           | integer / null                                                    | Unix-Timestamp for the cancel date
-payment               | payment object for credit card / payment object for direct debit  | payment object for credit card or payment object for direct debit
-client                | client object                                                     | client object
+payment               | [payment object for credit card](#-payment-object-for-credit-card-payments) / [payment object for direct debit](#-payment-object-for-direct-debit-payments)  | payment object for credit card or payment object for direct debit
+mandate_reference     | string or null                                                    | SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain
+digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
+client                | [client object](#-client-object)                                  | client object
 app_id                | string / null                                                     | App (ID) that created this subscription or null if created by yourself
 is_canceled           | boolean                                                           | subscription is marked as canceled or not
 is_deleted            | boolean                                                           | subscription is marked as deleted or not
@@ -288,6 +290,14 @@ curl https://api.paymill.com/v2.1/subscriptions \
     "mode":"test"
 }
 ```
+> Sub Objects
+
+<pre>
+  subscription.offer returns an <a href="#-offer-object">offer object</a>
+  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  subscription.client returns a <a href="#-client-object">client object</a>
+</pre>
+
 
 This function creates a subscription between a client and an offer. A client can have several subscriptions to different offers, but only one subscription to the same offer. The clients is charged for each billing interval entered.
 
@@ -297,7 +307,7 @@ offer               | string          | Unique offer identifier (if no offer is 
 payment             | string          | Unique payment identifier
 client              | string          | Unique client identifier. If not provided the client from the payment is being used
 amount              | integer (>0)    | the amount of the subscription in cents (is required if no offer id is given)
-currency            | string          | ISO 4217 formatted currency code (is required if no offer id is given)
+currency            | string          | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (is required if no offer id is given)
 interval            | string          | charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY ( is required if no offer id is given)
 name                | string / null   | name of the subscription (optional)
 period_of_validity  | string / null   | limit the validity of the subscription, format: integer MONTH|YEAR|WEEK|DAY (optional)
@@ -368,6 +378,15 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dc180b755d10da324864 \
     "mode" : "test"
 }
 ```
+
+> Sub objects
+
+<pre>
+  subscription.offer returns an <a href="#-offer-object">offer object</a>
+  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  subscription.client returns a <a href="#-client-object">client object</a>
+</pre>
+
 
 This function returns the detailed information of the concrete requested subscription.
 
@@ -652,6 +671,14 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
 }
 ```
 
+> Sub objects
+
+<pre>
+  subscription.offer returns an <a href="#-offer-object">offer object</a>
+  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  subscription.client returns a <a href="#-client-object">client object</a>
+</pre>
+
 This function updates the subscription of a client. You can change e.g. the trial_end attribute to stop the trial period. Or you can assign the subscription to another offer (offer=<new_offer_id>), change the amount or pause it. NOTE: changing the amount and offer within one request is not possible (throw an exception).
 
 Attribute             | Type                | Description 
@@ -663,7 +690,7 @@ offer_change_type     | integer / null      | permitted values: 0,1,2; linked an
 amount                | integer (>0)        | the amount of the subscription in cents (optional)
 amount_change_type    | int                 | permitted values: 0,1; linked and required with ‘amount’ (optional)
 pause                 | boolean             | deactivate a subscription or reactivate it, false: reactivate, true: deactivate (optional)
-currency              | string              | ISO 4217 formatted currency code (optional)
+currency              | string              | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
 interval              | string              | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] (optional)
 name                  | string              | name of the subscription (optional)
 period_of_validity    | string              | limit the validity of the subscription, format: integer MONTH|YEAR|WEEK|DAY, set to “remove” to unlimit the validity period (optional)
@@ -806,6 +833,15 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
 }
 ```
 
+> Sub objects
+
+<pre>
+  subscription.offer returns an <a href="#-offer-object">offer object</a>
+  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  subscription.client returns a <a href="#-client-object">client object</a>
+</pre>
+
+
 This function cancels or remove an existing subscription. The subscription will be directly terminated or deleted and no pending transactions will be charged. Deleted subscriptions will not be displayed.
 
 Attribute             | Type                | Description 
@@ -873,7 +909,16 @@ curl https://api.paymill.com/v2.1/subscriptions \
 }
 ```
 
-This function returns a JSON object with a list of subscriptions. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+> Sub objects
+
+<pre>
+  subscription.offer returns an <a href="#-offer-object">offer object</a>
+  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  subscription.client returns a <a href="#-client-object">client object</a>
+</pre>
+
+
+This function returns a JSON object with a list of subscriptions. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - count
   - offset
@@ -881,11 +926,10 @@ This function returns a JSON object with a list of subscriptions. In which order
   - canceled_at
   - created_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - `offer=<offer id>`
   - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
-
 
 ## Export `Subscriptions` List
 
@@ -928,12 +972,12 @@ curl https://api.paymill.com/v2.1/subscriptions \
 "sub_c84aadd0c1c7529158ee";"";"499";"";"EUR";"Example Subscription";"3 WEEK";"1401983620";"1404575620";"";"";"";"1342427064";"1342427064";"1402640050";"";"";"";"active";"offer_1a5d80dc75db9b5c0c64";"client_33c8f8c13d759d00b144";"pay_2311e5a076ab0b9c2cdb0399"
 ```
 
-This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of subscriptions. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of subscriptions. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - created_at
   - updated_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - offer
   - currency

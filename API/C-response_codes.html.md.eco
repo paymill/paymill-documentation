@@ -61,6 +61,6 @@ Code | Description
 
 
 
-Some JSON objects like transactions or refunds include a response code, which specifies more detailed information about the outcome of a preceding request.
+Some [JSON](http://en.wikipedia.org/wiki/Json) objects like [transactions](#transactions) or [refunds](#refunds) include a response code, which specifies more detailed information about the outcome of a preceding request.
 
 The codes are numeric and have 5 digits, the first digit follows the rules of http codes so something like 1xxxx is informational (request received etc.), 2xxxx indicates a successful transaction whereas 4xxxx or 5xxxx are error codes.

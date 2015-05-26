@@ -107,7 +107,7 @@ With this call you can create an offer via the API. You can also create an offer
 Parameter         | Type            | Description 
 ------------------|-----------------|-----------------
 amount            | integer (>0)    | Amount (in cents)
-currency          | string          | ISO 4217 formatted currency code
+currency          | string          | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
 interval          | string          | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR Example: 2 DAY
 name              | string          | Your name for this offer
 trial_period_days | integer / null  | Define an optional trial period in number of days
@@ -246,7 +246,7 @@ id                    | string          | Unique identifier for the offer
 name                  | string          | Your name for this offer (optional)
 interval              | string          | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR (optional)
 amount                | string          | Your amount of the offer in cents (optional)
-currency              | string          | ISO 4217 formatted currency code (optional)
+currency              | string          | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
 trial_period_days     | integer         | Your trial period in number of days (optional)
 update_subscriptions  | boolean         | Definition, if all related subscriptions also should be updated
 
@@ -304,7 +304,7 @@ id                        | string          | Unique identifier for the offer
 remove_with_subscriptions | boolean         | Definition if all related subscriptions also should be deleted
 
 
-## [GET] List `Offers`
+## List `Offers`
 
 > Request
 
@@ -363,7 +363,7 @@ curl https://api.paymill.com/v2.1/offers \
 }
 ```
 
-This function returns a JSON object with a list of offers. In which order this list are returned depends on the optional parameter order. The following parameters can be used:
+This function returns a JSON object with a list of offers. In which order this list are returned depends on the optional parameter [order](#-sort-entries). The following parameters can be used:
 
   - count
   - offset
@@ -372,7 +372,7 @@ This function returns a JSON object with a list of offers. In which order this l
   - created_at
   - trial_period_days
 
-Available filters:
+Available [filters](#filter-entries):
 
   - `name=<name>`
   - `trial_period_days=<integer>`
@@ -392,7 +392,7 @@ curl https://api.paymill.com/v2.1/offers \
 ```
 
 ```ruby
-<%- @partial('snippets/ruby/samples/offers/export_offers_list.rb') %>
+  <%- @partial('snippets/ruby/samples/offers/export_offers_list.rb') %>
 ```
 
 > Response
@@ -402,7 +402,7 @@ curl https://api.paymill.com/v2.1/offers \
 "offer_1a5d80dc75db9b5c0c64";"Example Offer";"499";"EUR";"3 WEEK";"22";"1342427064";"1342427064";"1";"8";""
 ```
 
-This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - amount
   - created_at
@@ -412,7 +412,7 @@ This function returns CSV separated by semicolons, encapsulated by double quotes
   - trial_period_days
   - updated_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - amount
   - created_at

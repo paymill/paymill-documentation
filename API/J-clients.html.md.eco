@@ -25,10 +25,10 @@ The clients object is used to edit, delete, update clients as well as to permit 
 
 > Sub objects
 
-```eco
-- client.payment returns payment objects for credit card or direct debit
-- client.subscription returns subscription objects or null
-```
+<pre>
+  - <a href="#-client-object">client</a>.payment returns payment objects for <a href="#-payment-object-for-credit-card-payments">credit card</a> or <a href="#-payment-object-for-direct-debit-payments">direct debit</a>
+  - <a href="#-client-object">client</a>.subscription returns <a href="#-subscription-object">subscription objects</a> or null
+</pre>
 
 Attribute         | Type              | Description 
 ------------------|-------------------|-----------------
@@ -37,8 +37,8 @@ email             | string / null     | Mail address of this client
 description       | string / null     | Additional description for this client, perhaps the identifier from your CRM system?
 created_at        | integer           | Unix-Timestamp for the creation date
 updated_at        | integer           | Unix-Timestamp for the last update
-payment           | list              | creditcard-object or directdebit-object
-subscription      | list / null       | subscriptions-object
+payment           | list              | [credit card](#-payment-object-for-credit-card-payments) or [direct debit](#-payment-object-for-direct-debit-payments)
+subscription      | list / null       | [subscriptions objects](#-subscription-object)
 app_id            | string / null     | App (ID) that created this client or null if created by yourself
 
 
@@ -94,6 +94,13 @@ curl https://api.paymill.com/v2.1/clients \
     "mode" : "test"
 }
 ```
+
+> Sub objects
+
+<pre>
+  - <a href="#-client-object">client</a>.payment returns payment objects for <a href="#-payment-object-for-credit-card-payments">credit card</a> or <a href="#-payment-object-for-direct-debit-payments">direct debit</a>
+  - <a href="#-client-object">client</a>.subscription returns <a href="#-subscription-object">subscription objects</a> or null
+</pre>
 
 This function creates a client object.
 
@@ -153,6 +160,13 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
     "mode" : "test"
 }
 ```
+
+> Sub objects
+
+<pre>
+  - <a href="#-client-object">client</a>.payment returns payment objects for <a href="#-payment-object-for-credit-card-payments">credit card</a> or <a href="#-payment-object-for-direct-debit-payments">direct debit</a>
+  - <a href="#-client-object">client</a>.subscription returns <a href="#-subscription-object">subscription objects</a> or null
+</pre>
 
 To get the details of an existing client you’ll need to supply the client ID. The client ID is returned by creating a client.
 
@@ -214,6 +228,13 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
 }
 ```
 
+> Sub objects
+
+<pre>
+  - <a href="#-client-object">client</a>.payment returns payment objects for <a href="#-payment-object-for-credit-card-payments">credit card</a> or <a href="#-payment-object-for-direct-debit-payments">direct debit</a>
+  - <a href="#-client-object">client</a>.subscription returns <a href="#-subscription-object">subscription objects</a> or null
+</pre>
+
 This function updates the data of a client. To change only a specific attribute you can set this attribute in the update request. All other attributes that shouldn’t be edited aren’t inserted. You can only edit the description, email and credit card. The subscription can’t be changed by updating the client data. This has to be done in the subscription call.
 
 Parameter         | Type            | Description 
@@ -265,6 +286,14 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
     "mode": "test"
 }
 ```
+
+> Sub objects
+
+<pre>
+  - <a href="#-client-object">client</a>.payment returns payment objects for <a href="#-payment-object-for-credit-card-payments">credit card</a> or <a href="#-payment-object-for-direct-debit-payments">direct debit</a>
+  - <a href="#-client-object">client</a>.subscription returns <a href="#-subscription-object">subscription objects</a> or null
+</pre>
+
 
 This function deletes a client, but your transactions aren’t deleted.
 
@@ -326,7 +355,14 @@ curl https://api.paymill.com/v2.1/clients \
 }
 ```
 
-This function returns a JSON object with a list of clients. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+> Sub objects
+
+<pre>
+  - <a href="#-client-object">client</a>.payment returns payment objects for <a href="#-payment-object-for-credit-card-payments">credit card</a> or <a href="#-payment-object-for-direct-debit-payments">direct debit</a>
+  - <a href="#-client-object">client</a>.subscription returns <a href="#-subscription-object">subscription objects</a> or null
+</pre>
+
+This function returns a JSON object with a list of clients. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - count
   - offset
@@ -334,7 +370,7 @@ This function returns a JSON object with a list of clients. In which order this 
   - email
   - created_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - `payment=<payment id>`
   - `subscription=<subscription id>`
@@ -386,14 +422,14 @@ curl https://api.paymill.com/v2.1/clients \
 "client_33c8f8c13d759d00b144";"testclient@paymill.de";"test client";"";"1342427064";"1342427064";"pay_2311e5a076ab0b9c2cdb0399";"sub_c84aadd0c1c7529158ee,sub_c36362f70bb78d53e145,sub_11cc72a3a759d5ce7f47"
 ```
 
-This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - created_at
   - description
   - email
   - updated_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - `created_at`
   - `description=<string>`

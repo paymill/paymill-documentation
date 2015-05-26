@@ -4,7 +4,7 @@ anchor: "payments"
 type: "apiDoc"
 ---
 
-The Payment object represents a payment with a credit card or via direct debit. It is used for several function calls (e.g. transactions, subscriptions, clients, ...). To be PCI compliant these information is encoded by our Paymill PSP. You only get in touch with safe data (token) and needn’t care about the security problematic of informations like credit card data.
+The Payment object represents a payment with a credit card or via direct debit. It is used for several function calls (e.g. [transactions](#transactions), [subscriptions](#subscriptions), [clients](#clients), ...). To be PCI compliant these information is encoded by our Paymill PSP. You only get in touch with safe data ([token](/guides/reference/bridge.html)) and needn’t care about the security problematic of informations like credit card data.
 
 ## `Payment` object for credit card payments
 
@@ -29,22 +29,22 @@ The Payment object represents a payment with a credit card or via direct debit. 
 }
 ```
 
-Attribute      | Type                     | Description 
----------------|--------------------------|-----------------
-id             | string                   | Unique identifier for this credit card payment
-type           | enum (creditcard, debit) |
-client         | client object / null     |
-card_type      | string                   | Card type. eg. visa, mastercard ...
-country        | string / null            | Country
-expire_month   | string                   | Expiry month of the credit card
-expire_year    | string                   | Expiry year of the credit card
-card_holder    | string                   | Name of the card holder
-last4          | string                   | The last four digits of the credit card
-created_at     | integer                  | Unix-Timestamp for the creation date
-updated_at     | integer                  | Unix-Timestamp for the last update
-app_id         | string / null            | App (ID) that created this payment or null if created by yourself
-is_recurring   | boolean                  | The payment is recurring (can be used more than once)
-is_usable_for  | boolean                  | The payment is usable for preauthorization
+Attribute      | Type                                        | Description 
+---------------|---------------------------------------------|-----------------
+id             | string                                      | Unique identifier for this credit card payment
+type           | enum (creditcard, debit)                    |
+client         | [client object](#-client-object) / null     |
+card_type      | string                                      | Card type. eg. visa, mastercard ...
+country        | string / null                               | Country
+expire_month   | string                                      | Expiry month of the credit card
+expire_year    | string                                      | Expiry year of the credit card
+card_holder    | string                                      | Name of the card holder
+last4          | string                                      | The last four digits of the credit card
+created_at     | integer                                     | Unix-Timestamp for the creation date
+updated_at     | integer                                     | Unix-Timestamp for the last update
+app_id         | string / null                               | App (ID) that created this payment or null if created by yourself
+is_recurring   | boolean                                     | The payment is recurring (can be used more than once)
+is_usable_for  | boolean                                     | The payment is usable for preauthorization
 
 
 ## `Payment` object for direct debit payments
@@ -67,18 +67,58 @@ is_usable_for  | boolean                  | The payment is usable for preauthori
 }
 ```
 
-Attribute      | Type                     | Description 
----------------|--------------------------|-----------------
-id             | string                   | Unique identifier for this direct debit payment
-type           | enum (creditcard, debit) |
-code           | string                   | The used Bank Code
-account        | string                   | The used account number. For security reasons the number is masked
-holder         | string                   | Name of the account holder
-created_at     | integer                  | Unix-Timestamp for the creation date
-updated_at     | integer                  | Unix-Timestamp for the last update
-app_id         | string / null            | App (ID) that created this payment or null if created by yourself
-is_recurring   | boolean                  | The payment is recurring (can be used more than once)
-is_usable_for  | boolean                  | The payment is usable for preauthorization
+Attribute      | Type                                        | Description 
+---------------|---------------------------------------------|-----------------
+id             | string                                      | Unique identifier for this direct debit payment
+client         | [client object](#-client-object) / null     |
+type           | enum (creditcard, debit)                    |
+code           | string                                      | The used Bank Code
+account        | string                                      | The used account number. For security reasons the number is masked
+holder         | string                                      | Name of the account holder
+created_at     | integer                                     | Unix-Timestamp for the creation date
+updated_at     | integer                                     | Unix-Timestamp for the last update
+app_id         | string / null                               | App (ID) that created this payment or null if created by yourself
+is_recurring   | boolean                                     | The payment is recurring (can be used more than once)
+is_usable_for  | boolean                                     | The payment is usable for preauthorization
+
+
+## `Payment` object for direct debit payments (SEPA)
+
+> Example
+
+```nohighlight
+{
+    "id"           : "pay_917018675b21ca03c4fb",
+    "type"         : "debit",
+    "client"       : null,
+    "code"         : "12345678",
+    "holder"       :"Alex Tabo",
+    "account"      :"*****9890",
+    "iban"         :"DE1250010517******9890",
+    "bic"          :"BENEDEPPYYY",
+    "created_at"   : 1349944973,
+    "updated_at"   : 1349944973,
+    "app_id"       : null,
+    "is_recurring" : true,
+    "is_usable_for_preauthorization" : true
+}
+```
+
+Attribute      | Type                                        | Description 
+---------------|---------------------------------------------|-----------------
+id             | string                                      | Unique identifier for this direct debit payment
+type           | enum (creditcard, debit)                    |
+client         | [client object](#-client-object) / null     |
+code           | string                                      | The used Bank Code
+account        | string                                      | The used account number. For security reasons the number is masked
+holder         | string                                      | Name of the account holder
+iban           | string                                      | International Bank Account Number
+bic            | string                                      | Business Identifier Code
+created_at     | integer                                     | Unix-Timestamp for the creation date
+updated_at     | integer                                     | Unix-Timestamp for the last update
+app_id         | string / null                               | App (ID) that created this payment or null if created by yourself
+is_recurring   | boolean                                     | The payment is recurring (can be used more than once)
+is_usable_for  | boolean                                     | The payment is usable for preauthorization
 
 
 ## Create new `Credit Card Payment`
@@ -200,10 +240,10 @@ curl https://api.paymill.com/v2.1/payments \
 }
 ```
 
-Parameter      | Type                     | Description 
----------------|--------------------------|-----------------
-token          | string                   | Unique credit card token
-client         | client object / null     |
+Parameter      | Type                                        | Description 
+---------------|---------------------------------------------|-----------------
+token          | string                                      | Unique credit card token
+client         | [client object](#-client-object) / null     |
 
 
 Creates a credit card payment from a given token, if you’re providing the client-property, the payment will be created and subsequently be added to the client.
@@ -327,10 +367,10 @@ curl https://api.paymill.com/v2.1/payments \
 }
 ```
 
-Parameter      | Type                     | Description 
----------------|--------------------------|-----------------
-token          | string                   | Unique direct debit token
-client         | client object / null     |
+Parameter      | Type                                        | Description 
+---------------|---------------------------------------------|-----------------
+token          | string                                      | Unique direct debit token
+client         | [client object](#-client-object) / null     |
 
 Creates a direct debit payment from a given token, if you’re providing the client-property, the payment will be created and subsequently be added to the client.
 
@@ -460,13 +500,13 @@ curl https://api.paymill.com/v2.1/payments \
 }
 ```
 
-This function returns a JSON object with a list of payments. In which order this list is returned depends on the optional parameter order:
+This function returns a JSON object with a list of payments. In which order this list is returned depends on the optional parameter [order](#sort-entries):
 
   - count
   - offset
   - created_at
 
-Available filters
+Available [filters](#filter-entries)
 
   - `card_type=<card_type>`
   - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
@@ -539,14 +579,14 @@ id             | string                   | Unique identifier for the payment
 
 ## Export `Payment` list
 
-This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - card_type
   - created_at
   - type
   - updated_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - card_type
   - created_at

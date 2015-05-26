@@ -6,7 +6,7 @@ type: "apiDoc"
 
 **HTTP Status Codes we use**
 
-We’ve build a RESTful API - that’s the reason why we are concerned about correct status codes which are returned as JSON objects. But in some cases we don’t have the same syntax as the normal http response has. The basic status codes are:
+We’ve build a RESTful API - that’s the reason why we are concerned about correct status codes which are returned as [JSON](http://en.wikipedia.org/wiki/Json) objects. But in some cases we don’t have the same syntax as the normal http response has. The basic status codes are:
 
   - 2xx indicates a successful request
   - 4xx informs you about an error
@@ -23,4 +23,4 @@ Code | Meaning | Description      
 
 Note:
 
-Do not just check the HTTP status code 2xx to verify a successful request, also check the expecting message information, for example transactions or refunds include a response code.
+Do not just check the HTTP status code 2xx to verify a successful request, also check the expecting message information, for example [transactions](#transactions) or [refunds](#refunds) include a [response code](#response-codes).

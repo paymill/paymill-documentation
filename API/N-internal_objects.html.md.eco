@@ -27,7 +27,7 @@ url           | string                | Recipient of the fee
 application   | string                | If App fee, app object ID (optional)
 payment       | string                | Payment object ID from which the fee gets paid
 amount        | integer               | Formatted fee amount
-currency      | string                | ISO 4217 formatted currency code
+currency      | string                | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
 billed_at     | integer               | Unix-Timestamp for the creation date
 
 

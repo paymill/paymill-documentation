@@ -23,32 +23,32 @@ A preauthorization is valid for 7 days.
     "created_at":1349950324,
     "updated_at":1349950324,
     "app_id":null,
-    "payment":"<Obejct>",
-    "client":"<Obejct>",
-    "transaction":"<Obejct>"
+    "payment":"<Object>",
+    "client":"<Object>",
+    "transaction":"<Object>"
 }
 ```
 
 > Sub objects
 
-```eco
-- preauthorization.payment returns a payment object for credit card
-- preauthorization.client returns a client object
-- preauthorization.transaction returns a transaction object
-```
+<pre>
+  - <a href="#-preauthorization-object">preauthorization</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>
+  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
+</pre>
 
-Attribute      | Type                                                    | Description 
----------------|---------------------------------------------------------|-----------------
-id             | string                                                  | Unique identifier for this preauthorization
-description    | string / null                                           | Description for this preauthorization (max. 255 chars)
-amount         | string                                                  | Formatted amount which will be reserved for further transactions
-status         | enum (open, pending, closed, failed, deleted, preauth)  | Indicates the current status of this preauthorization
-livemode       | boolean                                                 | Whether this preauthorization was issued while being in live mode or not
-payment        | payment object for credit card / null                   |
-client         | client object / null                                    |
-created_at     | integer                                                 | Unix-Timestamp for the creation date
-updated_at     | integer                                                 | Unix-Timestamp for the last update
-app_id         | string / null                                           | App (ID) that created this preauthorization or null if created by yourself
+Attribute      | Type                                                                                | Description 
+---------------|-------------------------------------------------------------------------------------|-----------------
+id             | string                                                                              | Unique identifier for this preauthorization
+description    | string / null                                                                       | Description for this preauthorization (max. 255 chars)
+amount         | string                                                                              | Formatted amount which will be reserved for further transactions
+status         | enum (open, pending, closed, failed, deleted, preauth)                              | Indicates the current status of this preauthorization
+livemode       | boolean                                                                             | Whether this preauthorization was issued while being in live mode or not
+payment        | [payment object for credit card](#-payment-object-for-credit-card-payments) / null  |
+client         | [client object](#-client-object) / null                                             |
+created_at     | integer                                                                             | Unix-Timestamp for the creation date
+updated_at     | integer                                                                             | Unix-Timestamp for the last update
+app_id         | string / null                                                                       | App (ID) that created this preauthorization or null if created by yourself
 
 
 ## Create new `Preauthorization`
@@ -104,9 +104,9 @@ curl https://api.paymill.com/v2.1/preauthorizations \
         "created_at":1350324120,
         "updated_at":1350324120,
         "app_id":null,
-        "payment""<Obejct>",
-        "client":"<Obejct>",
-        "transaction":"<Obejct>"
+        "payment":"<Object>",
+        "client":"<Object>",
+        "transaction":"<Object>"
     },
     "mode":"test"
 }
@@ -163,13 +163,21 @@ curl https://api.paymill.com/v2.1/preauthorizations \
         "created_at":1349948920,
         "updated_at":1349948920,
         "app_id":null,
-        "payment""<Obejct>",
-        "client":"<Obejct>",
-        "transaction":"<Obejct>"
+        "payment""<Object>",
+        "client":"<Object>",
+        "transaction":"<Object>"
     },
     "mode":"test"
 }
 ```
+
+> Sub objects
+
+<pre>
+  - <a href="#-preauthorization-object">preauthorization</a>.payment returns a <a href="#create-new-credit-card-payment-">payment object</a> for credit card
+  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object"client object</a>
+  - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
+</pre>
 
 Use either a token or an existing payment to authorize the given amount.
 
@@ -178,9 +186,9 @@ Use either a token or an existing payment to authorize the given amount.
 Parameter      | Type                     | Description 
 ---------------|--------------------------|-----------------
 amount         | integer (>0)             | Amount (in cents) which will be charged
-currency       | string                   | ISO 4217 formatted currency code
+currency       | string                   | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
 token          | string                   | The identifier of a token
-payment        | string                   | The identifier of a payment (only creditcard-object)
+payment        | string                   | The identifier of a payment (only [creditcard-object](#create-new-credit-card-payment-))
 description    | string / null            | Description for this preauthorization (max. 255 chars)
 
 
@@ -231,13 +239,19 @@ curl https://api.paymill.com/v2.1/preauthorizations/preauth_31eb90495837447f76b7
         "created_at":1349948920,
         "updated_at":1349948920,
         "app_id":null,
-        "payment""<Obejct>",
-        "client":"<Obejct>",
-        "transaction":"<Obejct>"
+        "payment""<Object>",
+        "client":"<Object>",
+        "transaction":"<Object>"
     },
     "mode":"test"
 }
 ```
+
+<pre>
+  - <a href="#-preauthorization-object">preauthorization</a>.payment returns a <a href="#create-new-credit-card-payment-">payment object</a> for credit card
+  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object"client object</a>
+  - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>  
+</pre>
 
 Returns data of a specific preauthorization.
 
@@ -348,9 +362,9 @@ curl https://api.paymill.com/v2.1/preauthorizations \
             "created_at":1349948920,
             "updated_at":1349948920,
             "app_id":null,
-            "payment""<Obejct>",
-            "client":"<Obejct>",
-            "transaction":"<Obejct>"
+            "payment""<Object>",
+            "client":"<Object>",
+            "transaction":"<Object>"
         }
     ],
     "data_count" : "1",
@@ -358,13 +372,19 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 }
 ```
 
-This function returns a JSON object with a list of preauthorizations. In which order this list is returned depends on the optional parameter order:
+<pre>
+  - <a href="#-preauthorization-object">preauthorization</a>.payment returns a <a href="#create-new-credit-card-payment-">payment object</a> for credit card
+  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object"client object</a>
+  - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
+</pre>
+
+This function returns a JSON object with a list of preauthorizations. In which order this list is returned depends on the optional parameter [order](#sort-entries):
 
   - count
   - offset
   - created_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - `client=<client id>``
   - `payment=<payment id>``
@@ -413,13 +433,13 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 "preauth_595d96437ad81d5ca965";"499";"EUR";"Subscription#sub_5dd7af6fa6d58c60a4e9";"preauth_subscription";"";"1342427064";"1342427064";"";"pay_2311e5a076ab0b9c2cdb0399";"client_33c8f8c13d759d00b144";""
 ```
 
-This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of preauthorizations. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of preauthorizations. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - amount
   - created_at
   - updated_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - amount
   - client

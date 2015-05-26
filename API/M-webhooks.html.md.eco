@@ -38,23 +38,23 @@ There are a number of events you can react to. Each webhook can be configured to
 
 For example the event subscription.succeeded is triggered every time a successful transaction has been made in our system that is based on a subscription. Shortly after that has been triggered, we will call every webhook you defined for this event and send detailed information to it.
 
-  - chargeback.executed: returns a transaction-object with state set to chargeback
-  - transaction.created: returns a transaction-object
-  - transaction.succeeded: returns a transaction-object
-  - transaction.failed: returns a transaction-object
-  - client.updated: returns a client-object if a client was updated
-  - subscription.created: returns a subscription-object
-  - subscription.updated: returns a subscription-object
-  - subscription.deleted: returns a subscription-object
-  - subscription.succeeded: returns a transaction-object and a subscription-object
-  - subscription.failed: returns a transaction-object and a subscription-object
-  - subscription.expiring: returns a subscription-object
-  - subscription.deactivated: returns a subscription-object
-  - subscription.activated: returns a subscription-object
-  - subscription.canceled: returns a subscription-object
-  - refund.created: returns a refund-object
-  - refund.succeeded: returns a refunds-object
-  - refund.failed: returns a refunds-object
+  - chargeback.executed: returns a [transaction-object](#-transaction-object) with state set to chargeback
+  - transaction.created: returns a [transaction-object](#-transaction-object)
+  - transaction.succeeded: returns a [transaction-object](#-transaction-object)
+  - transaction.failed: returns a [transaction-object](#-transaction-object)
+  - client.updated: returns a [client-object](#-client-object) if a client was updated
+  - subscription.created: returns a [subscription-object](#-subscription-object)
+  - subscription.updated: returns a [subscription-object](#-subscription-object)
+  - subscription.deleted: returns a [subscription-object](#-subscription-object)
+  - subscription.succeeded: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)
+  - subscription.failed: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)
+  - subscription.expiring: returns a [subscription-object](#-subscription-object)
+  - subscription.deactivated: returns a [subscription-object](#-subscription-object)
+  - subscription.activated: returns a [subscription-object](#-subscription-object)
+  - subscription.canceled: returns a [subscription-object](#-subscription-object)
+  - refund.created: returns a [refund-object](#-refund-object)
+  - refund.succeeded: returns a [refunds-object](#-refund-object)
+  - refund.failed: returns a [refunds-object](#-refund-object)
   - payout.transferred: returns an invoice-object with the payout sum for the invoice period
   - invoice.available: returns an invoice-object with the fees sum for the invoice period
   - app.merchant.activated: returns a merchant-object if a connected merchant was activated
@@ -466,7 +466,7 @@ curl https://api.paymill.com/v2.1/webhooks/ \
 }
 ```
 
-This function returns a JSON object with a list of subscriptions. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns a JSON object with a list of subscriptions. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - count
   - offset
@@ -474,7 +474,7 @@ This function returns a JSON object with a list of subscriptions. In which order
   - email
   - created_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - `email=<email>`
   - `url=<url>`
@@ -522,14 +522,14 @@ curl https://api.paymill.com/v2.1/webhooks \
 "hook_f0f84bc71b86f16fa1f5";"";"1342427064";"1342427064";"1";"";"2.1";;"refund.succeeded"
 ```
 
-This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of webhooks. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of webhooks. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - created_at
   - email
   - updated_at
   - url
 
-Available filters:
+Available [filters](#filter-entries):
 
   - email
   - url

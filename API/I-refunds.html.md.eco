@@ -4,7 +4,7 @@ anchor: "refunds"
 type: "apiDoc"
 ---
 
-## `Transaction` object
+## `Refund` object
 
 > Example
 
@@ -25,21 +25,21 @@ type: "apiDoc"
 
 > Sub objects
 
-```eco
-- refund.transaction returns a transaction object
-```
+<pre>
+  - <a href="#-refund-object">refund</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
+</pre>
 
-Attribute                 | Type                             | Description 
---------------------------|----------------------------------|-----------------
-id                        | string                           | Unique identifier for this refund
-transaction               | transaction object               |
-amount                    | integer (>0)                     | The refunded amount
-status                    | enum  (open, pending, refunded)  | Indicates the current status of this transaction
-description               | string or null                   | The description given for this refund
-livemode                  | boolean                          | Whether this refund happend in test or in livemode
-created_at                | integer                          | Unix-Timestamp for the creation date
-updated_at                | integer                          | Unix-Timestamp for the last update
-app_id                    | string / null                    | App (ID) that created this refund or null if created by yourself
+Attribute                 | Type                                        | Description 
+--------------------------|---------------------------------------------|-----------------
+id                        | string                                      | Unique identifier for this refund
+transaction               | [transaction object](#-transaction-object)  |
+amount                    | integer (>0)                                | The refunded amount
+status                    | enum  (open, pending, refunded)             | Indicates the current status of this transaction
+description               | string or null                              | The description given for this refund
+livemode                  | boolean                                     | Whether this refund happend in test or in livemode
+created_at                | integer                                     | Unix-Timestamp for the creation date
+updated_at                | integer                                     | Unix-Timestamp for the last update
+app_id                    | string / null                               | App (ID) that created this refund or null if created by yourself
 
 
 Refunds are own objects with own calls for existing transactions. The refunded amount will be credited to the account of the client.
@@ -97,6 +97,15 @@ curl https://api.paymill.com/v2.1/refunds/tran_023d3b5769321c649435 \
     "mode" : "test"
 }
 ```
+
+> Sub objects
+
+<pre>
+  - <a href="#-transaction-object">transaction</a>.refunds returns <a href="#-refund-object">refund object</a>
+  - <a href="#-transaction-object">transaction</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>
+  - <a href="#-transaction-object">transaction</a>.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>  
+</pre>
 
 This function refunds a transaction that has been created previously and was refunded in parts or wasn’t refunded at all. The inserted amount will be refunded to the credit card / direct debit of the original transaction. There will be some fees for the merchant for every refund.
 
@@ -164,7 +173,15 @@ curl https://api.paymill.com/v2.1/refunds/refund_87bc404a95d5ce616049 \
 }
 ```
 
+> Sub objects
+
+<pre>
+  - <a href="#-refund-object">refund</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
+</pre>
+
+
 Returns detailed informations of a specific refund.
+
 
 ## List`Refunds`
 
@@ -222,7 +239,13 @@ curl https://api.paymill.com/v2.1/refunds \
 }
 ```
 
-This function returns a list of existing refunds. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+> Sub objects
+
+<pre>
+  - <a href="#-refund-object">refund</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
+</pre>
+
+This function returns a list of existing refunds. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - count
   - offset
@@ -231,7 +254,7 @@ This function returns a list of existing refunds. In which order this list is re
   - amount
   - created_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - `client=<client id>`
   - `transaction=<transaction id>`
@@ -280,13 +303,13 @@ curl https://api.paymill.com/v2.1/refunds \
 "refund_a7c4a0b9d09d9833a5d5";"2222";"refunded";"";"";"1342427064";"1342427064";"20000";"";"tran_27a814bfbc7f3af580143713f80e"
 ```
 
-This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of refunds. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of refunds. In which order this list is returned depends on the optional parameter [order](#-sort-entries). The following parameters can be used:
 
   - amount
   - created_at
   - updated_at
 
-Available filters:
+Available [filters](#-filter-entries):
 
   - amount
   - client

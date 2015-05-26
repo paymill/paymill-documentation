@@ -10,7 +10,7 @@ type: "apiDoc"
 https://api.paymill.com/v2.1/
 ```
 
-To get a foreseeable and resource-oriented function call we have implemented our API with REST. All response objects will be delivered as JSON objects.
+To get a foreseeable and [resource-oriented](http://en.wikipedia.org/wiki/Resource-oriented_architecture) function call we have implemented our API with REST. All response objects will be delivered as JSON objects.
 
 For an easy switch from test to live mode PAYMILL supports test keys and live keys. The test key works in the exact same way as the live key, but doesn’t do live credit card transactions. You can always use the test key even if you have activated the live key for your staging server.
 

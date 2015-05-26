@@ -39,12 +39,12 @@ A transaction is the charging of a credit card or a direct debit. In this case y
 
 > Sub objects
 
-```eco
-- transaction.refunds returns refund objects
-- transaction.payment returns a payment object for credit card
-- transaction.client returns a client object
-- transaction.preauthorization returns a preauthorization object
-```
+<pre>
+  - <a href="#-transaction-object">transaction</a>.refunds returns <a href="#-refund-object">refund object</a>
+  - <a href="#-transaction-object">transaction</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>
+  - <a href="#-transaction-object">transaction</a>.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>
+</pre>
 
 Attribute                 | Type                                                                                        | Description 
 --------------------------|---------------------------------------------------------------------------------------------|-----------------
@@ -54,21 +54,33 @@ origin_amount             | integer (>0)                                        
 status                    | enum (open, pending, closed, failed, partial_refunded, refunded, preauthorize, chargeback)  | Indicates the current status of this transaction, e.g closed means the transaction is sucessfully transfered, refunded means that the amount is fully or in parts refunded.
 description               | string or null                                                                              | Need a additional description for this transaction? Maybe your shopping cart ID or something like that?
 livemode                  | boolean                                                                                     | Whether this preauthorization was issued while being in live mode or not
-refunds                   | list refund objects / null                                                                  |
-client                    | client object / null                                                                        |
-currency                  | string                                                                                      | ISO 4217 formatted currency code
+refunds                   | list [refund objects](#-refund-object) / null                                               |
+client                    | [client object](-client-object) / null                                                      |
+currency                  | string                                                                                      | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
 created_at                | integer                                                                                     | Unix-Timestamp for the creation date
 updated_at                | integer                                                                                     | Unix-Timestamp for the last update
-response_code             | integer                                                                                     | Response code
+response_code             | integer                                                                                     | [Response code](#response-codes)
 short_id                  | string                                                                                      | Unique identifier of this transaction provided to the acquirer for the statements
 is_fraud                  | boolean                                                                                     | The transaction is marked as fraud or not
 invoices                  | list                                                                                        | PAYMILL invoice where the transaction fees are charged or null
 app_id                    | string / null                                                                               | App (ID) that created this transaction or null if created by yourself
-preauthorization          | preauthorizations-object / null                                                             |
+preauthorization          | [preauthorizations-object](-preauthorization-object) / null                                 |
 fees                      | list                                                                                        | App fees or null
-payment                   | creditcard-object / directdebit-object / null                                               |
+payment                   | [payment object for credit card](#-payment-object-for-credit-card-payments) / [directdebit-object](#-payment-object-for-direct-debit-payments) / null |
 is_refundable             | boolean                                                                                     | The transaction is refundable or not
 is_markable_as_fraud      | boolean                                                                                     | The transaction is markable is fraud or not
+
+
+## `Fee` Object
+
+Attribute       | Type               | Description 
+----------------|--------------------|-----------------
+type            | string             | Fee type
+application     | string             | Unique identifier of the app which charges the fee
+payment         | string             | Unique identifier of the payment from which the fee will be charged
+amount          | integer            | Fee amount in the smallest currency unit e.g. "420" for 4.20€
+currency        | string             | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+billed_at       | integer or null    | Unix-Timestamp for the billing date
 
 
 ## Create new `Transaction`
@@ -426,6 +438,13 @@ curl https://api.paymill.com/v2.1/transactions \
 }
 ```
 
+<pre>
+  - <a href="#-transaction-object">transaction</a>.refunds returns <a href="#-refund-object">refund object</a>
+  - <a href="#-transaction-object">transaction</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>
+  - <a href="#-transaction-object">transaction</a>.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>
+</pre>
+
 You have to create at least either a token or a payment object before you can execute a transaction. You get back a response object indicating whether a transaction was successful or not.
 
 Note
@@ -437,14 +456,14 @@ The transaction will not be charged at the bank if the test keys are implemented
 Parameter         | Type                      | Description 
 ------------------|---------------------------|-----------------
 amount            | integer (>0)              | Amount (in cents) which will be charged
-currency          | string                    | ISO 4217 formatted currency code
+currency          | string                    | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
 description       | string / null             | A short description for the transaction
-client            | string / null             | The identifier of a client (client-object). When this parameter is used, you have also to specify a payment method which is not assigned to a client yet. If you attempt to use this parameter when creating a transaction and when specifying a token or preauthorization, the specified client will be ignored.
+client            | string / null             | The identifier of a client ([client-object](#-client-object)). When this parameter is used, you have also to specify a payment method which is not assigned to a client yet. If you attempt to use this parameter when creating a transaction and when specifying a token or preauthorization, the specified client will be ignored.
 token             | string                    | A token generated through our JavaScript-Bridge. When this parameter is used, none of the following should be used: payment, preauthorization.
-payment           | string                    | The identifier of a payment (creditcard-object or directdebit-object). When this parameter is used, none of the following should be used: token, preauthorization.
-preauthorization  | string                    | The identifier of a preauthorization (preauthorizations-object). When this parameter is used, none of the following should be used: token, payment.
+payment           | string                    | The identifier of a payment ([creditcard-object](#payment-object-for-credit-card-payments) or [directdebit-object](#payment-object-for-direct-debit-payments)). When this parameter is used, none of the following should be used: token, preauthorization.
+preauthorization  | string                    | The identifier of a preauthorization ([preauthorization-object](#-preauthorization-object)). When this parameter is used, none of the following should be used: token, payment.
 fee_amount        | integer / null            | Fee included in the transaction amount (set by a connected app). Mandatory if fee_payment is set
-fee_payment       | string / null             | The identifier of the payment from which the fee will be charged (creditcard-object or directdebit-object).
+fee_payment       | string / null             | The identifier of the payment from which the fee will be charged ([creditcard-object](#payment-object-for-credit-card-payments) or [directdebit-object](#payment-object-for-direct-debit-payments)).
 fee_currency      | string / unset            | The currency of the fee (e.g. EUR, USD). If it´s not set, the currency of the transaction is used. We suggest to always use as it might cause problems, if your account does not support the same currencies as your merchants accounts.
 
 
@@ -577,6 +596,14 @@ curl https://api.paymill.com/v2.1/transactions/slv_4125875679 \
     "mode" : "test"
 }
 ```
+
+<pre>
+  - <a href="#-transaction-object">transaction</a>.refunds returns <a href="#-refund-object">refund object</a>
+  - <a href="#-transaction-object">transaction</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>
+  - <a href="#-transaction-object">transaction</a>.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>
+</pre>
+
 To receive the details of an existing transaction, call the unique transaction ID or the unique slv number. You can find the ID in the response of the previous request (or the slv number on your account statement). The return is a refund object with the information of the used payment, client and transaction attributes.
 
 
@@ -751,13 +778,20 @@ curl https://api.paymill.com/v2.1/transactions \
 }
 ```
 
-This function returns a JSON object with a list of transactions. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+<pre>
+  - <a href="#-transaction-object">transaction</a>.refunds returns <a href="#-refund-object">refund object</a>
+  - <a href="#-transaction-object">transaction</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>
+  - <a href="#-transaction-object">transaction</a>.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>
+</pre>
+
+This function returns a JSON object with a list of transactions. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - count
   - offset
   - created_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - `client=<client id>`
   - `payment=<payment id>`
@@ -820,7 +854,7 @@ curl https://api.paymill.com/v2.1/transactions \
 "tran_494d384289fbaa1aa342a35723f7";"599";"599";"closed";"Test Transaction";"";"EUR";"1342427064";"1342427064";"20000";"7357.7357.7357";"";"";"client_53396385b7438a6a5cc2";"pay_2bbe85119a00f22d061eb752";;"";""
 ```
 
-This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of transactions. In which order this list is returned depends on the optional parameter order. The following parameters can be used:
+This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of transactions. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - amount
   - created_at
@@ -829,7 +863,7 @@ This function returns CSV separated by semicolons, encapsulated by double quotes
   - status
   - updated_at
 
-Available filters:
+Available [filters](#filter-entries):
 
   - amount
   - client
