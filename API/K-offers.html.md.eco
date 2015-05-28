@@ -108,7 +108,7 @@ Parameter         | Type            | Description 
 ------------------|-----------------|-----------------
 amount            | integer (>0)    | Amount (in cents)
 currency          | string          | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
-interval          | string          | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR Example: 2 DAY
+interval          | string          | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR Example: 2 DAY
 name              | string          | Your name for this offer
 trial_period_days | integer / null  | Define an optional trial period in number of days
 
@@ -244,7 +244,7 @@ Parameter             | Type            | Description 
 ----------------------|-----------------|-----------------
 id                    | string          | Unique identifier for the offer
 name                  | string          | Your name for this offer (optional)
-interval              | string          | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR (optional)
+interval              | string          | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR (optional)
 amount                | string          | Your amount of the offer in cents (optional)
 currency              | string          | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
 trial_period_days     | integer         | Your trial period in number of days (optional)
