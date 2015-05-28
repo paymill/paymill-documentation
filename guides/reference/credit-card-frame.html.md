@@ -86,8 +86,8 @@ If the callback is called without an error object, the credit card form is ready
 
 The following errors can occur during frame load:
 
-- `container_not_found` – the container element specified could not be found
-- `frame_not_loaded` – frame didn't load for another reason
+- `container_not_found` - the container element specified could not be found
+- `frame_not_loaded` - frame didn't load for another reason
 
 
 ### Requesting a token
@@ -114,7 +114,7 @@ Your response handler receives the same `error and `result` object as before and
 
 In addition to the errors of `createToken`, the following errors can occur when using `createTokenViaFrame`:
 
-- `frame_not_found – no credit card frame was found, make sure you have called `embedFrame` successfully
+- `frame_not_found - no credit card frame was found, make sure you have called `embedFrame` successfully
 
 <div class="important">
   The regular `createToken` still exists and continues to be the appropriate method for creating direct debit tokens. 3-D Secure handling also remains the same, you can still pass the optional `tdsInit` and `tdsCleanup` handlers.
@@ -194,7 +194,7 @@ After calling `createTokenViaFrame`, these error messages will be appended to th
 
 ### Handling content resizing
 
-The dimensions of the iframe’s content can change due to several factors like stylesheets loading, error messages being shown or CSS transitions or animations.
+The dimensions of the iframe's content can change due to several factors like stylesheets loading, error messages being shown or CSS transitions or animations.
 
 By default, the iframe automatically resizes **vertically** to fit its content. This means the iframe element will have a `width` of `100%` but a variable `height`, starting with `0px` until the frame has loaded.
 
@@ -207,7 +207,7 @@ paymill.embedFrame(container, {
 }, callback);
 ```
 
-Alternatively, you can take over the resizing process by providing a custom resizing function. The iframe will still have width and height set to `100%` in the beginning, but your function will be called each time the iframe needs a resize. It will be passed an `attrs` parameter containing relevant attributes (currently only the content’s height) so you can manipulate the container element accordingly.
+Alternatively, you can take over the resizing process by providing a custom resizing function. The iframe will still have width and height set to `100%` in the beginning, but your function will be called each time the iframe needs a resize. It will be passed an `attrs` parameter containing relevant attributes (currently only the content's height) so you can manipulate the container element accordingly.
 
 
 ```
@@ -221,5 +221,5 @@ paymill.embedFrame(container, {
 ```
 
 <div class="important">
-  With both disabled and custom resizing, the iframe has width and height set to `100%` to fit its container element. It’s highly recommended that you only style the container since you have full control over it. The iframe, on the other hand, won’t be available until it has loaded and might be removed from the DOM if loading fails.
+  With both disabled and custom resizing, the iframe has width and height set to `100%` to fit its container element. It's highly recommended that you only style the container since you have full control over it. The iframe, on the other hand, won't be available until it has loaded and might be removed from the DOM if loading fails.
 </div>

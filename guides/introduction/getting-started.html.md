@@ -35,13 +35,13 @@ You will need two keys to be able to use Paymill:
 
 <p class="info">
 <span class="heading">**Public Key:**</span>
-This key is visible on your payment form and therefore can be seen by third parties. You use the public key to create a token for your customer’s credit card with our JavaScript bridge. More on that below.
+This key is visible on your payment form and therefore can be seen by third parties. You use the public key to create a token for your customer's credit card with our JavaScript bridge. More on that below.
 </p>
 
 
 <p class="info">
 <span class="heading">**Private Key:**</span>
-As soon as you have received the token, you can make a payment (transaction) – usually at the end of the order process – with our API. You have to indicate your private key every time you submit a request to our API.
+As soon as you have received the token, you can make a payment (transaction) - usually at the end of the order process - with our API. You have to indicate your private key every time you submit a request to our API.
 </p>
 
 Important note concerning test keys and live keys:
@@ -216,7 +216,7 @@ Only specific credit card information / bank details are allowed in test mode. Y
 
 **Create your payment (ELV, credit card) token with the command `createToken`.**
 
-  - As soon as the payment form is sent, you use `createToken` to create a token for your customers’ credit card data.
+  - As soon as the payment form is sent, you use `createToken` to create a token for your customers' credit card data.
   - Then you insert the token in your payment form as a hidden field in order to send them back to your server, and all further payment function requests are performed using this token.
 
 

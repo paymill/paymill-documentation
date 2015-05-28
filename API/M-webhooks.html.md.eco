@@ -14,9 +14,9 @@ type: "apiDoc"
   <li>the webhook will be called asynchronously within a few minutes after the actual event has happened.</li>
 </ul>
 
-With webhooks we give you the possibility to react automatically to certain events which happen within our system. A webhook is basically a URL where we send an HTTP POST request to, every time one of the events attached to that webhook is triggered. Alternatively you can define an email address where we send the event’s information to You can manage your webhooks via the API as explained below or you can use the web interface inside our Merchant Centre.
+With webhooks we give you the possibility to react automatically to certain events which happen within our system. A webhook is basically a URL where we send an HTTP POST request to, every time one of the events attached to that webhook is triggered. Alternatively you can define an email address where we send the event's information to You can manage your webhooks via the API as explained below or you can use the web interface inside our Merchant Centre.
 
-Our call to the webhook / email includes a JSON encoded event object with detailed information about the event in it’s POST body.
+Our call to the webhook / email includes a JSON encoded event object with detailed information about the event in it's POST body.
 
 <div></div>
 

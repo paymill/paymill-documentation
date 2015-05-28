@@ -51,7 +51,7 @@ Attribute                 | Type                                               
 --------------------------|---------------------------------------------------------------------------------------------|-----------------
 id                        | string                                                                                      | Unique identifier for this preauthorization
 amount                    | string                                                                                      | Formatted amount of this transaction
-origin_amount             | integer (>0)                                                                                | The used amount, smallest possible unit per currency (for euro, we’re calculating the amount in cents)
+origin_amount             | integer (>0)                                                                                | The used amount, smallest possible unit per currency (for euro, we're calculating the amount in cents)
 status                    | enum (open, pending, closed, failed, partial_refunded, refunded, preauthorize, chargeback)  | Indicates the current status of this transaction, e.g closed means the transaction is sucessfully transfered, refunded means that the amount is fully or in parts refunded.
 description               | string or null                                                                              | Need a additional description for this transaction? Maybe your shopping cart ID or something like that?
 livemode                  | boolean                                                                                     | Whether this preauthorization was issued while being in live mode or not

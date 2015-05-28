@@ -6,7 +6,7 @@ status: "published"
 order: 3
 ---
 
-Our goal is enable you to migrate to PAYMILL as easy and fast as possible. Therefore we offer you a convenient and secure data transfer – for free.
+Our goal is enable you to migrate to PAYMILL as easy and fast as possible. Therefore we offer you a convenient and secure data transfer - for free.
 
 ## 1. Process description
 
@@ -30,11 +30,11 @@ Credit card data from a third party PSP shall be imported to the PAYMILL platfor
 
   - The data import include credit/debit card data, such as card number, card expiry date, account holder (optional), etc …
   - From this data PAYMILL generates a token (=Registration) and a payment object which will be used for later reference by the merchant.
-  - The import won’t include transactions histories, such as previous debits.
+  - The import won't include transactions histories, such as previous debits.
 
 **Limitation for number of transaction per file**
 
-  - There’s no limitation per file.
+  - There's no limitation per file.
 
 
 ### Clarification of terms
@@ -50,7 +50,7 @@ Credit card data from a third party PSP shall be imported to the PAYMILL platfor
 **Payment object**
 
   - The Unique payment object is automatically created by PAYMILL for each imported data.
-  - The payment object on PAYMILL side will be assigned to a automatic created client object during the migration. The merchant uses the Paymill client or payment object ID for future debits which reference on the client/ payment object. That means the shopper doesn’t need to enter the card details anymore, but the system will use the stored card data from the payment object
+  - The payment object on PAYMILL side will be assigned to a automatic created client object during the migration. The merchant uses the Paymill client or payment object ID for future debits which reference on the client/ payment object. That means the shopper doesn't need to enter the card details anymore, but the system will use the stored card data from the payment object
   - Each newly generated payment object from the imported data will contain the old Creditcard information of the old PSP token.
 
 
@@ -91,7 +91,7 @@ The following steps should be followed for the import of the Migration data into
 
     <tr>
       <td>3</td>
-      <td>[OPTIONAL if not default workflow – price on request] Request sample file or sample row of data format and submit to PAYMILL</td>
+      <td>[OPTIONAL if not default workflow - price on request] Request sample file or sample row of data format and submit to PAYMILL</td>
       <td>PAYMILL Support from old PSP/merchant</td>
     </tr>
 
@@ -104,7 +104,7 @@ The following steps should be followed for the import of the Migration data into
     <tr>
       <td>5</td>
       <td>
-        OPTIONAL if not default workflow – price on request] Clarify the number of card data records per file and the number of required file imports and submit information to PAYMILL.
+        OPTIONAL if not default workflow - price on request] Clarify the number of card data records per file and the number of required file imports and submit information to PAYMILL.
         <br>
         DEFAULT workflow is: Default is one csv File with the following naming convention [Channel_ID]_[Special_Merchant_ID]_[Number of file].csv. This File is encrypted with a submitted PGP key.
       </td>

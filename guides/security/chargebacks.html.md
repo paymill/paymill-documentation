@@ -26,17 +26,17 @@ Get in touch with the credit card holder as soon as possible and find out why he
 
 ### 2. Raise an objection
 
-If the matter cannot be resolved, you can raise objection to the chargeback. It is crucial that you send us all shipping and delivery receipts and receipts about refunds that were already paid. We will then forward the documents to the customer’s bank to resolve the issue.
+If the matter cannot be resolved, you can raise objection to the chargeback. It is crucial that you send us all shipping and delivery receipts and receipts about refunds that were already paid. We will then forward the documents to the customer's bank to resolve the issue.
 
 ### 3. What are the fees for chargebacks?
 
-Visa Card – EUR 18.75
+Visa Card - EUR 18.75
 *(3-D Secure transaction or non-EU card. No fraudulent chargeback)*
 
-Visa Card – EUR 30.75
+Visa Card - EUR 30.75
 *(European card & fraudulent chargeback)*
 
-Any other card – EUR 18.75
+Any other card - EUR 18.75
 
 ### 4. How can I avoid chargebacks?
 

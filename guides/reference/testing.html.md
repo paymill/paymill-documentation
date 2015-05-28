@@ -9,7 +9,7 @@ order: 3
 ## 1. Which credit card information should you use for testing?
 
 In order to perform test payments, simply use the following credit card numbers.
-That way nothing can go wrong. Moreover, the system won’t have any difficulty accepting this format. When testing 3-D Secure payments you will get an extra password page. Please read the 3-D Secure frame carefully and enter the displayed or any custom password in the hints field.
+That way nothing can go wrong. Moreover, the system won't have any difficulty accepting this format. When testing 3-D Secure payments you will get an extra password page. Please read the 3-D Secure frame carefully and enter the displayed or any custom password in the hints field.
 
 <div class="important">
   **From August 2014**
@@ -255,7 +255,7 @@ The following response messagess could be returned
 
 ## 4. How do I test webhooks?
 
-With webhooks we give you the possibility to react automatically to certain events which happen within our system. A webhook can be set in live and testmode and is basically a URL where we send an HTTP POST request to every time one of the events attached to that webhook is triggered. Alternatively you can define an email address where we send the event’s information to. You can manage your webhooks via the API as explained in our [API Reference](/API) or within the settings in your Merchant Centre.
+With webhooks we give you the possibility to react automatically to certain events which happen within our system. A webhook can be set in live and testmode and is basically a URL where we send an HTTP POST request to every time one of the events attached to that webhook is triggered. Alternatively you can define an email address where we send the event's information to. You can manage your webhooks via the API as explained in our [API Reference](/API) or within the settings in your Merchant Centre.
 
 ## 5. How do I test subscriptions?
 

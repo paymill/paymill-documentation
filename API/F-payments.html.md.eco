@@ -4,7 +4,7 @@ anchor: "payments"
 type: "apiDoc"
 ---
 
-The Payment object represents a payment with a credit card or via direct debit. It is used for several function calls (e.g. [transactions](#transactions), [subscriptions](#subscriptions), [clients](#clients), ...). To be PCI compliant these information is encoded by our Paymill PSP. You only get in touch with safe data ([token](/guides/reference/bridge.html)) and needn’t care about the security problematic of informations like credit card data.
+The Payment object represents a payment with a credit card or via direct debit. It is used for several function calls (e.g. [transactions](#transactions), [subscriptions](#subscriptions), [clients](#clients), ...). To be PCI compliant these information is encoded by our Paymill PSP. You only get in touch with safe data ([token](/guides/reference/bridge.html)) and needn't care about the security problematic of informations like credit card data.
 
 ## `Payment` object for credit card payments
 
@@ -251,7 +251,7 @@ token          | string                                      | Unique credit car
 client         | [client object](#-client-object) / null     |
 
 
-Creates a credit card payment from a given token, if you’re providing the client-property, the payment will be created and subsequently be added to the client.
+Creates a credit card payment from a given token, if you're providing the client-property, the payment will be created and subsequently be added to the client.
 
 Note
 
@@ -378,7 +378,7 @@ Parameter      | Type                                        | Description 
 token          | string                                      | Unique direct debit token
 client         | [client object](#-client-object) / null     |
 
-Creates a direct debit payment from a given token, if you’re providing the client-property, the payment will be created and subsequently be added to the client.
+Creates a direct debit payment from a given token, if you're providing the client-property, the payment will be created and subsequently be added to the client.
 
 
 ## `Payment` details

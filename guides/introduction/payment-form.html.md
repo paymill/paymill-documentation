@@ -186,7 +186,7 @@ paymill.validateIban('GB29 NWBK 6016 1331 9268 19', true);
 
 <p class="important">
 Payments may only be processed via the [PAYMILL bridge](/guides/reference/paymill-bridge.html).
-Credit card data may not be transferred, logged, or saved to your server. In order to guarantee that you simply need to **leave out the name attribute in the form fields**. Then this form field will not be transferred to the merchant’s server either.
+Credit card data may not be transferred, logged, or saved to your server. In order to guarantee that you simply need to **leave out the name attribute in the form fields**. Then this form field will not be transferred to the merchant's server either.
 Every payment form that you send to Paymill should be sent via SSL for security reasons. If you do not have an SSL certificate, you can still use our services. However, we urge you to integrate [SSL](http://en.wikipedia.org/wiki/Transport_Layer_Security).
 </p>
 

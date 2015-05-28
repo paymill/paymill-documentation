@@ -24,7 +24,7 @@ To help you with risk management, here is a list of countries to which deliverie
 
 - **Asia** (Indonesia, Philippines, Malaysia)
 - **Eastern Europe** (Romania, Bulgaria, Lithuania, Kazakhstan, Ukraine, Balkan States)
-- **Western Europe** (Great Britain – particularly Greater London; the Netherlands – particularly Greater Rotterdam)
+- **Western Europe** (Great Britain - particularly Greater London; the Netherlands - particularly Greater Rotterdam)
 - **Africa** (Ivory Coast, Ghana, Nigeria, Egypt)
 
 ## German Domestic Deliveries
@@ -38,6 +38,6 @@ Unfortunately, this has been a pressing area of concern in recent times. A signi
 - Deliveries of expensive merchandise that can easily be resold (e.g. via Ebay)
 - Deliveries of products that have been ordered via transactions involving abuse
 - Free e-mail addresses, e.g. yahoo.de, hotmail.com, web.de, googlemail.com
-- The e-mail address does not make obvious sense (e.g. the purchaser’s name is Peter Schmidt, with olgamueller@web.de as the e-mail address)
+- The e-mail address does not make obvious sense (e.g. the purchaser's name is Peter Schmidt, with olgamueller@web.de as the e-mail address)
 
 **If you suspect that you are the victim of credit card abuse, feel free to report it to [security@paymill.com](mailto:security@paymill.com) at any time!**

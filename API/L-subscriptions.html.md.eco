@@ -4,7 +4,7 @@ anchor: "subscriptions"
 type: "apiDoc"
 ---
 
-Subscriptions allow you to charge recurring payments on a client’s credit card / to a client’s direct debit. A subscription connects a client to the [offers-object](#-offer-object). A client can have several subscriptions to different offers, but only one subscription to the same offer.
+Subscriptions allow you to charge recurring payments on a client's credit card / to a client's direct debit. A subscription connects a client to the [offers-object](#-offer-object). A client can have several subscriptions to different offers, but only one subscription to the same offer.
 
 ## `Subscriptions` object
 
@@ -687,9 +687,9 @@ Attribute             | Type                | Description 
 id                    | string              | Unique identifier for the subscription
 payment               | string              | Unique identifier describing a payment of the client
 offer                 | string              | Unique identifier describing the offer which is subscribed to the client (optional)
-offer_change_type     | integer / null      | permitted values: 0,1,2; linked and required with ‘offer’, default: 0 (optional)
+offer_change_type     | integer / null      | permitted values: 0,1,2; linked and required with ‘offer', default: 0 (optional)
 amount                | integer (>0)        | the amount of the subscription in cents (optional)
-amount_change_type    | int                 | permitted values: 0,1; linked and required with ‘amount’ (optional)
+amount_change_type    | int                 | permitted values: 0,1; linked and required with ‘amount' (optional)
 pause                 | boolean             | deactivate a subscription or reactivate it, false: reactivate, true: deactivate (optional)
 currency              | string              | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
 interval              | string              | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR [, WEEKDAY] (optional)

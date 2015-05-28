@@ -26,7 +26,7 @@ curl https://api.paymill.com/v2.1/transactions \
 ```
 
 <p class="important">
-Take special note of the private key – which you will need to store in a safe place apart from the public key – so that you can be authorized by PAYMILL. You can find your keys for trial and live mode in the [Merchant Centre](http://app.paymill.com).
+Take special note of the private key - which you will need to store in a safe place apart from the public key - so that you can be authorized by PAYMILL. You can find your keys for trial and live mode in the [Merchant Centre](http://app.paymill.com).
 </p>
 
 ## 3. 3-D Secure
@@ -43,7 +43,7 @@ You can learn more about 3-D Secure in our [FAQs](https://www.paymill.com/faq).
 
 ## 4. Refunding Payments
 
-The purchaser’s credit card is not charged again after the PAYMILL [subscription](/guides/introduction.subscriptions.html) has been cancelled. This also means that any additional payment charges for past purchases will normally not be refunded either.
+The purchaser's credit card is not charged again after the PAYMILL [subscription](/guides/introduction.subscriptions.html) has been cancelled. This also means that any additional payment charges for past purchases will normally not be refunded either.
 
 If you would like to refund a payment, you can find each payment in your [Merchant Centre](http://app.paymill.com) and initiate a refund order there. You can find the technical details in the [API reference](/API).
 

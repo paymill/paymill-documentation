@@ -26,7 +26,7 @@ The notification will contain all payment information of the customer (e.g. cust
 
 ## Your benefits of PAYMILL Alerting
 
-- Easy and fast control mechanism of all your transaction – full transparency is provided
+- Easy and fast control mechanism of all your transaction - full transparency is provided
 - Convenient way to archive payments, without having to cancel invoice documents
 - Safe protection against fraud - you will be informed immediately if a payment is cancelled or refunded
 

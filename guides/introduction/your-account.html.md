@@ -26,7 +26,7 @@ This key may not be published and is to be kept confidential. It is required on 
 
 ## 3. Activating Your Account for Live Mode
 
-Before activating your [account](http://app.paymill.com), you can only work with PAYMILL in test mode and won’t be able to carry out any live [transactions](/guides/introduction/payment-processing.html). The live keys will not be visible to you.
+Before activating your [account](http://app.paymill.com), you can only work with PAYMILL in test mode and won't be able to carry out any live [transactions](/guides/introduction/payment-processing.html). The live keys will not be visible to you.
 
 It is very easy to activate your account. You provide us some information about your product, your business and your personal relationship to the business.
 

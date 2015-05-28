@@ -25,4 +25,4 @@ The JSON response objects can be sorted the way you have requested. In this case
 ?created_at=<timestamp> | ?created_at=<timestamp (from)>-<timestamp (to)>
 ```
 
-The JSON response objects can be filtered by their attributes. In this case you can call the API to get the result filtered in the required way. This means that the result objects which don’t fit the filter aren’t delivered.
+The JSON response objects can be filtered by their attributes. In this case you can call the API to get the result filtered in the required way. This means that the result objects which don't fit the filter aren't delivered.

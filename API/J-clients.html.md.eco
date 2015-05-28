@@ -169,7 +169,7 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
   - <a href="#-client-object">client</a>.subscription returns <a href="#-subscription-object">subscription objects</a> or null
 </pre>
 
-To get the details of an existing client you’ll need to supply the client ID. The client ID is returned by creating a client.
+To get the details of an existing client you'll need to supply the client ID. The client ID is returned by creating a client.
 
 Parameter         | Type            | Description 
 ------------------|-----------------|-----------------
@@ -236,7 +236,7 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
   - <a href="#-client-object">client</a>.subscription returns <a href="#-subscription-object">subscription objects</a> or null
 </pre>
 
-This function updates the data of a client. To change only a specific attribute you can set this attribute in the update request. All other attributes that shouldn’t be edited aren’t inserted. You can only edit the description, email and credit card. The subscription can’t be changed by updating the client data. This has to be done in the subscription call.
+This function updates the data of a client. To change only a specific attribute you can set this attribute in the update request. All other attributes that shouldn't be edited aren't inserted. You can only edit the description, email and credit card. The subscription can't be changed by updating the client data. This has to be done in the subscription call.
 
 Parameter         | Type            | Description 
 ------------------|-----------------|-----------------
@@ -296,7 +296,7 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
 </pre>
 
 
-This function deletes a client, but your transactions aren’t deleted.
+This function deletes a client, but your transactions aren't deleted.
 
 Parameter         | Type            | Description 
 ------------------|-----------------|-----------------

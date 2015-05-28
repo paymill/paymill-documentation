@@ -107,7 +107,7 @@ curl https://api.paymill.com/v2.1/refunds/tran_023d3b5769321c649435 \
   - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>
 </pre>
 
-This function refunds a transaction that has been created previously and was refunded in parts or wasn’t refunded at all. The inserted amount will be refunded to the credit card / direct debit of the original transaction. There will be some fees for the merchant for every refund.
+This function refunds a transaction that has been created previously and was refunded in parts or wasn't refunded at all. The inserted amount will be refunded to the credit card / direct debit of the original transaction. There will be some fees for the merchant for every refund.
 
 Note
 

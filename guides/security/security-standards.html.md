@@ -12,9 +12,9 @@ Security is our number one priority! If you have any questions or concerns regar
 
 Any business accepting credit cards online needs to comply with the Payment Card Industry Data Security Standard (PCI DSS). PCI DSS is in place to make the internet safer and more secure by ensuring that the sensitive data of your customers is handled in a recognised and secure manner.
 
-One of the beautiful things about PAYMILL is that we make it super easy for our merchants to be PCI DSS compliant. By using the PAYMILL Javascript Bridge, your clients’ sensitive data is sent directly to PAYMILL. The sensitive data never touches your servers and this drastically reduces the scope of your compliance requirements.
+One of the beautiful things about PAYMILL is that we make it super easy for our merchants to be PCI DSS compliant. By using the PAYMILL Javascript Bridge, your clients' sensitive data is sent directly to PAYMILL. The sensitive data never touches your servers and this drastically reduces the scope of your compliance requirements.
 
-While using PAYMILL you’ll be PCI DSS compliant in no time! You will simply need to complete a short Self Assessment Questionnaire (SAQ). Just fill out the questionnaire, send it back and, if all is done correctly, you’ll be compliant and accepting payments!
+While using PAYMILL you'll be PCI DSS compliant in no time! You will simply need to complete a short Self Assessment Questionnaire (SAQ). Just fill out the questionnaire, send it back and, if all is done correctly, you'll be compliant and accepting payments!
 
 If you have any questions please send an e-mail to [security@paymill.com](mailto:security@paymill.com).
 
@@ -26,17 +26,17 @@ We use HTTPS on all our websites. In addition, we regularely verify our security
 
 SSL is a way to securely transfer data over the Internet. It encrypts the message and confirms its integrity between server and browser.
 
-SSL validates, if the browser is communicating with the right server – in other words, it makes sure that no one is intercepting and logging your data. PAYMILL is using SSL so that all confidential credit information is transferred securely.
+SSL validates, if the browser is communicating with the right server - in other words, it makes sure that no one is intercepting and logging your data. PAYMILL is using SSL so that all confidential credit information is transferred securely.
 
 ### Should I use SSL on my website?
 
 We only allow accessing our API using SSL encryption (https). It reduces the risk that some one is intercepting and logging credit card information.
 
-We recommend that you use SSL on your domain, but it is not required. Visitors usually trust websites more that provide SSL encryption – or in other words: customers are more likely to buy from you!
+We recommend that you use SSL on your domain, but it is not required. Visitors usually trust websites more that provide SSL encryption - or in other words: customers are more likely to buy from you!
 
 ### How do I implement SSL?
 
-It should not take more than half an hour to implement SSL on your website. Generally, the price is €10 to €500 – depending on the provider and the type of certificate.
+It should not take more than half an hour to implement SSL on your website. Generally, the price is €10 to €500 - depending on the provider and the type of certificate.
 
 We recommend that you select a certificate from a major provider, such as VeriSign. Prices range from €30 to €100 per month. Ask your web administrator to assist you.
 

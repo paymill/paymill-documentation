@@ -6,7 +6,7 @@ type: "apiDoc"
 
 **HTTP Status Codes we use**
 
-We’ve build a RESTful API - that’s the reason why we are concerned about correct status codes which are returned as [JSON](http://en.wikipedia.org/wiki/Json) objects. But in some cases we don’t have the same syntax as the normal http response has. The basic status codes are:
+We've build a RESTful API - that's the reason why we are concerned about correct status codes which are returned as [JSON](http://en.wikipedia.org/wiki/Json) objects. But in some cases we don't have the same syntax as the normal http response has. The basic status codes are:
 
   - 2xx indicates a successful request
   - 4xx informs you about an error
@@ -18,7 +18,7 @@ Code | Meaning | Description      
 401  | Unauthorized | Jim, You have to provide your private API Key.
 403  | Transaction Error | Transaction could not be completed, please check your payment data.
 404  | Not Found | There is no entity with this identifier, did you use the right one?
-412  | Precondition Failed | I guess you’re missing at least one required parameter?
+412  | Precondition Failed | I guess you're missing at least one required parameter?
 5xx  | Server Error | Doh, we did something wrong :/
 
 Note:

@@ -40,7 +40,7 @@ Credit card data from a merchant of PAYMILL shall be exported because the mercha
   - The password is sent separately via email to the Third-Party PSP.
 
 **Limitation for number of export data per file**
-  - There’s no limitation per file.
+  - There's no limitation per file.
 
 **Export date:**
 

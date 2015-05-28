@@ -4,7 +4,7 @@ anchor: "preauthorizations"
 type: "apiDoc"
 ---
 
-If you’d like to reserve some money from the client’s credit card but you’d also like to execute the transaction itself a bit later, then use preauthorizations. This is NOT possible with direct debit.
+If you'd like to reserve some money from the client's credit card but you'd also like to execute the transaction itself a bit later, then use preauthorizations. This is NOT possible with direct debit.
 
 A preauthorization is valid for 7 days.
 
