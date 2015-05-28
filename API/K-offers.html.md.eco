@@ -6,11 +6,11 @@ type: "apiDoc"
 
 An offer is a recurring plan which a user can subscribe to. You can create different offers with different plan attributes e.g. a monthly or a yearly based paid offer/plan.
 
-## `Clients` object
+## `Offer` object
 
 > Example
 
-```nohighlight
+```json
 {
     "id" : "offer_40237e20a7d5a231d99b",
     "name" : "Nerd Special",
@@ -34,7 +34,7 @@ Attribute         | Type                | Description 
 id                | string              | Unique identifier of this offer
 name              | string              | Your name for this offer
 amount            | integer (>0)        | Every interval the specified amount will be charged. Only integer values are allowed (e.g. 42.00 = 4200)
-interval          | string              | Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR Example: 2 DAY
+interval          | string              | Defining how often the client should be charged. Format: number DAY / WEEK / MONTH / YEAR Example: 2 DAY
 trial_period_days | integer / null      | Define an optional trial period in number of days
 created_at        | integer             | Unix-Timestamp for the creation Date
 updated_at        | integer             | Unix-Timestamp for the last update
@@ -81,7 +81,7 @@ curl https://api.paymill.com/v2.1/offers \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "offer_40237e20a7d5a231d99b",
@@ -148,7 +148,7 @@ curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
 
 > Response
 
-```nohighlight
+```json
 {
     "data": {
         "id" : "offer_40237e20a7d5a231d99b",
@@ -217,7 +217,7 @@ curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
 ```
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "offer_40237e20a7d5a231d99b",
@@ -287,7 +287,7 @@ curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
 
 > Response
 
-```nohighlight
+```json
 {
     "data":[
 
@@ -339,7 +339,7 @@ curl https://api.paymill.com/v2.1/offers \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : [
         {

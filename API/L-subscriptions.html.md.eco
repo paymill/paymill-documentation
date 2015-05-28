@@ -10,30 +10,31 @@ Subscriptions allow you to charge recurring payments on a client’s credit card
 
 > Example
 
-```nohighlight
+```json
 {
-     "id":"sub_09a1944830b7e37e2005",
-     "offer":"<Object>",
-     "livemode":false,
-     "amount":299,
-     "temp_amount":null,
-     "currency":"USD",
-     "name":"Testing",
-     "interval":"1 DAY",
-     "trial_start":1400555454,
-     "trial_end":null,
-     "period_of_validity":null,
-     "end_of_period":null,
-     "next_capture_at":1400642826,
-     "created_at":1400555454,
-     "updated_at":1400556426,
-     "canceled_at":null,
-     "payment":"<Object>",
-     "app_id":null,
-     "is_canceled":false,
-     "is_deleted":false,
-     "status":"failed",
-     "client":"<Object>"
+  "id" : "sub_09a1944830b7e37e2005",
+  "offer" : "<Object>",
+  "livemode" : false,
+  "amount" : 299,
+  "temp_amount" : null,
+  "currency" : "USD",
+  "name" : "Testing",
+  "interval" : "1 DAY",
+  "trial_start" : 1400555454,
+  "trial_end" : null,
+  "period_of_validity" : null,
+  "end_of_period" : null,
+  "next_capture_at" : 1400642826,
+  "created_at" : 1400555454,
+  "updated_at" : 1400556426,
+  "canceled_at" : null,
+  "payment" : "<Object>",
+  "app_id" : null,
+  "is_canceled" : false,
+  "is_deleted" : false,
+  "status" : "failed",
+  "mandate_reference" : null,
+  "client" : "<Object>"
  }
 ```
 
@@ -54,11 +55,11 @@ offer                 | [offer object](#-offer-object)                          
 amount                | integer                                                           | the amount of the subscription in cents
 temp_amount           | integer / null                                                    | a one-time amount in cents, will charge once only
 currency              | string                                                            | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
-interval              | string                                                            | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY
+interval              | string                                                            | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY
 name                  | string / null                                                     | name of the subscription
 trial_start           | integer / null                                                    | Unix-Timestamp for the trial period start
 trial_end             | integer / null                                                    | Unix-Timestamp for the trial period end
-period_of_validity    | string / null                                                     | limit the validity of the subscription, format: integer MONTH|YEAR|WEEK|DAY
+period_of_validity    | string / null                                                     | limit the validity of the subscription, format: integer MONTH/YEAR/WEEK/DAY
 end_of_period         | Unix-Timestamp / null                                             | expiring date of the subscription
 next_capture_at       | integer                                                           | Unix-Timestamp for the next charge
 created_at            | integer                                                           | Unix-Timestamp for the creation Date
@@ -117,7 +118,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
 ```
 > Response
 
-```nohighlight
+```json
 {
     "data":{
             "id":"sub_dea86e5c65b2087202e3",
@@ -187,7 +188,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data":{
             "id":"sub_dea86e5c65b2087202e3",
@@ -261,7 +262,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data":{
             "id":"sub_dea86e5c65b2087202e3",
@@ -293,9 +294,9 @@ curl https://api.paymill.com/v2.1/subscriptions \
 > Sub Objects
 
 <pre>
-  subscription.offer returns an <a href="#-offer-object">offer object</a>
-  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
-  subscription.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
 
@@ -349,10 +350,10 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dc180b755d10da324864 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" :{
-            "id":"sub_dea86e5c65b2087202e3",
+            "id":"sub_dc180b755d10da324864",
             "offer":{<Object>},
             "livemode":false,
             "amount":3000,
@@ -382,9 +383,9 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dc180b755d10da324864 \
 > Sub objects
 
 <pre>
-  subscription.offer returns an <a href="#-offer-object">offer object</a>
-  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
-  subscription.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
 
@@ -439,7 +440,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" :{
             "id":"sub_dea86e5c65b2087202e3",
@@ -507,7 +508,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id":"sub_dea86e5c65b2087202e3",
@@ -575,7 +576,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id":"sub_dea86e5c65b2087202e3",
@@ -641,7 +642,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id":"sub_dea86e5c65b2087202e3",
@@ -674,9 +675,9 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
 > Sub objects
 
 <pre>
-  subscription.offer returns an <a href="#-offer-object">offer object</a>
-  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
-  subscription.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
 This function updates the subscription of a client. You can change e.g. the trial_end attribute to stop the trial period. Or you can assign the subscription to another offer (offer=<new_offer_id>), change the amount or pause it. NOTE: changing the amount and offer within one request is not possible (throw an exception).
@@ -691,9 +692,9 @@ amount                | integer (>0)        | the amount of the subscription in 
 amount_change_type    | int                 | permitted values: 0,1; linked and required with ‘amount’ (optional)
 pause                 | boolean             | deactivate a subscription or reactivate it, false: reactivate, true: deactivate (optional)
 currency              | string              | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
-interval              | string              | Defining how often the client should be charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] (optional)
+interval              | string              | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR [, WEEKDAY] (optional)
 name                  | string              | name of the subscription (optional)
-period_of_validity    | string              | limit the validity of the subscription, format: integer MONTH|YEAR|WEEK|DAY, set to “remove” to unlimit the validity period (optional)
+period_of_validity    | string              | limit the validity of the subscription, format: integer MONTH/YEAR/WEEK/DAY, set to “remove” to unlimit the validity period (optional)
 trial_end             | boolean             | set to false to stop the trial period immediatly (optional)
 
 
@@ -704,7 +705,7 @@ trial_end             | boolean             | set to false to stop the trial per
 > Request
 
 ```bash
-curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
+curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
   -u <YOUR_PRIVATE_KEY>: \
   -d "remove=false" \
   -X DELETE
@@ -736,7 +737,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id":"sub_dea86e5c65b2087202e3",
@@ -803,7 +804,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id":"sub_dea86e5c65b2087202e3",
@@ -836,9 +837,9 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
 > Sub objects
 
 <pre>
-  subscription.offer returns an <a href="#-offer-object">offer object</a>
-  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
-  subscription.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
 
@@ -885,7 +886,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : [
         {
@@ -912,9 +913,9 @@ curl https://api.paymill.com/v2.1/subscriptions \
 > Sub objects
 
 <pre>
-  subscription.offer returns an <a href="#-offer-object">offer object</a>
-  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
-  subscription.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
+  - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
 

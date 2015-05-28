@@ -10,7 +10,7 @@ Here you find the internal objects which do not have a public API endpoint yet.
 
 > Example
 
-```nohighlight
+```json
 {
     "type": "application",
     "application": "app_1d70acbf80c8c35ce83680715c06be0d15c06be0d",
@@ -35,7 +35,7 @@ billed_at     | integer               | Unix-Timestamp for the creation date
 
 > Example
 
-```nohighlight
+```json
 {
     "invoice_nr": "1293724",
     "netto": 12399,
@@ -70,7 +70,7 @@ last_reminder_date  | integer                                       | Unix-Times
 
 > Example
 
-```nohighlight
+```json
 {
     "identifier_key": "mer_123456789",
     "email": "mail@example.com",
@@ -95,7 +95,7 @@ methods         | List of activated card brands                       | List of 
 
 > Example
 
-```nohighlight
+```json
 {
     "type": "visa",
     "currency": "EUR",

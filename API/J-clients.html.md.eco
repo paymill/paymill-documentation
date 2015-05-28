@@ -4,13 +4,14 @@ anchor: "clients"
 type: "apiDoc"
 ---
 
+
 The clients object is used to edit, delete, update clients as well as to permit refunds, subscriptions, insert credit card details for a client, edit client details and of course make transactions. Clients can be created individually by you or they will be automatically generated with the transaction if there is no client ID transmitted.
 
 ## `Client` object
 
 > Example
 
-```nohighlight
+```json
 {
     "id"           :  "client_88a388d9dd48f86c3136",
     "email"        :  "lovely-client@example.com",
@@ -79,7 +80,7 @@ curl https://api.paymill.com/v2.1/clients \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id"           : "client_88a388d9dd48f86c3136",
@@ -145,7 +146,7 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id"           : "client_88a388d9dd48f86c3136",
@@ -212,7 +213,7 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
 ```
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id"           : "client_88a388d9dd48f86c3136",
@@ -280,7 +281,7 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data": null
     "mode": "test"
@@ -301,7 +302,7 @@ Parameter         | Type            | Description 
 ------------------|-----------------|-----------------
 id                | string          | Unique identifier for the client
 
-## List`Clients`
+## List `Clients`
 
 > Request
 
@@ -336,7 +337,7 @@ curl https://api.paymill.com/v2.1/clients \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : [
         {

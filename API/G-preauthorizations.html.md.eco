@@ -12,7 +12,7 @@ A preauthorization is valid for 7 days.
 
 > Example
 
-```nohighlight
+```json
 {
     "id":"preauth_0b771c503680c341548e",
     "amount":"4200",
@@ -92,7 +92,7 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 
 > Response
 
-```nohighlight
+```json
 {
     "data":{
         "id":"preauth_e396d56e773f745dfbd3",
@@ -151,7 +151,7 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 
 > Response
 
-```nohighlight
+```json
 {
     "data":{
         "id":"preauth_0b771c503680c341548e",
@@ -175,7 +175,7 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 
 <pre>
   - <a href="#-preauthorization-object">preauthorization</a>.payment returns a <a href="#create-new-credit-card-payment-">payment object</a> for credit card
-  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object"client object</a>
+  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object">client object</a>
   - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
 </pre>
 
@@ -227,10 +227,10 @@ curl https://api.paymill.com/v2.1/preauthorizations/preauth_31eb90495837447f76b7
 
 > Response
 
-```nohighlight
+```json
 {
     "data":{
-        "id":"preauth_0b771c503680c341548e",
+        "id":"preauth_31eb90495837447f76b7",
         "amount":"4200",
         "currency":"EUR",
         "description":"description example",
@@ -249,8 +249,8 @@ curl https://api.paymill.com/v2.1/preauthorizations/preauth_31eb90495837447f76b7
 
 <pre>
   - <a href="#-preauthorization-object">preauthorization</a>.payment returns a <a href="#create-new-credit-card-payment-">payment object</a> for credit card
-  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object"client object</a>
-  - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>  
+  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object">client object</a>
+  - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
 </pre>
 
 Returns data of a specific preauthorization.
@@ -297,7 +297,7 @@ curl https://api.paymill.com/v2.1/preauthorizations/preauth_31eb90495837447f76b7
 
 > Response
 
-```nohighlight
+```json
 {
     "data":[
 
@@ -348,12 +348,12 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 
 > Response
 
-```nohighlight
+```json
 
 {
     "data" : [
         {
-            "id":"preauth_0b771c503680c341548e",
+            "id":"preauth_31eb90495837447f76b7",
             "amount":"4200",
             "currency":"EUR",
             "description":"description example",
@@ -374,7 +374,7 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 
 <pre>
   - <a href="#-preauthorization-object">preauthorization</a>.payment returns a <a href="#create-new-credit-card-payment-">payment object</a> for credit card
-  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object"client object</a>
+  - <a href="#-preauthorization-object">preauthorization</a>.client returns a <a href="#-client-object">client object</a>
   - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
 </pre>
 
@@ -430,7 +430,7 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 
 ```nohighlight
 "id";"amount";"currency";"description";"status";"livemode";"created_at";"updated_at";"app_id";"payment_id";"client_id";"transaction_id"
-"preauth_595d96437ad81d5ca965";"499";"EUR";"Subscription#sub_5dd7af6fa6d58c60a4e9";"preauth_subscription";"";"1342427064";"1342427064";"";"pay_2311e5a076ab0b9c2cdb0399";"client_33c8f8c13d759d00b144";""
+"preauth_31eb90495837447f76b7";"499";"EUR";"Subscription#sub_5dd7af6fa6d58c60a4e9";"preauth_subscription";"";"1342427064";"1342427064";"";"pay_2311e5a076ab0b9c2cdb0399";"client_33c8f8c13d759d00b144";""
 ```
 
 This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of preauthorizations. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:

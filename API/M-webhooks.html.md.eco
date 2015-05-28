@@ -4,23 +4,58 @@ anchor: "webhooks"
 type: "apiDoc"
 ---
 
+> Webhooks details
+
+<ul class='side-list'>
+  <li>we expect a http status code of 200 in the response of our webhook call.</li>
+  <li>every content in the body will be discarded, so you might just leave that blank</li>
+  <li>if we receive another code or a timeout, we will retry to call the same webhook every hour up to five times. emails will be sent only once.</li>
+  <li>if the webhook call to one webhook fails 5 times, we automatically deactivate the webhook. You can still see them in your settings.</li>
+  <li>the webhook will be called asynchronously within a few minutes after the actual event has happened.</li>
+</ul>
+
 With webhooks we give you the possibility to react automatically to certain events which happen within our system. A webhook is basically a URL where we send an HTTP POST request to, every time one of the events attached to that webhook is triggered. Alternatively you can define an email address where we send the event’s information to You can manage your webhooks via the API as explained below or you can use the web interface inside our Merchant Centre.
 
 Our call to the webhook / email includes a JSON encoded event object with detailed information about the event in it’s POST body.
 
-**Webhooks details**
-
-  - we expect a http status code of 200 in the response of our webhook call.
-  - every content in the body will be discarded, so you might just leave that blank.
-  - if we receive another code or a timeout, we will retry to call the same webhook every hour up to five times. emails will be sent only once.
-  - if the webhook call to one webhook fails 5 times, we automatically deactivate the webhook. You can still see them in your settings.
-  - the webhook will be called asynchronously within a few minutes after the actual event has happened.
+<div></div>
 
 ### Events
 
+> Available events
+
+<ul class='side-list'>
+  <li>chargeback.executed: returns a [transaction-object](#-transaction-object) with state set to chargeback</li>
+  <li>transaction.created: returns a [transaction-object](#-transaction-object)</li>
+  <li>transaction.succeeded: returns a [transaction-object](#-transaction-object)</li>
+  <li>transaction.failed: returns a [transaction-object](#-transaction-object)</li>
+  <li>client.updated: returns a [client-object](#-client-object) if a client was updated</li>
+  <li>subscription.created: returns a [subscription-object](#-subscription-object)</li>
+  <li>subscription.updated: returns a [subscription-object](#-subscription-object)</li>
+  <li>subscription.deleted: returns a [subscription-object](#-subscription-object)</li>
+  <li>subscription.succeeded: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)</li>
+  <li>subscription.failed: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)</li>
+  <li>subscription.expiring: returns a [subscription-object](#-subscription-object)</li>
+  <li>subscription.deactivated: returns a [subscription-object](#-subscription-object)</li>
+  <li>subscription.activated: returns a [subscription-object](#-subscription-object)</li>
+  <li>subscription.canceled: returns a [subscription-object](#-subscription-object)</li>
+  <li>refund.created: returns a [refund-object](#-refund-object)</li>
+  <li>refund.succeeded: returns a [refunds-object](#-refund-object)</li>
+  <li>refund.failed: returns a [refunds-object](#-refund-object)</li>
+  <li>payout.transferred: returns an invoice-object with the payout sum for the invoice period</li>
+  <li>invoice.available: returns an invoice-object with the fees sum for the invoice period</li>
+  <li>app.merchant.activated: returns a merchant-object if a connected merchant was activated</li>
+  <li>app.merchant.deactivated: returns a merchant-object if a connected merchant was deactivated</li>
+  <li>app.merchant.rejected: returns a merchant-object if a connected merchant was rejected</li>
+  <li>app.merchant.live_requests_allowed: returns a merchant-object if a connected merchant allows live requests</li>
+  <li>app.merchant.live_requests_not_allowed: returns a merchant-object if a connected merchant denys live requests</li>
+  <li>app.merchant.app.disabled: returns a merchant object if a connected merchant disabled your app</li>
+  <li>payment.expired: returns a payment-object if a creditcard is going to expire next month</li>
+</ul>
+
 > Example event
 
-```nohighlight
+```json
 {
     "event": {
         "event_type": "subscription.succeeded",
@@ -38,39 +73,11 @@ There are a number of events you can react to. Each webhook can be configured to
 
 For example the event subscription.succeeded is triggered every time a successful transaction has been made in our system that is based on a subscription. Shortly after that has been triggered, we will call every webhook you defined for this event and send detailed information to it.
 
-  - chargeback.executed: returns a [transaction-object](#-transaction-object) with state set to chargeback
-  - transaction.created: returns a [transaction-object](#-transaction-object)
-  - transaction.succeeded: returns a [transaction-object](#-transaction-object)
-  - transaction.failed: returns a [transaction-object](#-transaction-object)
-  - client.updated: returns a [client-object](#-client-object) if a client was updated
-  - subscription.created: returns a [subscription-object](#-subscription-object)
-  - subscription.updated: returns a [subscription-object](#-subscription-object)
-  - subscription.deleted: returns a [subscription-object](#-subscription-object)
-  - subscription.succeeded: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)
-  - subscription.failed: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)
-  - subscription.expiring: returns a [subscription-object](#-subscription-object)
-  - subscription.deactivated: returns a [subscription-object](#-subscription-object)
-  - subscription.activated: returns a [subscription-object](#-subscription-object)
-  - subscription.canceled: returns a [subscription-object](#-subscription-object)
-  - refund.created: returns a [refund-object](#-refund-object)
-  - refund.succeeded: returns a [refunds-object](#-refund-object)
-  - refund.failed: returns a [refunds-object](#-refund-object)
-  - payout.transferred: returns an invoice-object with the payout sum for the invoice period
-  - invoice.available: returns an invoice-object with the fees sum for the invoice period
-  - app.merchant.activated: returns a merchant-object if a connected merchant was activated
-  - app.merchant.deactivated: returns a merchant-object if a connected merchant was deactivated
-  - app.merchant.rejected: returns a merchant-object if a connected merchant was rejected
-  - app.merchant.live_requests_allowed: returns a merchant-object if a connected merchant allows live requests
-  - app.merchant.live_requests_not_allowed: returns a merchant-object if a connected merchant denys live requests
-  - app.merchant.app.disabled: returns a merchant object if a connected merchant disabled your app
-  - payment.expired: returns a payment-object if a creditcard is going to expire next month
-
-
 ## `Webhook` Object
 
 > Example URL webhook
 
-```nohighlight
+```json
 {
      "id":"hook_40237e20a7d5a231d99b",
      "url":"<your-webhook-url>",
@@ -88,7 +95,7 @@ For example the event subscription.succeeded is triggered every time a successfu
 
 > Example e-mail webhook
 
-```nohighlight
+```json
 {
      "id":"hook_40237e20a7d5a231d99b",
      "email":"<your-webhook-email>",
@@ -153,7 +160,7 @@ curl https://api.paymill.com/v2.1/webhooks \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
             "id":"hook_40237e20a7d5a231d99b",
@@ -219,7 +226,7 @@ curl https://api.paymill.com/v2.1/webhooks \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
             "id" : "hook_40237e20a7d5a231d99b",
@@ -282,7 +289,7 @@ curl https://api.paymill.com/v2.1/webhooks/hook_40237e20a7d5a231d99b \
 
 > Response
 
-```nohighlight
+```json
 {
    "data" : {
        "id":"hook_40237e20a7d5a231d99b",
@@ -303,7 +310,7 @@ curl https://api.paymill.com/v2.1/webhooks/hook_40237e20a7d5a231d99b \
 
 > Response of an e-mail webhook
 
-```
+```json
 {
    "data" : {
        "id":"hook_40237e20a7d5a231d99b",
@@ -367,7 +374,7 @@ curl https://api.paymill.com/v2.1/webhooks/hook_40237e20a7d5a231d99b \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id":"hook_40237e20a7d5a231d99b",
@@ -431,7 +438,7 @@ curl https://api.paymill.com/v2.1/webhooks/ \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : [
         {

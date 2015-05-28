@@ -11,7 +11,7 @@ A transaction is the charging of a credit card or a direct debit. In this case y
 
 > Example
 
-```nohighlight
+```json
 {
     "id" : "tran_54645bcb98ba7acfe204",
     "amount" : "4200",
@@ -32,6 +32,7 @@ A transaction is the charging of a credit card or a direct debit. In this case y
     "preauthorization" : null,
     "fees" : [],
     "payment" : "<Object>",
+    "mandate_reference" : null,
     "is_refundable" : true,
     "is_markable_as_fraud" : true
 }
@@ -67,6 +68,7 @@ app_id                    | string / null                                       
 preauthorization          | [preauthorizations-object](-preauthorization-object) / null                                 |
 fees                      | list                                                                                        | App fees or null
 payment                   | [payment object for credit card](#-payment-object-for-credit-card-payments) / [directdebit-object](#-payment-object-for-direct-debit-payments) / null |
+mandate_reference         | string / null                                                                               | SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain: digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
 is_refundable             | boolean                                                                                     | The transaction is refundable or not
 is_markable_as_fraud      | boolean                                                                                     | The transaction is markable is fraud or not
 
@@ -124,7 +126,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "tran_1f42e10cf14301067332",
@@ -192,7 +194,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "tran_b3692e8e063900d27a40",
@@ -261,7 +263,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "tran_663dada2ffd9b47bd1bf",
@@ -329,7 +331,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "tran_ca3e7d41fb16d0157a99",
@@ -400,7 +402,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
     "id" : "tran_ca3e7d41fb16d0157a99",
@@ -504,7 +506,7 @@ curl https://api.paymill.com/v2.1/transactions/tran_023d3b5769321c649435 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "tran_023d3b5769321c649435",
@@ -568,7 +570,7 @@ curl https://api.paymill.com/v2.1/transactions/slv_4125875679 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "tran_023d3b5769321c649435",
@@ -650,7 +652,7 @@ curl https://api.paymill.com/v2.1/transactions/tran_023d3b5769321c649435 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "tran_023d3b5769321c649435",
@@ -723,7 +725,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : [
         {

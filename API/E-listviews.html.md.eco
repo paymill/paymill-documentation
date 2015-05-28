@@ -8,14 +8,21 @@ We have many listviews for different entities in the API functions. The function
 
 ## Sort Entries
 
+> Example:
+
+```nohighlight
+?order=amount | ?order=amount_asc | ?order=amount_desc
+```
+
 The JSON response objects can be sorted the way you have requested. In this case you receive the result sorted in the required way to get the result sorted in ascending (`[attributename]_asc`) or descending (`[attributename]_desc`) order.
 
 
-**Example:** `?order=amount | ?order=amount_asc | ?order=amount_desc`
-
 ## Filter Entries
 
+> Example:
+
+```nohighlight
+?created_at=<timestamp> | ?created_at=<timestamp (from)>-<timestamp (to)>
+```
+
 The JSON response objects can be filtered by their attributes. In this case you can call the API to get the result filtered in the required way. This means that the result objects which don’t fit the filter aren’t delivered.
-
-
-**Example:** `?created_at=<timestamp> | ?created_at=<timestamp (from)>-<timestamp (to)>`

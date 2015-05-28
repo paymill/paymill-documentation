@@ -10,7 +10,7 @@ The Payment object represents a payment with a credit card or via direct debit. 
 
 > Example
 
-```nohighlight
+```json
 {
     "id"           : "pay_3af44644dd6d25c820a8",
     "type"         : "creditcard",
@@ -51,7 +51,7 @@ is_usable_for  | boolean                                     | The payment is us
 
 > Example
 
-```nohighlight
+```json
 {
     "id"           : "pay_917018675b21ca03c4fb",
     "type"         : "debit",
@@ -86,7 +86,7 @@ is_usable_for  | boolean                                     | The payment is us
 
 > Example
 
-```nohighlight
+```json
 {
     "id"           : "pay_917018675b21ca03c4fb",
     "type"         : "debit",
@@ -159,7 +159,7 @@ curl https://api.paymill.com/v2.1/payments \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id"           : "pay_3af44644dd6d25c820a8",
@@ -180,6 +180,11 @@ curl https://api.paymill.com/v2.1/payments \
     "mode" : "test"
 }
 ```
+
+Note
+
+- You always need a token to create a new credit card payment
+- That Token is only usable one time afterwards please use the [payment object](#-payment-object-for-credit-card-payments)
 
 > ### With token + client
 
@@ -218,7 +223,7 @@ curl https://api.paymill.com/v2.1/payments \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id"           : "pay_3af44644dd6d25c820a9",
@@ -250,7 +255,8 @@ Creates a credit card payment from a given token, if you’re providing the clie
 
 Note
 
-- You always need a token to create a new credit card payment.
+- You always need a token to create a new credit card payment
+- That Token is only usable one time afterwards please use the [payment object](-payment-object-for-credit-card-payments)
 
 
 ## Create new `Debit Payment`
@@ -292,7 +298,7 @@ curl https://api.paymill.com/v2.1/payments \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id"           : "pay_917018675b21ca03c4fb",
@@ -348,7 +354,7 @@ curl https://api.paymill.com/v2.1/payments \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id"           : "pay_917018675b21ca03c4fc",
@@ -410,7 +416,7 @@ curl https://api.paymill.com/v2.1/payments/pay_3af44644dd6d25c820a8 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id"           : "pay_3af44644dd6d25c820a8",
@@ -475,7 +481,7 @@ curl https://api.paymill.com/v2.1/payments \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : [
         {
@@ -561,7 +567,7 @@ curl https://api.paymill.com/v2.1/payments/pay_3af44644dd6d25c820a8 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data":[
 
@@ -578,6 +584,45 @@ id             | string                   | Unique identifier for the payment
 
 
 ## Export `Payment` list
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/payments \
+  -u <YOUR_PRIVATE_KEY>: \
+  -H "Accept: text/csv"
+```
+
+```ruby
+<%- @partial('snippets/ruby/samples/transactions/export_payments_list.rb') %>
+```
+
+```java
+<%- @partial('snippets/java/samples/transactions/export_payments_list.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/transactions/export_payments_list.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/transactions/export_payments_list.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/transactions/export_payments_list.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/transactions/export_payments_list.cs') %>
+```
+
+> Response
+
+```nohighlight
+"id";"type";"card_type";"country";"expire_month";"expire_year";"card_holder";"last4";"updated_at";"created_at";"app_id";"client_id"
+"pay_2311e5a076ab0b9c2cdb0399";"creditcard";"visa";"";"2";"2016";"test card holder";"1111";"1342427064";"1342427064";"";"client_33c8f8c13d759d00b144"
+```
 
 This function returns CSV separated by semicolons, encapsulated by double quotes, with a list of clients. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 

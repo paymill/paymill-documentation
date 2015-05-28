@@ -8,7 +8,7 @@ type: "apiDoc"
 
 > Example
 
-```nohighlight
+```json
 {
     "id" : "refund_87bc404a95d5ce616049",
     "amount" : "042",
@@ -80,11 +80,11 @@ curl https://api.paymill.com/v2.1/refunds/tran_023d3b5769321c649435 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "refund_70392dc6a734a8233130",
-        "amount" : "010",
+        "amount" : "4200",
         "status" : "refunded",
         "description" : null,
         "livemode" : false,
@@ -104,7 +104,7 @@ curl https://api.paymill.com/v2.1/refunds/tran_023d3b5769321c649435 \
   - <a href="#-transaction-object">transaction</a>.refunds returns <a href="#-refund-object">refund object</a>
   - <a href="#-transaction-object">transaction</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>
   - <a href="#-transaction-object">transaction</a>.client returns a <a href="#-client-object">client object</a>
-  - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>  
+  - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>
 </pre>
 
 This function refunds a transaction that has been created previously and was refunded in parts or wasn’t refunded at all. The inserted amount will be refunded to the credit card / direct debit of the original transaction. There will be some fees for the merchant for every refund.
@@ -155,7 +155,7 @@ curl https://api.paymill.com/v2.1/refunds/refund_87bc404a95d5ce616049 \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : {
         "id" : "refund_87bc404a95d5ce616049",
@@ -183,7 +183,7 @@ curl https://api.paymill.com/v2.1/refunds/refund_87bc404a95d5ce616049 \
 Returns detailed informations of a specific refund.
 
 
-## List`Refunds`
+## List `Refunds`
 
 > Request
 
@@ -218,7 +218,7 @@ curl https://api.paymill.com/v2.1/refunds \
 
 > Response
 
-```nohighlight
+```json
 {
     "data" : [
         {
