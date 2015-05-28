@@ -4,7 +4,7 @@ anchor: "introduction"
 type: "apiDoc"
 ---
 
-> API Endpoint
+> API Endpoint Blah
 
 ```nohighlight
 https://api.paymill.com/v2.1/
