@@ -200,7 +200,7 @@ curl https://api.paymill.com/v2.1/clients/client_88a388d9dd48f86c3136 \
 <%- @partial('snippets/js/samples/clients/update_client.js') %>
 ```
 
-```pyhton
+```python
 <%- @partial('snippets/python/samples/clients/update_client.py') %>
 ```
 

@@ -395,6 +395,26 @@ curl https://api.paymill.com/v2.1/offers \
   <%- @partial('snippets/ruby/samples/offers/export_offers_list.rb') %>
 ```
 
+```java
+<%- @partial('snippets/java/samples/offers/export_offers_list.java') %>
+```
+
+```javascript
+<%- @partial('snippets/js/samples/offers/export_offers_list.js') %>
+```
+
+```python
+<%- @partial('snippets/python/samples/offers/export_offers_list.py') %>
+```
+
+```php
+<%- @partial('snippets/php/samples/offers/export_offers_list.php') %>
+```
+
+```csharp
+<%- @partial('snippets/net/samples/offers/export_offers_list.cs') %>
+```
+
 > Response
 
 ```nohighlight

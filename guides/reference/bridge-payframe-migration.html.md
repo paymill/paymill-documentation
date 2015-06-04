@@ -6,7 +6,7 @@ status: "published"
 order: 2
 ---
 
-In order to comply with PCI DSS 3.0 and be eligible for SAQ-A, you need to use our [Credit Card Frame](/guides/reference/credit-card-frame.html). If you were directly using our bridge before, this guide explains how you can easily switch to the new solution:
+In order to comply with PCI DSS 3.0 and be eligible for SAQ-A, you need to use our [Credit Card Frame](/guides/reference/bridge-payframe.html). If you were directly using our bridge before, this guide explains how you can easily switch to the new solution:
 
 1. Use the DSS3 version of our JavaScript bridge.
 2. Replace your own fields with the embedded frame.
@@ -140,58 +140,24 @@ paymill.embedFrame(container, options, function(error) {
 });
 ```
 
-### 3. Provide labels, placeholders and error messages
+### 3. Specify in which language to display the form
 
-By default, the credit card form uses a **default design** but contains **no labels, placeholders or error messages**. This means you have to provide text content before using it on your live site.
+By default, the credit card form uses English for labels, placeholders and error messages. Simply specify the corresponding language code using `lang` in the `options` parameter of `embedFrame`.
 
-<div class="information">
-  You can provide labels and placeholders for each field group (note that there are two fields for expiry date) in the `options` parameter of `embedFrame`.
-</div>
-
-```
+```javascript
 paymill.embedFrame(container, {
-  labels: {
-    number:     'Credit card',
-    cvc:        'CVC',
-    cardholder: 'Card holder',
-    exp:        'Valid until'
-  },
-  placeholders: {
-    number:     'XXXX XXXX XXXX XXXX',
-    cvc:        'XXX',
-    cardholder: 'John Doe',
-    exp_month:  'MM',
-    exp_year:   'YYYY'
-  }
+  lang: 'de'
 }, callback);
 ```
 
-All text content is optional so you can add or leave out whatever suits your site.
+Currently, the following languages are supported
 
-Data is validated automatically when you request a token and you can provide error messages that will automatically appear inside the iframe.
-
-<div class="info">
-  Since card holder is optional, it will not be validated.
-</div>
-
-You can specify error messages within the `options` parameter of `embedFrame`. Like with labels, you specify one error message per field group.
-
-```
-paymill.embedFrame(container, {
-  // other options ...
-  errors: {
-    number:     'Please provide a valid credit card number',
-    cvc:        'Please enter the card validation code',
-    exp:        'Please provide a valid expiry date'
-  }
-}, callback);
-```
-
-<div class="important">
-  To keep things simple, there is only one error message per field group. Make sure you phrase it in a way that covers both missing and invalid data.
-</div>
-
-After calling `createTokenViaFrame`, these error messages will be appended to the respective invalid fields.
+1. English `en`
+2. German `de`
+3. French `fr`
+4. Italian `it`
+5. Spanish `es`
+6. Portuguese `pt
 
 ### 4. Request a token using the embedded frame
 
@@ -213,13 +179,13 @@ paymill.createTokenViaFrame({
 });
 ```
 
-Your response handler receives the same `error` and `result` object as before and doesn't have to change.
+Your response handler receives the same `error` and `result` object as before and doesn't have to change. Additionally, inline error messages will be displayed automatically next to the respective fields.
 
 <div class="info">
   The regular `createToken` still exists and continues to be the appropriate method for creating direct debit tokens. 3-D Secure handling also remains the same, you can still pass the optional `tdsInit` and `tdsCleanup` handlers.
 </div>
 
-```
+```javascript
 paymill.createTokenViaFrame(transactionData, responseHandler, tdsInit, tdsCleanup);
 ```
 
@@ -252,24 +218,7 @@ After having made the changes described above, your integration should now look 
 
   // Embed the credit card frame.
   paymill.embedFrame($('#credit-card-fields'), {
-    labels: {
-      number:     'Credit card',
-      cvc:        'CVC',
-      cardholder: 'Card holder',
-      exp:        'Valid until'
-    },
-    placeholders: {
-      number:     'XXXX XXXX XXXX XXXX',
-      cvc:        'XXX',
-      cardholder: 'John Doe',
-      exp_month:  'MM',
-      exp_year:   'YYYY'
-    },
-    errors: {
-      number:     'Please provide a valid credit card number',
-      cvc:        'Please enter the card validation code',
-      exp:        'Please provide a valid expiry date'
-    }
+    lang: 'en'
   }, function(error) {
     if (error) {
       // Frame could not be loaded, check error object for reason.
