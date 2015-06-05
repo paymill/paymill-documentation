@@ -2,7 +2,7 @@
 title: "Alerting"
 menu: "Alerting"
 type: "guide"
-status: "published"
+status: "draft"
 order: 1
 ---
 
