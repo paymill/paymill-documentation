@@ -3,7 +3,7 @@ title: "PayPal Transactions"
 menu: "PayPal Transactions"
 type: "guide"
 status: "published"
-order: 3
+order: 800
 ---
 
 ## Initiating a PayPal transaction

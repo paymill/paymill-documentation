@@ -3,7 +3,7 @@ title: "Quick Start"
 menu: "Quick Start"
 type: "guide"
 status: "published"
-order: 1
+order: 1000
 ---
 
 *How to process PayPal payments with PAYMILL*

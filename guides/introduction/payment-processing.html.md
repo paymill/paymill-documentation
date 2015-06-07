@@ -3,7 +3,7 @@ title: "Payment Processing"
 menu: "Payment Processing"
 type: "guide"
 status: "published"
-order: 4
+order: 700
 ---
 
 ## 1. Using the Libraries

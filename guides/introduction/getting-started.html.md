@@ -3,7 +3,7 @@ title: "Getting Started"
 menu: "Getting Started"
 type: "guide"
 status: "published"
-order: 1
+order: 1000
 ---
 
 ## ELV* and credit card payment

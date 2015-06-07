@@ -3,7 +3,7 @@ title: "Address Data"
 menu: "Address Data"
 type: "guide"
 status: "published"
-order: 7
+order: 600
 ---
 
 You can attach two kinds of addresses to a transaction: a shipping address and a billing address. Both addresses have the following fields:

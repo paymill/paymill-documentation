@@ -3,7 +3,7 @@ title: "Payment Method"
 menu: "Payment Method"
 type: "guide"
 status: "published"
-order: 3
+order: 800
 ---
 
 ## Store a payment method through payment object

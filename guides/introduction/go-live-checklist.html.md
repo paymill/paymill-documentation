@@ -3,7 +3,7 @@ title: "Check-List for Go-Live"
 menu: "Check-List for Go-Live"
 type: "guide"
 status: "published"
-order: 7
+order: 300
 ---
 
 <!-- TODO: Style the list + make dynamic checks -->

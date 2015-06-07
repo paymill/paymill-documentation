@@ -3,7 +3,7 @@ title: "API Libraries"
 menu: "API Libraries"
 type: "guide"
 status: "published"
-order: 1
+order: 1000
 ---
 
 We offer various libraries via our PAYMILL API. If you have programmed your own library, simply let us know by writing us at [support@paymill.com](mailto:support@paymill.com).

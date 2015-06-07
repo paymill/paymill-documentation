@@ -3,7 +3,7 @@ title: "Payment Form"
 menu: "Payment Form"
 type: "guide"
 status: "published"
-order: 2
+order: 900
 ---
 
 Paymill enables you to integrate credit card payments quickly, securely, simply and individually on your website. Our service is surely adhered with the credit card guidelines regarding sensitive customer payment data. You therefore do not have to worry about issues such as credit card information [security](/guides/security/security-standards.html).
