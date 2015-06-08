@@ -26,7 +26,7 @@ Credit card data from a merchant of PAYMILL shall be exported because the mercha
 
 **Data type:**
 
-  - The data export includes only credit card or debit card information for successful tokens/ transactions. The data export includes credit card data, such as card number, card expiry date (optional), account holder (optional), …
+  - The data export includes only credit card or debit card information for successful tokens/ transactions. The data export includes credit card data, such as card number, card expiry date (optional), account holder (optional), ...
   - The export does not include transaction histories, such as previous debits/ preauthorization/ reversals etc. that are connected to the token/ transactions.
   - The second file includes the internal generated token and a payment object id which the merchant got as response for the payment method.
 

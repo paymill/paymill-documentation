@@ -18,7 +18,7 @@ A transaction can have an arbitrary amount of shopping cart items with the follo
 - **Description:** Additional description (optional)
 - **Amount:** Price of a single item, can also be *negative* to act as a discount (mandatory)
 - **Quantity:** Quantity of this item (mandatory)
-- **Item number:** Item number or other identifier (SKU/EAN/…) (optional)
+- **Item number:** Item number or other identifier (SKU/EAN/...) (optional)
 - **URL:** URL of the item in your store (optional)
 
 Simply provide a list of items when creating a transaction:

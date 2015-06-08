@@ -80,7 +80,7 @@ The **return URL** will be used when a definitive result for the transaction is 
 You will be passed transaction status, a detailed response code as well as both PAYMILL and PayPal transaction ID as URL parameters:
 
 ```sh
-…/checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000
+.../checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000
 ```
 
 <div class="info">

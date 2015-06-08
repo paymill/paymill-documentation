@@ -34,7 +34,7 @@ paymill.createToken({
 }, callback);
 ```
 
-… or bank details for direct debit payments:
+... or bank details for direct debit payments:
 
 ```javascript
 paymill.createToken({
