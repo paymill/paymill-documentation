@@ -65,7 +65,7 @@ short_id                  | string                                              
 is_fraud                  | boolean                                                                                     | The transaction is marked as fraud or not
 invoices                  | list                                                                                        | PAYMILL invoice where the transaction fees are charged or null
 app_id                    | string / null                                                                               | App (ID) that created this transaction or null if created by yourself
-preauthorization          | [preauthorizations-object](-preauthorization-object) / null                                 |
+preauthorization          | [preauthorizations-object](#-preauthorization-object) / null                                 |
 fees                      | list                                                                                        | App fees or null
 payment                   | [payment object for credit card](#-payment-object-for-credit-card-payments) / [directdebit-object](#-payment-object-for-direct-debit-payments) / null |
 mandate_reference         | string / null                                                                               | SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain: digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?

@@ -110,7 +110,7 @@ We would like to thank the following people who helped improve the security of P
 - Shahee Mirza,               [@shaheemirza](http://twitter.com/shaheemirza)
 - Yaroslav Olejnik
 - Atulkumar Hariba Shedage
-- Nitesh Shilpkar,            [@NiteshShilpkar](http://twitter.com/NiteshShilpkar)
+- Nitesh Shilpkar
 - Vedachala Ballal,           [@vedachalaka](http://twitter.com/vedachalaka)
 - Sudhanshu Chauhan
 - Harsha Vardhan Boppana
@@ -118,15 +118,15 @@ We would like to thank the following people who helped improve the security of P
 - A.S. Javid Hussain
 - Ali Hasan Ghauri
 - Siddhesh Gawde,             [@pen3t3r](http://twitter.com/pen3t3r)
-- Ahmad Ashraff,              [@shaheemirza](http://twitter.com/yappare)
+- Ahmad Ashraff,              [@yappare](http://twitter.com/yappare)
 - Tejash Patel,               [@tejash1991](http://twitter.com/tejash1991)
 - Ehraz Ahmed,                [@securityexe](http://twitter.com/securityexe)
-- Umraz Ahmed,                [@shaheemirza](http://twitter.com/umrazahmed)
+- Umraz Ahmed,                [@umrazahmed](http://twitter.com/umrazahmed)
 - Anand Meyyappan,            [@anandm47](http://twitter.com/anandm47)
 - Frans Rosén,                [@detectify](http://twitter.com/detectify)
 - Jigar Thakkar,              [@jigarthakkar39](http://twitter.com/jigarthakkar39)
 - Muhammad Mujtaba,           [@mushti](http://twitter.com/mushti)
-- Michael Blake,              [@shaheemirza](http://twitter.com/shaheemirza)
+- Michael Blake
 - Mohankumar Vengatachalam,   [@vimokumar](http://twitter.com/vimokumar)
 - Shubham Raj
 - Jon,                        [@Bitquark](http://twitter.com/Bitquark)
@@ -156,4 +156,4 @@ We would like to thank the following people who helped improve the security of P
 - Hammad Mahmood
 - Abdul Rehman,               [@Abdul_R3hman](http://twitter.com/Abdul_R3hman)
 - Mohamed Abdelbaset Elnoby,  [@SymbianSyMoh](http://twitter.com/SymbianSyMoh)
-- BALAJI P R,                 [@balag_py](http://twitter.com/shaheemirza)
+- BALAJI P R,                 [@balag_py](http://twitter.com/balag_py)

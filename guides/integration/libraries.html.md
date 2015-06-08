@@ -189,12 +189,12 @@ These libraries are not hosted or maintained by PAYMILL. We cannot guarantee the
 
 ---------------------
 
-**ColdFusion** by [Richard Herbert](https://github.com/hotwoofy): More information on [GitHub](https://github.com/hotwoofy/clj-paymill).
+**ColdFusion** by [Richard Herbert](http://www.cfpaymill.com): More information on [GitHub](https://github.com/richardherbert/cfPaymill).
 
 ---------------------
 
-**Common Lisp** by [Peter Wood](https://github.com/hotwoofy): More information on [GitHub](https://github.com/hotwoofy/clj-paymill).
+**Common Lisp** by [Peter Wood](https://github.com/a0-prw): More information on [GitHub](https://github.com/paymill/cl-paymill).
 
 ---------------------
 
-**Node** by [Thomas Schaaf](https://github.com/hotwoofy): More information on [GitHub](https://github.com/hotwoofy/clj-paymill).
+**Node** by [Thomas Schaaf](https://github.com/thomaschaaf): More information on [GitHub](https://github.com/komola/paymill-node).

@@ -28,7 +28,7 @@ Credit card data from a third party PSP shall be imported to the PAYMILL platfor
 
 **Data type**
 
-  - The data import include credit/debit card data, such as card number, card expiry date, account holder (optional), etc …
+  - The data import include credit/debit card data, such as card number, card expiry date, account holder (optional), etc ...
   - From this data PAYMILL generates a token (=Registration) and a payment object which will be used for later reference by the merchant.
   - The import won't include transactions histories, such as previous debits.
 
