@@ -84,5 +84,5 @@ You will be passed transaction status, a detailed response code as well as both 
 ```
 
 <div class="info">
-For more information, please refer to our guide about [handling transaction results](…).
+For more information, please refer to our guide about [handling transaction results](/guides/paypal/transactions.html).
 </div>
