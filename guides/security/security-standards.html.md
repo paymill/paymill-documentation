@@ -3,7 +3,7 @@ title: "Security Standards"
 menu: "Security Standards"
 type: "guide"
 status: "published"
-order: 1
+menuOrder: 1
 ---
 
 Security is our number one priority! If you have any questions or concerns regarding security, please contact us at [security@paymill.com](mailto:security@paymill.com).

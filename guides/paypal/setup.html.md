@@ -3,7 +3,7 @@ title: "Setting-up PayPal with PAYMILL"
 menu: "Setting-up PayPal with PAYMILL"
 type: "guide"
 status: "published"
-order: 900
+menuOrder: 2
 ---
 
 Before you can start accepting PayPal payments through PAYMILL, you naturally need a PAYMILL account, a PayPal account and connecting the two.

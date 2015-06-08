@@ -3,7 +3,7 @@ title: "Your Account"
 menu: "Your Account"
 type: "guide"
 status: "published"
-order: 400
+menuOrder: 7
 ---
 
 Here are a few basic features and processes that you should be familiar with before switching from test mode to live mode.

@@ -3,7 +3,7 @@ title: "Check-List for Go-Live"
 menu: "Check-List for Go-Live"
 type: "guide"
 status: "published"
-order: 300
+menuOrder: 8
 ---
 
 <!-- TODO: Style the list + make dynamic checks -->
@@ -15,7 +15,7 @@ You are almost ready to switch to live-mode and and accept payments from your cu
 - Does the currency you send to the bridge match the currency of your first transaction?
 - Do you check the server responses for possible error codes?
 - Did you ensure that you only offer currencies and credit card brands to your customer that are activated for your account?
-- Will there be a delay between the time your customer enters his credit card data and the time his first transaction is charged? 
+- Will there be a delay between the time your customer enters his credit card data and the time his first transaction is charged?
 - All done?
 
 Congratulations, you can get started!

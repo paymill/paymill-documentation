@@ -3,7 +3,7 @@ title: "PAYMILL on-boarding explained"
 menu: "Onboarding"
 type: "guide"
 status: "published"
-order: 500
+menuOrder: 6
 ---
 
 The on-boarding process with PAYMILL differs slightly depending upon the combination of payment methods selected by the merchant.

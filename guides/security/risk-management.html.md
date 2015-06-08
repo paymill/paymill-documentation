@@ -3,7 +3,7 @@ title: "Risk Management"
 menu: "Risk Management"
 type: "guide"
 status: "published"
-order: 5
+menuOrder: 5
 ---
 
 The security of your transactions is our highest priority! PAYMILL has implemented various internal and external methods of risk inspection, which check every transaction that goes though our system for suspicious behaviour. If you would further wish to disable individual methods, we will also take care of that for you. If this is the case, or if you have any questions about our security systems, please send a brief request to [support@paymill.com](mailto:support@paymill.com).

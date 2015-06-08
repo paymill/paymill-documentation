@@ -3,7 +3,7 @@ title: "Chargebacks"
 menu: "Chargebacks"
 type: "guide"
 status: "published"
-order: 4
+menuOrder: 4
 ---
 
 ## What are chargebacks?

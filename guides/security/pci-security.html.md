@@ -3,7 +3,7 @@ title: "PCI Security"
 menu: "PCI Security"
 type: "guide"
 status: "published"
-order: 2
+menuOrder: 2
 ---
 
 ## How to become PCI-DSS compliant?

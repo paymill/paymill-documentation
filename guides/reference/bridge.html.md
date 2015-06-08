@@ -3,7 +3,7 @@ title: "Bridge"
 menu: "Bridge"
 type: "guide"
 status: "published"
-order: 1100
+menuOrder: 1
 ---
 
 How exactly does the PAYMILL bridge work and what are its features? These and similar questions are answered in this section.
