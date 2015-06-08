@@ -19,17 +19,19 @@ Accepting PayPal payments through PAYMILL is simple. It's based on the same conv
 
 To accept payments with PayPal you need a PayPal business account. Make sure you provide all necessary information for your PayPal account to be activated. Next, visit the [payment methods](https://app.paymill.com/settings/payment-methods) section in our Merchant Centre and connect your PAYMILL account to your PayPal account.
 
-Please note that you can start [testing PayPal transactions](…) immediately while your PAYMILL and PayPal accounts are being activated. Simply create a PayPal sandbox account and connect it in our Merchant Centre.
+Please note that you can start [testing PayPal transactions](/guides/paypal/transactions.html) immediately while your PAYMILL and PayPal accounts are being activated. Simply create a PayPal sandbox account and connect it in our Merchant Centre.
 
-> For more information about the PAYMILL on-boarding process and requirements regarding your PayPal account, please refer to our [on-boarding guide](…).
+<div class="info">
+For more information about the PAYMILL on-boarding process and requirements regarding your PayPal account, please refer to our [on-boarding guide](/guides/introduction/onboarding).
+</div>
 
 ## 2. Create a transaction checksum
 
-Before starting a PayPal checkout session you need to create a transaction checksum in our API. This ensures that your payment can’t be tampered with along the way.
+Before starting a PayPal checkout session you need to create a transaction checksum in our API. This ensures that your payment can't be tampered with along the way.
 
 This checksum is created on your server using your private API key. You can then pass it to your frontend to create the actual transaction using our JavaScript bridge, sending your customer to PayPal for checkout.
 
-You can either call the checksum API directly or use one of our [API libraries](https://developers.paymill.com/en/reference/api-libraries/) on your server. Once you have collected transaction data on your server, creating a checksum is as easy as passing that data to our API in one call:
+You can either call the checksum API directly or use one of our [API libraries](/guides/integration/libraries.html) on your server. Once you have collected transaction data on your server, creating a checksum is as easy as passing that data to our API in one call:
 
 ```sh
 curl https://api.paymill.com/v2.1/checksums \
@@ -44,7 +46,9 @@ curl https://api.paymill.com/v2.1/checksums \
 
 Use the returned checksum ID in your HTML templates or return it to your frontend dynamically via AJAX.
 
-> See [transaction setup](…) for more details on how to add transaction data, address data and shopping cart items to a checksum.
+<div class="info">
+See [transaction setup](/guides/reference/transactions.html) for more details on how to add transaction data, address data and shopping cart items to a checksum.
+</div>
 
 ## 3. Start PayPal checkout
 
@@ -61,7 +65,9 @@ Now you can use our bridge to create a transaction, which will start a checkout 
 paymill.createTransaction({type: "paypal", checksum: "chk_2f82a672574647cd911d"});
 ```
 
-> Please refer to our guide on [transaction setup](…) for more information on error handling during transaction setup.
+<div class="info">
+Please refer to our guide on [transaction setup](/guides/reference/transactions.html) for more information on error handling during transaction setup.
+</div>
 
 ## 4. Handle transaction result
 
@@ -77,4 +83,6 @@ You will be passed transaction status, a detailed response code as well as both 
 …/checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000
 ```
 
-> For more information, please refer to our guide about [handling transaction results](…).
+<div class="info">
+For more information, please refer to our guide about [handling transaction results](…).
+</div>

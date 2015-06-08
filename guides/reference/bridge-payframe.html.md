@@ -114,7 +114,7 @@ The following errors can occur during frame load:
 
 ### Handling content resizing
 
-The dimensions of the iframe’s content can change due to several factors like stylesheets loading, error messages being shown or CSS transitions or animations.
+The dimensions of the iframe's content can change due to several factors like stylesheets loading, error messages being shown or CSS transitions or animations.
 
 By default, the iframe automatically resizes **vertically** to fit its content. This means the iframe element will have a width of 100% but a variable height, starting with `0px` until the frame has loaded.
 
@@ -127,7 +127,7 @@ paymill.embedFrame(container, {
 }, callback);
 ```
 
-Alternatively, you can take over the resizing process by providing a custom resizing function. The iframe will still have width and height set to `100%` in the beginning, but your function will be called each time the iframe needs a resize. It will be passed an `attrs` parameter containing relevant attributes (currently only the content’s height) so you can manipulate the container element accordingly.
+Alternatively, you can take over the resizing process by providing a custom resizing function. The iframe will still have width and height set to `100%` in the beginning, but your function will be called each time the iframe needs a resize. It will be passed an `attrs` parameter containing relevant attributes (currently only the content's height) so you can manipulate the container element accordingly.
 
 ```javascript
 // Provide custom resizing function.
@@ -140,7 +140,7 @@ paymill.embedFrame(container, {
 ```
 
 <div class="info">
-With both disabled and custom resizing, the iframe has width and height set to `100%` to fit its container element. It’s highly recommended that you only style the container since you have full control over it. The iframe, on the other hand, won’t be available until it has loaded and might be removed from the DOM if loading fails.
+With both disabled and custom resizing, the iframe has width and height set to `100%` to fit its container element. It's highly recommended that you only style the container since you have full control over it. The iframe, on the other hand, won't be available until it has loaded and might be removed from the DOM if loading fails.
 </div>
 
 ## Tokenization

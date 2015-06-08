@@ -62,7 +62,7 @@ curl https://api.paymill.com/v2.1/checksums \
 ```
 
 <div class="important">
-If you provide shopping cart items, the sum of those items (and [shipping/handling costs](…) if specified) must match the overall transaction amount. Otherwise PayPal will reject the transaction.  
+If you provide shopping cart items, the sum of those items (and **shipping/handling costs** if specified) must match the overall transaction amount. Otherwise PayPal will reject the transaction.  
 <br>
-For example, if you have 10 items á 10EUR, the transaction amount must be 100EUR. If your overall transaction amount is 120EUR, the excess 20EUR must be specified as an additional shopping cart item or shipping/handling costs.
+For example, if you have 10 items at 10EUR, the transaction amount must be 100EUR. If your overall transaction amount is 120EUR, the excess 20EUR must be specified as an additional shopping cart item or shipping/handling costs.
 </div>

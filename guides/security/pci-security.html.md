@@ -36,7 +36,7 @@ The PCI Security Standards Council has confirmed the following requirements whic
 - Your e-commerce website does not receive cardholder data but controls how consumers, or their cardholder data, are redirected to a PCI DSS validated third-party payment processor
 - Your e-commerce website is not connected to any other systems within your environment (this can be achieved via network segmentation to isolate the website from all other systems);
 - If merchant website is hosted by a third-party provider, the provider is validated to all applicable PCI DSS requirements (e.g., including PCI DSS Appendix A if the provider is a shared hosting provider);
-- All elements of payment pages that are delivered to the consumer’s browser originate from either the merchant’s website or a PCI DSS compliant service provider(s);
+- All elements of payment pages that are delivered to the consumer's browser originate from either the merchant's website or a PCI DSS compliant service provider(s);
 - Your company does not electronically store, process, or transmit any cardholder data on your systems or premises, but relies entirely on a third party(s) to handle all these functions;
 - Your company has confirmed that all third party(s) handling storage, processing, and/or transmission of cardholder data are PCI DSS compliant; and
 - Your company retains only paper reports or receipts with cardholder data, and these documents are not received electronically.

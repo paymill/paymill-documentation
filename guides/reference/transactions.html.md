@@ -6,7 +6,7 @@ status: "published"
 menuOrder: 4
 ---
 
-In this document we want to show you some basic and advanced use cases with PAYMILL transactions. Please see our [API reference](…) for more details on the capabilities of our transaction API.
+In this document we want to show you some basic and advanced use cases with PAYMILL transactions. Please see our [API reference](/API) for more details on the capabilities of our transaction API.
 
 ## Creating a transaction
 
@@ -16,7 +16,7 @@ Processing and storing payment data on your server can be time-consuming and cos
 
 To avoid having to store and process payment data on your server, which can be time-consuming and costly as it requires to overcome hurdles like PCI certification, we offer a tokenization API that allows you to exchange payment *data* for a payment *token* right from your website. This token can then be sent to your server in order to create the actual transaction.
 
-We offer two ways for tokenization: You can either directly collect payment details on your website and send them to our API or you can use our [PayFrame](…), an embedded credit card form, for even easier PCI compliance.
+We offer two ways for tokenization: You can either directly collect payment details on your website and send them to our API or you can use our [PayFrame](/guides/reference/bridge-payframe.html), an embedded credit card form, for even easier PCI compliance.
 
 #### Direct tokenization
 
@@ -49,12 +49,12 @@ paymill.createToken({
 In both cases your `callback` function will receive a token that you can then use in your server-side payment processing.
 
 <div class="important">
-Please see our [bridge reference](…) for more information on direct tokenization.
+Please see our [bridge reference](/guides/reference/bridge.html) for more information on direct tokenization.
 </div>
 
 #### PayFrame – embedded credit card form
 
-With our PayFrame you don’t have to collect credit card data on your website, enabling you to fill out an even simpler PCI self-assessment questionnaire (SAQ).
+With our PayFrame you don't have to collect credit card data on your website, enabling you to fill out an even simpler PCI self-assessment questionnaire (SAQ).
 
 Instead of defining credit card fields yourself, you simply provide a container element and use our bridge to load an embedded form:
 
@@ -72,7 +72,7 @@ paymill.createTokenViaFrame({
 ```
 
 <div class="important">
-Please see our [PayFrame guide](…) for more information on how to use the embedded credit card form.
+Please see our [PayFrame guide](/guides/reference/bridge-payframe.html) for more information on how to use the embedded credit card form.
 </div>
 
 ### Creating a transaction from a token
@@ -96,7 +96,7 @@ You use a token when using a credit card or direct debit account for the first t
 
 A payment object represents a “funding source” for a transaction, e.g. a credit card or bank account. It is automatically created when a new transaction is created from a payment token.
 
-Once a payment object has been created, you can use it to create subsequent transactions without going through tokenization. This also means your customer doesn’t have to enter their payment details again.
+Once a payment object has been created, you can use it to create subsequent transactions without going through tokenization. This also means your customer doesn't have to enter their payment details again.
 
 To reuse an existing payment object, simply specify the payment ID when creating a transaction:
 
@@ -159,7 +159,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 ### Specifying an app fee
 
-If you use [PAYMILL Unite](…), e.g. for a marketplace application, you can add fees to the transactions of your merchants. Create a transaction as usual and add the fee you want to charge as well as the payment object that should be used to settle that fee:
+If you use **PAYMILL Unite**, e.g. for a marketplace application, you can add fees to the transactions of your merchants. Create a transaction as usual and add the fee you want to charge as well as the payment object that should be used to settle that fee:
 
 ```sh
 curl https://api.paymill.com/v2.1/transactions \
@@ -177,7 +177,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 A checksum is created on your server using your private API key. This ensures the integrity of transaction data and serves to prevent that your payment can be tampered with along the way.
 
-You can either call the checksum API directly or use one of our [API libraries](https://developers.paymill.com/en/reference/api-libraries/) on your server. Once you have collected transaction data on your server, creating a checksum is as easy as passing that data to our API in one call:
+You can either call the checksum API directly or use one of our [API libraries](/guides/integration/libraries.html) on your server. Once you have collected transaction data on your server, creating a checksum is as easy as passing that data to our API in one call:
 
 ```sh
 curl https://api.paymill.com/v2.1/checksums \
@@ -189,7 +189,7 @@ curl https://api.paymill.com/v2.1/checksums \
 
 You can add any type of transaction data to the checksum, this includes shipping/handling costs, shopping cart items, shipping/billing address as well as return/cancel URLs for PayPal.
 
-Here’s an example of a checksum for a full-fledged transaction:
+Here's an example of a checksum for a full-fledged transaction:
 
 ```sh
 curl https://api.paymill.com/v2.1/checksums \

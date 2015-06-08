@@ -56,7 +56,7 @@ Credit card data from a third party PSP shall be imported to the PAYMILL platfor
 
 ### PCI
 
-PAYMILL ([www.paymill.com](http://www.paymill.com)) and or his TPSP is level 1 PCI certified.
+PAYMILL ([www.paymill.com](http://www.paymill.com)) and or his TPSP is level 2 PCI certified.
 
 
 ## 2. Data import process

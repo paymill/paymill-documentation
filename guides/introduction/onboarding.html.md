@@ -60,7 +60,7 @@ You will also receive a service agreement, which you must sign and [upload](http
 
 Once we have received the signed service agreement back from you, we will activate your PAYMILL account to be able to connect with your PayPal account. You will receive an email informing you when this process has been completed.
 
-[Find out how to connect your PayPal account to your PAYMILL account](link)
+[Find out how to connect your PayPal account to your PAYMILL account](/guides/paypal/quick-start.html)
 
 You will receive a confirmation email for each payment method that you selected in the activation form.
 

@@ -92,9 +92,11 @@ curl https://api.paymill.com/v2.1/checksums \
   -d "shipping_address[phone]": "+4989123456"
 ```
 
-The address will then be displayed to the customer in PayPal checkout. However, the customer can’t change the address during PayPal checkout.
+The address will then be displayed to the customer in PayPal checkout. However, the customer can't change the address during PayPal checkout.
 
-> For PayPal transactions, the field “state” is mandatory in several countries. Please consult PayPal’s documentation for details.
+<div class="info">
+For PayPal transactions, the field “state” is mandatory in several countries. Please consult PayPal's documentation for details.
+</div>
 
 ### Requesting a shipping address
 
@@ -102,4 +104,6 @@ The address will then be displayed to the customer in PayPal checkout. However, 
 
 PayPal Express Checkout Shortcut (ECS) allows your to obtain an address via PayPal. Instead of providing an address yourself, simply specify that you need one.
 
-> For the time being, if no shipping address is provided the customer will be prevented from entering one during PayPal checkout.
+<div class="info">
+For the time being, if no shipping address is provided the customer will be prevented from entering one during PayPal checkout.
+</div>
