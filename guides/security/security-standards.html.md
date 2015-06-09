@@ -157,3 +157,8 @@ We would like to thank the following people who helped improve the security of P
 - Abdul Rehman,               [@Abdul_R3hman](http://twitter.com/Abdul_R3hman)
 - Mohamed Abdelbaset Elnoby,  [@SymbianSyMoh](http://twitter.com/SymbianSyMoh)
 - BALAJI P R,                 [@balag_py](http://twitter.com/balag_py)
+- Hammad Qureshi,             [@TheHmadQureshi](https://twitter.comTheHmadQureshi)
+- Shahmeer Amir,              [@shahmeer_amir](https://twitter.comshahmeer_amir)
+- Syed Daniyal,               [@noob_hack](https://twitter.comnoob_hack)
+- Hamid Ashraf,               [@hamihax](https://twitter.comhamihax)
+- Ramin Farajpour Cami,       [@MF4rr3ll](https://twitter.comMF4rr3ll)
