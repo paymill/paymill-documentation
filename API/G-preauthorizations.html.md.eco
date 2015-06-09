@@ -388,7 +388,7 @@ Available [filters](#filter-entries):
 
   - `client=<client id>``
   - `payment=<payment id>``
-  - `amount=[>|<]<integer> e.g. “300” or with prefix: “>300” or “<300”``
+  - `amount=[>|<]<integer> e.g. "300" or with prefix: ">300" or "<300"``
   - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
 
 

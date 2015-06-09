@@ -94,7 +94,7 @@ You use a token when using a credit card or direct debit account for the first t
 
 ### Creating a transaction from an existing payment object
 
-A payment object represents a “funding source” for a transaction, e.g. a credit card or bank account. It is automatically created when a new transaction is created from a payment token.
+A payment object represents a "funding source" for a transaction, e.g. a credit card or bank account. It is automatically created when a new transaction is created from a payment token.
 
 Once a payment object has been created, you can use it to create subsequent transactions without going through tokenization. This also means your customer doesn't have to enter their payment details again.
 

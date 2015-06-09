@@ -8,7 +8,7 @@ menuOrder: 4
 
 ## What are chargebacks?
 
-Sometimes, the card holder disputes the charge and request a “charge back” from their card operator. This can happen for several reasons and the client might claim that: (a) he never placed an order or cannot remember about the order or (b) the product was defective and he sent it back. As a protective measure to the client, the card operator will often side first with the client and will revert the transaction, causing a “chargeback”.
+Sometimes, the card holder disputes the charge and request a "charge back" from their card operator. This can happen for several reasons and the client might claim that: (a) he never placed an order or cannot remember about the order or (b) the product was defective and he sent it back. As a protective measure to the client, the card operator will often side first with the client and will revert the transaction, causing a "chargeback".
 
 At PAYMILL, chargebacks are validated individually. We will contact the contractual partner (you or your customer) directly and ask him/her to provide evidence that the payment was made correctly. In the section below we will explain this procedure in more detail.
 

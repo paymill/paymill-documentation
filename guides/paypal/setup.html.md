@@ -26,13 +26,13 @@ You can now use your live or test API keys to do live or test transactions, resp
 
 The [PayPal sandbox](https://www.paypal.com/de/webapps/mpp/communication/sandbox) lets you create both merchant and buyer accounts to test PayPal checkout with arbitrary configurations (account settings, countries, currencies etc.).
 
-To set up your PayPal sandbox, go to the [PayPal developer portal](https://developer.paypal.com/developer/accounts). Click “Log In” in the upper right corner of the screen and log in using your *real* PayPal account.  
-By default, you'll see a “facilitator” account and a “buyer” account. These accounts can already be used for testing – you just need to edit the account to set a password for the first time and you're good to go.  
+To set up your PayPal sandbox, go to the [PayPal developer portal](https://developer.paypal.com/developer/accounts). Click "Log In" in the upper right corner of the screen and log in using your *real* PayPal account.  
+By default, you'll see a "facilitator" account and a "buyer" account. These accounts can already be used for testing – you just need to edit the account to set a password for the first time and you're good to go.  
 Alternatively you can clone existing accounts or create entirely new accounts from scratch. To learn more about managing sandbox accounts, please consult [PayPal's documentation](https://developer.paypal.com/docs/classic/lifecycle/sb_about-accounts/).
 
 Once you're set up, you can use those sandbox accounts to test PayPal transactions:
 
-1. Go to the PAYMILL Merchant Centre and connect a **sandbox facilitator account** in the “PayPal sandbox account” slot.
+1. Go to the PAYMILL Merchant Centre and connect a **sandbox facilitator account** in the "PayPal sandbox account" slot.
 - Make sure you are using your PAYMILL test API keys in your integration.
 - Start a PayPal checkout from your test system, this will send you to the PayPal sandbox checkout.
 - Log in using a **sandbox buyer account** and proceed with the checkout from the buyer's perspective.

@@ -72,7 +72,7 @@ client                | [client object](#-client-object)                        
 app_id                | string / null                                                     | App (ID) that created this subscription or null if created by yourself
 is_canceled           | boolean                                                           | subscription is marked as canceled or not
 is_deleted            | boolean                                                           | subscription is marked as deleted or not
-status                | string                                                            | shows, if subscription is “active”, “inactive”, “expired” or “failed”
+status                | string                                                            | shows, if subscription is "active", "inactive", "expired" or "failed"
 
 ## Create new `Subscription`
 
@@ -694,7 +694,7 @@ pause                 | boolean             | deactivate a subscription or react
 currency              | string              | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
 interval              | string              | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR [, WEEKDAY] (optional)
 name                  | string              | name of the subscription (optional)
-period_of_validity    | string              | limit the validity of the subscription, format: integer MONTH/YEAR/WEEK/DAY, set to “remove” to unlimit the validity period (optional)
+period_of_validity    | string              | limit the validity of the subscription, format: integer MONTH/YEAR/WEEK/DAY, set to "remove" to unlimit the validity period (optional)
 trial_end             | boolean             | set to false to stop the trial period immediatly (optional)
 
 

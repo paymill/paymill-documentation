@@ -153,7 +153,7 @@ paymill.validateCvc('111'); // true
 paymill.validateCvc('foo'); // false
 ```
 
-`cardType(cardNumber)`: Returns the card type as a string. Possible types are Visa, MasterCard and similar. If a card is not recognized, the value is returned as “unknown”.
+`cardType(cardNumber)`: Returns the card type as a string. Possible types are Visa, MasterCard and similar. If a card is not recognized, the value is returned as "unknown".
 
 ```javascript
 paymill.cardType('4111111111111111'); // Visa

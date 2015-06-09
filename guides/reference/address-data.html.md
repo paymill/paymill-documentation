@@ -95,12 +95,11 @@ curl https://api.paymill.com/v2.1/checksums \
 The address will then be displayed to the customer in PayPal checkout. However, the customer can't change the address during PayPal checkout.
 
 <div class="info">
-For PayPal transactions, the field “state” is mandatory in several countries. Please consult PayPal's documentation for details.
+For PayPal transactions, the field "state" is mandatory in several countries. Please consult PayPal's documentation for details.
 </div>
 
 ### Requesting a shipping address
-
-==**This feature will be available soon.**==
+**This feature will be available soon.**
 
 PayPal Express Checkout Shortcut (ECS) allows your to obtain an address via PayPal. Instead of providing an address yourself, simply specify that you need one.
 

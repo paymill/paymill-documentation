@@ -127,7 +127,7 @@ The following steps should be followed for the import of the Migration data into
     <tr class="even">
       <td>8</td>
       <td>
-        Provide SFTP access data used for the data migration and the “SpecialChannelID” is the Public Live API Key from the Live mode of the merchant (Can be seen in the My Account Area of the Merchant). Special Merchant_ID is a created and submitted ID. Submit the PGP Public Key to encrypt the CSV File.
+        Provide SFTP access data used for the data migration and the "SpecialChannelID" is the Public Live API Key from the Live mode of the merchant (Can be seen in the My Account Area of the Merchant). Special Merchant_ID is a created and submitted ID. Submit the PGP Public Key to encrypt the CSV File.
       </td>
       <td>PAMILL Support to merchant</td>
     </tr>

@@ -376,7 +376,7 @@ Available [filters](#filter-entries):
 
   - `name=<name>`
   - `trial_period_days=<integer>`
-  - `amount=[>|<]<integer> e.g. “300” or with prefix: “>300” or “<300”`
+  - `amount=[>|<]<integer> e.g. "300" or with prefix: ">300" or "<300"`
   - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `updated_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
 
