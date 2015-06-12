@@ -3,7 +3,7 @@ title: "Alerting"
 menu: "Alerting"
 type: "guide"
 status: "draft"
-order: 1
+order: 2
 ---
 
 Full transparency of all transactions
