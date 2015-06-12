@@ -6,7 +6,7 @@ status: "published"
 menuOrder: 1
 ---
 
-Creating a credit card form and integrating it into your site can be a time consuming exercise. To make life easier, we’ve created the PAYMILL PayButton.
+Creating a credit card form and integrating it into your site can be a time consuming exercise. To make life easier, we've created the PAYMILL PayButton.
 
 The PayButton makes integrating a payment form into your website much easier.
 
