@@ -27,6 +27,7 @@ Our call to the webhook / email includes a JSON encoded event object with detail
 <ul class='side-list'>
   <li>chargeback.executed: returns a [transaction-object](#-transaction-object) with state set to chargeback</li>
   <li>transaction.created: returns a [transaction-object](#-transaction-object)</li>
+  <li>transaction.pending: returns a [transaction object](#-transactions-object) when a transaction was created but is still pending</li>
   <li>transaction.succeeded: returns a [transaction-object](#-transaction-object)</li>
   <li>transaction.failed: returns a [transaction-object](#-transaction-object)</li>
   <li>client.updated: returns a [client-object](#-client-object) if a client was updated</li>
@@ -111,15 +112,29 @@ For example the event subscription.succeeded is triggered every time a successfu
 }
 ```
 
-Attribute             | Type                      | Description 
-----------------------|---------------------------|-----------------
-id                    | string                    | Unique identifier of this webhook
-url                   | string                    | the url of the webhook
-email                 | string                    | either the email OR the url have to be set and will be returned
-livemode              | boolean                   | you can create webhooks for livemode and testmode
-event_types           | array of event_types      |
-active                | boolean                   | if false, no events will be dispatched to this webhook anymore
-app_id                | string / null             | App (ID) that created this webhook or null if created by yourself
+
+### Attributes
+
+**id:**                    _string_  
+Unique identifier of this webhook
+
+**url:**                   _string_  
+the url of the webhook
+
+**email:**                 _string_  
+either the email OR the url have to be set and will be returned
+
+**livemode:**              _boolean_  
+you can create webhooks for livemode and testmode
+
+**event_types:**           _array of event_types_  
+
+**active:**                _boolean_  
+if false, no events will be dispatched to this webhook anymore
+
+**app_id:**                _string / null_  
+App (ID) that created this webhook or null if created by yourself
+
 
 
 ## Create new `URL Webhook`
@@ -181,11 +196,18 @@ curl https://api.paymill.com/v2.1/webhooks \
 
 With this call you can create a webhook to a url via the API.
 
-Parameter     | Type      | Description 
---------------|-----------|-----------------
-url           | string    | the url of the webhook
-event_types   | array     | includes a set of webhook event types as strings
-active        | boolean   | can be used to create an inactive webhook in the beginning
+
+### Attributes
+
+**url:**           _string_  
+the url of the webhook
+
+**event_types:**   _array_  
+includes a set of webhook event types as strings
+
+**active:**        _boolean_  
+can be used to create an inactive webhook in the beginning
+
 
 
 ## Create new `E-Mail Webhook`
@@ -247,11 +269,18 @@ curl https://api.paymill.com/v2.1/webhooks \
 
 With this call you can create a webhook to a url via the API.
 
-Parameter     | Type      | Description 
---------------|-----------|-----------------
-email         | string    | the webhooks email. must be a valid mail address
-event_types   | array     | includes a set of webhook event types as strings
-active        | boolean   | can be used to create an inactive webhook in the beginning
+
+### Attributes
+
+**email:**         _string_  
+the webhooks email. must be a valid mail address
+
+**event_types:**   _array_  
+includes a set of webhook event types as strings
+
+**active:**        _boolean_  
+can be used to create an inactive webhook in the beginning
+
 
 
 ## `Webhook` details
@@ -332,9 +361,11 @@ curl https://api.paymill.com/v2.1/webhooks/hook_40237e20a7d5a231d99b \
 
 Getting detailed information about a webhook requested with the webhook id.
 
-Parameter         | Type            | Description 
-------------------|-----------------|-----------------
-id                | string          | Unique identifier for the webhook
+
+### Attributes
+
+**id:**                _string_  
+Unique identifier for the webhook
 
 
 ## Update `Webhook`
@@ -395,12 +426,19 @@ curl https://api.paymill.com/v2.1/webhooks/hook_40237e20a7d5a231d99b \
 
 Updates the webhook. You can change the url/email, the event types and the active state.
 
-Parameter     | Type                  | Description 
---------------|-----------------------|-----------------
-url           | string                | the url of the webhook
-email         | string                | the email for the webhook
-event_types   | array of event_types  |
-active        | boolean               | activate / deactivate webhook
+
+### Attributes
+
+**url:**           _string_  
+the url of the webhook
+
+**email:**         _string_  
+the email for the webhook
+
+**event_types:**   _array of event_types_
+
+**active:**        _boolean_
+activate / deactivate webhook
 
 
 ## List `Webhooks`

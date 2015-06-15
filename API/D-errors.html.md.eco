@@ -12,14 +12,14 @@ We've build a RESTful API - that's the reason why we are concerned about correct
   - 4xx informs you about an error
   - 5xx tells you that we did something wrong
 
-Code | Meaning | Description      
------|---------|----------------
-200  | OK      |Great, go ahead.
-401  | Unauthorized | Jim, You have to provide your private API Key.
-403  | Transaction Error | Transaction could not be completed, please check your payment data.
-404  | Not Found | There is no entity with this identifier, did you use the right one?
-412  | Precondition Failed | I guess you're missing at least one required parameter?
-5xx  | Server Error | Doh, we did something wrong :/
+Code | Meaning             | Description
+-----|---------------------|--------------------------------------------------------------------
+200  | OK                  | Great, go ahead.
+401  | Unauthorized        | Jim, You have to provide your private API Key.
+403  | Transaction Error   | Transaction could not be completed, please check your payment data.
+404  | Not Found           | There is no entity with this identifier, did you use the right one?
+412  | Precondition Failed | I guess you're missing at least one required parameter?
+5xx  | Server Error        | Doh, we did something wrong :/
 
 Note:
 

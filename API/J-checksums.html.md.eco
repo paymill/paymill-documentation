@@ -1,0 +1,86 @@
+---
+title: "Checksums"
+anchor: "checksums"
+type: "apiDoc"
+---
+
+Checksum validation is a simple method to ensure the integrity of transferred data. Basically, we generate a hash out of the given parameters and your private API key. If you send us a request with transaction data and the generated checksum, we can easily validate the data. To make the checksum computation as easy as possible we provide this endpoint for you.
+
+For transactions that are started client-side, e.g. PayPal checkout, it is *required* to first create a checksum on your server and then provide that checksum when starting the transaction in the browser. The checksum needs to contain *all* data required to subsequently create the actual transaction.
+
+## Create new Checksum
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/checksums \
+  -u "<YOUR_PRIVATE_KEY>:" \
+  -d "checksum_type=paypal" \
+  -d "amount=4200" \
+  -d "currency=EUR" \
+  -d "description=Test Transaction" \
+  -d "return_url=https://www.example.com/store/checkout/result" \
+  -d "cancel_url=https://www.example.com/store/checkout/retry"
+```
+
+> Response
+
+```json
+{
+    "id":"chk_9fc0af0f6107706e4a4b8d7e71b5",
+    "checksum":"edc26c087697a277230539da0e89b1ab96b93bc635e980c78573de6be3041689c77401bc299aa8c98cda33abe6b097f3df009feb495b19215f407c9655401c1b",
+    "data":"amount=4200&currency=EUR&description=Test+Transaction&return_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fresult&cancel_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fretry",
+    "type":"paypal",
+    "app_id":null,
+    "created_at":1433248940,
+    "updated_at":1433248940
+}
+```
+
+### Attributes
+
+**id:** _string_  
+ID of this checksum
+
+**checksum_type:** _enum(paypal)_  
+Type of request verified by this checksum
+
+**amount:** _ string_  
+Formatted amount of this transaction.
+
+**currency:** _array_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+
+**description:** _array_  
+A short description for the transaction
+
+**return_url:** _string_
+URL to redirect customers to after checkout has completed. Transaction status will be closed, failed or pending.  
+**Mandatory for client-side transactions, e.g. PayPal**
+
+**cancel_url:** _string_  
+URL to redirect customers to after they have canceled the checkout. As a result, there will be no transaction.  
+**Mandatory for client-side transactions, e.g. PayPal**
+
+**items:** _list [shopping cart items](#shopping-cart-item-object) or null_  
+Shopping cart items purchased with this transaction.
+
+**shipping_address:** _[address object](#address-object) or null_  
+Shipping address for this transaction.
+
+**billing_address:** _[address object](#address-object) or null_  
+Billing address for this transaction.
+
+**app_id:** _string or null_  
+App (ID) that created this refund or null if created by yourself.
+
+**fee_amount:** _integer or null_  
+Fee included in the transaction amount (set by a connected app).  
+**Mandatory if fee_payment is set**
+
+**fee_payment:** _string or null_  
+The identifier of the payment from which the fee will be charged ([creditcard-object](#creditcard-object) or [directdebit-object](#directdebit-object)).  
+**Mandatory if fee_amount is set**
+
+**fee_currency:** _string or unset_  
+The currency of the fee (e.g. EUR, USD). If it´s not set, the currency of the transaction is used. We suggest to always use as it might cause problems, if your account does not support the same currencies as your merchants accounts.

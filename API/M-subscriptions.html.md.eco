@@ -47,32 +47,76 @@ Subscriptions allow you to charge recurring payments on a client's credit card /
 </pre>
 
 
-Attribute             | Type                                                              | Description 
-----------------------|-------------------------------------------------------------------|-----------------
-id                    | string                                                            | Unique identifier of this subscription
-livemode              | boolean                                                           | Whether this subscription was issued while being in live mode or not
-offer                 | [offer object](#-offer-object)                                    |
-amount                | integer                                                           | the amount of the subscription in cents
-temp_amount           | integer / null                                                    | a one-time amount in cents, will charge once only
-currency              | string                                                            | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
-interval              | string                                                            | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY
-name                  | string / null                                                     | name of the subscription
-trial_start           | integer / null                                                    | Unix-Timestamp for the trial period start
-trial_end             | integer / null                                                    | Unix-Timestamp for the trial period end
-period_of_validity    | string / null                                                     | limit the validity of the subscription, format: integer MONTH/YEAR/WEEK/DAY
-end_of_period         | Unix-Timestamp / null                                             | expiring date of the subscription
-next_capture_at       | integer                                                           | Unix-Timestamp for the next charge
-created_at            | integer                                                           | Unix-Timestamp for the creation Date
-updated_at            | integer                                                           | Unix-Timestamp for the last update
-canceled_at           | integer / null                                                    | Unix-Timestamp for the cancel date
-payment               | [payment object for credit card](#-payment-object-for-credit-card-payments) / [payment object for direct debit](#-payment-object-for-direct-debit-payments)  | payment object for credit card or payment object for direct debit
-mandate_reference     | string or null                                                    | SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain
-digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
-client                | [client object](#-client-object)                                  | client object
-app_id                | string / null                                                     | App (ID) that created this subscription or null if created by yourself
-is_canceled           | boolean                                                           | subscription is marked as canceled or not
-is_deleted            | boolean                                                           | subscription is marked as deleted or not
-status                | string                                                            | shows, if subscription is "active", "inactive", "expired" or "failed"
+### Attributes
+
+**id:**                    _string_  
+Unique identifier of this subscription
+
+**livemode:**              _boolean_  
+Whether this subscription was issued while being in live mode or not
+
+**offer:**                 _[offer object](#-offer-object)_  
+
+**amount:**                _integer_  
+the amount of the subscription in cents
+
+**temp_amount:**           _integer / null_  
+a one-time amount in cents, will charge once only
+
+**currency:**              _string  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+
+**interval:**              _string_  
+Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY
+
+**name:**                  _string / null_  
+name of the subscription
+
+**trial_start:**           _integer / null_  
+Unix-Timestamp for the trial period start
+
+**trial_end:**             _integer / null_  
+Unix-Timestamp for the trial period end
+
+**period_of_validity:**    _string / null_  
+limit the validity of the subscription, format: integer MONTH | YEAR | WEEK | DAY
+
+**end_of_period:**         _Unix-Timestamp / null_  
+expiring date of the subscription
+
+**next_capture_at:**       _integer_  
+Unix-Timestamp for the next charge
+
+**created_at:**            _integer_  
+Unix-Timestamp for the creation Date
+
+**updated_at:**            _integer_  
+Unix-Timestamp for the last update
+
+**canceled_at:**           _integer / null_  
+Unix-Timestamp for the cancel date
+
+**payment:**               _[payment object for credit card](#-payment-object-for-credit-card-payments) / [payment object for direct debit](#-payment-object-for-direct-debit-payments)_  
+payment object for credit card or payment object for direct debit
+
+**mandate_reference:**     _string or null_  
+SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
+
+**client:**                _[client object](#-client-object)  
+client object
+
+**app_id:**                _string / null_
+App (ID) that created this subscription or null if created by yourself
+
+**is_canceled:**           _boolean_
+subscription is marked as canceled or not
+
+**is_deleted:**            _boolean_  
+subscription is marked as deleted or not
+
+**status:**                _string_  
+shows, if subscription is "active", "inactive", "expired" or "failed"
+
 
 ## Create new `Subscription`
 
@@ -302,17 +346,36 @@ curl https://api.paymill.com/v2.1/subscriptions \
 
 This function creates a subscription between a client and an offer. A client can have several subscriptions to different offers, but only one subscription to the same offer. The clients is charged for each billing interval entered.
 
-Parameter           | Type            | Description 
---------------------|-----------------|-----------------
-offer               | string          | Unique offer identifier (if no offer is given, amount, currency and interval are required)
-payment             | string          | Unique payment identifier
-client              | string          | Unique client identifier. If not provided the client from the payment is being used
-amount              | integer (>0)    | the amount of the subscription in cents (is required if no offer id is given)
-currency            | string          | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (is required if no offer id is given)
-interval            | string          | charged. Format: number DAY|WEEK|MONTH|YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY ( is required if no offer id is given)
-name                | string / null   | name of the subscription (optional)
-period_of_validity  | string / null   | limit the validity of the subscription, format: integer MONTH|YEAR|WEEK|DAY (optional)
-start_at            | integer / null  | Unix-Timestamp for the subscription start date, if trial_end > start_at, the trial_end will be set to start_at (optional)
+
+### Attributes
+
+**offer:**               _string  
+Unique offer identifier (if no offer is given, amount, currency and interval are required)
+
+**payment:**             _string_
+Unique payment identifier
+
+**client:**              _string_  
+Unique client identifier. If not provided the client from the payment is being used
+
+**amount:**              _integer (>0)_  
+the amount of the subscription in cents (is required if no offer id is given)
+
+**currency:**            _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (is required if no offer id is given)
+
+**interval:**            _string_  
+charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY ( is required if no offer id is given)
+
+**name:**                _string / null_  
+name of the subscription (optional)
+
+**period_of_validity:**  _string / null_  
+limit the validity of the subscription, format: integer MONTH | YEAR | WEEK | DAY (optional)
+
+**start_at:**            _integer / null_  
+Unix-Timestamp for the subscription start date, if trial_end > start_at, the trial_end will be set to start_at (optional)
+
 
 
 ## `Subscription` details
@@ -391,9 +454,11 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dc180b755d10da324864 \
 
 This function returns the detailed information of the concrete requested subscription.
 
-Parameter         | Type            | Description 
-------------------|-----------------|-----------------
-id                | string          | Unique identifier for the subscription
+
+### Attributes
+
+**id:**                _string_  
+Unique identifier for the subscription
 
 
 ## Update `Subscription`
@@ -682,20 +747,45 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
 
 This function updates the subscription of a client. You can change e.g. the trial_end attribute to stop the trial period. Or you can assign the subscription to another offer (offer=<new_offer_id>), change the amount or pause it. NOTE: changing the amount and offer within one request is not possible (throw an exception).
 
-Attribute             | Type                | Description 
-----------------------|---------------------|-----------------
-id                    | string              | Unique identifier for the subscription
-payment               | string              | Unique identifier describing a payment of the client
-offer                 | string              | Unique identifier describing the offer which is subscribed to the client (optional)
-offer_change_type     | integer / null      | permitted values: 0,1,2; linked and required with ‘offer', default: 0 (optional)
-amount                | integer (>0)        | the amount of the subscription in cents (optional)
-amount_change_type    | int                 | permitted values: 0,1; linked and required with ‘amount' (optional)
-pause                 | boolean             | deactivate a subscription or reactivate it, false: reactivate, true: deactivate (optional)
-currency              | string              | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
-interval              | string              | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR [, WEEKDAY] (optional)
-name                  | string              | name of the subscription (optional)
-period_of_validity    | string              | limit the validity of the subscription, format: integer MONTH/YEAR/WEEK/DAY, set to "remove" to unlimit the validity period (optional)
-trial_end             | boolean             | set to false to stop the trial period immediatly (optional)
+
+### Attributes
+
+**id:**                   _string_  
+Unique identifier for the subscription
+
+**payment:**              _string_  
+Unique identifier describing a payment of the client
+
+**offer:**                _string_  
+Unique identifier describing the offer which is subscribed to the client (optional)
+
+**offer_change_type:**    _integer / null_  
+permitted values: 0,1,2; linked and required with ‘offer', default: 0 (optional)
+
+**amount:**               _integer (>0)_  
+the amount of the subscription in cents (optional)
+
+**amount_change_type:**   _integer_  
+permitted values: 0,1; linked and required with ‘amount' (optional)
+
+**pause:**                _boolean_  
+deactivate a subscription or reactivate it, false: reactivate, true: deactivate (optional)
+
+**currency:**             _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
+
+**interval:**             _string_  
+Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] (optional)
+
+**name:**                 _string_  
+name of the subscription (optional)
+
+**period_of_validity:**   _string_  
+limit the validity of the subscription, format: integer MONTH | YEAR | WEEK | DAY, set to "remove" to unlimit the validity period (optional)
+
+**trial_end:**            _boolean_  
+set to false to stop the trial period immediatly (optional)
+
 
 
 ## Cancel or Delete `Subscription`
@@ -845,10 +935,15 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
 
 This function cancels or remove an existing subscription. The subscription will be directly terminated or deleted and no pending transactions will be charged. Deleted subscriptions will not be displayed.
 
-Attribute             | Type                | Description 
-----------------------|---------------------|-----------------
-id                    | string              | Unique identifier for the subscription
-remove                | boolean             | cancel (false) or delete (true) a subscription
+
+### Attributes
+
+**id:**                    _string_  
+Unique identifier for the subscription
+
+**remove:**                _boolean_  
+cancel (false) or delete (true) a subscription
+
 
 
 ## List `Subscriptions`

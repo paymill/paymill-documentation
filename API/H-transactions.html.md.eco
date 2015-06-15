@@ -28,6 +28,9 @@ A transaction is the charging of a credit card or a direct debit. In this case y
     "short_id" : "0000.1212.3434",
     "is_fraud" : false,
     "invoices" : [],
+    "items": [ "<Object>", "<Object>", "<Object>" ],
+    "shipping_address": "<Object>",
+    "billing_address": "<Object>"
     "app_id" : null,
     "preauthorization" : null,
     "fees" : [],
@@ -47,42 +50,103 @@ A transaction is the charging of a credit card or a direct debit. In this case y
   - <a href="#-transaction-object">transaction</a>.preauthorization returns a <a href="#-preauthorization-object">preauthorization object</a>
 </pre>
 
-Attribute                 | Type                                                                                        | Description 
---------------------------|---------------------------------------------------------------------------------------------|-----------------
-id                        | string                                                                                      | Unique identifier for this preauthorization
-amount                    | string                                                                                      | Formatted amount of this transaction
-origin_amount             | integer (>0)                                                                                | The used amount, smallest possible unit per currency (for euro, we're calculating the amount in cents)
-status                    | enum (open, pending, closed, failed, partial_refunded, refunded, preauthorize, chargeback)  | Indicates the current status of this transaction, e.g closed means the transaction is sucessfully transfered, refunded means that the amount is fully or in parts refunded.
-description               | string or null                                                                              | Need a additional description for this transaction? Maybe your shopping cart ID or something like that?
-livemode                  | boolean                                                                                     | Whether this preauthorization was issued while being in live mode or not
-refunds                   | list [refund objects](#-refund-object) / null                                               |
-client                    | [client object](-client-object) / null                                                      |
-currency                  | string                                                                                      | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
-created_at                | integer                                                                                     | Unix-Timestamp for the creation date
-updated_at                | integer                                                                                     | Unix-Timestamp for the last update
-response_code             | integer                                                                                     | [Response code](#response-codes)
-short_id                  | string                                                                                      | Unique identifier of this transaction provided to the acquirer for the statements
-is_fraud                  | boolean                                                                                     | The transaction is marked as fraud or not
-invoices                  | list                                                                                        | PAYMILL invoice where the transaction fees are charged or null
-app_id                    | string / null                                                                               | App (ID) that created this transaction or null if created by yourself
-preauthorization          | [preauthorizations-object](#-preauthorization-object) / null                                 |
-fees                      | list                                                                                        | App fees or null
-payment                   | [payment object for credit card](#-payment-object-for-credit-card-payments) / [directdebit-object](#-payment-object-for-direct-debit-payments) / null |
-mandate_reference         | string / null                                                                               | SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain: digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
-is_refundable             | boolean                                                                                     | The transaction is refundable or not
-is_markable_as_fraud      | boolean                                                                                     | The transaction is markable is fraud or not
+### Attributes
+
+**id:** _string_  
+Unique identifier for this preauthorization
+
+**amount:** _string_  
+Formatted amount of this transaction
+
+**origin_amount:** _integer (>0)_  
+The used amount, smallest possible unit per currency (for euro, we're calculating the amount in cents)
+
+**status:** _enum (open, pending, closed, failed, partial_refunded, refunded, preauthorize, chargeback)_  
+Indicates the current status of this transaction, e.g closed means the transaction is sucessfully transfered, refunded means that the amount is fully or in parts refunded.
+
+**description:** _string or null_  
+Need a additional description for this transaction? Maybe your shopping cart ID or something like that?
+
+**livemode:** _boolean_  
+Whether this preauthorization was issued while being in live mode or not
+
+**refunds:** _list [refund objects](#-refund-object) or null_  
+
+**client:** _[client object](-client-object) or null_  
+
+**currency:** _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+
+**created_at:** _integer_  
+Unix-Timestamp for the creation date
+
+**updated_at:** _integer_  
+Unix-Timestamp for the last update
+
+**response_code:** _integer_  
+[Response code](#response-codes)
+
+**short_id:** _string_  
+Unique identifier of this transaction provided to the acquirer for the statements
+
+**is_fraud:** _boolean_  
+The transaction is marked as fraud or not
+
+**invoices:** _list_  
+PAYMILL invoice where the transaction fees are charged or null
+
+**items:** _list [shopping cart items](#shopping-cart-item-object) or null_  
+Shopping cart items purchased with this transaction.
+
+**shipping_address:** _[address object](#address-object) or null_  
+Shipping address for this transaction.
+
+**billing_address:** _[address object](#address-object) or null_  
+Billing address for this transaction.
+
+**app_id:** _string or null_  
+App (ID) that created this transaction or null if created by yourself
+
+**preauthorization:** _[preauthorizations-object](#-preauthorization-object) or null_  
+
+**fees:** _list_  
+App fees or null
+
+**payment:** _[payment object for credit card](#-payment-object-for-credit-card-payments) / [directdebit-object](#-payment-object-for-direct-debit-payments) or null_  
+
+**mandate_reference:** _string or null_  
+SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain: digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
+
+**is_refundable:** _boolean_  
+The transaction is refundable or not
+
+**is_markable_as_fraud:** _boolean_  
+The transaction is markable is fraud or not
 
 
 ## `Fee` Object
 
-Attribute       | Type               | Description 
-----------------|--------------------|-----------------
-type            | string             | Fee type
-application     | string             | Unique identifier of the app which charges the fee
-payment         | string             | Unique identifier of the payment from which the fee will be charged
-amount          | integer            | Fee amount in the smallest currency unit e.g. "420" for 4.20€
-currency        | string             | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
-billed_at       | integer or null    | Unix-Timestamp for the billing date
+### Attributes
+
+
+**type**        _string_  
+Fee type
+
+**application** _string_  
+Unique identifier of the app which charges the fee
+
+**payment**     _string_  
+Unique identifier of the payment from which the fee will be charged
+
+**amount**      _integer_  
+Fee amount in the smallest currency unit e.g. "420" for 4.20€
+
+**currency**    _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+
+**billed_at**   _integer or null_  
+Unix-Timestamp for the billing date
+
 
 
 ## Create new `Transaction`
@@ -144,6 +208,9 @@ curl https://api.paymill.com/v2.1/transactions \
         "short_id" : "0000.1212.3434",
         "is_fraud" : false,
         "invoices" : [],
+        "items": [ "<Object>", "<Object>", "<Object>" ],
+        "shipping_address": "<Object>",
+        "billing_address": "<Object>"
         "app_id" : null,
         "preauthorization" : null,
         "fees" : [],
@@ -212,6 +279,9 @@ curl https://api.paymill.com/v2.1/transactions \
         "short_id" : "0000.1212.3434",
         "is_fraud" : false,
         "invoices" : [],
+        "items": [ "<Object>", "<Object>", "<Object>" ],
+        "shipping_address": "<Object>",
+        "billing_address": "<Object>"
         "app_id" : null,
         "preauthorization" : null,
         "fees" : [],
@@ -281,6 +351,9 @@ curl https://api.paymill.com/v2.1/transactions \
         "short_id" : "0000.1212.3434",
         "is_fraud" : false,
         "invoices" : [],
+        "items": [ "<Object>", "<Object>", "<Object>" ],
+        "shipping_address": "<Object>",
+        "billing_address": "<Object>"
         "app_id" : null,
         "preauthorization" : null,
         "fees" : [],
@@ -349,6 +422,9 @@ curl https://api.paymill.com/v2.1/transactions \
         "short_id" : "0000.1212.3434",
         "is_fraud" : false,
         "invoices" : [],
+        "items": [ "<Object>", "<Object>", "<Object>" ],
+        "shipping_address": "<Object>",
+        "billing_address": "<Object>"
         "app_id" : null,
         "preauthorization" : null,
         "fees" : [],
@@ -420,6 +496,9 @@ curl https://api.paymill.com/v2.1/transactions \
         "short_id" : "0000.1212.3434",
         "is_fraud" : false,
         "invoices" : [],
+        "items": [ "<Object>", "<Object>", "<Object>" ],
+        "shipping_address": "<Object>",
+        "billing_address": "<Object>"
         "app_id" : null,
         "preauthorization" : null,
         "fees" : [
@@ -454,19 +533,38 @@ Note
 The transaction will not be charged at the bank if the test keys are implemented in your code. Please use only the test credit cards mentioned in the documentation.
 
 
+### Attributes
 
-Parameter         | Type                      | Description 
-------------------|---------------------------|-----------------
-amount            | integer (>0)              | Amount (in cents) which will be charged
-currency          | string                    | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
-description       | string / null             | A short description for the transaction
-client            | string / null             | The identifier of a client ([client-object](#-client-object)). When this parameter is used, you have also to specify a payment method which is not assigned to a client yet. If you attempt to use this parameter when creating a transaction and when specifying a token or preauthorization, the specified client will be ignored.
-token             | string                    | A token generated through our JavaScript-Bridge. When this parameter is used, none of the following should be used: payment, preauthorization.
-payment           | string                    | The identifier of a payment ([creditcard-object](#payment-object-for-credit-card-payments) or [directdebit-object](#payment-object-for-direct-debit-payments)). When this parameter is used, none of the following should be used: token, preauthorization.
-preauthorization  | string                    | The identifier of a preauthorization ([preauthorization-object](#-preauthorization-object)). When this parameter is used, none of the following should be used: token, payment.
-fee_amount        | integer / null            | Fee included in the transaction amount (set by a connected app). Mandatory if fee_payment is set
-fee_payment       | string / null             | The identifier of the payment from which the fee will be charged ([creditcard-object](#payment-object-for-credit-card-payments) or [directdebit-object](#payment-object-for-direct-debit-payments)).
-fee_currency      | string / unset            | The currency of the fee (e.g. EUR, USD). If it´s not set, the currency of the transaction is used. We suggest to always use as it might cause problems, if your account does not support the same currencies as your merchants accounts.
+**amount**       _integer (>0)_  
+Amount (in cents) which will be charged
+
+**currency**     _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+
+**description**  _string or null_  
+A short description for the transaction
+
+**client**       _string or null_  
+The identifier of a client ([client-object](#-client-object)). When this parameter is used, you have also to specify a payment method which is not assigned to a client yet. If you
+attempt to use this parameter when creating a transaction and when specifying a token or preauthorization, the specified client will be ignored.
+
+**token**        _string_  
+A token generated through our JavaScript-Bridge. When this parameter is used, none of the following should be used: payment, preauthorization.
+
+**payment**      _string_  
+The identifier of a payment ([creditcard-object](#payment-object-for-credit-card-payments) or [directdebit-object](#payment-object-for-direct-debit-payments)). When this parameter is used, none of the following should be used: token, preauthorization.
+
+**preauthorization**  _string_  
+The identifier of a preauthorization ([preauthorization-object](#-preauthorization-object)). When this parameter is used, none of the following should be used: token, payment.
+
+**fee_amount**        _integer or null_  
+Fee included in the transaction amount (set by a connected app). Mandatory if fee_payment is set
+
+**fee_payment**       _string or null_  
+The identifier of the payment from which the fee will be charged ([creditcard-object](#payment-object-for-credit-card-payments) or [directdebit-object](#payment-object-for-direct-debit-payments)).
+
+**fee_currency**      _string / unset_  
+The currency of the fee (e.g. EUR, USD). If it´s not set, the currency of the transaction is used. We suggest to always use as it might cause problems, if your account does not support the same currencies as your merchants accounts.
 
 
 ## `Transaction` details
@@ -524,6 +622,9 @@ curl https://api.paymill.com/v2.1/transactions/tran_023d3b5769321c649435 \
         "short_id" : "0000.1212.3434",
         "is_fraud" : false,
         "invoices" : [],
+        "items": [ "<Object>", "<Object>", "<Object>" ],
+        "shipping_address": "<Object>",
+        "billing_address": "<Object>"
         "app_id" : null,
         "preauthorization" : null,
         "fees" : [],
@@ -588,6 +689,9 @@ curl https://api.paymill.com/v2.1/transactions/slv_4125875679 \
         "short_id" : "0000.1212.3434",
         "is_fraud" : false,
         "invoices" : [],
+        "items": [ "<Object>", "<Object>", "<Object>" ],
+        "shipping_address": "<Object>",
+        "billing_address": "<Object>"
         "app_id" : null,
         "preauthorization" : null,
         "fees" : [],
@@ -609,10 +713,13 @@ curl https://api.paymill.com/v2.1/transactions/slv_4125875679 \
 To receive the details of an existing transaction, call the unique transaction ID or the unique slv number. You can find the ID in the response of the previous request (or the slv number on your account statement). The return is a refund object with the information of the used payment, client and transaction attributes.
 
 
-Parameter      | Type                     | Description 
----------------|--------------------------|-----------------
-id             | string                   | Unique identifier of this transaction
-slv number     | string                   | Unique 10 character long slv number of this transaction
+### Attributes
+
+**id**             _string_  
+Unique identifier of this transaction
+
+**slv number**     _string_  
+Unique 10 character long slv number of this transaction
 
 
 ## Update `Transaction`
@@ -670,6 +777,9 @@ curl https://api.paymill.com/v2.1/transactions/tran_023d3b5769321c649435 \
         "short_id" : "0000.1212.3434",
         "is_fraud" : false,
         "invoices" : [],
+        "items": [ "<Object>", "<Object>", "<Object>" ],
+        "shipping_address": "<Object>",
+        "billing_address": "<Object>"
         "app_id" : null,
         "preauthorization" : null,
         "fees" : [],
@@ -684,10 +794,13 @@ curl https://api.paymill.com/v2.1/transactions/tran_023d3b5769321c649435 \
 This function updates the description of a transaction.
 
 
-Parameter      | Type                     | Description 
----------------|--------------------------|-----------------
-id             | string                   | Unique identifier of this transaction
-description    | string / null            | Description for the transaction
+### Attributes
+
+**id**             _string_  
+Unique identifier of this transaction
+
+**description**    _string or null_  
+Description for the transaction
 
 
 ## List `Transactions`
@@ -744,6 +857,9 @@ curl https://api.paymill.com/v2.1/transactions \
             "short_id" : "0000.1212.3434",
             "is_fraud" : false,
             "invoices" : [],
+            "items": [ "<Object>", "<Object>", "<Object>" ],
+            "shipping_address": "<Object>",
+            "billing_address": "<Object>"
             "app_id" : null,
             "preauthorization" : null,
             "fees" : [],
@@ -767,6 +883,9 @@ curl https://api.paymill.com/v2.1/transactions \
             "short_id" : "0000.1212.3434",
             "is_fraud" : false,
             "invoices" : [],
+            "items": [ "<Object>", "<Object>", "<Object>" ],
+            "shipping_address": "<Object>",
+            "billing_address": "<Object>"
             "app_id" : null,
             "preauthorization" : null,
             "fees" : [],
@@ -803,6 +922,7 @@ Available [filters](#filter-entries):
   - `updated_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `status=<string> see list below`
   - `last4=<integer> last 4 digits of the credit card`
+  - `short_id=<string>`
 
 Available status for filters:
 

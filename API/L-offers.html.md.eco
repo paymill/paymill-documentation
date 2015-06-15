@@ -28,18 +28,35 @@ An offer is a recurring plan which a user can subscribe to. You can create diffe
 }
 ```
 
+### Attributes
 
-Attribute         | Type                | Description 
-------------------|---------------------|-----------------
-id                | string              | Unique identifier of this offer
-name              | string              | Your name for this offer
-amount            | integer (>0)        | Every interval the specified amount will be charged. Only integer values are allowed (e.g. 42.00 = 4200)
-interval          | string              | Defining how often the client should be charged. Format: number DAY / WEEK / MONTH / YEAR Example: 2 DAY
-trial_period_days | integer / null      | Define an optional trial period in number of days
-created_at        | integer             | Unix-Timestamp for the creation Date
-updated_at        | integer             | Unix-Timestamp for the last update
-subscription      | subscription_count  | Attributes: (integer) if zero, else (string) active, (integer) if zero, else (string) inactive
-app_id            | string / null       | App (ID) that created this client or null if created by yourself
+**id:**                _string_  
+Unique identifier of this offer
+
+**name:**              _string_  
+Your name for this offer
+
+**amount:**            _integer (>0)_  
+Every interval the specified amount will be charged. Only integer values are allowed (e.g. 42.00 = 4200)
+
+**interval:**          _string_  
+Defining how often the client should be charged. Format: number DAY / WEEK / MONTH / YEAR Example: 2 DAY
+
+**trial_period_days:** _integer / null_  
+Define an optional trial period in number of days
+
+**created_at:**        _integer_
+Unix-Timestamp for the creation Date
+
+**updated_at:**        _integer_  
+Unix-Timestamp for the last update
+
+**subscription:**      _subscription_count_  
+Attributes: (integer) if zero, else (string) active, (integer) if zero, else (string) inactive
+
+**app_id:**            _string / null_  
+App (ID) that created this client or null if created by yourself
+
 
 
 ## Create new `Offer`
@@ -104,13 +121,24 @@ curl https://api.paymill.com/v2.1/offers \
 
 With this call you can create an offer via the API. You can also create an offer with the Merchant Centre
 
-Parameter         | Type            | Description 
-------------------|-----------------|-----------------
-amount            | integer (>0)    | Amount (in cents)
-currency          | string          | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
-interval          | string          | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR Example: 2 DAY
-name              | string          | Your name for this offer
-trial_period_days | integer / null  | Define an optional trial period in number of days
+
+### Attributes
+
+**amount:**            _integer (>0)_
+Amount (in cents)
+
+**currency:**          _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+
+**interval:**          _string_  
+Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR Example: 2 DAY
+
+**name:**              _string_  
+Your name for this offer
+
+**trial_period_days:** _integer / null_  
+Define an optional trial period in number of days
+
 
 
 ## `Offer` details
@@ -171,9 +199,11 @@ curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
 
 Getting detailed information about an offer requested with the offer ID.
 
-Parameter         | Type            | Description 
-------------------|-----------------|-----------------
-id                | string          | Unique identifier for the offer
+
+### Attributes
+
+**id:**         _string_  
+Unique identifier for the offer
 
 
 ## Update `Offer`
@@ -240,15 +270,30 @@ curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
 
 Updates the offer. With the update_subscriptions attribute all related subscriptions could be updated too.
 
-Parameter             | Type            | Description 
-----------------------|-----------------|-----------------
-id                    | string          | Unique identifier for the offer
-name                  | string          | Your name for this offer (optional)
-interval              | string          | Defining how often the client should be charged. Format: number DAY/WEEK/MONTH/YEAR (optional)
-amount                | string          | Your amount of the offer in cents (optional)
-currency              | string          | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
-trial_period_days     | integer         | Your trial period in number of days (optional)
-update_subscriptions  | boolean         | Definition, if all related subscriptions also should be updated
+
+### Attributes
+
+**id:**                    _string_  
+Unique identifier for the offer
+
+**name:**                  _string_  
+Your name for this offer (optional)
+
+**interval:**              _string_  
+Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR (optional)
+
+**amount:**                _string_  
+Your amount of the offer in cents (optional)
+
+**currency:**              _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
+
+**trial_period_days:**     _integer_  
+Your trial period in number of days (optional)
+
+**update_subscriptions:**  _boolean_
+Definition, if all related subscriptions also should be updated
+
 
 ## Remove `Offer`
 
@@ -298,10 +343,15 @@ curl https://api.paymill.com/v2.1/offers/offer_40237e20a7d5a231d99b \
 
 You only can delete an offer and decide, if all related subscriptions also should be deleted or not.
 
-Parameter                 | Type            | Description 
---------------------------|-----------------|-----------------
-id                        | string          | Unique identifier for the offer
-remove_with_subscriptions | boolean         | Definition if all related subscriptions also should be deleted
+
+### Attributes
+
+**id:**                        _string_  
+Unique identifier for the offer
+
+**remove_with_subscriptions:** _boolean_  
+Definition if all related subscriptions also should be deleted
+
 
 
 ## List `Offers`

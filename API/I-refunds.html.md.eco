@@ -29,17 +29,34 @@ type: "apiDoc"
   - <a href="#-refund-object">refund</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
 </pre>
 
-Attribute                 | Type                                        | Description 
---------------------------|---------------------------------------------|-----------------
-id                        | string                                      | Unique identifier for this refund
-transaction               | [transaction object](#-transaction-object)  |
-amount                    | integer (>0)                                | The refunded amount
-status                    | enum  (open, pending, refunded)             | Indicates the current status of this transaction
-description               | string or null                              | The description given for this refund
-livemode                  | boolean                                     | Whether this refund happend in test or in livemode
-created_at                | integer                                     | Unix-Timestamp for the creation date
-updated_at                | integer                                     | Unix-Timestamp for the last update
-app_id                    | string / null                               | App (ID) that created this refund or null if created by yourself
+
+### Attributes
+
+**id:**                         _string_  
+Unique identifier for this refund
+
+**transaction:**                _[transaction object](#-transaction-object)_
+
+**amount:**                     _integer (>0)_  
+The refunded amount
+
+**status:**                     _enum  (open, pending, refunded)_  
+Indicates the current status of this transaction
+
+**description:**                _string or null_  
+The description given for this refund
+
+**livemode:**                   _boolean_  
+Whether this refund happend in test or in livemode
+
+**created_at:**                 _integer_  
+Unix-Timestamp for the creation date
+
+**updated_at:**                 _integer_  
+Unix-Timestamp for the last update
+
+**app_id:**                     _string / null_  
+App (ID) that created this refund or null if created by yourself
 
 
 Refunds are own objects with own calls for existing transactions. The refunded amount will be credited to the account of the client.
@@ -115,10 +132,13 @@ Note
   - There is no need to define a currency for refunds, because they will be in the same currency as the original transaction
 
 
-Parameter      | Type            | Description 
----------------|-----------------|-----------------
-amount         | integer (>0)    | Amount (in cents) which will be charged
-description    | string / null   | Additional description for this refund
+### Attributes
+
+**amount:**         _integer (>0)_  
+Amount (in cents) which will be charged
+
+**description:**    _string / null_  
+Additional description for this refund
 
 ## `Refund` Details
 

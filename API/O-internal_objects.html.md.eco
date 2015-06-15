@@ -1,0 +1,243 @@
+---
+title: "Internal Objects"
+anchor: "internal-objects"
+type: "apiDoc"
+---
+
+Here you find the internal objects which do not have a public API endpoint yet.
+
+## Address Object
+
+An address object belongs to exactly one transaction and can represent either its shipping address or billing address. Note that `state` and `postal_code` are mandatory for PayPal transactions in certain countries, please consult PayPal documentation for more details.
+
+> Example
+
+```json
+{
+    "name": "Max Mustermann",
+    "street_address": "Musterstr. 1",
+    "street_address_addition": "",
+    "city": "Munich",
+    "state": "Bavaria",
+    "postal_code": "80333",
+    "country": "DE",
+    "phone": "+4989123456"
+}
+```
+
+### Attributes
+
+**name:** _string_
+Name of recipient, *max. 128 characters*
+
+**street\_address:** _string_  
+Street address (incl. street number), *max. 100 characters*
+
+**street_address_addition:** _string_  
+Addition to street address (e.g. building, floor, or c/o), *max. 100 characters*
+
+**city:** _string_  
+City, *max. 40 characters*
+
+**state:** _string_  
+State or province, *max. 40 characters*
+
+**postal_code:** _string_  
+Country-specific postal code, *max. 20 characters*
+
+**country:** _string_  
+2-letter country code according to [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+
+***phone:*** _string_  
+Contact phone number, *max. 20 characters*
+
+
+## `Fee` object
+
+> Example
+
+```json
+{
+    "type": "application",
+    "application": "app_1d70acbf80c8c35ce83680715c06be0d15c06be0d",
+    "payment": "pay_917018675b21ca03c4fb",
+    "amount": 420,
+    "currency": "EUR",
+    "billed_at": null
+}
+```
+
+### Attributes
+
+**url**           _string_  
+Recipient of the fee
+
+**application**   _string_  
+If App fee, app object ID (optional)
+
+**payment**       _string_  
+Payment object ID from which the fee gets paid
+
+**amount**        _integer_  
+Formatted fee amount
+
+**currency**      _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+
+**billed_at**     _integer_  
+Unix-Timestamp for the creation date
+
+## `Invoice` object
+
+> Example
+
+```json
+{
+    "invoice_nr": "1293724",
+    "netto": 12399,
+    "brutto": 14755,
+    "status": "sent",
+    "period_from": 1349946151,
+    "period_until": 1352538151,
+    "currency": "EUR",
+    "vat_rate": 19,
+    "billing_date": 1353142951,
+    "invoice_type": "paymill",
+    "last_reminder_date": null
+}
+```
+
+### Attributes
+
+**invoice_nr**          _string_  
+invoice number
+
+**netto**               _integer_  
+Formatted netto amount
+
+**brutto**              _integer_  
+Formatted brutto amount
+
+**status**              _string_  
+Invoice status (e.g. sent, trx_ok, trx_failed, invalid_payment, success, 1st_reminder, 2nd_reminder, 3rd_reminder, suspend, canceled, transferred)
+
+**period_from**         _integer_  
+Unix-Timestamp for the start of this invoice period
+
+**period_until**        _integer_  
+Unix-Timestamp for the end of this invoice period
+
+**currency**            _string_  
+ISO 4217 formatted currency code
+
+**vat_rate**            _integer_  
+VAT rate of the brutto amount
+
+**billing_date**        _integer_  
+Unix-Timestamp for the billing date
+
+**invoice_type**        _enum (paymill, wirecard, acceptance etc.)_  
+Indicates if it"s a PAYMILL invoice or an acquirer payout
+
+**last_reminder_date**  _integer_  
+Unix-Timestamp for last payment reminder
+
+
+
+## `Merchant` object
+
+> Example
+
+```json
+{
+    "identifier_key": "mer_123456789",
+    "email": "mail@example.com",
+    "locale": "de_DE",
+    "country": "DEU",
+    "currencies": ["EUR", "GPB"],
+    "methods": ["visa", "mastercard"]
+}
+```
+
+### Attributes
+
+
+**identifier_key**  _string_  
+Unique identifier of this merchant
+
+**email**           _string_  
+email address
+
+**locale**          _string_  
+culture setting
+
+**county**          _string / null_  
+country code
+
+**currencies**      _List of activated currencies (ISO 4217 formatted)_  
+**Deprecated.** This information is now part of payment_methods
+
+**methods**         _List of activated card brands_  
+List of activated card brands
+
+
+
+## `Payment method` object
+
+> Example
+
+```json
+{
+    "type": "visa",
+    "currency": "EUR",
+    "acquirer": "wirecard"
+}
+```
+
+### Attributes
+
+**type**            _string_  
+Card brand (e.g. visa, mastercard, amex, elv, sepa etc.)
+
+**currency**        _string_  
+ISO 4217 formatted currency code
+
+**acquier**         _string_  
+Acquiring bank enum(wirecard, acceptance, none)
+
+
+
+## Shopping cart item Object
+
+> Example
+
+```json
+{
+    "name": "Sample Product",
+    "description": "Amazing product used as an example",
+    "item_number": "PRD12345",
+    "url": "https://www.example.com/shop/products/12345",
+    "amount": 1000,
+    "quantity": 3
+}
+```
+
+### Attributes
+
+**name:** _string_  
+Item name, *max. 127 characters*
+
+***description:*** _string_  
+Additional description, *max. 127 characters*
+
+**amount:** _integer (> 0)_  
+Price for a single item, including tax, can also be *negative* to act as a discount
+
+**quantity:** _integer (> 0)_  
+Quantity of this item
+
+**item_number:** _string_  
+Item number or other identifier (SKU/EAN/…), *max. 127 characters*
+
+**url:** _string_  
+URL of the item in your store, *max. 2000 characters*

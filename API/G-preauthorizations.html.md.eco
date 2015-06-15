@@ -37,18 +37,36 @@ A preauthorization is valid for 7 days.
   - <a href="#-preauthorization-object">preauthorization</a>.transaction returns a <a href="#-transaction-object">transaction object</a>
 </pre>
 
-Attribute      | Type                                                                                | Description 
----------------|-------------------------------------------------------------------------------------|-----------------
-id             | string                                                                              | Unique identifier for this preauthorization
-description    | string / null                                                                       | Description for this preauthorization (max. 255 chars)
-amount         | string                                                                              | Formatted amount which will be reserved for further transactions
-status         | enum (open, pending, closed, failed, deleted, preauth)                              | Indicates the current status of this preauthorization
-livemode       | boolean                                                                             | Whether this preauthorization was issued while being in live mode or not
-payment        | [payment object for credit card](#-payment-object-for-credit-card-payments) / null  |
-client         | [client object](#-client-object) / null                                             |
-created_at     | integer                                                                             | Unix-Timestamp for the creation date
-updated_at     | integer                                                                             | Unix-Timestamp for the last update
-app_id         | string / null                                                                       | App (ID) that created this preauthorization or null if created by yourself
+
+### Attributes
+
+**id**             _string_  
+Unique identifier for this preauthorization
+
+**description**    _string / null_  
+Description for this preauthorization (max. 255 chars)
+
+**amount**         _string_  
+Formatted amount which will be reserved for further transactions
+
+**status**         _enum (open, pending, closed, failed, deleted, preauth)_  
+Indicates the current status of this preauthorization
+
+**livemode**       _boolean_  
+Whether this preauthorization was issued while being in live mode or not
+
+**payment**        _[payment object for credit card](#-payment-object-for-credit-card-payments) / null_  
+
+**client**         _[client object](#-client-object) / null_  
+
+**created_at**     _integer_  
+Unix-Timestamp for the creation date
+
+**updated_at**     _integer_  
+Unix-Timestamp for the last update
+
+**app_id**         _string / null_  
+App (ID) that created this preauthorization or null if created by yourself
 
 
 ## Create new `Preauthorization`
@@ -182,14 +200,23 @@ curl https://api.paymill.com/v2.1/preauthorizations \
 Use either a token or an existing payment to authorize the given amount.
 
 
+### Attributes
 
-Parameter      | Type                     | Description 
----------------|--------------------------|-----------------
-amount         | integer (>0)             | Amount (in cents) which will be charged
-currency       | string                   | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
-token          | string                   | The identifier of a token
-payment        | string                   | The identifier of a payment (only [creditcard-object](#create-new-credit-card-payment-))
-description    | string / null            | Description for this preauthorization (max. 255 chars)
+**amount**         _integer (>0)_  
+Amount (in cents) which will be charged
+
+**currency**       _string_  
+[ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
+
+**token**          _string_  
+The identifier of a token
+
+**payment**        _string_  
+The identifier of a payment (only [creditcard-object](#create-new-credit-card-payment-))
+
+**description**    _string / null_  
+Description for this preauthorization (max. 255 chars)
+
 
 
 ## `Preauthorization` details
@@ -256,9 +283,10 @@ curl https://api.paymill.com/v2.1/preauthorizations/preauth_31eb90495837447f76b7
 Returns data of a specific preauthorization.
 
 
-Parameter      | Type                     | Description 
----------------|--------------------------|-----------------
-id             | string                   | Unique identifier of this preauthorization
+### Attributes
+
+**id**             _string_  
+Unique identifier of this preauthorization
 
 
 ## Remove `Preauthrization`
@@ -309,9 +337,11 @@ curl https://api.paymill.com/v2.1/preauthorizations/preauth_31eb90495837447f76b7
 This function deletes a preauthorization.
 
 
-Parameter      | Type                     | Description 
----------------|--------------------------|-----------------
-id             | string                   | Unique identifier of this preauthorization
+### Attributes
+
+**id**             _string_  
+Unique identifier of this preauthorization
+
 
 ## List `Preauthrizations`
 
