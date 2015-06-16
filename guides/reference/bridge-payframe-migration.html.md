@@ -1,6 +1,6 @@
 ---
-title: "Credit Card Frame Migration Guide"
-menu: "Credit Card Frame Migration Guide"
+title: "PayFrame Migration Guide"
+menu: "PayFrame Migration Guide"
 type: "guide"
 status: "published"
 menuOrder: 3
