@@ -62,7 +62,7 @@ For the purpose of this guide, let's assume the integration on your site looks s
 
   // Submit handler for payment form.
   var form = $('#payment-form');
-  form.submit(function(event) {
+  form.on('submit', function(event) {
 
     // Don't submit the form yet.
     event.preventDefault();
@@ -81,9 +81,9 @@ For the purpose of this guide, let's assume the integration on your site looks s
         // Token could not be created, handle error.
         console.log(error.apierror, error.message);
       } else {
-        // Attach token to form and submit it.
+        // Attach token to form, remove event handler and submit form.
         form.find('.token').val(result.token);
-        form.submit();
+        form.off('submit').submit();
       }
     });
 
@@ -172,9 +172,9 @@ paymill.createTokenViaFrame({
     // Token could not be created, handle error.
     console.log(error.apierror);
   } else {
-    // Attach token to form and submit it.
+    // Attach token to form, remove event handler and submit form.
     form.find('.token').val(result.token);
-    form.submit();
+    form.off('submit').submit();
   }
 });
 ```
@@ -231,7 +231,7 @@ After having made the changes described above, your integration should now look 
 
   // Submit handler for payment form.
   var form = $('#payment-form');
-  form.submit(function(event) {
+  form.on('submit', function(event) {
 
     // Don't submit the form yet.
     event.preventDefault();
@@ -246,7 +246,7 @@ After having made the changes described above, your integration should now look 
       } else {
         // Attach token to form and submit it.
         form.find('.token').val(result.token);
-        form.submit();
+        form.off('submit').submit();
       }
     });
 
