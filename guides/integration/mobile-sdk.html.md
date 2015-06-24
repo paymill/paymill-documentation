@@ -61,6 +61,7 @@ For details how to integrate the SDK with a particular IDE or build system and O
 <div class="tab-content">
   <div class="tab-pane active" id="integration-ios">
     <ul>
+      <li>Tested with iOS versions 6 to 8.3</li>
       <li><a href="https://github.com/paymill/paymill-ios/releases">SDK</a></li>
       <li><a href="https://github.com/paymill/paymill-ios/tree/master/samples/vouchermill">Sample App</a></li>
       <li><a href="https://github.com/paymill/paymill-example-ios-parse-honeystore">App integration HowTo</a></li>
@@ -70,6 +71,7 @@ For details how to integrate the SDK with a particular IDE or build system and O
 
   <div class="tab-pane" id="integration-android">
     <ul>
+      <li>Tested with Android versions 2.2 (API 8) to 4.2</li>
       <li><a href="https://github.com/paymill/paymill-android/releases">SDK</a></li>
       <li><a href="https://github.com/paymill/paymill-android/tree/master/samples/vouchermill">Sample App</a></li>
       <li><a href="http://paymill.github.io/paymill-android/docs/sdk/">Documentation</a></li>
