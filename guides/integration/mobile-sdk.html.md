@@ -30,7 +30,7 @@ The SDKs enable you to integrate payments quickly, securely, simply and individu
     <p class="col-lg-8">
       Install the Mobile App to create transactions and preauthorizations directly from the SDK.
     </p>
-    <a href="https://paymill.com/mobile-app-install" target="_blank" class="btn btn-medium btn-primary col-lg-4">Install the Mobile App</a>
+    <a href="https://developers-v1.paymill.com/en/mobile-app-install/" target="_blank" class="btn btn-medium btn-primary col-lg-4">Install the Mobile App</a>
   </div>  
 </div>
 
