@@ -217,7 +217,7 @@ Expiry date | Error code | Response text description
 
 You can find the complete list of error codes in the [API reference](/API). The CVC and date tests are to be disregarded as long as they have valid values (see example above).
 
-### How to test chargebacks?
+<!-- ### How to test chargebacks?
 
 For testing chargebacks use following credit card values
 
@@ -251,7 +251,7 @@ The following response messagess could be returned
     <td>12/2019</td>
     <td>`STATE_PROCESSED`</td>
   </tr>
-</table>
+</table> -->
 
 ## 4. How do I test webhooks?
 
