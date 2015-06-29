@@ -230,8 +230,9 @@ Item name, *max. 127 characters*
 ***description:*** _string_  
 Additional description, *max. 127 characters*
 
-**amount:** _integer (> 0)_  
-Price for a single item, including tax, can also be *negative* to act as a discount
+**amount:** _integer_  
+Price for a single item (including tax)  
+Can be positive, zero, or negative (to represent a discount)
 
 **quantity:** _integer (> 0)_  
 Quantity of this item
