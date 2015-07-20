@@ -163,3 +163,6 @@ We would like to thank the following people who helped improve the security of P
 - Hamid Ashraf,               [@hamihax](https://twitter.com/hamihax)
 - Ramin Farajpour Cami,       [@MF4rr3ll](https://twitter.com/MF4rr3ll)
 - Mohamed Chamli,             [@chamli_mohamed](https://twitter.com/chamli_mohamed)
+- Roberto Zanga,              [@MindfreakS01](https://twitter.com/MindfreakS01)
+- Konduru Jashwanth,          [@kondurujashwan5](https://twitter.com/kondurujashwan5)
+- C Vishnu Vardhan Reddy,     [@Vishnu_dfx](https://twitter.com/Vishnu_dfx)
