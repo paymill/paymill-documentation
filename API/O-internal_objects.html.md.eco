@@ -8,7 +8,7 @@ Here you find the internal objects which do not have a public API endpoint yet.
 
 ## Address Object
 
-An address object belongs to exactly one transaction and can represent either its shipping address or billing address. Note that `state` and `postal_code` are mandatory for PayPal transactions in certain countries, please consult PayPal documentation for more details.
+An address object belongs to exactly one transaction and can represent either its shipping address or billing address. Note that `state` is mandatory for PayPal transactions in certain countries, please consult PayPal documentation for more details. `postal_code` is always mandatory. If the country you are using does not have postal codes, you have to set it to `"n/a"`.
 
 > Example
 
@@ -230,8 +230,9 @@ Item name, *max. 127 characters*
 ***description:*** _string_  
 Additional description, *max. 127 characters*
 
-**amount:** _integer (> 0)_  
-Price for a single item, including tax, can also be *negative* to act as a discount
+**amount:** _integer_  
+Price for a single item (including tax)  
+Can be positive, zero, or negative (to represent a discount)
 
 **quantity:** _integer (> 0)_  
 Quantity of this item
