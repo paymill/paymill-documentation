@@ -33,7 +33,7 @@ Name of recipient, *max. 128 characters*
 **street\_address:** _string_
 Street address (incl. street number), *max. 100 characters*
 
-**street_address_addition:** _string_ or null_
+**street_address_addition:** _string_
 Addition to street address (e.g. building, floor, or c/o), *max. 100 characters*
 
 **city:** _string_
@@ -48,7 +48,7 @@ Country-specific postal code, *max. 20 characters*
 **country:** _string_
 2-letter country code according to [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 
-***phone:*** _string_ or null_
+***phone:*** _string_
 Contact phone number, *max. 20 characters*
 
 
