@@ -101,7 +101,7 @@ After PayPal checkout, the customer is redirected to your **return URL**. At thi
 - `paymill_trx_status`: transaction result, either `closed`, `failed` or `pending`.
 - `paymill_response_code`: response code providing more details about the transaction status
 
-Here's an example URL called for a successful transaction:
+Here's an example **return URL** call for a successful transaction:
 
 ```sh
 https://www.example.com/shop/checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000
@@ -122,6 +122,15 @@ You can also find a transaction via its PayPal transaction ID by using the `shor
 curl https://api.paymill.com/v2.1/transactions?short_id=00N9651952085952K \
   -u "<YOUR_PRIVATE_KEY>:"
 ```
+
+Further more you can find a transaction by using the _description_ filter. You should always store a unique identifier (e.g. "shopping_cart_1337") to your transaction description to be able to recover transactions also by your own identifiers.
+
+```sh
+curl https://api.paymill.com/v2.1/transactions?description=shopping_cart_1337 \
+  -u "<YOUR_PRIVATE_KEY>:"
+```
+
+But the most effective way is to activate [transaction webhooks](https://developers.paymill.com/API/#webhooks). They will inform you right away about new transactions or status changes.
 
 ### Handling pending transactions
 
