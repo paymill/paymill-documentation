@@ -49,7 +49,7 @@ In addition to the mandatory payment details listed above, you can specify sever
 
 - **client_id:** Client (ID) where the created payment should belong to (optional).
 
-Please see our guide on [transactions](/guides/reference/payments.html) for more details on payment setup.
+Please see our guide on [payments](/guides/reference/payments.html) for more details on payment setup.
 
 ## PayPal checkout
 
