@@ -84,7 +84,10 @@ You will be passed transaction status, a detailed response code as well as both 
 ```
 
 <div class="info">
-Even if you get the transaction infos as URL params you should verfiy the transaction status by your own. To do so you can do the following things: 1. Add a unique identifier to the transaction description, to be able to recover it afterwards. 2. Enable [transaction webhooks](https://developers.paymill.com/API/#webhooks) to be informed about status changes.
+Even if you get the transaction infos as URL params you should verfiy the transaction status by your own. To do so you can do the following things: 
+
+1. Add a unique identifier to the transaction description, to be able to recover it afterwards. 
+2. Enable [transaction webhooks](https://developers.paymill.com/API/#webhooks) to be informed about new transactions and status changes.
 
 For more information, please refer to our guide about [handling transaction results](/guides/paypal/transactions.html).
 </div>
