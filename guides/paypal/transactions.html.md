@@ -27,11 +27,11 @@ Please refer to our [API reference](/API) for more information on transaction de
 
 A PayPal transaction needs the checksum type to be specified as well as a valid transaction amount and currency. You also need to provide a valid cancel URL and return URL for the customer to return to.
 
-- **Checksum type:** Needs to be set to "PayPal" so that the checksum is later turned into a PayPal transaction.
-- **Amount:** Transaction amount as an integer, e.g. Euro cents. Must be the overall sum of all transaction components (see optional transaction details).
-- **Currency:** Valid currency code for this transaction. Will be used for all amounts within the transaction (see optional transaction details).
-- **Cancel URL:** Used when your customer cancelled during PayPal checkout and returns to your store. At this URL, offer a way to review or modify the order and ask the customer to restart the checkout.
-- **Return URL:** Used when your customer completed PayPal checkout and a transaction was created. The transaction outcome can be *successful*, *failed*, or *pending*. You will receive the transaction ID and status information as URL parameters.
+- **checksum_type:** Needs to be set to "PayPal" so that the checksum is later turned into a PayPal transaction.
+- **amount:** Transaction amount as an integer, e.g. Euro cents. Must be the overall sum of all transaction components (see optional transaction details).
+- **currency:** Valid currency code for this transaction. Will be used for all amounts within the transaction (see optional transaction details).
+- **return_url:** Used when your customer completed PayPal checkout and a transaction was created. The transaction outcome can be *successful*, *failed*, or *pending*. You will receive the transaction ID and status information as URL parameters.
+- **cancel_url:** Used when your customer cancelled during PayPal checkout and returns to your store. At this URL, offer a way to review or modify the order and ask the customer to restart the checkout.
 
 This example checksum contains all mandatory information for a PayPal transaction:
 
@@ -50,11 +50,12 @@ curl https://api.paymill.com/v2.1/checksums \
 
 In addition to the mandatory transaction details listed above, you can specify several other components of a transaction:
 
-- **Shipping address:** Shipping address for this transaction. Sent to PayPal where it's shown to the customer during checkout. PayPal also needs this for you to be eligible for seller protection.
-- **Billing address:** Billing address for this transaction. Not used by PayPal.
-- **Shopping cart:** List of items purchased in this transaction. Each item must have a name, amount and quantity. Additionally you can specify a description, item number (e.g. EAN/SKU) and the URL in your shop.
-- **Shipping costs:** Shipping costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
-- **Handling costs:** Handling costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
+- **shipping_address:** Shipping address for this transaction. Sent to PayPal where it's shown to the customer during checkout. PayPal also needs this for you to be eligible for seller protection.
+- **billing_address:** Billing address for this transaction. Not used by PayPal.
+- **items:** List of items purchased in this transaction. Each item must have a name, amount and quantity. Additionally you can specify a description, item number (e.g. EAN/SKU) and the URL in your shop.
+- **shipping_costs:** Shipping costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
+- **handling_costs:** Handling costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
+- **client_id:** A new transaction will create a new payment. If you specify a client, the new payment will be attachted to it.
 
 Please see our guide on [transactions](/guides/reference/transactions.html) for more details on transaction setup.
 
