@@ -8,7 +8,7 @@ Checksum validation is a simple method to ensure the integrity of transferred da
 
 For transactions that are started client-side, e.g. PayPal checkout, it is *required* to first create a checksum on your server and then provide that checksum when starting the transaction in the browser. The checksum needs to contain *all* data required to subsequently create the actual transaction.
 
-## Create new Checksum
+## Create new transaction checksum
 
 > Request
 
@@ -27,13 +27,17 @@ curl https://api.paymill.com/v2.1/checksums \
 
 ```json
 {
+  "data": {
     "id":"chk_9fc0af0f6107706e4a4b8d7e71b5",
     "checksum":"edc26c087697a277230539da0e89b1ab96b93bc635e980c78573de6be3041689c77401bc299aa8c98cda33abe6b097f3df009feb495b19215f407c9655401c1b",
     "data":"amount=4200&currency=EUR&description=Test+Transaction&return_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fresult&cancel_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fretry",
     "type":"paypal",
+    "action": "transaction",
     "app_id":null,
-    "created_at":1433248940,
-    "updated_at":1433248940
+    "created_at": 1438176779,
+    "updated_at": 1438176779
+  },
+  "mode": "test"
 }
 ```
 
@@ -44,6 +48,9 @@ ID of this checksum
 
 **checksum_type:** _enum(paypal)_  
 Type of request verified by this checksum
+
+**checksum_action:** _enum(transaction, payment)_ or null_
+Requested action verified by this checksum (default: transaction)
 
 **amount:** _ string_  
 Formatted amount of this transaction.
@@ -71,6 +78,9 @@ Shipping address for this transaction.
 **billing_address:** _[address object](#address-object) or null_  
 Billing address for this transaction.
 
+**client_id:** _string or null_  
+Client (ID) where the created payment should belong to.
+
 **app_id:** _string or null_  
 App (ID) that created this refund or null if created by yourself.
 
@@ -87,6 +97,63 @@ The currency of the fee (e.g. EUR, USD). If it´s not set, the currency of the t
 
 **checkout_options:** _[checkout options](#checkout-options) or null_  
 Various options that determine behavior before/during/after checkout such as editability of address fields.
+
+## Create new payment checksum
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/checksums \
+  -u "<YOUR_PRIVATE_KEY>:" \
+  -d "checksum_type=paypal" \
+  -d "checksum_action=payment" \
+  -d "return_url=https://www.example.com/store/checkout/result" \
+  -d "cancel_url=https://www.example.com/store/checkout/retry" \
+  -d "client_id=client_7b7ebc8d0770bc3f7c2e"
+```
+
+> Response
+
+```json
+{
+  "data": {
+    "id": "chk_3902f931f57d6ddb0088bc1e2f94",
+    "checksum": "a4a67b151b9a8c2403cb153fa9628cd7213dbd67a1834ceee7ce03dd651b4db6ad8c07764b1fe6175a9f514aa9bd23b8a982875a8f86fb063dc7c199e75b9332",
+    "data": "return_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fresult&cancel_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fretry&client_id=client_7b7ebc8d0770bc3f7c2e",
+    "type": "paypal",
+    "action": "payment",
+    "app_id": null,
+    "created_at": 1438176779,
+    "updated_at": 1438176779
+  },
+  "mode": "test"
+}
+```
+
+### Attributes
+
+**id:** _string_  
+ID of this checksum
+
+**checksum_type:** _enum(paypal)_  
+Type of request verified by this checksum
+
+**checksum_action:** _enum(transaction, payment)_ or null_
+Requested action verified by this checksum (default: transaction)
+
+**return_url:** _string_
+URL to redirect customers to after checkout has completed. Transaction status will be closed, failed or pending.  
+**Mandatory for client-side transactions, e.g. PayPal**
+
+**cancel_url:** _string_  
+URL to redirect customers to after they have canceled the checkout. As a result, there will be no transaction.  
+**Mandatory for client-side transactions, e.g. PayPal**
+
+**client_id:** _string or null_  
+Client (ID) where the created payment should belong to.
+
+**app_id:** _string or null_  
+App (ID) that created this payment or null if created by yourself.
 
 ## Checkout Options
 
