@@ -98,13 +98,14 @@ After PayPal checkout, the customer is redirected to your **return URL**. At thi
 
 - `paymill_trx_id`: PAYMILL transaction ID, used to identify the transaction in PAYMILL's system
 - `paypal_trx_id`: PayPal transaction ID, used to identify the transaction in PayPal's system
-- `paymill_trx_status`: transaction result, either `closed`, `failed` or `pending`.
-- `paymill_response_code`: response code providing more details about the transaction status
+- `paymill_trx_status`: Transaction result, either `closed`, `failed` or `pending`.
+- `paymill_response_code`: Response code providing more details about the transaction status
+- `paymill_mode`: Indicates if the transaction was made in `live` or `test` mode.
 
 Here's an example **return URL** call for a successful transaction:
 
 ```sh
-https://www.example.com/shop/checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000
+https://www.example.com/shop/checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000&paymill_mode=test
 ```
 
 ### Retrieving transaction details
