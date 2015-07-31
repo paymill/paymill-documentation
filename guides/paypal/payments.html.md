@@ -48,6 +48,7 @@ curl https://api.paymill.com/v2.1/checksums \
 In addition to the mandatory payment details listed above, you can specify several other components of a payment:
 
 - **client_id:** Client (ID) where the created payment should belong to (optional).
+- **reusable_payment_description:** The Description appears at the checkout page (max. 127 characters).
 
 Please see our guide on [payments](/guides/reference/payments.html) for more details on payment setup.
 
