@@ -57,7 +57,7 @@ In addition to the mandatory transaction details listed above, you can specify s
 - **handling_costs:** Handling costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - **client_id:** A new transaction will create a new payment. If you specify a client, the new payment will be attachted to it.
 - **request_reusable_payment:** Set this to `1` if you want to ask the buyer at the same time for a billing agreement. This means you can reuse the resulting payment to do further transactions without the need of asking the buyer again for permisson.
-- **reusable_payment_description:** The set description appears at the checkout page when you request permission for a resuable payment.
+- **reusable_payment_description:** The description appears at the checkout page when you request permission for a resuable payment (max. 127 characters).
 
 Please see our guide on [transactions](/guides/reference/transactions.html) for more details on transaction setup.
 
@@ -71,7 +71,7 @@ PayPal transactions are initiated on your website. The customer is redirected to
 
 1. Include the PAYMILL JavaScript bridge.
 - When button is clicked, use our JS bridge to start PayPal checkout.
-- Provide callback to handle any errors during transaction setup (e.g. invalid data)
+- Provide callback to handle any errors during transaction setup (e.g. invalid data).
 
 ```javascript
 paymill.createTransaction({
