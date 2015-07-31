@@ -105,3 +105,7 @@ After a payment has created, you can retrieve additional payment details from ou
 curl https://api.paymill.com/v2.1/payments/pay_2af32f858a47babeff78aeef \
   -u "<YOUR_PRIVATE_KEY>:"
 ```
+
+<div class="info">If the payment attribute `is_recurring` is `true`, you can reuse it for creating transactions or subscriptions.<br>
+See [Create new Transaction with payment](/API/#-transaction-object) and [Create new Subscription](/API/#-subscription-object) for furhter information.
+</div>
