@@ -87,10 +87,10 @@ https://www.example.com/shop/checkout/retry
 
 After PayPal checkout, the customer is redirected to your **return URL**. At this point, a payment has been created. The payment result is provided using the following URL parameters:
 
-- `paymill_payment_id`: PAYMILL payment ID, used to identify the payment in PAYMILL's system
-- `paymill_response_code`: Response code providing more details about the transaction status
+- `paymill_payment_id`: PAYMILL payment ID, used to identify the payment in PAYMILL's system.
+- `paymill_response_code`: Response code providing more details about the transaction status.
 - `paymill_mode`: Indicates if the transaction was made in `live` or `test` mode.
-- 
+
 Here's an example URL called for a successful transaction:
 
 ```sh
