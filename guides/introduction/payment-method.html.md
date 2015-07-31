@@ -85,7 +85,7 @@ In order to store the credit card data of a client, you must create his profile 
       ```
       curl https://api.paymill.com/v2.1/payments \
         -u <YOUR_PRIVATE_KEY>: \
-        -d "token=098f6bcd4621d373cade4e832627b4f6" \
+        -d "token=<PAYMILL_TOKEN>" \
         -d "client=client_88a388d9dd48f86c3136"
       ```
     </pre>
@@ -96,7 +96,7 @@ In order to store the credit card data of a client, you must create his profile 
       ```
       curl https://api.paymill.com/v2.1/payments \
         -u <YOUR_PRIVATE_KEY>: \
-        -d "token=12a46bcd462sd3r3care4e8336ssb4f5" \
+        -d "token=<PAYMILL_TOKEN>" \
         -d "client=client_88a388d9dd48f86c3136"
       ```
     </pre>  

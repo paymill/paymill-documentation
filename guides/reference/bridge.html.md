@@ -46,7 +46,7 @@ The JSON object has to contain the following mandatory fields for the paymill.cr
   - `number`      : The credit card number has to be a string without any spaces.
   - `exp_month`   : Two-digit month number for the expiration date
   - `exp_year`    : Four-digit year number for the expiration date
-  - `cvc`         : 3-digit check number
+  - `cvc`         : 3 or 4 digits check number
   - `amount_int`  : Transaction amount in the smallest currency unit (integer), e.g. `345` for 3.45 €
   - `currency`    : Three character currency code (ISO 4217) of the transaction, eg. `EUR` or `GBP`
 
@@ -99,7 +99,7 @@ The result of a successful request is a token object like to following:
 
 ```javascript
 {
-  "token": "098f6bcd4621d373cade4e832627b4f6",
+  "token": "<PAYMILL_TOKEN>",
   "bin": "427346",
   "binCountry": "DE",
   "brand": "VISA",

@@ -21,7 +21,7 @@ curl https://api.paymill.com/v2.1/transactions \
   -u 7360a87cba3ae133e53b32fda1abe5af: \
   -d "amount=4200" \
   -d "currency=EUR" \
-  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "token=<PAYMILL_TOKEN>" \
   -d "description=Test Transaction"
 ```
 

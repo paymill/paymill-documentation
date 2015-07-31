@@ -52,7 +52,7 @@ In both cases your `callback` function will receive a token that you can then us
 Please see our [bridge reference](/guides/reference/bridge.html) for more information on direct tokenization.
 </div>
 
-#### PayFrame – embedded credit card form
+#### PayFrame - embedded credit card form
 
 With our PayFrame you don't have to collect credit card data on your website, enabling you to fill out an even simpler PCI self-assessment questionnaire (SAQ).
 
@@ -84,7 +84,7 @@ curl https://api.paymill.com/v2.1/transactions \
   -u <YOUR_PRIVATE_KEY>: \
   -d "amount=4200" \
   -d "currency=EUR" \
-  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "token=<PAYMILL_TOKEN>" \
   -d "description=Test Transaction"
 ```
 
@@ -151,7 +151,7 @@ curl https://api.paymill.com/v2.1/transactions \
   -u "<YOUR_PRIVATE_KEY>:" \
   -d "amount=6000" \
   -d "currency=EUR" \
-  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "token=<PAYMILL_TOKEN>" \
   -d "description=Test Transaction" \
   -d "shipping_costs=1000" \
   -d "handling_costs=500"
@@ -166,7 +166,7 @@ curl https://api.paymill.com/v2.1/transactions \
   -u <YOUR_PRIVATE_KEY>: \
   -d "amount=4200" \
   -d "currency=EUR" \
-  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "token=<PAYMILL_TOKEN>" \
   -d "description=Test Transaction" \
   -d "fee_amount=420" \
   -d "fee_currency=EUR" \

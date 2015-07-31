@@ -28,7 +28,7 @@ curl https://api.paymill.com/v2.1/transactions \
   -u "<YOUR_PRIVATE_KEY>:" \
   -d "amount=6000" \
   -d "currency=EUR" \
-  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "token=<PAYMILL_TOKEN>" \
   -d "description=Test Transaction" \
   -d "items[0][name]=Example Product 1" \
   -d "items[0][amount]=1500" \

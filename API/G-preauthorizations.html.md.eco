@@ -78,7 +78,7 @@ App (ID) that created this preauthorization or null if created by yourself
 ```bash
 curl https://api.paymill.com/v2.1/preauthorizations \
   -u <YOUR_PRIVATE_KEY>: \
-  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "token=<PAYMILL_TOKEN>" \
   -d "amount=4200" \
   -d "currency=EUR" \
   -d "description=description example"

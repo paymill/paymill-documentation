@@ -28,7 +28,7 @@ curl https://api.paymill.com/v2.1/transactions \
   -u "<YOUR_PRIVATE_KEY>:" \
   -d "amount=4200" \
   -d "currency=EUR" \
-  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "token=<PAYMILL_TOKEN>" \
   -d "description=Test Transaction" \
   -d "shipping_address[name]=Max Mustermann" \
   -d "shipping_address[street_address]": "Musterstr. 1", \
@@ -51,7 +51,7 @@ curl https://api.paymill.com/v2.1/transactions \
   -u "<YOUR_PRIVATE_KEY>:" \
   -d "amount=4200" \
   -d "currency=EUR" \
-  -d "token=098f6bcd4621d373cade4e832627b4f6" \
+  -d "token=<PAYMILL_TOKEN>" \
   -d "description=Test Transaction" \
   -d "billing_address[name]=Max Mustermann" \
   -d "billing_address[street_address]": "Musterstr. 1", \

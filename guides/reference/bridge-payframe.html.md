@@ -58,7 +58,7 @@ This loads an iframe containing the new credit card frame. Customization setting
 <div class="important">
   We strongly suggest setting a Content-Security-Policy header to control where scripts or iframes are allowed to be loaded from or connect to. For example:
   <br>
-  `default-src 'self'; frame-src 'self' bridge.paymill.com; script-src 'self' bridge.paymill.com; connect-src 'self' *.paymill.com`
+  'default-src 'self'; frame-src 'self' bridge.paymill.com bridge.paymill.de; script-src 'self' bridge.paymill.com bridge.paymill.de; connect-src 'self' *.paymill.com *.paymill.de'
 </div>
 
 
