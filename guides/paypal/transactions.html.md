@@ -56,10 +56,14 @@ In addition to the mandatory transaction details listed above, you can specify s
 - **shipping_costs:** Shipping costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - **handling_costs:** Handling costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - **client_id:** A new transaction will create a new payment. If you specify a client, the new payment will be attachted to it.
+- **request_reusable_payment:** Set this to `1` if you want to ask the buyer at the same time for a billing agreement. This means you can reuse the resulting payment to do further transactions without the need of asking the buyer again for permisson.
+- **reusable_payment_description:** The set description appears at the checkout page when you request permission for a resuable payment.
 
 Please see our guide on [transactions](/guides/reference/transactions.html) for more details on transaction setup.
 
 <p class="important">If you specify a shopping cart, the <strong>item total must match the total transaction amount</strong>. If it doesn't, please use shipping and handling costs to specify the difference. If you don't specify a shopping cart, you also don't have to specify shipping or handling costs.</p>
+
+<p class="info">If the request with `request_reusable_payment=1` was successful, the payment attribute `is_recurring` will be `true`, which means you can reuse it for further transaction or for subscriptions.</p>
 
 ## PayPal checkout
 
