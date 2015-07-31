@@ -63,7 +63,9 @@ Please see our guide on [transactions](/guides/reference/transactions.html) for 
 
 <p class="important">If you specify a shopping cart, the <strong>item total must match the total transaction amount</strong>. If it doesn't, please use shipping and handling costs to specify the difference. If you don't specify a shopping cart, you also don't have to specify shipping or handling costs.</p>
 
-<p class="info">If the request with `request_reusable_payment=1` was successful, the payment attribute `is_recurring` will be `true`, which means you can reuse it for further transaction or for subscriptions.</p>
+<div class="info">If the request with `request_reusable_payment=1` was successful, the payment attribute `is_recurring` will be `true`, which means you can reuse it for further transactions or for subscriptions.<br>
+See [Create new Transaction with payment](/API/#-transaction-object) and [Create new Subscription](/API/#-subscription-object) for furhter information.
+</div>
 
 ## PayPal checkout
 
