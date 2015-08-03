@@ -69,7 +69,7 @@ App (ID) that created this payment or null if created by yourself
 **is_recurring:**   _boolean_  
 The payment is recurring (can be used more than once)
 
-**is_usable_for:**  _boolean_  
+**is_usable_for_preauthorization:**  _boolean_  
 The payment is usable for preauthorization
 
 
@@ -127,7 +127,7 @@ The payment is usable for preauthorization
 **is_recurring:**   _boolean_  
  The payment is recurring (can be used more than once)
 
-**is_usable_for:**  _boolean_  
+**is_usable_for_preauthorization:**  _boolean_  
  The payment is usable for preauthorization
 
 
@@ -190,7 +190,7 @@ App (ID) that created this payment or null if created by yourself
 **is_recurring:**  _boolean_  
 The payment is recurring (can be used more than once)
 
-**is_usable_for:** _boolean_  
+**is_usable_for_preauthorization:** _boolean_  
 The payment is usable for preauthorization
 
 
