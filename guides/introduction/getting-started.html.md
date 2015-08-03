@@ -17,7 +17,7 @@ Please note too that this service is only available in Germany right now!
 
 ## 1. Creating an Account
 
-On our homepage, go to **My Account** and click on **Register** or use the **Register Now** button.
+On our homepage, click the **Sign Up** button or click **Create new PAYMILL account** in the login form.
 
 ![Login Form](/guides/images/getting_started-01.jpg)
 
@@ -25,13 +25,13 @@ Now fill out the **registration form**, after which you will receive an activati
 
 ![Registration Form](/guides/images/getting_started-02.jpg)
 
-Once your Paymill account has been set up successfully, you will be transferred to the merchant centre. In this area you can view your test key and live key transactions. There is a switch at the upper right to toggle between them.
+Once your PAYMILL account has been set up successfully, you will be transferred to the merchant centre. In this area you can view your test key and live key transactions.
 
 ![Merchant Centre](/guides/images/getting_started-03.jpg)
 
 ## 2. API Keys
 
-You will need two keys to be able to use Paymill:
+You will need two keys to be able to use PAYMILL:
 
 <p class="info">
 <span class="heading">**Public Key:**</span>
@@ -66,7 +66,7 @@ TODO: INTEGRATE THE  EXAMPLE -->
 
 ## 4. Payment Form
 
-You can find one example of integrating Paymill in your payment form on [GitHub](https://github.com/Paymill/Zahlungsformular) or here as a [Gist](https://gist.github.com/paymill-gists/9233569) integration. Further information on the payment form can be found on our payment form page.
+You can find one example of integrating PAYMILL in your payment form on [GitHub](https://github.com/Paymill/Zahlungsformular) or here as a [Gist](https://gist.github.com/paymill-gists/9233569) integration. Further information on the payment form can be found on our payment form page.
 
 Depending on your payment type different form fields are required. For credit card payment your clients need to complete at least the following fields:
 
@@ -208,7 +208,7 @@ In this way, the credit card data will not be returned to your server, and you w
 Only specific credit card information / bank details are allowed in test mode. You can find the list [here](/guides/reference/testing.html). Usage of any other data will result in error.
 </p>
 
-**JavaScript - integrating the Paymill bridge**
+**JavaScript - integrating the PAYMILL bridge**
 
   - First you must enter your public key in the `PAYMILL_PUBLIC_KEY` variable.
   - Then you integrate our JavaScript bridge via the following URL: https://bridge.paymill.com
@@ -395,7 +395,7 @@ You can find our PHP wrapper here: https://github.com/Paymill/Paymill-PHP
 
 **The normal procedure is:**
 
-1. You will need two pieces of information to use the Paymill PHP wrapper:
+1. You will need two pieces of information to use the PAYMILL PHP wrapper:
   - API-Endpoint: https://api.paymill.com/v2
   - Your Private Key from My Account
 
