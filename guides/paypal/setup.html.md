@@ -71,9 +71,15 @@ If you need settlement reports from PayPal, please contact PayPal and request th
 
 ### Selling digital goods
 
-==**Do you sell digital products or services?** Support for PayPal Digital Goods will be available soon.==
+**Do you sell digital products or services?** 
 
 PayPal Digital Goods lets you sell media like news content, video, blogs, music or in-game content, virtual goods or currencies with special conditions. To take advantage of this, please contact PayPal sales to have your account converted accordingly.
+
+Activate Paypal Digital Goods in your Merchant Centre account: 
+
+1. Go to the connected Paypal payment method and click on the button customise.
+- Then click on the **sandbox advanced settings sandbox** dropdown and select the checkbox for Digital Goods.
+- Afterwards you can save your selection.
 
 <div class="info">
 If you want to use Digital Goods, please contact PayPal and request that feature to be enabled for you.
