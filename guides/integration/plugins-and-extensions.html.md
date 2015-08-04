@@ -129,6 +129,14 @@ Shop plugins are the fastest and easiest way to have online payments ready for y
 
 <hr>
 
+## Partners plugins & extensions
+
+### JTL
+
+JTL shop plugin for the PAYMILL payment service by Schönes und Seltenes IT Services.
+
+- [Read more / Download](https://www.schoenesundseltenesitservices.de/index.php?a=1879) 
+
 ## Our community supported plugins & extensions
 
 Want to be part of the community?
