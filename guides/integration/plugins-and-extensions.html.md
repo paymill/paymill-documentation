@@ -133,7 +133,7 @@ Shop plugins are the fastest and easiest way to have online payments ready for y
 
 ### JTL
 
-JTL shop plugin for the PAYMILL payment service by Schönes und Seltenes IT Services.
+JTL shop plugin for the PAYMILL payment service by Schones und Seltenes IT Services.
 
 - [Read more / Download](https://www.schoenesundseltenesitservices.de/index.php?a=1879) 
 
