@@ -63,15 +63,21 @@ Checkout language is automatically determined by PayPal using the merchant's cou
 
 ### Fetching settlement reports
 
-If PayPal settlement reports are available for you, they can be included in your PAYMILL settlement report as well. Simply create SFTP credentials and enter them in our merchant center. We will regularly fetch your settlement reports from PayPal and generate a document in your [invoices section](https://app.paymill.com/invoices).
+If PayPal settlement reports are available for you, they can be included in your PAYMILL settlement report as well. Simply create SFTP credentials and enter them in our Merchant Centre:
+
+1. Visit the [payment method settings](https://app.paymill.com/settings/payment-methods), make sure you are in "live mode".
+- Click on "configure" next to your PayPal account, then click on "Advanced options" to show advanced options.
+- Enter your SFTP credentials and save. Our system will try a connection and warn you if the credentials don't seem to work.
+
+We will regularly fetch your settlement reports from PayPal and generate a document in your [invoices section](https://app.paymill.com/invoices).
+
+To stop receiving settlement reports, simply remove your credentials again.
 
 <div class="info">
 If you need settlement reports from PayPal, please contact PayPal and request that feature to be enabled for you.
 </div>
 
 ### Selling digital goods
-
-**Do you sell digital products or services?** 
 
 PayPal Digital Goods lets you sell media like news content, video, blogs, music or in-game content, virtual goods or currencies with special conditions. To take advantage of this, please contact PayPal sales to have your account converted accordingly.
 
