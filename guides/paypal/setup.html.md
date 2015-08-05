@@ -63,33 +63,34 @@ Checkout language is automatically determined by PayPal using the merchant's cou
 
 ### Fetching settlement reports
 
+<div class="info">
+If you need settlement reports from PayPal, please contact PayPal and request that feature to be enabled for you.
+</div>
+
 If PayPal settlement reports are available for you, they can be included in your PAYMILL settlement report as well. Simply create SFTP credentials and enter them in our Merchant Centre:
 
 1. Visit the [payment method settings](https://app.paymill.com/settings/payment-methods), make sure you are in "live mode".
-- Click on "configure" next to your PayPal account, then click on "Advanced options" to show advanced options.
+- Click on "Configure" next to your PayPal account, then click on "Advanced options" to show advanced options.
 - Enter your SFTP credentials and save. Our system will try a connection and warn you if the credentials don't seem to work.
 
 We will regularly fetch your settlement reports from PayPal and generate a document in your [invoices section](https://app.paymill.com/invoices).
 
 To stop receiving settlement reports, simply remove your credentials again.
 
-<div class="info">
-If you need settlement reports from PayPal, please contact PayPal and request that feature to be enabled for you.
-</div>
-
 ### Selling digital goods
-
-PayPal Digital Goods lets you sell media like news content, video, blogs, music or in-game content, virtual goods or currencies with special conditions. To take advantage of this, please contact PayPal sales to have your account converted accordingly.
-
-Activate Paypal Digital Goods in your Merchant Centre account: 
-
-1. Go to the connected Paypal payment method and click on the button customise.
-- Then click on the **sandbox advanced settings sandbox** dropdown and select the checkbox for Digital Goods.
-- Afterwards you can save your selection.
 
 <div class="info">
 If you want to use Digital Goods, please contact PayPal and request that feature to be enabled for you.
 </div>
+
+PayPal Digital Goods lets you sell media like news content, video, blogs, music or in-game content, virtual goods or currencies with special conditions. To take advantage of this, please contact PayPal sales to have your account converted accordingly.
+
+Digital Goods can easily be activated in our Merchant Centre:
+
+1. Visit the [payment method settings](https://app.paymill.com/settings/payment-methods).
+- Click on "Configure" next to your PayPal account, then click on "Advanced options" to show advanced options.  
+  _Note: Digital Goods can be enabled/disabled separately for your sandbox and live account._
+- Enable the checkbox for Digital Goods and save your settings.
 
 <div class="important">
 Please note that you can't sell physical and digital goods using the same PayPal account. Digital products are also not covered by PayPal seller protection.
