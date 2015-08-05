@@ -108,6 +108,10 @@ Here's an example **return URL** call for a successful transaction:
 https://www.example.com/shop/checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000&paymill_mode=test
 ```
 
+<div class="important">
+While you receive transaction data via URL parameters, you need to verify transaction **integrity** yourself. Simply use the transaction ID to query our API and check if the transaction exists and has the specified status. See [retrieving transaction details](/guides/paypal/transactions.html#retrieving-transaction-details) for more information.
+</div>
+
 ### Retrieving transaction details
 
 After a transaction has completed, you can retrieve additional transaction details such as the shipping address that was used, from our API:
