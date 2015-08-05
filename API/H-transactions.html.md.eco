@@ -923,6 +923,7 @@ Available [filters](#filter-entries):
   - `status=<string> see list below`
   - `last4=<integer> last 4 digits of the credit card`
   - `short_id=<string>`
+  - `paypal_account=<string>` email address of a PayPal account
 
 Available status for filters:
 
