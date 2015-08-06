@@ -77,12 +77,16 @@ The **cancel URL** will be used when checkout was cancelled by the customer. You
 
 The **return URL** will be used when a definitive result for the transaction is available. A PayPal transaction can be *successful*, *failed*, or *pending* and you should handle these cases appropriately.
 
-You will be passed transaction status, a detailed response code as well as both PAYMILL and PayPal transaction ID as URL parameters:
+You will be passed transaction status, a detailed response code, if live or test mode as well as both PAYMILL and PayPal transaction ID as URL parameters:
 
 ```sh
-.../checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000
+.../checkout/result?paypal_trx_id=00N9651952085952K&paymill_trx_id=tran_5188e355f984445d4b66a45c43fa&paymill_trx_status=closed&paymill_response_code=20000&paymill_mode=test
 ```
 
+<div class="important">
+While you receive transaction data via URL parameters, you need to verify transaction **integrity** yourself. Simply use the transaction ID to query our API and check if the transaction exists and has the specified status. See [retrieving transaction details](/guides/paypal/transactions.html#retrieving-transaction-details) for more information.
+</div>
+
 <div class="info">
-For more information, please refer to our guide about [handling transaction results](/guides/paypal/transactions.html).
+For more information, please refer to our guide about [handling transaction results](/guides/paypal/transactions.html#transaction-results).
 </div>
