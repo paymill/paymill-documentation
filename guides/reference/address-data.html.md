@@ -99,10 +99,62 @@ For PayPal transactions, the field "state" is mandatory in several countries. Pl
 </div>
 
 ### Requesting a shipping address
-**This feature will be available soon.**
 
-PayPal Express Checkout Shortcut (ECS) allows your to obtain an address via PayPal. Instead of providing an address yourself, simply specify that you need one.
+PayPal Express Checkout Shortcut (ECS) allows your to obtain an address via PayPal. Instead of providing an address yourself, simply specify that you need one. You can also provide a shipping address and allow the buyer to change it during checkout.
+
+To allow the buyer to either provide or change the shipping address, simply set `shipping_address_editable` when setting up a checkout (it's set to `false` by default). Options like this are specified inside the `checkout_options` of a checksum.
 
 <div class="info">
-For the time being, if no shipping address is provided the customer will be prevented from entering one during PayPal checkout.
+Technically you don't have to provide a shipping address, but PayPal seller protection might require you to do so. When selling physical products, we recommend to always provide or collect a shipping address.
+</div>
+
+Overall, there are four different cases to keep in mind:
+
+- If you provide a shipping address:
+  - If you don't set `shipping_address_editable` or set it to `false`, the buyer won't be able to change the address.
+  - If you set `shipping_address_editable=true`, the buyer will be able to change the address (but doesn't have to).
+- If you don't provide a shipping address:
+  - If you don't set `shipping_address_editable` or set it to `false`, the buyer won't be able to provide an address.
+  - If you set `shipping_address_editable=true`, the buyer will be able to provide an address (but doesn't have to).
+
+Example for how to let the buyer provide a shipping address:
+
+```sh
+curl https://api.paymill.com/v2.1/checksums \
+  -u "<YOUR_PRIVATE_KEY>:" \
+  -d "checksum_type=paypal" \
+  -d "amount=4200" \
+  -d "currency=EUR" \
+  -d "description=Test Transaction" \
+  -d "return_url=https://www.example.com/store/checkout/result" \
+  -d "cancel_url=https://www.example.com/store/checkout/retry" \
+  -d "checkout_options[shipping_address_editable]=true"
+```
+
+Example for how to provide a shipping address but let the buyer change it if they want to:
+
+```sh
+curl https://api.paymill.com/v2.1/checksums \
+  -u "<YOUR_PRIVATE_KEY>:" \
+  -d "checksum_type=paypal" \
+  -d "amount=4200" \
+  -d "currency=EUR" \
+  -d "description=Test Transaction" \
+  -d "return_url=https://www.example.com/store/checkout/result" \
+  -d "cancel_url=https://www.example.com/store/checkout/retry" \
+  -d "shipping_address[name]=Max Mustermann" \
+  -d "shipping_address[street_address]": "Musterstr. 1", \
+  -d "shipping_address[street_address_addition]": "", \
+  -d "shipping_address[city]": "Munich", \
+  -d "shipping_address[state]": "Bavaria", \
+  -d "shipping_address[postal_code]": "80333", \
+  -d "shipping_address[country]": "DE", \
+  -d "shipping_address[phone]": "+4989123456" \
+  -d "checkout_options[shipping_address_editable]=true"
+```
+
+After successful checkout, your transaction will be updated with the shipping address obtained from PayPal. Simply retrieve [transaction details](/API/#-transaction-details) from our API to get the provided or changed shipping address.
+
+<div class="important">
+If you make the shipping address editable, regardless of whether you provide one yourself or not, you should always retrieve the updated transaction after checkout to avoid using the wrong address.
 </div>

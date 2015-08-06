@@ -84,3 +84,20 @@ The identifier of the payment from which the fee will be charged ([creditcard-ob
 
 **fee_currency:** _string or unset_  
 The currency of the fee (e.g. EUR, USD). If it´s not set, the currency of the transaction is used. We suggest to always use as it might cause problems, if your account does not support the same currencies as your merchants accounts.
+
+**checkout_options:** _[checkout options](#checkout-options) or null_  
+Various options that determine behavior before/during/after checkout such as editability of address fields.
+
+## Checkout Options
+
+Checkout options determine how PAYMILL's system and/or the acquirer's system (e.g. PayPal) should behave before, during and after checkout.
+
+For example, you can specify whether or not the buyer can provide or edit the address fields of a transaction.
+
+### Attributes
+
+### Attributes
+
+**shipping_address_editable:** _boolean or null_  
+Whether or not the shipping address can be edited by the buyer.  
+If set to `true`, buyer can change the specified address or provide one themselves if none is specified.
