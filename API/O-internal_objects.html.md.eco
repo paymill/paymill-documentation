@@ -27,28 +27,28 @@ An address object belongs to exactly one transaction and can represent either it
 
 ### Attributes
 
-**name:** _string_
+**name:** _string_  
 Name of recipient, *max. 128 characters*
 
-**street\_address:** _string_
+**street\_address:** _string_  
 Street address (incl. street number), *max. 100 characters*
 
-**street_address_addition:** _string_
+**street_address_addition:** _string_  
 Addition to street address (e.g. building, floor, or c/o), *max. 100 characters*
 
-**city:** _string_
+**city:** _string_  
 City, *max. 40 characters*
 
-**state:** _string_
+**state:** _string_  
 State or province, *max. 40 characters*
 
-**postal_code:** _string_
+**postal_code:** _string_  
 Country-specific postal code, *max. 20 characters*
 
-**country:** _string_
+**country:** _string_  
 2-letter country code according to [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 
-***phone:*** _string_
+***phone:*** _string_  
 Contact phone number, *max. 20 characters*
 
 
@@ -69,22 +69,22 @@ Contact phone number, *max. 20 characters*
 
 ### Attributes
 
-**url**           _string_
+**url**           _string_  
 Recipient of the fee
 
-**application**   _string_
+**application**   _string_  
 If App fee, app object ID (optional)
 
-**payment**       _string_
+**payment**       _string_  
 Payment object ID from which the fee gets paid
 
-**amount**        _integer_
+**amount**        _integer_  
 Formatted fee amount
 
-**currency**      _string_
+**currency**      _string_  
 [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
 
-**billed_at**     _integer_
+**billed_at**     _integer_  
 Unix-Timestamp for the creation date
 
 ## `Invoice` object
@@ -109,37 +109,37 @@ Unix-Timestamp for the creation date
 
 ### Attributes
 
-**invoice_nr**          _string_
+**invoice_nr**          _string_  
 invoice number
 
-**netto**               _integer_
+**netto**               _integer_  
 Formatted netto amount
 
-**brutto**              _integer_
+**brutto**              _integer_  
 Formatted brutto amount
 
-**status**              _string_
+**status**              _string_  
 Invoice status (e.g. sent, trx_ok, trx_failed, invalid_payment, success, 1st_reminder, 2nd_reminder, 3rd_reminder, suspend, canceled, transferred)
 
-**period_from**         _integer_
+**period_from**         _integer_  
 Unix-Timestamp for the start of this invoice period
 
-**period_until**        _integer_
+**period_until**        _integer_  
 Unix-Timestamp for the end of this invoice period
 
-**currency**            _string_
+**currency**            _string_  
 ISO 4217 formatted currency code
 
-**vat_rate**            _integer_
+**vat_rate**            _integer_  
 VAT rate of the brutto amount
 
-**billing_date**        _integer_
+**billing_date**        _integer_  
 Unix-Timestamp for the billing date
 
-**invoice_type**        _enum (paymill, wirecard, acceptance etc.)_
+**invoice_type**        _enum (paymill, wirecard, acceptance etc.)_  
 Indicates if it"s a PAYMILL invoice or an acquirer payout
 
-**last_reminder_date**  _integer_
+**last_reminder_date**  _integer_  
 Unix-Timestamp for last payment reminder
 
 
@@ -162,22 +162,22 @@ Unix-Timestamp for last payment reminder
 ### Attributes
 
 
-**identifier_key**  _string_
+**identifier_key**  _string_  
 Unique identifier of this merchant
 
-**email**           _string_
+**email**           _string_  
 email address
 
-**locale**          _string_
+**locale**          _string_  
 culture setting
 
-**county**          _string / null_
+**county**          _string / null_  
 country code
 
-**currencies**      _List of activated currencies (ISO 4217 formatted)_
+**currencies**      _List of activated currencies (ISO 4217 formatted)_  
 **Deprecated.** This information is now part of payment_methods
 
-**methods**         _List of activated card brands_
+**methods**         _List of activated card brands_  
 List of activated card brands
 
 
@@ -196,13 +196,13 @@ List of activated card brands
 
 ### Attributes
 
-**type**            _string_
+**type**            _string_  
 Card brand (e.g. visa, mastercard, amex, elv, sepa etc.)
 
-**currency**        _string_
+**currency**        _string_  
 ISO 4217 formatted currency code
 
-**acquier**         _string_
+**acquier**         _string_  
 Acquiring bank enum(wirecard, acceptance, none)
 
 
@@ -224,21 +224,21 @@ Acquiring bank enum(wirecard, acceptance, none)
 
 ### Attributes
 
-**name:** _string_
+**name:** _string_  
 Item name, *max. 127 characters*
 
-***description:*** _string_
+***description:*** _string_  
 Additional description, *max. 127 characters*
 
-**amount:** _integer_
+**amount:** _integer_  
 Price for a single item (including tax)
 Can be positive, zero, or negative (to represent a discount)
 
-**quantity:** _integer (> 0)_
+**quantity:** _integer (> 0)_  
 Quantity of this item
 
-**item_number:** _string_
+**item_number:** _string_  
 Item number or other identifier (SKU/EAN/…), *max. 127 characters*
 
-**url:** _string_
+**url:** _string_  
 URL of the item in your store, *max. 2000 characters*
