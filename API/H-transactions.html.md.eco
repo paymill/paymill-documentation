@@ -908,32 +908,30 @@ curl https://api.paymill.com/v2.1/transactions \
 
 This function returns a JSON object with a list of transactions. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
-  - count
-  - offset
-  - created_at
+  - `count`
+  - `offset`
+  - `created_at`
 
 Available [filters](#filter-entries):
 
   - `client=<client id>`
   - `payment=<payment id>`
-  - `amount=[>|<]<integer> e.g. "300" or with prefix: ">300" or "<300"`
+  - `amount=[>|<]<integer>` e.g. `300` or with prefix: `>300` or `<300`
   - `description=<string>`
   - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `updated_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
-  - `status=<string> see list below`
-  - `last4=<integer> last 4 digits of the credit card`
+  - `status=<string>` one of the following statuses:
+    - `open`
+    - `closed`
+    - `failed`
+    - `preauth`
+    - `pending`
+    - `refunded`
+    - `partially_refunded`
+    - `chargeback`
+  - `last4=<integer>` last 4 digits of the credit card
   - `short_id=<string>`
-
-Available status for filters:
-
-  - open
-  - closed
-  - failed
-  - preauth
-  - pending
-  - refunded
-  - partially_refunded
-  - chargeback
+  - `paypal_account=<string>` email address of a PayPal account
 
 ## Export `Transactions` List
 
