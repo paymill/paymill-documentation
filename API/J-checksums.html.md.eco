@@ -98,6 +98,13 @@ The currency of the fee (e.g. EUR, USD). If it´s not set, the currency of the t
 **checkout_options:** _[checkout options](#checkout-options) or null_  
 Various options that determine behavior before/during/after checkout such as editability of address fields.
 
+**require_reusable_payment:** _boolean or null_  
+Set this to `true` if you want to ask the buyer for a billing agreement during checkout.  
+If the buyer accepts, the resulting payment can be reused for transactions and subscriptions without additional interaction.
+
+**reusable_payment_description:** _string or null_  
+Description appears at the acquirers checkout page (e.g. PayPal) when you request permission for a reusable payment, *max. 127 characters*
+
 ## Create new payment checksum
 
 > Request
@@ -155,13 +162,14 @@ Client (ID) where the created payment should belong to.
 **app_id:** _string or null_  
 App (ID) that created this payment or null if created by yourself.
 
+**reusable_payment_description:** _string or null_  
+Description appears at the acquirers checkout page (e.g. PayPal) when you request permission for a reusable payment.
+
 ## Checkout Options
 
 Checkout options determine how PAYMILL's system and/or the acquirer's system (e.g. PayPal) should behave before, during and after checkout.
 
 For example, you can specify whether or not the buyer can provide or edit the address fields of a transaction.
-
-### Attributes
 
 ### Attributes
 
