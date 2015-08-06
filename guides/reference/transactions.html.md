@@ -187,7 +187,7 @@ curl https://api.paymill.com/v2.1/checksums \
   -d "description=Test Transaction"
 ```
 
-You can add any type of transaction data to the checksum, this includes shipping/handling costs, shopping cart items, shipping/billing address as well as return/cancel URLs for PayPal.
+You can add any type of transaction data to the checksum, this includes shipping/handling costs, shopping cart items, shipping/billing address as well as return/cancel URLs for PayPal. See our guides on [address data](/guides/reference/address-data.html) and [shopping cart data](/guides/reference/shopping-cart.html) as well as [PayPal transactions](/guides/paypal/transactions.html) for more information.
 
 Here's an example of a checksum for a full-fledged transaction:
 
