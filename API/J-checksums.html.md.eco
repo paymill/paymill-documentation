@@ -78,7 +78,7 @@ Shipping address for this transaction.
 **billing_address:** _[address object](#address-object) or null_  
 Billing address for this transaction.
 
-**client_id:** _string or null_  
+**client:** _string or null_  
 Client (ID) where the created payment should belong to.
 
 **app_id:** _string or null_  
@@ -116,7 +116,7 @@ curl https://api.paymill.com/v2.1/checksums \
   -d "checksum_action=payment" \
   -d "return_url=https://www.example.com/store/checkout/result" \
   -d "cancel_url=https://www.example.com/store/checkout/retry" \
-  -d "client_id=client_7b7ebc8d0770bc3f7c2e"
+  -d "client=client_7b7ebc8d0770bc3f7c2e"
 ```
 
 > Response
@@ -126,7 +126,7 @@ curl https://api.paymill.com/v2.1/checksums \
   "data": {
     "id": "chk_3902f931f57d6ddb0088bc1e2f94",
     "checksum": "a4a67b151b9a8c2403cb153fa9628cd7213dbd67a1834ceee7ce03dd651b4db6ad8c07764b1fe6175a9f514aa9bd23b8a982875a8f86fb063dc7c199e75b9332",
-    "data": "return_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fresult&cancel_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fretry&client_id=client_7b7ebc8d0770bc3f7c2e",
+    "data": "return_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fresult&cancel_url=https%3A%2F%2Fwww.example.com%2Fstore%2Fcheckout%2Fretry&client=client_7b7ebc8d0770bc3f7c2e",
     "type": "paypal",
     "action": "payment",
     "app_id": null,
@@ -156,8 +156,8 @@ URL to redirect customers to after checkout has completed. Transaction status wi
 URL to redirect customers to after they have canceled the checkout. As a result, there will be no transaction.  
 **Mandatory for client-side transactions, e.g. PayPal**
 
-**client_id:** _string or null_  
-Client (ID) where the created payment should belong to.
+**client:** _string or null_  
+Client (ID) that the created payment should belong to.
 
 **app_id:** _string or null_  
 App (ID) that created this payment or null if created by yourself.
