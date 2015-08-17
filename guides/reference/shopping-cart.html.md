@@ -3,7 +3,7 @@ title: "Shopping Cart Data"
 menu: "Shopping Cart Data"
 type: "guide"
 status: "published"
-menuOrder: 7
+menuOrder: 8
 ---
 
 ## Providing shopping cart items

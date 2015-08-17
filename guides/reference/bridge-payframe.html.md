@@ -3,7 +3,7 @@ title: "Bridge PayFrame"
 menu: "Bridge PayFrame"
 type: "guide"
 status: "published"
-menuOrder: 2
+menuOrder: 3
 ---
 
 PCI DSS 3.0 introduces a new set of requirements for merchants accepting credit card payments. In order to be (or stay) eligible for the simpler form of self assessment (SAQ A), we need to move all credit card data out of the scope of the merchant's website. We therefore offer an **iframe-based credit card form** that achieves SAQ A eligibility.

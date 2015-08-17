@@ -3,7 +3,7 @@ title: "Subscriptions"
 menu: "Subscriptions"
 type: "guide"
 status: "published"
-menuOrder: 5
+menuOrder: 6
 ---
 
 ## 1. Setting up a Subscription

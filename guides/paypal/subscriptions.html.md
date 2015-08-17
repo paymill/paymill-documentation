@@ -10,7 +10,7 @@ Creating PayPal subscriptions through PAYMILL is easy:
 
 1. Follow the guide to [create a PayPal payment](/guides/paypal/payments.html).
 - Keep in mind to assign a client to the payment, as this is necessary for a valid subscription.
-- Now simply create a subscription like it is explained in the [subscription guide](/guides/introduction/subscriptions).
+- Now simply create a subscription like it is explained in the [subscription guide](/guides/reference/subscriptions).
 
 ## Payment setup
 

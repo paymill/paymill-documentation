@@ -3,7 +3,7 @@ title: "PayFrame Migration Guide"
 menu: "PayFrame Migration Guide"
 type: "guide"
 status: "published"
-menuOrder: 3
+menuOrder: 4
 ---
 
 In order to comply with PCI DSS 3.0 and be eligible for SAQ-A, you need to use our [Credit Card Frame](/guides/reference/bridge-payframe.html). If you were directly using our bridge before, this guide explains how you can easily switch to the new solution:
