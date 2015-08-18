@@ -13,7 +13,7 @@ Accepting PayPal payments through PAYMILL is easy:
 - Pass the checksum ID to your website front-end and use our bridge to start PayPal checkout.
 - Handle the customer returning to your site along with information about the transaction result.
 
-## Transaction setup
+## Setting up a PayPal checkout
 
 Before you can start PayPal checkout from your website, you need to create a transaction checksum on your server using your private API key. This is to ensure the integrity of transaction data and to prevent your payment from being tampered with along the way.
 
@@ -56,14 +56,14 @@ In addition to the mandatory transaction details listed above, you can specify s
 - **Shipping costs:** Shipping costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - **Handling costs:** Handling costs included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - **Client ID:** A new transaction will create a new payment. If you specify a client, the new payment will be attached to it.
-- **Require reusable payment:** This boolean option lets you ask the buyer for a billing agreement during checkout. If the buyer accepts, the resulting payment can be reused for transactions and subscriptions without additional interaction. See our guide on [payment objects](/guides/reference/payments.html) for further information.
+- **Require reusable payment:** This boolean option lets you ask the buyer for a billing agreement during checkout. If the buyer accepts, the resulting payment can be reused for transactions and subscriptions without additional interaction. See our guide on [PayPal payments](/guides/paypal/payments.html) for further information.
 - **Reusable payment description:** Optionally give a short description for why you need a billing agreement. This description appears in the checkout page as well as every subsequent transaction.
 
 Please see our guide on [transactions](/guides/reference/transactions.html) for more details on transaction setup.
 
 <p class="important">If you specify a shopping cart, the <strong>item total must match the total transaction amount</strong>. If it doesn't, please use shipping and handling costs to specify the difference. If you don't specify a shopping cart, you also don't have to specify shipping or handling costs.</p>
 
-## PayPal checkout
+## Starting a PayPal checkout
 
 PayPal transactions are initiated on your website. The customer is redirected to PayPal checkout and subsequently returned to your site where you can handle the result.
 
@@ -83,7 +83,7 @@ paymill.createTransaction({
 });
 ```
 
-## Cancelled transactions
+## Handling cancelled transactions
 
 When a customer cancels during PayPal checkout, they will be redirected to your **cancel URL**. This is a separate URL so you can offer your customers to review or modify their order and restart the checkout.
 
@@ -95,7 +95,7 @@ Here's an example URL called for a cancelled transaction:
 https://www.example.com/shop/checkout/retry
 ```
 
-## Transaction results
+## Handling transaction results
 
 After PayPal checkout, the customer is redirected to your **return URL**. At this point, a transaction has been created and is either successful, failed or pending. The transaction result is provided using the following URL parameters:
 
