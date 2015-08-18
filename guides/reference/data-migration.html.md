@@ -3,7 +3,7 @@ title: "Migration to PAYMILL Made Easy"
 menu: "Data Migration"
 type: "guide"
 status: "published"
-menuOrder: 9
+menuOrder: 11
 ---
 
 Our goal is enable you to migrate to PAYMILL as easy and fast as possible. Therefore we offer you a convenient and secure data transfer - for free.
