@@ -48,7 +48,7 @@ paymill.createToken({
 
 In both cases your `callback` function will receive a token that you can then use in your server-side payment processing.
 
-<div class="important">
+<div class="info">
 Please see our [bridge reference](/guides/reference/bridge.html) for more information on direct tokenization.
 </div>
 
@@ -71,7 +71,7 @@ paymill.createTokenViaFrame({
 }, callback);
 ```
 
-<div class="important">
+<div class="info">
 Please see our [PayFrame guide](/guides/reference/bridge-payframe.html) for more information on how to use the embedded credit card form.
 </div>
 
@@ -88,7 +88,7 @@ curl https://api.paymill.com/v2.1/transactions \
   -d "description=Test Transaction"
 ```
 
-<div class="important">
+<div class="info">
 You use a token when using a credit card or direct debit account for the first time. For each subsequent transaction you will either have to create a new token since **tokens are not reusable** or you can use the payment object that has automatically been created with the first transaction.
 </div>
 
@@ -122,7 +122,7 @@ curl https://api.paymill.com/v2.1/transactions \
 ```
 
 <div class="important">
-Please note that **PayPal accounts are not reusable** at the moment since transactions require the customer to confirm payment.
+Please note that not all means of payment allow creating arbitrary transactions. For example, PayPal requires customer interaction unless you've obtained a billing agreement from your customer. Make sure to check the payment object's `is_recurring` flag and see our guide on [means of payment](/guides/reference/payments.html) for more information.
 </div>
 
 ### Creating a transaction from a preauthorization
@@ -159,7 +159,7 @@ curl https://api.paymill.com/v2.1/transactions \
 
 ### Specifying an app fee
 
-If you use **PAYMILL Unite**, e.g. for a marketplace application, you can add fees to the transactions of your merchants. Create a transaction as usual and add the fee you want to charge as well as the payment object that should be used to settle that fee:
+If you use **PAYMILL Connect**, e.g. for a marketplace application, you can add fees to the transactions of your merchants. Create a transaction as usual and add the fee you want to charge as well as the payment object that should be used to settle that fee:
 
 ```sh
 curl https://api.paymill.com/v2.1/transactions \
