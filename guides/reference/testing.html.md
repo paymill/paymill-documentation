@@ -3,7 +3,7 @@ title: "Testing"
 menu: "Testing"
 type: "guide"
 status: "published"
-menuOrder: 5
+menuOrder: 1
 ---
 
 ## 1. Which credit card information should you use for testing?

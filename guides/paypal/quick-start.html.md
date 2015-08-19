@@ -62,7 +62,7 @@ After creating a checksum, you can start a PayPal checkout session on your websi
 Now you can use our bridge to create a transaction, which will start a checkout session and send your customer to PayPal to confirm payment:
 
 ```javascript
-paymill.createTransaction({type: "paypal", checksum: "chk_2f82a672574647cd911d"});
+paymill.createTransaction({checksum: "chk_2f82a672574647cd911d"});
 ```
 
 <div class="info">

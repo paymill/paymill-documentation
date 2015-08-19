@@ -89,14 +89,18 @@ These codes are 5-digit numbers whereas the first digit indicates whether the re
 - `50410`: Personal Account Protection (PAP)
 - `50420`: Rejected due to acquirer fraud settings
 - `50430`: Rejected due to acquirer risk settings
-- `50440`: Failed due to PayPal account restrictions
+- `50440`: Failed due to restrictions with acquirer account
+- `50450`: Failed due to restrictions with user account
 - `50500`: General timeout
 - `50501`: Timeout on side of the acquirer
 - `50502`: Risk management transaction timeout
-- `50600`: Duplicate transaction
+- `50600`: Duplicate operation
 - `50700`: Cancelled by user
 - `50710`: Failed due to funding source
 - `50711`: Payment method not usable, use other payment method
+- `50712`: Limit of funding source was exceeded
+- `50713`: Means of payment not reusable (canceled by user)
+- `50714`: Means of payment not reusable (expired)
 - `50720`: Rejected by acquirer
 - `50730`: Transaction denied by merchant
 - `50800`: Preauthorisation failed
