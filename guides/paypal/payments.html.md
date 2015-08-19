@@ -12,6 +12,10 @@ A PayPal payment object represents the customer's PayPal account. When carrying 
 One client can have the same PayPal account attached to it multiple times. This is relevant when you create so-called *billing agreements* (see below), because you can have multiple different billing agreements with the same PayPal account.
 </div>
 
+<div class="important">
+Recurring payments use a special PayPal feature called “reference transactions”. Please contact PayPal and request that feature to be enabled for you.
+</div>
+
 ## Reusing a PayPal payment object
 
 You can normally use an existing payment object to create transactions and subscriptions. With PayPal, there is usually customer interaction involved.
