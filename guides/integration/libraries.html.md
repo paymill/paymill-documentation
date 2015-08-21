@@ -128,7 +128,7 @@ Read the docs and get the source code on [GitHub](https://github.com/Paymill/Pay
 
 You can either choose to install the package from PyPi executing following line:
 
-```ruby
+```bash
 pip install paymill-wrapper
 ```
 
@@ -155,7 +155,7 @@ Read the docs and get the source code on [GitHub](https://github.com/paymill/pay
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'paymill', git: 'git://github.com/paymill/paymill-ruby.git'
+gem 'paymill_ruby'
 ```
 
 And then execute:
@@ -168,6 +168,8 @@ bundle
 ### More information
 
 Learn more about the Ruby library [here](https://paymill.com/en-gb/ruby-wrapper-payment-library)
+
+The PAYMILL Gem in [RubyGems](https://rubygems.org/gems/paymill_ruby)
 
 Read the docs and get the source code on [GitHub](https://github.com/Paymill/paymill-ruby)
 
