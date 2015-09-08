@@ -750,7 +750,7 @@ curl https://api.paymill.com/v2.1/transactions/tran_023d3b5769321c649435 \
 ```
 
 ```php
-<%- @partial('snippets/php/samples/transactions/update_transaction.php') %>
+<%- @partial('snippets/php/samples/transactions/upate_transaction.php') %>
 ```
 
 ```csharp

@@ -32,44 +32,44 @@ The Payment object represents a payment with a credit card or via direct debit. 
 ### Attributes
 
 
-**id:**             _string_  
+**id:**             _string_
 Unique identifier for this credit card payment
 
-**type:**           _enum (creditcard, debit, paypal)_  
+**type:**           _enum (creditcard, debit, paypal)_
 
-**client:**         _[client object](#-client-object) / null_  
+**client:**         _[client object](#-client-object) / null_
 
-**card_type:**      _string_  
+**card_type:**      _string_
 Card type. eg. visa, mastercard ...
 
-**country:**        _string / null_  
+**country:**        _string / null_
 Country
 
-**expire_month:**   _string_  
+**expire_month:**   _string_
 Expiry month of the credit card
 
-**expire_year:**    _string_  
+**expire_year:**    _string_
 Expiry year of the credit card
 
-**card_holder:**    _string_  
+**card_holder:**    _string_
 Name of the card holder
 
-**last4:**          _string_  
+**last4:**          _string_
 The last four digits of the credit card
 
-**created_at:**     _integer_  
+**created_at:**     _integer_
 Unix-Timestamp for the creation date
 
-**updated_at:**     _integer_  
+**updated_at:**     _integer_
 Unix-Timestamp for the last update
 
-**app_id:**         _string / null_  
+**app_id:**         _string / null_
 App (ID) that created this payment or null if created by yourself
 
-**is_recurring:**   _boolean_  
+**is_recurring:**   _boolean_
 The payment is recurring (can be used more than once)
 
-**is_usable_for_preauthorization:**  _boolean_  
+**is_usable_for_preauthorization:**  _boolean_
 The payment is usable for preauthorization
 
 
@@ -97,37 +97,37 @@ The payment is usable for preauthorization
 ### Attributes
 
 
-**id:**             _string_  
+**id:**             _string_
  Unique identifier for this direct debit payment
 
-**client:**         _[client object](#-client-object) / null_  
+**client:**         _[client object](#-client-object) / null_
 
 
 **type:**           _enum (creditcard, debit, paypal)_
 
 
-**code:**           _string_  
+**code:**           _string_
  The used Bank Code
 
-**account:**        _string_  
+**account:**        _string_
  The used account number. For security reasons the number is masked
 
-**holder:**         _string_  
+**holder:**         _string_
  Name of the account holder
 
-**created_at:**     _integer_  
+**created_at:**     _integer_
  Unix-Timestamp for the creation date
 
-**updated_at:**     _integer_  
+**updated_at:**     _integer_
  Unix-Timestamp for the last update
 
-**app_id:**         _string / null_  
+**app_id:**         _string / null_
  App (ID) that created this payment or null if created by yourself
 
-**is_recurring:**   _boolean_  
+**is_recurring:**   _boolean_
  The payment is recurring (can be used more than once)
 
-**is_usable_for_preauthorization:**  _boolean_  
+**is_usable_for_preauthorization:**  _boolean_
  The payment is usable for preauthorization
 
 
@@ -156,41 +156,41 @@ The payment is usable for preauthorization
 
 ### Attributes
 
-**id:**            _string_  
+**id:**            _string_
 Unique identifier for this direct debit payment
 
-**type:**          _enum (creditcard, debit, paypal)_  
+**type:**          _enum (creditcard, debit, paypal)_
 
-**client:**        _[client object](#-client-object) / null_  
+**client:**        _[client object](#-client-object) / null_
 
-**code:**          _string_  
+**code:**          _string_
 The used Bank Code
 
-**account:**       _string_  
+**account:**       _string_
 The used account number. For security reasons the number is masked
 
-**holder:**        _string_  
+**holder:**        _string_
 Name of the account holder
 
-**iban:**          _string_  
+**iban:**          _string_
 International Bank Account Number
 
-**bic:**           _string_  
+**bic:**           _string_
 Business Identifier Code
 
-**created_at:**    _integer_  
+**created_at:**    _integer_
 Unix-Timestamp for the creation date
 
-**updated_at:**    _integer_  
+**updated_at:**    _integer_
 Unix-Timestamp for the last update
 
-**app_id:**        _string / null_  
+**app_id:**        _string / null_
 App (ID) that created this payment or null if created by yourself
 
-**is_recurring:**  _boolean_  
+**is_recurring:**  _boolean_
 The payment is recurring (can be used more than once)
 
-**is_usable_for_preauthorization:** _boolean_  
+**is_usable_for_preauthorization:** _boolean_
 The payment is usable for preauthorization
 
 
@@ -216,32 +216,32 @@ The payment is usable for preauthorization
 
 ### Attributes
 
-**id:** _string_  
+**id:** _string_
 Unique identifier for this credit card payment
 
-**type:** _enum(creditcard,debit,paypal)_  
+**type:** _enum(creditcard,debit,paypal)_
 
-**client:** _[client object](#-client-object) or null_  
+**client:** _[client object](#-client-object) or null_
 
-**holder:** _string_  
+**holder:** _string_
 Name of the account holder
 
-**account:** _string_  
+**account:** _string_
 Email address of the account holder
 
-**created_at:** _integer_  
+**created_at:** _integer_
 Unix-Timestamp for the creation date
 
-**updated_at:** _integer_  
+**updated_at:** _integer_
 Unix-Timestamp for the last update
 
-**app_id:** _string or null_  
+**app_id:** _string or null_
 App (ID) that created this payment or null if created by yourself.
 
-**is_recurring:** _boolean_  
+**is_recurring:** _boolean_
 Whether payment is recurring (can be used more than once).
 
-**is_usable_for_preauthorization:** _boolean_  
+**is_usable_for_preauthorization:** _boolean_
 Whether payment is usable for preauthorization.
 
 
@@ -371,7 +371,7 @@ curl https://api.paymill.com/v2.1/payments \
 
 ### Attributes
 
-**token:**  _string_  
+**token:**  _string_
 Unique credit card token
 
 **client:** _[client object](#-client-object) / null_
@@ -499,7 +499,7 @@ curl https://api.paymill.com/v2.1/payments \
 }
 ```
 
-**token:** _string_  
+**token:** _string_
 Unique direct debit token
 
 **client:** _[client object](#-client-object) / null_
@@ -568,7 +568,7 @@ Returns data of a specific payment.
 
 ### Attributes
 
-**id:** _string_  
+**id:** _string_
 Unique identifier for the payment
 
 
@@ -706,7 +706,7 @@ Deletes the specified payment.
 
 ### Attributes
 
-**id:** _string_  
+**id:** _string_
 Unique identifier for the payment
 
 
@@ -737,7 +737,7 @@ curl https://api.paymill.com/v2.1/payments \
 ```
 
 ```php
-<%- @partial('snippets/php/samples/transactions/export_payments_list.php') %>
+<%- @partial('snippets/php/samples/payments/export_payments_list.php') %>
 ```
 
 ```csharp
