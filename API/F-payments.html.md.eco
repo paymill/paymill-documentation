@@ -721,19 +721,19 @@ curl https://api.paymill.com/v2.1/payments \
 ```
 
 ```ruby
-<%- @partial('snippets/ruby/samples/transactions/export_payments_list.rb') %>
+<%- @partial('snippets/ruby/samples/payments/export_payments_list.rb') %>
 ```
 
 ```java
-<%- @partial('snippets/java/samples/transactions/export_payments_list.java') %>
+<%- @partial('snippets/java/samples/payments/export_payments_list.java') %>
 ```
 
 ```javascript
-<%- @partial('snippets/js/samples/transactions/export_payments_list.js') %>
+<%- @partial('snippets/js/samples/payments/export_payments_list.js') %>
 ```
 
 ```python
-<%- @partial('snippets/python/samples/transactions/export_payments_list.py') %>
+<%- @partial('snippets/python/samples/payments/export_payments_list.py') %>
 ```
 
 ```php
@@ -741,7 +741,7 @@ curl https://api.paymill.com/v2.1/payments \
 ```
 
 ```csharp
-<%- @partial('snippets/net/samples/transactions/export_payments_list.cs') %>
+<%- @partial('snippets/net/samples/payments/export_payments_list.cs') %>
 ```
 
 > Response
