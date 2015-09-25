@@ -30,7 +30,7 @@ The SDKs enable you to integrate payments quickly, securely, simply and individu
     <p class="col-lg-8">
       Install the Mobile App to create transactions and preauthorizations directly from the SDK.
     </p>
-    <a href="https://developers-v1.paymill.com/en/mobile-app-install/" target="_blank" class="btn btn-medium btn-primary col-lg-4">Install the Mobile App</a>
+    <a href="https://connect.paymill.com/authorize?client_id=app_3306946e6e1e6cb593f996f437d6081c054f51ae9&scope=transactions_w+preauthorizations_w+clients_w+payments_w+webhooks_w+subscriptions_w+offers_w+refunds_w&response_type=code" target="_blank" class="btn btn-medium btn-primary col-lg-4">Install the Mobile App</a>
   </div>  
 </div>
 
@@ -260,7 +260,7 @@ In some cases, the integration using the token generation will require a lot of 
     <p class="col-lg-8">
       Install the Mobile App to create transactions and preauthorizations directly from the SDK.
     </p>
-    <a href="https://paymill.com/mobile-app-install" target="_blank" class="btn btn-medium btn-primary col-lg-4">Install the Mobile App</a>
+    <a href="https://connect.paymill.com/authorize?client_id=app_3306946e6e1e6cb593f996f437d6081c054f51ae9&scope=transactions_w+preauthorizations_w+clients_w+payments_w+webhooks_w+subscriptions_w+offers_w+refunds_w&response_type=code" target="_blank" class="btn btn-medium btn-primary col-lg-4">Install the Mobile App</a>
   </div>  
 </div>
 
