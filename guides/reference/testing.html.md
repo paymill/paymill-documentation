@@ -23,44 +23,46 @@ That way nothing can go wrong. Moreover, the system won't have any difficulty ac
   Please be aware that these cards will work in test mode only.
 </div>
 
+<style>.cc-group + .cc-group { margin-left: .4em }</style>
+
 **Without 3-D Secure**
 
 <table style="width: 100%">
   <tr>
     <td width="30%">Visa</td>
-    <td width="70%">4111111111111111</td>
+    <td width="70%"><span class="cc-group">4111</span><span class="cc-group">1111</span><span class="cc-group">1111</span><span class="cc-group">1111</span></td>
   </tr>
   <tr>
     <td>Mastercard</td>
-    <td>5500000000000004</td>
+    <td><span class="cc-group">5500</span><span class="cc-group">0000</span><span class="cc-group">0000</span><span class="cc-group">0004</span></td>
   </tr>
   <tr>
     <td>AmEx</td>
-    <td>340000000000009</td>
+    <td><span class="cc-group">3400</span><span class="cc-group">0000</span><span class="cc-group">0000</span><span class="cc-group">009</span></td>
   </tr>
   <tr>
     <td>JCB</td>
-    <td>3530111333300000</td>
+    <td><span class="cc-group">3530</span><span class="cc-group">1113</span><span class="cc-group">3330</span><span class="cc-group">0000</span></td>
   </tr>
   <tr>
     <td>Maestro UK</td>
-    <td>6759000000000000</td>
+    <td><span class="cc-group">6759</span><span class="cc-group">0000</span><span class="cc-group">0000</span><span class="cc-group">0000</span></td>
   </tr>
   <tr>
     <td>Carte Bleue</td>
-    <td>4973010000000004</td>
+    <td><span class="cc-group">4973</span><span class="cc-group">0100</span><span class="cc-group">0000</span><span class="cc-group">0004</span></td>
   </tr>
   <tr>
     <td>Diners Club</td>
-    <td>30000000000004</td>
+    <td><span class="cc-group">3000</span><span class="cc-group">0000</span><span class="cc-group">0000</span><span class="cc-group">04</span></td>
   </tr>
   <tr>
     <td>Discover</td>
-    <td>6011111111111117</td>
+    <td><span class="cc-group">6011</span><span class="cc-group">1111</span><span class="cc-group">1111</span><span class="cc-group">1117</span></td>
   </tr>
   <tr>
     <td>China UnionPay</td>
-    <td>6240008631401148</td>
+    <td><span class="cc-group">6240</span><span class="cc-group">0086</span><span class="cc-group">3140</span><span class="cc-group">1148</span></td>
   </tr>
 </table>
 
@@ -69,11 +71,11 @@ That way nothing can go wrong. Moreover, the system won't have any difficulty ac
 <table style="width: 100%">
   <tr>
     <td width="30%">Visa</td>
-    <td width="70%">4012888888881881</td>
+    <td width="70%"><span class="cc-group">4012</span><span class="cc-group">8888</span><span class="cc-group">8888</span><span class="cc-group">1881</span></td>
   </tr>
   <tr>
     <td>Mastercard</td>
-    <td>5169147129584558</td>
+    <td><span class="cc-group">5169</span><span class="cc-group">1471</span><span class="cc-group">2958</span><span class="cc-group">4558</span></td>
   </tr>
 </table>
 
