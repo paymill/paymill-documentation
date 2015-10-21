@@ -74,7 +74,6 @@ PayPal transactions are initiated on your website. The customer is redirected to
 
 ```javascript
 paymill.createTransaction({
-  type: 'paypal',
   checksum: 'chk_2f82a672574647cd911d'
 }, function(error) {
   if (error) {
