@@ -14,15 +14,6 @@ Please note that this restriction only applies to credit card data, all other fu
   Our credit card frame is available for Chrome, Firefox, Safari and Opera but only for Internet Explorer 8 and above for compatibility and security reasons.
 </div>
 
-## Basic Setup
-
-Please use the JavaScript bridge at https://bridge.paymill.com/dss3 instead of https://bridge.paymill.com to use the credit card frame.
-
-```
-<script src="https://bridge.paymill.com/dss3"></script>
-```
-
-Before we bring the new solution to the standard version of our bridge, we have it available at a separate URL. Later this year we will bring this functionality to the standard version. Once we have updated our standard version, you can move back to the standard URL.
 
 ### Embedding the credit card frame
 
