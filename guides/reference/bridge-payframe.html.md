@@ -87,7 +87,7 @@ Currently, the following languages are supported:
 If you need additional languages or can even provide a translation yourself, please <a href="mailto:support@paymill.com?subject=PayFrame%20translation">contact us</a>.
 </div>
 
-**Additional Options**
+## Additional Options
 
 After embedding the credit card frame you can take additional measures to control the form's behavior, both while it's loading and being used.
 
