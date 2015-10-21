@@ -75,13 +75,19 @@ paymill.embedFrame(container, {
 Currently, the following languages are supported:
 
 1. English `en`
-2. German `de`
-3. French `fr`
-4. Italian `it`
-5. Spanish `es`
-6. Portuguese `pt
+- German `de`
+- French `fr`
+- Italian `it`
+- Spanish `es`
+- Portuguese `pt`
+- Danish `da`
+- Hungarian `hu`
 
-**Additional Options**
+<div class="info">
+If you need additional languages or can even provide a translation yourself, please <a href="mailto:support@paymill.com?subject=PayFrame%20translation">contact us</a>.
+</div>
+
+## Additional Options
 
 After embedding the credit card frame you can take additional measures to control the form's behavior, both while it's loading and being used.
 
