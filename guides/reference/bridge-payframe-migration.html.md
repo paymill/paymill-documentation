@@ -198,7 +198,6 @@ After having made the changes described above, your integration should now look 
 
 </form>
 
-<!-- PAYMILL DSS3 bridge -->
 <script src="https://bridge.paymill.com/"></script>
 
 <!-- Payment handling -->
