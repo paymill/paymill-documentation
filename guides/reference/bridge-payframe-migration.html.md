@@ -8,10 +8,9 @@ menuOrder: 4
 
 In order to comply with PCI DSS 3.0 and be eligible for SAQ-A, you need to use our [Credit Card Frame](/guides/reference/bridge-payframe.html). If you were directly using our bridge before, this guide explains how you can easily switch to the new solution:
 
-1. Use the DSS3 version of our JavaScript bridge.
-2. Replace your own fields with the embedded frame.
-3. Provide labels, placeholders and error messages.
-4. Request a token using the embedded frame.
+1. Replace your own fields with the embedded frame.
+2. Provide labels, placeholders and error messages.
+3. Request a token using the embedded frame.
 
 ## Example integration
 
@@ -91,17 +90,8 @@ For the purpose of this guide, let's assume the integration on your site looks s
 </script>
 ```
 
-### 1. Use the DSS3 version of our JavaScript bridge
 
-Please use the JavaScript bridge at https://bridge.paymill.com/dss3 instead of https://bridge.paymill.com to use the credit card frame.
-
-```
-<script src="https://bridge.paymill.com/dss3"></script>
-```
-
-Before we bring the new solution to the standard version of our bridge, we have it available at a separate URL. Later this year we will bring this functionality to the standard version. Once we have updated our standard version, you can move back to the standard URL.
-
-### 2. Replace your own fields with the embedded frame
+### 1. Replace your own fields with the embedded frame
 
 Since you no longer want to have credit card data directly on your page, simply remove the corresponding fields and instead add a container to load our embedded frame.
 
@@ -140,7 +130,7 @@ paymill.embedFrame(container, options, function(error) {
 });
 ```
 
-### 3. Specify in which language to display the form
+### 2. Specify in which language to display the form
 
 By default, the credit card form uses English for labels, placeholders and error messages. Simply specify the corresponding language code using `lang` in the `options` parameter of `embedFrame`.
 
@@ -159,7 +149,7 @@ Currently, the following languages are supported
 5. Spanish `es`
 6. Portuguese `pt
 
-### 4. Request a token using the embedded frame
+### 3. Request a token using the embedded frame
 
 A token can be obtained using the method `createTokenViaFrame(options, callback)`. It works just like `createToken` but you don't pass credit card data to it. Like `createToken`, it takes a callback that receives either the result of the operation or a potential error.
 
@@ -209,7 +199,7 @@ After having made the changes described above, your integration should now look 
 </form>
 
 <!-- PAYMILL DSS3 bridge -->
-<script src="https://bridge.paymill.com/dss3"></script>
+<script src="https://bridge.paymill.com/"></script>
 
 <!-- Payment handling -->
 <script>
