@@ -170,3 +170,4 @@ We would like to thank the following people who helped improve the security of P
 - Bharat Sewani,              [@bharatsewani199](https://twitter.com/bharatsewani199)
 - SaifAllah benMassaoud
 - Ahmed Adel Abdelfattah,     [@00SystemError00](https://twitter.com/00SystemError00)
+- Pratap Chandra 
