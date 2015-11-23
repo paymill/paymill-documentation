@@ -6,14 +6,9 @@ status: "published"
 menuOrder: 1
 ---
 
-## ELV* and credit card payment
+## SEPA direct debit* and credit card payment
 
 We would like you to be able to implement our payment solution on your website as quickly as possible. It will be differentiated in stages between the two different payment types. To do this, please carry out the following steps:
-
-<p class="important">
-You should consider that direct debit as a payment method needs an activation process of about **7-14 days**. Therefore you won't be able to use direct debit without completed activation process.
-Please note too that this service is only available in Germany right now!
-</p>
 
 ## 1. Creating an Account
 
