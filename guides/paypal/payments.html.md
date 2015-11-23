@@ -13,7 +13,7 @@ One client can have the same PayPal account attached to it multiple times. This 
 </div>
 
 <div class="important">
-Recurring payments use a special PayPal feature called “reference transactions”. Please contact PayPal and request that feature to be enabled for you.
+Recurring payments use a special PayPal feature called "reference transactions". Please contact PayPal and request that feature to be enabled for you.
 </div>
 
 ## Reusing a PayPal payment object
