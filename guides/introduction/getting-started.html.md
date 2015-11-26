@@ -127,7 +127,7 @@ Depending on your payment type different form fields are required. For credit ca
       cvc:            $('.card-cvc').val(),
       cardholder:     $('.card-holdername').val(),
       amount_int:     $('.card-amount-int').val(), // Integer e.g. "4900" für 49,00 EUR
-      currency:       $('.card-currency').val()    // ISO 4217 z.B. "EUR"
+      currency:       $('.card-currency').val()    // ISO 4217 e.g. "EUR"
       }, PaymillResponseHandler);
 
       return false;
@@ -270,8 +270,8 @@ $(document).ready(function () {
       exp_year:       $('.card-expiry-year').val(),
       cvc:            $('.card-cvc').val(),
       cardholder:     $('.card-holdername').val(),
-      amount_int:     $('.card-amount-int').val(),   // Integer z.B. "4900" für 49,00 EUR
-      currency:       $('.card-currency').val()      // ISO 4217 z.B. "EUR"
+      amount_int:     $('.card-amount-int').val(),   // Integer e.g. "4900" for 49,00 EUR
+      currency:       $('.card-currency').val()      // ISO 4217 e.g. "EUR"
     }, PaymillResponseHandler);
 
     return false;
