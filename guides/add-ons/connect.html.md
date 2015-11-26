@@ -16,7 +16,7 @@ Connect is the way to go.
 
 1. Send your user to PAYMILL Connect: Add the PAYMILL Connect button that brings your user to PAYMILL Connect.
 2. They connect their account: Your User can Sign up for free or simply Login to their PAYMILL account.
-3. We’ll send them back: Now you can access the merchant's account with OAuth2
+3. We'll send them back: Now you can access the merchant's account with OAuth2
 
 
 
@@ -42,7 +42,7 @@ If an access token is not valid any more you get the following error on API-call
 
 ### Requesting an authorization code
 
-To request an authorization code for another merchants account, you’ll have to redirect that merchant to the authorization page on our servers.
+To request an authorization code for another merchants account, you'll have to redirect that merchant to the authorization page on our servers.
 
 The target url for this redirect is [https://connect.paymill.com/authorize](https://connect.paymill.com/authorize) and you will need to append a few query parameters to the GET request:
 
