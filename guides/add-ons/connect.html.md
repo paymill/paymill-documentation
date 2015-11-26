@@ -233,7 +233,7 @@ A successful response contains a private api key to the merchants account plus h
 - `scope` the permissions connected with this access_token
 - `refresh_token` is the code you need to do refresh token request.
 - `merchant_id` is the unique identifier of the connected merchant.
-- `is_active is true if the merchant can do live transaction with the mentioned payment_methods.
+- `is_active` is true if the merchant can do live transaction with the mentioned payment_methods.
 - `payment_methods` may contain a list of active payment methods which are combinations of card type, currency and acquirer:
   - `type` may contain one of the following values:
     - `visa`: Visa cards
@@ -354,6 +354,6 @@ The same process is true for the token parameter.
 
 <p class="important">
 As described in 6., a payment object which belongs to the application owner's account, is duplicated the first time it's used with another merchant. You therefore require the write permission in order to share payment objects. You also need the read permission in order to use a payment object from the merchant account.
-
+<br>
 So, if you intent on sharing payment information with your connected merchants, you should request read and write permissions to the payments endpoint.
 </p>
