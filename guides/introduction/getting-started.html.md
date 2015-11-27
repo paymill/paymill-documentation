@@ -429,5 +429,5 @@ if ($token) {
 ```
 
 <p class="important">
-* Please note that ELV payment is only available in Germany at the moment
+* Please note that ELV/SEPA payment is only available for merchants with German bank account at the moment
 </p>
