@@ -57,8 +57,6 @@ In addition to the mandatory transaction details listed above, you can specify s
 - `shipping_amount`: Shipping costs (in cent) included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - `handling_amount`: Handling costs (in cent) included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - `client`: PAYMILL client ID (e.g. "client_88a388d9dd48f86c3136"). A new transaction will create a new payment. If you specify a client, the new payment will be attached to it.
-- `require_reusable_payment`: This boolean option lets you ask the buyer for a billing agreement during checkout. If the buyer accepts, the resulting payment can be reused for transactions and subscriptions without additional interaction. See our guide on [PayPal payments](/guides/paypal/payments.html) for further information.
-- `reusable_payment_description`: Optionally give a short description for why you need a billing agreement. This description appears in the checkout page as well as every subsequent transaction.
 
 Please see our guide on [transactions](/guides/reference/transactions.html) for more details on transaction setup.
 
