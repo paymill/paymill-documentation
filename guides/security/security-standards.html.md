@@ -168,7 +168,7 @@ We would like to thank the following people who helped improve the security of P
 - C Vishnu Vardhan Reddy,     [@Vishnu_dfx](https://twitter.com/Vishnu_dfx)
 - Sumit Sahoo
 - Bharat Sewani,              [@bharatsewani199](https://twitter.com/bharatsewani199)
-- SaifAllah benMassaoud
+- SaifAllah benMassaoud       [@benmassaou](https://twitter.com/benmassaou)
 - Ahmed Adel Abdelfattah,     [@00SystemError00](https://twitter.com/00SystemError00)
 - Pratap Chandra 
 - Sree Visakh Jain,            [@sree_visakh](https://twitter.com/@sree_visakh)
