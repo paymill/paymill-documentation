@@ -172,3 +172,4 @@ We would like to thank the following people who helped improve the security of P
 - Ahmed Adel Abdelfattah,     [@00SystemError00](https://twitter.com/00SystemError00)
 - Pratap Chandra 
 - Sree Visakh Jain,            [@sree_visakh](https://twitter.com/@sree_visakh)
+- Ketankumar B. Godhani        [@KBGodhani](https://twitter.com/KBGodhani)
