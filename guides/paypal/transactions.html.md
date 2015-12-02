@@ -25,19 +25,11 @@ Some **Transaction** data can be added to the **Checksum**, including shipping/h
 
 **Mandatory Parameters**
 
-<<<<<<< Updated upstream
-- `checksum_type`: Needs to be set to "PayPal" `paypal` so that the checksum is later turned into a PayPal transaction.
-- `amount`: Transaction amount as an integer, e.g. Euro cents. Must be the overall sum of all transaction components (see optional transaction details).
-- `currency`: Valid currency code for this transaction. Will be used for all amounts within the transaction (see optional transaction details).
-- `return_url`: Used when your customer completed PayPal checkout and a transaction was created. The transaction outcome can be *successful*, *failed*, or *pending*. You will receive the transaction ID and status information as URL parameters.
-- `cancel_url`: Used when your customer cancelled during PayPal checkout and returns to your store. At this URL, offer a way to review or modify the order and ask the customer to restart the checkout.
-=======
 - `checksum_type`: Needs to be set to `paypal` so that the **Checksum** is turned into a **PayPal Transaction**.
 - `amount`: Transaction amount as an integer, e.g. Euro cents. It must be the overall sum of all transaction components.
 - `currency`: Currency code for this transaction. Will be used for all the amounts within the transaction. You can find the list of valid currency codes [here](https://wikipedia.org/wiki/ISO_4217).
 - `return_url`: The URL where the customer is redirected when he completed a **PayPal checkout** and a transaction was created. The **Transaction status** can be `successful`, `failed` or `pending`. The **Transaction ID** and **status** are passed as URL parameters.
 - `cancel_url`: The URL where the customer is redirected when he cancels the **PayPal checkout**. At this URL you can offer your customer to review or modify the order and restart the checkout.
->>>>>>> Stashed changes
 
 Example checksum with mandatory parameters for a PayPal transaction:
 
@@ -56,17 +48,6 @@ curl https://api.paymill.com/v2.1/checksums \
 
 In addition to the mandatory parameters listed above, you can also specify the following ones:
 
-<<<<<<< Updated upstream
-- `description`: Need a additional description for this transaction? Maybe your shopping cart ID or something like that? Note that it is limited to 128 characters.
-- `shippings_address`: Shipping address for this transaction. Sent to PayPal where it's shown to the customer during checkout. PayPal also needs this for you to be eligible for seller protection. See [API reference](/API/#address-object).
-- `billing_address`: Billing address for this transaction. Not used by PayPal. See [API reference](/API/#address-object).
-- `items`: List of items purchased in this transaction. Each item must have a name, amount and quantity. Additionally you can specify a description, item number (e.g. EAN/SKU) and the URL in your shop. See [API reference](/API/#-merchant-object).
-- `shipping_amount`: Shipping costs (in cent) included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
-- `handling_amount`: Handling costs (in cent) included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
-- `client`: PAYMILL client ID (e.g. "client_88a388d9dd48f86c3136"). A new transaction will create a new payment. If you specify a client, the new payment will be attached to it.
-- `require_reusable_payment`: This boolean option lets you ask the buyer for a billing agreement during checkout. If the buyer accepts, the resulting payment can be reused for transactions and subscriptions without additional interaction. See our guide on [PayPal payments](/guides/paypal/payments.html) for further information.
-- `reusable_payment_description`: Optionally give a short description for why you need a billing agreement. This description appears in the checkout page as well as every subsequent transaction.
-=======
 - `description`: Use this field to provide additional information about the transaction, like the *shopping cart ID* or anything else. Note that the description is limited to 128 characters.
 - `shippings_address`: The shipping address of the customer for this transaction. It will be sent to **PayPal** where it will be shown to the customer during checkout. **PayPal** also needs this for you to be eligible for *seller protection*.
 - `billing_address`: The billing address of the customer for this transaction. It will not be used by PayPal.
@@ -74,10 +55,6 @@ In addition to the mandatory parameters listed above, you can also specify the f
 - `shipping_amount`: Shipping cost (in cents). Included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - `handling_amount`: Handling cost (in cents) included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - `client`: **PAYMILL client ID** (e.g. "client_88a388d9dd48f86c3136"). A new **Transaction** will create a new **Payment**. If you specify a **Client**, the new **Payment** will be attached to it. See the [guide](/guides/paypal/payment-method) about **PayPal Payments** for further information.
-- `require_reusable_payment`: This boolean option lets you ask the buyer for a billing agreement during checkout. If the buyer accepts, the resulting payment can be reused for transactions and subscriptions without additional interaction. See the [guide](/guides/paypal/payment-method) about **PayPal Payments** for further information.
-- `reusable_payment_description`: Optionally give a short description about why you need a billing agreement. This description appears in the checkout page as well as every subsequent transaction.
->>>>>>> Stashed changes
-
 
 You can find more information about **Transactions** in the [corresponding guide](/guides/reference/transactions.html).
 
@@ -102,11 +79,7 @@ To add the **PayPal Checkout** to your website:
 3. Provide a callback to handle any errors happening during payment setup (e.g. invalid data)
 
 ```javascript
-<<<<<<< Updated upstream
 paymill.createTransaction({
-=======
-paymill.createPayment({
->>>>>>> Stashed changes
   checksum: 'chk_2f82a672574647cd911d'
 }, function(error) {
   if (error) {
