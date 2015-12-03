@@ -12,13 +12,17 @@ If you'd like to get a quick overview of PAYMILL integration process follow alon
 
 ## Prerequisites
 
-### Node.js
+### PHP
 
 PAYMILL can be integrated in almost any technological stack. Check out the list of the supported languages in our [Libraries](guides/interation/libraries.html) page.
 
-For the purpose of this guide, we will use Node.js. Don't worry if you don't understand it, it's meant to demonstrate the concepts that you can apply to your own prefered technology.
+For the purpose of this guide, we will use PHP. Don't worry if you are not a PHP expert, it's meant to demonstrate the concepts that you can apply to your own prefered technology.
 
-If Node.js is not installed on your system, go to https://nodejs.org/ and install the proper version for your platform.
+If PHP is not installed on your system, go to http://php.net/manual/en/install.php and install the proper version for your platform.
+
+<p class="important">
+  To use the builtin server, make sure your version is >= 5.4
+</p>
 
 ### Get the example project
 
@@ -27,32 +31,24 @@ If Node.js is not installed on your system, go to https://nodejs.org/ and instal
 If you are a git user, you can directly clone the repository
 
 ```bash
-git clone git@github.com:paymill/quickstart-project.git
+git clone git@github.com:paymill/quickstart-php.git
 ```
 
 #### Download the archive
 
-If you don't user Git, the project is also available as a zip archive here : https://github.com/paymill/quickstart-project/archive/master.zip
+If you don't user Git, the project is also available as a zip archive here : https://github.com/paymill/quickstart-php/archive/master.zip
 
 Download and extract it.
 
-### Install the dependencies
-
-Change to the project folder and install the dependencies
-
-```bash
-npm install
-```
 
 ### Run the project
 
 Once you installed the dependencies you can run the project.
 
 ```bash
-npm start
+php -S localhost:3000
 ```
-You can access it in your browser at the following URL: http://localhost:3000
-
+You can now access it in your browser at the following URL: http://localhost:3000
 
 ## Let's get started
 
@@ -67,7 +63,7 @@ We've got everything in place. We only miss a payment system to start making mon
 
 The first thing we need to do is to integrate a payment form for the user to submit his credit card details.
 
-In the `views/index.ejs` file, locate the following code:
+In the `index.php` file, locate the following code:
 
 ```html
 <!-- INSERT PAYMENT FORM HERE -->
@@ -81,7 +77,7 @@ And replace it with the following form:
 
 ```html
 <div class="row">
-  <form class="payment-form col-lg-5 collapse" id="payment-form" action="/payment" method="POST">
+  <form class="payment-form col-lg-5 collapse" id="payment-form" action="/payment.php" method="POST">
     <input type="hidden" name="amount" value="4200">
     <input type="hidden" name="currency" value="EUR">
     <input type="hidden" name="description" value="Easy Payments Guide!!!">
@@ -141,7 +137,7 @@ Then below add the following code.
 
 When the page has loaded it will insert the **iframe** in your div with the `credit_card_fields` id. We also pass a callback, that we defined as `payFrameCallback`. If an error was returned it will display it in the console, otherwise it will display the form. We hide the form by default so nothing is shown until the **iframe** has finished loading.
 
-We'll add some styling to have our form centered in the `public/css/styles.css`.
+We'll add some styling to have our form centered in the `css/styles.css`.
 
 ```css
 .payment-form {
@@ -241,54 +237,41 @@ That's it for the client side.
 
 We now need to handle the transaction creation on the server.
 
-First we'll install the [PAYMILL Javascript Wrapper](https://github.com/paymill/paymill-js)
+First we'll install the [PAYMILL PHP Wrapper](https://github.com/paymill/paymill-php)
 
-In your terminal type
+If you are using **Compose**, you can follow the instructions on GitHub.
 
-```bash
-npm install --save paymill-wrapper
+Otherwise [download the archive](https://github.com/paymill/paymill-php/archive/master.zip) and unzip the content in the `lib/paymill-php` folder.
+
+Then create a `payment.php` file and insert the following content:
+
+```php
+<?php
+  require 'lib/paymill-php/autoload.php';
+
+  $apiKey = "<PAYMILL_PRIVATE_KEY>";
+  $request = new Paymill\Request($apiKey);
+  $transaction = new Paymill\Models\Request\Transaction();
+  $transaction->setAmount($_POST['amount'])
+              ->setCurrency($_POST['currency'])
+              ->setToken($_POST['token'])
+              ->setDescription($_POST['description']);
+  try {
+    $response = $request->create($transaction);
+    include("_guide.php");
+  } catch(\Paymill\Services\PaymillException $e){
+    echo("An error occured while processing the transaction: ");
+    echo($e->getErrorMessage());
+  }
+?>
 ```
+- First we require the PAYMILL PHP Wrapper
+- Then we initialize the PAYMILL wrapper with our **Private API Key**
+- We initialize a `tansaction` object with it the `amount`, the `currency`, the `token` and the `description`.
+- Finally we actually create the Transaction.
+- We include the transaction creation in a `try / catch` block so if something wrong happens we show an error. Otherwise we display the content.
 
-Then open the `routes/index.js` file and require it on top of the file:
-
-```javascript
-var express = require('express');
-var router = express.Router();
-var paymill = require("paymill-wrapper"); // Require the paymill-wrapper
-
-// ...
-```
-
-Now add a route for handling the payment request just below the first one
-
-```javascript
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'PAYMILL - Quick Start' });
-});
-
-// Add your route here
-router.post('/payment', function (req, res) {
-  var token = req.body.token;
-  var amount = req.body.amount;
-  var currency = req.body.currency;
-  var description = req.body.description;
-
-  pm = paymill.getContext("<PAYMILL_PRIVATE_KEY>");
-
-  pm.transactions.createWithToken(token, amount, currency, description).then(function(transaction) {
-  	res.render('content', { title: 'PAYMILL - Thank You!' });
-  }, function(error) {
-    res.send('Something went wrong. The transaction could not be created');
-  });
-});
-```
-
-- First we retrieve the data passed from the form: the `token`, `amount`, `currency` and `description`.
-- Then we initialize the PAYMILL wrapper with your **Private API Key**
-- Finally we call the `createWithToken` function on the transaction endpoint passing it the form data.
-- If there is an error we'll display it otherwise we render the page with the expected content.
-
-You only need to create the success page. In the view directory, create the `content.ejs` file and paste the following code
+You only need the content page now. create the `_guide.php` file and paste the following code
 
 ```html
 <!DOCTYPE html>
@@ -298,7 +281,7 @@ You only need to create the success page. In the view directory, create the `con
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><%= title %></title>
+    <title>PAYMILL QUICKSTART</title>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
@@ -318,6 +301,7 @@ You only need to create the success page. In the view directory, create the `con
 
       <div class="starter-template">
         <h1>Your payment was successfully processed.</h1>
+
         <p class="lead">It's easy to integrate payments! You just did it!</p>
         <p class="lead">Thanks for following this Quickstart!
           <br>
@@ -328,6 +312,7 @@ You only need to create the success page. In the view directory, create the `con
     </div>
   </body>
 </html>
+
 ```
 
 ### Get your guide
@@ -354,7 +339,7 @@ If you go back to your [Merchant Centre](https://app.paymill.com) and open the *
 
 ### Conclusion
 
-You just saw how easy it is to integrate PAYMILL in your project. Remember, we've been using **Node.js** but the process would be exactly the same with any of the others supported languages.
+You just saw how easy it is to integrate PAYMILL in your project. Remember, we've been using **PHP** but the process would be exactly the same with any of the others supported languages.
 
 There are many other features available. In a real-world case you would want to wait for the confirmation from the bank after making a transaction using **Webhooks** ...
 
