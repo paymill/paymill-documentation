@@ -16,7 +16,7 @@ Before you can start accepting PayPal payments with PAYMILL you will need:
 
 ### 1. PAYMILL account
 
-If you don’t have a PAYMILL account yet don’t worry. Creating one is easy. The process is described in the [Getting Started](/guides/introduction/getting-started) guide.
+If you don't have a PAYMILL account yet don’t worry. Creating one is easy. The process is described in the [Getting Started](/guides/introduction/getting-started) guide.
 
 If you need more information about how to get your PAYMILL account live, you can also go to the [Your Account](/guides/introduction/your-account) section.
 
