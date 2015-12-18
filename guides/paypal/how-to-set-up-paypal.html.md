@@ -34,6 +34,7 @@ Through PAYMILL’s API you can now easily integrate PayPal payments into your e
     Create a [Transaction Checksum](/guides/paypal/transactions#creating-a-checksum)
   </li>
 
+
   <li class="arrow_box">
     <i class="fa fa-cc-paypal"></i>
     Start the [PayPal Checkout](/guides/paypal/transactions#starting-a-paypal-payment-checkout)

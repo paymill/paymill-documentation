@@ -22,7 +22,7 @@ If you need more information about how to get your PAYMILL account live, you can
 
 ### 2. PayPal account
 
-In order to accept PayPal payments you also need a PayPal account: simply go to the PayPal website and [signup](https://www.paypal.com/signup/account) for a business account.
+In order to accept PayPal payments you also need a PayPal account: simply go to the PayPal website and <a href="https://www.paypal.com/webapps/mpp/product-selection" target="_blank">signup</a>
 
 We highly recommend you to create a **business account** as some PayPal features and tariffs are not available to individual accounts.
 
