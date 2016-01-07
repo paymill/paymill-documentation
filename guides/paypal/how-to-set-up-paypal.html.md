@@ -6,7 +6,7 @@ status: "published"
 menuOrder: 1
 ---
 
-Through PAYMILL’s API you can now easily integrate PayPal payments into your existing checkout. It only requires a few steps:
+Through PAYMILL's API you can now easily integrate PayPal payments into your existing checkout. It only requires a few steps:
 
 <ul class="checklist">
   <li class="arrow_box">
