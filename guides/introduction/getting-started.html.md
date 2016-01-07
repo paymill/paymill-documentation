@@ -6,428 +6,341 @@ status: "published"
 menuOrder: 1
 ---
 
-## SEPA direct debit* and credit card payment
+Integrating PAYMILL is fast and easy. You can start accepting payments in a matter of minutes.
 
-We would like you to be able to implement our payment solution on your website as quickly as possible. It will be differentiated in stages between the two different payment types. To do this, please carry out the following steps:
+If you'd like to get a quick overview of PAYMILL integration process follow along this quick guide which will show you how to set up a payment form for accepting credit card payments.
 
-## 1. Creating an Account
+## Prerequisites
 
-On our homepage, click the **Sign Up** button or click **Create new PAYMILL account** in the login form.
+### PHP
 
-![Login Form](/guides/images/getting_started-01.jpg)
+PAYMILL can be integrated in almost any technological stack. Check out the list of the supported languages in our [Libraries](guides/interation/libraries.html) page.
 
-Now fill out the **registration form**, after which you will receive an activation e-mail that you will need to confirm.
+For the purpose of this guide, we will use PHP. Don't worry if you are not a PHP expert, it's meant to demonstrate the concepts that you can apply to your own prefered technology.
 
-![Registration Form](/guides/images/getting_started-02.jpg)
-
-Once your PAYMILL account has been set up successfully, you will be transferred to the merchant centre. In this area you can view your test key and live key transactions.
-
-![Merchant Centre](/guides/images/getting_started-03.jpg)
-
-## 2. API Keys
-
-You will need two keys to be able to use PAYMILL:
-
-<p class="info">
-<span class="heading">**Public Key:**</span>
-This key is visible on your payment form and therefore can be seen by third parties. You use the public key to create a token for your customer's credit card with our JavaScript bridge. More on that below.
-</p>
-
-
-<p class="info">
-<span class="heading">**Private Key:**</span>
-As soon as you have received the token, you can make a payment (transaction) - usually at the end of the order process - with our API. You have to indicate your private key every time you submit a request to our API.
-</p>
-
-Important note concerning test keys and live keys:
-
-You receive one pair of test keys and live keys each. Use your test keys for testing. You use the live keys in your working system.
-
-If you do not have a test system, you will need to replace the two test keys with the live keys before you make your system available to your customers!
-
-## 3. Calling up the API Keys in Your Account
-
-In the **Development > API keys tab** of the sidebar you will find your test keys for performing test payments. Before the live keys are displayed, you will have to activate your account. In order to do so, you have to provide some information of your product, your business and your relationship to the company.
-
-![API Keys](/guides/images/getting_started-04.jpg)
-
-<!-- **Quick guide to integrate PAYMILL**
-
-The following PHP example can be copied 1:1 for a quick test of our services.
-Please notice that you need a valid PAYMILL account with test keys (s.a.).
-
-TODO: INTEGRATE THE  EXAMPLE -->
-
-
-## 4. Payment Form
-
-You can find one example of integrating PAYMILL in your payment form on [GitHub](https://github.com/Paymill/Zahlungsformular) or here as a [Gist](https://gist.github.com/paymill-gists/9233569) integration. Further information on the payment form can be found on our payment form page.
-
-Depending on your payment type different form fields are required. For credit card payment your clients need to complete at least the following fields:
-
-  - Creditcard number
-  - Expiry month
-  - Expiry year
-  - Checking number (CVC)
-  - Transaction amount (Integer e.g. "15" for 0.15 Euro)
-  - Currency ([ISO 4217](http://en.wikipedia.org/wiki/ISO_4217), e.g. "EUR")
-
-
-```html
-<script type="text/javascript">
-  var PAYMILL_PUBLIC_KEY = '62477926916d4da496cf4f1a77c4175d';
-</script>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="https://bridge.paymill.com"></script>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-
-    function PaymillResponseHandler(error, result) {
-      if (error) {
-        // Displays the error above the form
-        $(".payment-errors").text(error.apierror);
-      } else {
-        $(".payment-errors").text("");
-        var form = $("#payment-form");
-        // Token
-        var token = result.token;
-
-        // Insert token into form in order to submit to server
-        form.append("<input type='hidden' name='paymillToken' value='" + token + "'/>");
-        form.get(0).submit();
-      }
-      $(".submit-button").removeAttr("disabled");
-    }
-
-    $("#payment-form").submit(function (event) {
-      // Deactivate submit button to avoid further clicks
-      $('.submit-button').attr("disabled", "disabled");
-
-      if (!paymill.validateCardNumber($('.card-number').val())) {
-        $(".payment-errors").text("Invalid card number");
-        $(".submit-button").removeAttr("disabled");
-        return false;
-      }
-
-      if (!paymill.validateExpiry(
-        $('.card-expiry-month').val(),
-        $('.card-expiry-year').val())
-      ) {
-        $(".payment-errors").text("Invalid expiration date");
-        $(".submit-button").removeAttr("disabled");
-        return false;
-      }
-
-      paymill.createToken({
-      number:         $('.card-number').val(),
-      exp_month:      $('.card-expiry-month').val(),
-      exp_year:       $('.card-expiry-year').val(),
-      cvc:            $('.card-cvc').val(),
-      cardholder:     $('.card-holdername').val(),
-      amount_int:     $('.card-amount-int').val(), // Integer e.g. "4900" für 49,00 EUR
-      currency:       $('.card-currency').val()    // ISO 4217 e.g. "EUR"
-      }, PaymillResponseHandler);
-
-      return false;
-    });
-  });
-</script>
-```
-
-For ELV* payments your clients need to complete at least the following fields:
-
-  - Accountnumber
-  - Bank identification code
-  - Account holder
-
-Alternative:
-
-  - IBAN
-  - BIC
-  - Account holder
-
-```html
-<script type="text/javascript">
-  var PAYMILL_PUBLIC_KEY = '62477926916d4da496cf4f1a77c4175d';
-</script>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="https://bridge.paymill.com/"></script>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-
-    function PaymillResponseHandler(error, result) {
-      if (error) {
-        // Displays the error above the form
-        $(".payment-errors").text(error.apierror);
-      } else {
-        $(".payment-errors").text("");
-        var form = $("#payment-form");
-        // Token
-        var token = result.token;
-
-        // Insert token into form in order to submit to server
-        form.append("<input type='hidden' name='paymillToken' value='" + token + "'/>");
-        form.get(0).submit();
-      }
-      $(".submit-button").removeAttr("disabled");
-    }
-
-    $("#payment-form").submit(function (event) {
-      // Deactivate submit button to avoid further clicks
-      $('.submit-button').attr("disabled", "disabled");
-
-      paymill.createToken({
-        number:        $('.number').val(),             // ELV
-        bank:          $('.bank').val(),               // ELV
-        accountholder: $('.accountholder').val()       // ELV
-      }, PaymillResponseHandler);
-
-      return false;
-    });
-  });
-</script>
-```
+If PHP is not installed on your system, go to http://php.net/manual/en/install.php and install the proper version for your platform.
 
 <p class="important">
-**Important information for the credit card data in your HTML form:**
-With the payment form, it is essential that you do not put a `name` attribute with the `<input>` tags for credit card data!
-In this way, the credit card data will not be returned to your server, and you will stay outside the legal provisions concerning the storage of such data (PCI compliance).
+  To use the builtin server, make sure your version is >= 5.4
 </p>
 
-<p class="important">
-**Important information for test data:**
-Only specific credit card information / bank details are allowed in test mode. You can find the list [here](/guides/reference/testing.html). Usage of any other data will result in error.
-</p>
+### Get the example project
 
-**JavaScript - integrating the PAYMILL bridge**
+#### Via Git
 
-  - First you must enter your public key in the `PAYMILL_PUBLIC_KEY` variable.
-  - Then you integrate our JavaScript bridge via the following URL: https://bridge.paymill.com
+If you are a git user, you can directly clone the repository
+
+```bash
+git clone git@github.com:paymill/quickstart-php.git
+```
+
+#### Download the archive
+
+If you don't user Git, the project is also available as a zip archive here : https://github.com/paymill/quickstart-php/archive/master.zip
+
+Download and extract it.
 
 
-**Create your payment (ELV, credit card) token with the command `createToken`.**
+### Run the project
 
-  - As soon as the payment form is sent, you use `createToken` to create a token for your customers' credit card data.
-  - Then you insert the token in your payment form as a hidden field in order to send them back to your server, and all further payment function requests are performed using this token.
+Once you installed the dependencies you can run the project.
 
+```bash
+php -S localhost:3000
+```
+You can now access it in your browser at the following URL: http://localhost:3000
 
-Example of integrating the HTML form, the bridge, and the `createToken` function for credit card:
+## Let's get started
+
+As you can see the application we are working on is a paid article on easy payments integration.
+For 42€, people will be able to buy a guide explaining how to easily integrate payments in their website.
+
+![](/guides/images/quickstart-01.png)
+
+We've got everything in place. We only miss a payment system to start making money!
+
+### Integrate the payment form
+
+The first thing we need to do is to integrate a payment form for the user to submit his credit card details.
+
+In the `index.php` file, locate the following code:
 
 ```html
-<script type="text/javascript">
-var PAYMILL_PUBLIC_KEY = '62477926916d4da496cf4f1a77c4175d';
-</script>
+<!-- INSERT PAYMENT FORM HERE -->
+<div><img src="/images/comingsoon.png" alt="Coming Soon" /></div>
+<!-- END FORM -->
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="https://bridge.paymill.com/"></script>
+<a class="btn btn-lg btn-success" href="#" role="button">Get your "Easy Payments Guide" now for 42€</a>
+```
 
-<script type="text/javascript">
-$(document).ready(function () {
+And replace it with the following form:
 
-  function PaymillResponseHandler(error, result) {
+```html
+<div class="row">
+  <form class="payment-form col-lg-5 collapse" id="payment-form" action="/payment.php" method="POST">
+    <input type="hidden" name="amount" value="4200">
+    <input type="hidden" name="currency" value="EUR">
+    <input type="hidden" name="description" value="Easy Payments Guide!!!">
+
+    <div id="credit-card-fields">
+      <!-- Embedded credit card frame will load here -->
+    </div>
+
+    <button class='form-control btn btn-success submit-button' type='submit'>Get your "Easy Payments Guide" now for 42€</button>
+  </form>
+</div>
+```
+
+This form provides three hidden fields with information to make the PAYMILL transaction:
+
+  - `amount`: The amount charged on the credit card. Please note **it is provided in cents** so we've got 42€ here.
+  - `currency`: The currency to use for the transaction.
+  - `description`: An optional description that will be attached to the transaction. Here we'll use it to easily identify where the transaction came from.
+
+You may be wondering where the fields for the actual credit card data are. In fact they will be injected later in an iframe thanks to our **Bridge PayFrame** feature. The reason we are doing that is to simplify your security requirement.
+
+<p class="info">
+You can learn more about PCI security reading [this guide](https://developers.paymill.com/guides/security/pci-security) and the [Bridge PayFrame](https://developers.paymill.com/guides/reference/bridge-payframe) documentation.
+<br>
+You could also create your own form but keep in mind you will need to meet the corresponding security requirements.
+</p>
+
+Now you need to include the **PayFrame Bridge** javascript code. Add this line at the bottom of the `<body>` in the `views/index.ejs` file.
+
+```html
+<script src="https://bridge.paymill.com/"></script>
+```
+
+Then below add the following code.
+
+```html
+<script>
+  // Callback for the PayFrame
+  var payFrameCallback = function (error) {
     if (error) {
-      // Displays the error above the form
-      $(".payment-errors").text(error.apierror);
+      // Frame could not be loaded, check error object for reason.
+      console.log(error.apierror, error.message);
     } else {
-      $(".payment-errors").text("");
-      var form = $("#payment-form");
-      // Token
-      var token = result.token;
-
-      // Insert token into form in order to submit to server
-      form.append("<input type='hidden' name='paymillToken' value='" + token + "'/>");
-      form.get(0).submit();
+      // Frame was loaded successfully and is ready to be used.
+      console.log("PayFrame successfully loaded");
+      $("#payment-form").show(300);
     }
-    $(".submit-button").removeAttr("disabled");
   }
 
-  $("#payment-form").submit(function (event) {
-    // Deactivate submit button to avoid further clicks
-    $('.submit-button').attr("disabled", "disabled");
-
-    if (!paymill.validateCardNumber($('.card-number').val())) {
-      $(".payment-errors").text("Invalid card number");
-      $(".submit-button").removeAttr("disabled");
-      return false;
-    }
-
-    if (!paymill.validateExpiry(
-      $('.card-expiry-month').val(),
-      $('.card-expiry-year').val())
-    ) {
-      $(".payment-errors").text("Invalid expiration date");
-      $(".submit-button").removeAttr("disabled");
-      return false;
-    }
-
-    paymill.createToken({
-      number:         $('.card-number').val(),
-      exp_month:      $('.card-expiry-month').val(),
-      exp_year:       $('.card-expiry-year').val(),
-      cvc:            $('.card-cvc').val(),
-      cardholder:     $('.card-holdername').val(),
-      amount_int:     $('.card-amount-int').val(),   // Integer e.g. "4900" for 49,00 EUR
-      currency:       $('.card-currency').val()      // ISO 4217 e.g. "EUR"
-    }, PaymillResponseHandler);
-
-    return false;
-  });
-});
-</script>
-
-<div class="payment-errors"></div>
-<form id="payment-form" action="request.php" method="POST">
-  <input class="card-amount-int" type="hidden" value="4900" />
-  <input class="card-currency" type="hidden" value="EUR" />
-
-  <div class="form-row"><label>Card number</label>
-    <input class="card-number" type="text" value="4111111111111111" size="20" />
-  </div>
-
-  <div class="form-row">
-    <label>CVC (Prüfnummer)</label>
-    <input class="card-cvc" type="text" value="111" size="4" />
-  </div>
-
-  <div class="form-row">
-    <label>Name</label>
-    <input class="card-holdername" type="text" value="Joe Doe" size="20" />
-  </div>
-
-  <div class="form-row">
-    <label>Expiry Date (MM/YYYY)</label>
-    <input class="card-expiry-month" type="text" value="02" size="2" />
-    <span> / </span>
-    <input class="card-expiry-year" type="text" value="2015" size="4" />
-  </div>
-
-  <div class="form-row">
-    <label>Currency</label>
-    <input class="card-currency" type="text" value="EUR" size="20" />
-  </div>
-
-  <button class="submit-button" type="submit">Submit</button>
-
-</form>
-```
-
-Example of integrating the HTML form, the bridge and the `createToken` function for ELV*:
-
-```html
-<script type="text/javascript">
-  var PAYMILL_PUBLIC_KEY = '62477926916d4da496cf4f1a77c4175d';
-</script>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="https://bridge.paymill.com/"></script>
-
-<script type="text/javascript">
   $(document).ready(function () {
-
-    function PaymillResponseHandler(error, result) {
-      if (error) {
-        // Displays the error above the form
-        $(".payment-errors").text(error.apierror);
-      } else {
-        $(".payment-errors").text("");
-        var form = $("#payment-form");
-        // Token
-        var token = result.token;
-
-        // Insert token into form in order to submit to server
-        form.append("<input type='hidden' name='paymillToken' value='" + token + "'/>");
-        form.get(0).submit();
-      }
-      $(".submit-button").removeAttr("disabled");
-    }
-
-    $("#payment-form").submit(function (event) {
-      // Deactivate submit button to avoid further clicks
-      $('.submit-button').attr("disabled", "disabled");
-
-      paymill.createToken({
-        number:        $('.number').val(),
-        bank:          $('.bank').val(),
-        accountholder: $('.accountholder').val()
-      }, PaymillResponseHandler);
-
-      return false;
-    });
+    paymill.embedFrame('credit-card-fields', {
+      lang: 'en'
+    }, payFrameCallback);
   });
 </script>
-
-<div class="payment-errors"></div>
-<form id="payment-form" action="request.php" method="POST">
-
-  <div class="form-row">
-    <label>Account number</label>
-    <input class="number" type="text" value="648489890" size="20" />
-  </div>
-
-  <div class="form-row">
-    <label>Bank code</label>
-    <input class="bank" type="text" value="50010517" size="4" />
-  </div>
-
-  <div class="form-row">
-    <label>Account holder</label>
-    <input class="accountholder" type="text" value="Chris Hansen" size="20" />
-  </div>
-
-  <button class="submit-button" type="submit">Submit</button>
-
-</form>
 ```
 
-## 5. Carrying out Payments
+When the page has loaded it will insert the **iframe** in your div with the `credit_card_fields` id. We also pass a callback, that we defined as `payFrameCallback`. If an error was returned it will display it in the console, otherwise it will display the form. We hide the form by default so nothing is shown until the **iframe** has finished loading.
 
-Copy our PHP library in a subdirectory, e.g. lib.
-You can find our PHP wrapper here: https://github.com/Paymill/Paymill-PHP
+We'll add some styling to have our form centered in the `css/styles.css`.
 
-**The normal procedure is:**
-
-1. You will need two pieces of information to use the PAYMILL PHP wrapper:
-  - API-Endpoint: https://api.paymill.com/v2
-  - Your Private Key from My Account
-
-2. Integrate the wrapper classes in your script.
-
-3. Retrieve the token that you have received in the payment form.
-
-4. Create a new transaction object with the two required parameters from 1.
-
-5. Set the two required parameters for, e.g. the payment function, which in this case would be the amount (see the [API reference](/API) for all required attributes).
-
-6. Then perform, e.g. the payment transaction function.
-
-7. If there are any errors, you will receive an exception, a transaction_id is being sent to if it worked.
-
-
-Here you can find a sample request:
-
-```php
-<?php
-$token = $_POST['paymillToken'];
-
-if ($token) {
-    $request = new Paymill\Request('20c8b46fe20714ad3549a6267dc647ec');
-    $transaction = new Paymill\Models\Request\Transaction();
-    $transaction->setAmount(4200) // e.g. "4200" for 42.00 EUR
-                ->setCurrency('EUR')
-                ->setToken($token)
-                ->setDescription('Test Transaction');
-
-    $response = $request->create($transaction);
-
-    echo "Transaction: ";
-    print_r($response);
+```css
+.payment-form {
+  float: none;
+  margin: 0 auto;
 }
 ```
 
+Now if you reload the page you should see your payment form appear.
+
+
+### Create a PAYMILL account
+
+Before we continue you'll need to create a PAYMILL account if you don't have one yet. It's free and it only takes a couple of minutes.
+
+Go to https://app.paymill.com/user/register and fill-in the form
+
+![](/guides/images/quickstart-02.jpg)
+
+Once you're done, you'll have access to your PAYMILL merchant interface called the **Merchant Centre**. This is the place where you manage everything about your account.
+
+![](/guides/images/quickstart-03.jpg)
+
+Your account is now in **test mode**. It means you can only make test transactions. No money will be ever charged when in **test mode**. To learn more about the **test mode**, the **live mode** and the activation process, you can check the [Your Account guide](https://developers.paymill.com/guides/introduction/your-account.html).
+
+
+Go to the **Development > API keys** tab to access your **API Keys** that you'll use to perform operations on your account from your code.
+
+### Create a token
+
+Your server will never handle credit card data for security reasons. You need to send the form data to our servers first. Then we'll issue a token that you will be able to use to create the transaction.
+
+Add the following code below the **PayFrame** callback:
+
+```javascript
+//...
+
+var submit = function (event) {
+  paymill.createTokenViaFrame({
+    amount_int: 4200,
+    currency: 'EUR'
+  }, function(error, result) {
+    // Handle error or process result.
+    if (error) {
+      // Token could not be created, check error object for reason.
+      console.log(error.apierror, error.message);
+    } else {
+      // Token was created successfully and can be sent to backend.
+      var form = $("#payment-form");
+      var token = result.token;
+      form.append("<input type='hidden' name='token' value='" + token + "'/>");
+      form.get(0).submit();
+    }
+  });
+
+  return false;
+}
+
+//...
+```
+
+What it does is sending the information to our server securely. If something wrong happens we'll log the error in the console otherwise we'll add an hidden field containing the token to the form so you can submit it to your server.
+
+Then we submit the form.
+
+The only thing left to do is to handle the form submission. Update your code this way:
+
+```javascript
+$(document).ready(function () {
+  paymill.embedFrame('credit-card-fields', {
+    lang: 'en'
+  }, payFrameCallback);
+
+  // Form submit handler
+  $("#payment-form").submit(submit);
+});
+```
+
+The only thing left to do is to add your **PAYMILL Public API Key**
+
+```javascript
+<script>
+  PAYMILL_PUBLIC_KEY = "<PAYMILL_PUBLIC_KEY>"; // Insert your Public API Key here
+
+  // Callback for PayFram initialization
+  var payFrameCallback = function (error) {
+
+  // Rest of the code ...
+
+  }
+</script>
+```
+
+That's it for the client side.
+
+### Create the transaction on your server
+
+We now need to handle the transaction creation on the server.
+
+First we'll install the [PAYMILL PHP Wrapper](https://github.com/paymill/paymill-php)
+
+If you are using **Compose**, you can follow the instructions on GitHub.
+
+Otherwise [download the archive](https://github.com/paymill/paymill-php/archive/master.zip) and unzip the content in the `lib/paymill-php` folder.
+
+Then create a `payment.php` file and insert the following content:
+
+```php
+<?php
+  require 'lib/paymill-php/autoload.php';
+
+  $apiKey = "<PAYMILL_PRIVATE_KEY>";
+  $request = new Paymill\Request($apiKey);
+  $transaction = new Paymill\Models\Request\Transaction();
+  $transaction->setAmount($_POST['amount'])
+              ->setCurrency($_POST['currency'])
+              ->setToken($_POST['token'])
+              ->setDescription($_POST['description']);
+  try {
+    $response = $request->create($transaction);
+    include("_guide.php");
+  } catch(\Paymill\Services\PaymillException $e){
+    echo("An error occured while processing the transaction: ");
+    echo($e->getErrorMessage());
+  }
+?>
+```
+- First we require the PAYMILL PHP Wrapper
+- Then we initialize the PAYMILL wrapper with our **Private API Key**
+- We initialize a `tansaction` object with it the `amount`, the `currency`, the `token` and the `description`.
+- Finally we actually create the Transaction.
+- We include the transaction creation in a `try / catch` block so if something wrong happens we show an error. Otherwise we display the content.
+
+You only need the content page now. create the `_guide.php` file and paste the following code
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PAYMILL QUICKSTART</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">PAYMILL QUICKSTART</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Your payment was successfully processed.</h1>
+
+        <p class="lead">It's easy to integrate payments! You just did it!</p>
+        <p class="lead">Thanks for following this Quickstart!
+          <br>
+          Get further information on <a href="http://developers.paymill.com">the PAYMILL Developer Centre</a>
+        </p>
+      </div>
+
+    </div>
+  </body>
+</html>
+
+```
+
+### Get your guide
+
+Restart your server and access `http://localhost:3000`.
+
+Enter the following data in the form:
+
+- **Credit card number**: 4111111111111111
+- **Verification number**: 123 (any 3 digits)
+- **Cardholder**: John Doe (any name)
+- **Expires**: 12 / 2020 (any date in the future)
+
+Press the button and voilà! Isn't it cute?
+
 <p class="important">
-* Please note that ELV/SEPA payment is only available for merchants with German bank account at the moment
+  Don't enter real credit card data. Our testing servers don't have the same security level as the production one.
+  Only the provided testing data will work in test mode.
+  <br>
+  You can learn more about testing [here](https://developers.paymill.com/guides/reference/testing.html)
 </p>
+
+If you go back to your [Merchant Centre](https://app.paymill.com) and open the **Manage > Transactions** tab, you should see your payment.
+
+### Conclusion
+
+You just saw how easy it is to integrate PAYMILL in your project. Remember, we've been using **PHP** but the process would be exactly the same with any of the others supported languages.
+
+There are many other features available. In a real-world case you would want to wait for the confirmation from the bank after making a transaction using **Webhooks** ...
+
+You can get further reading the [Guides](/guides) and the [API Reference](/API).
