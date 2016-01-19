@@ -2,6 +2,6 @@
 title: "Means of Payment"
 menu: "Means of Payment"
 type: "guide"
-status: "published"
+status: "draft"
 menuOrder: 6
 ---
