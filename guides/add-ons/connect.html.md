@@ -241,7 +241,6 @@ A successful response contains a private api key to the merchants account plus h
     - `amex`: American Express cards
     - `jcb`: JCB cards
     - `dinersclub`: DinersClub cards
-    - `cup`: China UnionPay cards
     - `elv`: Direct debit (ELV, Germany only).
   - `currency` may contain every 3-letter currency code supported by PAYMILL and specified by **ISO 4217**
   - `acquirer` may contain one of our acquirers ("acceptance", "wirecard") for your payment method configuration.
