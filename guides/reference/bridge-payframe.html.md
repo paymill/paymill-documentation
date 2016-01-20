@@ -62,16 +62,25 @@ paymill.embedFrame(container, {
 }, callback);
 ```
 
-Currently, the following languages are supported:
+**Available languages:**
 
-1. English `en`
-- German `de`
-- French `fr`
-- Italian `it`
-- Spanish `es`
-- Portuguese `pt`
+- Czech `cs`
 - Danish `da`
+- English `en`
+- French `fr`
+- German `de`
 - Hungarian `hu`
+- Italian `it`
+- Japanese `ja`
+- Norwegian `no`
+- Norwegian (Bokmål) `nb`
+- Polish `pl`
+- Portuguese `pt`
+- Russian `ru`
+- Slovak `sk`
+- Slovenian `sl`
+- Spanish `es`
+- Swedish `sv`
 
 <div class="info">
 If you need additional languages or can even provide a translation yourself, please <a href="mailto:support@paymill.com?subject=PayFrame%20translation">contact us</a>.

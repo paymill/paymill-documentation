@@ -6,7 +6,10 @@ status: "published"
 menuOrder: 2
 ---
 
-How exactly does the PAYMILL bridge work and what are its features? These and similar questions are answered in this section.
+The PAYMILL Bridge offers you full flexibility in your checkout design and access to the full set of features PAYMILL has to offer. 
+<p>
+Note: Due to PCI DSS 3.0 requirements, defining a custom credit card form could mean that you need to annually fill in an extended form of self-assessment questionnaire (SAQ A-EP).  If you would like to be (or stay) eligible for the simpler form of self-assessment (SAQ A), we strongly encourage you to embed our <a href="/guides/reference/bridge-payframe.html">PayFrame</a> solution, this will make PCI 3.0 compliance more convenient for you.
+</p>
 
 ## 1. Integrating the PAYMILL JS Bridge
 
