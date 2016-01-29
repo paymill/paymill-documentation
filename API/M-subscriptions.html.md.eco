@@ -760,13 +760,20 @@ Unique identifier describing a payment of the client
 Unique identifier describing the offer which is subscribed to the client (optional)
 
 **offer_change_type:**    _integer / null_  
-permitted values: 0,1,2; linked and required with ‘offer', default: 0 (optional)
+permitted values: 0,1,2; linked and required with ‘offer', default: 0 (optional)  
+Value description:    
+0: The next_capture_at date will remain unchanged, no refund will be given  
+1: No function yet  
+2: The next_capture_at date will change to the current date (immediate charge), a pro-rata refund will be given if due.
+The interval will be reset, the capture date is changed permanently.
 
 **amount:**               _integer (>0)_  
 the amount of the subscription in cents (optional)
 
 **amount_change_type:**   _integer_  
-permitted values: 0,1; linked and required with ‘amount' (optional)
+permitted values: 0,1; linked and required with ‘amount' (optional)  
+0: The new amount is valid one-time only. It will be set back to the initial amount in the next interval.  
+1: The new amount is valid permanently until the end of the subscription.
 
 **pause:**                _boolean_  
 deactivate a subscription or reactivate it, false: reactivate, true: deactivate (optional)
