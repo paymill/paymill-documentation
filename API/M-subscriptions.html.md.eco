@@ -370,8 +370,9 @@ charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] Example: 2 DAYS, M
 name of the subscription (optional)
 
 **period_of_validity:**  _string / null_  
-limit the validity of the subscription, format: integer MONTH | YEAR | WEEK | DAY (optional)
-Note: the last payment attempt will be done at the end of the period of validity. Example: If you want to make a subscription of 6 months, then you have to set "period_of_validity=5 MONTH".
+limit the validity of the subscription, format: integer MONTH | YEAR | WEEK | DAY (optional)  
+The last payment attempt will be done at the end of the period of validity  
+Example: To create a subscription for 6 months, set value "5 MONTH"
 
 **start_at:**            _integer / null_  
 Unix-Timestamp for the subscription start date, if trial_end > start_at, the trial_end will be set to start_at (optional)
