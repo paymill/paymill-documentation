@@ -142,12 +142,23 @@ paymill.embedFrame(container, {
 
 Currently, the following languages are supported
 
-1. English `en`
-2. German `de`
-3. French `fr`
-4. Italian `it`
-5. Spanish `es`
-6. Portuguese `pt
+- Czech `cs`
+- Danish `da`
+- English `en`
+- French `fr`
+- German `de`
+- Hungarian `hu`
+- Italian `it`
+- Japanese `ja`
+- Norwegian `no`
+- Norwegian (Bokmål) `nb`
+- Polish `pl`
+- Portuguese `pt`
+- Russian `ru`
+- Slovak `sk`
+- Slovenian `sl`
+- Spanish `es`
+- Swedish `sv`
 
 ### 3. Request a token using the embedded frame
 
