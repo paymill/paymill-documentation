@@ -93,7 +93,7 @@ Shop plugins are the fastest and easiest way to have online payments ready for y
     <h3>Shopware</h3>
     <p>The following <a href="https://github.com/Paymill/Paymill-Shopware4#readme">instructions</a> will enable you to integrate our Shopware plugin free of hassle.</p>
 
-    <p><em>Our plugin is compatible with Shopware 4.0.0 to 4.3.2</em></p>
+    <p><em>Our plugin is compatible with Shopware 4.0.0 to 4.3.2 and 5.0.0 to 5.1.1</em></p>
   </div>
 
 </div>
