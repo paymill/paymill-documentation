@@ -4,7 +4,7 @@ anchor: "subscriptions"
 type: "apiDoc"
 ---
 
-Subscriptions allow you to charge recurring payments on a client's credit card / direct debit account / PayPal account. A subscription connects a client to the [offers-object](#-offer-object). A client can have several subscriptions to different offers, but only one subscription to the same offer.
+Subscriptions allow you to charge recurring payments on a client's credit card / direct debit account. A subscription connects a client to the [offers-object](#-offer-object). A client can have several subscriptions to different offers, but only one subscription to the same offer.
 
 ## `Subscription` object
 
@@ -42,8 +42,7 @@ Subscriptions allow you to charge recurring payments on a client's credit card /
 
 <pre>
   subscription.offer returns an <a href="#-offer-object">offer object</a>
-  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>, a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a> or a <a href="#-payment-object-for-paypal-payments">payment object for PayPal</a>
-  subscription.client returns a <a href="#-client-object">client object</a>
+  subscription.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
 </pre>
 
 
@@ -96,8 +95,8 @@ Unix-Timestamp for the last update
 **canceled_at:**           _integer / null_  
 Unix-Timestamp for the cancel date
 
-**payment:**               _[payment object for credit card](#-payment-object-for-credit-card-payments) / [payment object for direct debit](#-payment-object-for-direct-debit-payments) / [payment object for PayPal](#-payment-object-for-paypal-payments)_ 
-payment object for credit card, direct debit or PayPal
+**payment:**               _[payment object for credit card](#-payment-object-for-credit-card-payments) / [payment object for direct debit](#-payment-object-for-direct-debit-payments)
+payment object for credit card or direct debit
 
 **mandate_reference:**     _string or null_  
 SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
@@ -339,7 +338,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
 
 <pre>
   - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
-  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>, a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a> or a <a href="#-payment-object-for-paypal-payments">payment object for PayPal</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
   - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
@@ -371,7 +370,9 @@ charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] Example: 2 DAYS, M
 name of the subscription (optional)
 
 **period_of_validity:**  _string / null_  
-limit the validity of the subscription, format: integer MONTH | YEAR | WEEK | DAY (optional)
+limit the validity of the subscription, format: integer MONTH | YEAR | WEEK | DAY (optional)  
+The last payment attempt will be done at the end of the period of validity  
+Example: To create a subscription for 6 months, set value "5 MONTH"
 
 **start_at:**            _integer / null_  
 Unix-Timestamp for the subscription start date, if trial_end > start_at, the trial_end will be set to start_at (optional)
@@ -447,7 +448,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dc180b755d10da324864 \
 
 <pre>
   - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
-  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>, a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a> or a <a href="#-payment-object-for-paypal-payments">payment object for PayPal</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
   - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
@@ -741,7 +742,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
 
 <pre>
   - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
-  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>, a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a> or a <a href="#-payment-object-for-paypal-payments">payment object for PayPal</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
   - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
@@ -760,13 +761,20 @@ Unique identifier describing a payment of the client
 Unique identifier describing the offer which is subscribed to the client (optional)
 
 **offer_change_type:**    _integer / null_  
-permitted values: 0,1,2; linked and required with ‘offer', default: 0 (optional)
+permitted values: 0,1,2; linked and required with ‘offer', default: 0 (optional)  
+Value description:    
+0: The next_capture_at date will remain unchanged, no refund will be given  
+1: No function yet  
+2: The next_capture_at date will change to the current date (immediate charge), a pro-rata refund will be given if due.
+The interval will be reset, the capture date is changed permanently.
 
 **amount:**               _integer (>0)_  
 the amount of the subscription in cents (optional)
 
 **amount_change_type:**   _integer_  
-permitted values: 0,1; linked and required with ‘amount' (optional)
+permitted values: 0,1; linked and required with ‘amount' (optional)  
+0: The new amount is valid one-time only. It will be set back to the initial amount in the next interval.  
+1: The new amount is valid permanently until the end of the subscription.
 
 **pause:**                _boolean_  
 deactivate a subscription or reactivate it, false: reactivate, true: deactivate (optional)
@@ -928,7 +936,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
 
 <pre>
   - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
-  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>, a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a> or a <a href="#-payment-object-for-paypal-payments">payment object for PayPal</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
   - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
@@ -1009,7 +1017,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
 
 <pre>
   - <a href="#-subscriptions-object">subscription</a>.offer returns an <a href="#-offer-object">offer object</a>
-  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a>, a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a> or a <a href="#-payment-object-for-paypal-payments">payment object for PayPal</a>
+  - <a href="#-subscriptions-object">subscription</a>.payment returns a <a href="#-payment-object-for-credit-card-payments">payment object for credit card</a> or a <a href="#-payment-object-for-direct-debit-payments">payment object for direct debit</a>
   - <a href="#-subscriptions-object">subscription</a>.client returns a <a href="#-client-object">client object</a>
 </pre>
 
@@ -1029,7 +1037,7 @@ Available [filters](#filter-entries):
   - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `updated_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `canceled_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
-  - `payment_type=creditcard|debit|paypal`
+  - `payment_type=creditcard|debit`
   - `is_deleted=1|0`
   - `mandate_reference=<string>`
 
@@ -1086,6 +1094,6 @@ Available [filters](#filter-entries):
   - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `updated_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `canceled_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
-  - `payment_type=creditcard|debit|paypal`
+  - `payment_type=creditcard|debit`
   - `is_deleted=1|0`
   - `mandate_reference=<string>`

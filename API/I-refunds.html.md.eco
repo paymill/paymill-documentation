@@ -19,6 +19,7 @@ type: "apiDoc"
     "updated_at" : 1349947042,
     "response_code" : 20000,
     "transaction" : "<Object>",
+    "reason" : "requested_by_customer",
     "app_id": null
 }
 ```
@@ -54,6 +55,9 @@ Unix-Timestamp for the creation date
 
 **updated_at:**                 _integer_  
 Unix-Timestamp for the last update
+
+**reason:**                     _string / null_
+Reason for this refund. Possible values are "duplicate", "fraudulent" or "requested_by_customer".
 
 **app_id:**                     _string / null_  
 App (ID) that created this refund or null if created by yourself
@@ -109,6 +113,7 @@ curl https://api.paymill.com/v2.1/refunds/tran_023d3b5769321c649435 \
         "updated_at" : 1365154751,
         "response_code" : 20000,
         "transaction" : "<Object>",
+        "reason" : "requested_by_customer",
         "app_id" :  null
     },
     "mode" : "test"
@@ -139,6 +144,9 @@ Amount (in cents) which will be charged
 
 **description:**    _string / null_  
 Additional description for this refund
+
+**reason:**         _string / null_
+Reason for this refund. Possible values are "duplicate", "fraudulent" or "requested_by_customer".
 
 ## `Refund` Details
 
@@ -187,6 +195,7 @@ curl https://api.paymill.com/v2.1/refunds/refund_87bc404a95d5ce616049 \
         "updated_at" : 1349947042,
         "response_code" : 20000,
         "transaction" : "<Object>",
+        "reason" : "requested_by_customer",
         "app_id" : null
     },
     "mode" : "test"
@@ -251,6 +260,7 @@ curl https://api.paymill.com/v2.1/refunds \
             "updated_at" : 1349947042,
             "response_code" : 20000,
             "transaction" : "<Object>",
+            "reason" : "requested_by_customer",
             "app_id" : null
         }
     ],

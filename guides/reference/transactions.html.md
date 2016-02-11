@@ -121,10 +121,6 @@ curl https://api.paymill.com/v2.1/transactions \
   -d "description=Test Transaction"
 ```
 
-<div class="important">
-Please note that not all means of payment allow creating arbitrary transactions. For example, PayPal requires customer interaction unless you've obtained a billing agreement from your customer. Make sure to check the payment object's `is_recurring` flag and see our guide on [means of payment](/guides/reference/payments.html) for more information.
-</div>
-
 ### Creating a transaction from a preauthorization
 
 If you have previously created a preauthorization, you can capture those funds simply by providing the preauthorization ID when creating a transaction:

@@ -653,7 +653,6 @@ Available status for card_type:
   - jcb
   - diners
   - discover
-  - china_union_pay
   - unknown (= other not supported brand)
 
 

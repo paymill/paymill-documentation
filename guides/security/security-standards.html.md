@@ -166,3 +166,10 @@ We would like to thank the following people who helped improve the security of P
 - Roberto Zanga,              [@MindfreakS01](https://twitter.com/MindfreakS01)
 - Konduru Jashwanth,          [@kondurujashwan5](https://twitter.com/kondurujashwan5)
 - C Vishnu Vardhan Reddy,     [@Vishnu_dfx](https://twitter.com/Vishnu_dfx)
+- Sumit Sahoo
+- Bharat Sewani,              [@bharatsewani199](https://twitter.com/bharatsewani199)
+- SaifAllah benMassaoud       [@benmassaou](https://twitter.com/benmassaou)
+- Ahmed Adel Abdelfattah,     [@00SystemError00](https://twitter.com/00SystemError00)
+- Pratap Chandra 
+- Sree Visakh Jain,            [@sree_visakh](https://twitter.com/@sree_visakh)
+- Ketankumar B. Godhani        [@KBGodhani](https://twitter.com/KBGodhani)

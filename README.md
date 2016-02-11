@@ -5,7 +5,7 @@ User experience is one of our main focus at PAYMILL. Therefore we’re striving 
 
 That’s why we decided to open our documentation source so that you can help us building a better product.
 
-Any contribution is very welcome wether you’re requesting content, spot an error, or want to publish your own guide.
+Any contribution is very welcome whether you’re requesting content, spot an error, or want to publish your own guide.
 
 ## General Information
 

@@ -60,10 +60,6 @@ That way nothing can go wrong. Moreover, the system won't have any difficulty ac
     <td>Discover</td>
     <td><span class="cc-group">6011</span><span class="cc-group">1111</span><span class="cc-group">1111</span><span class="cc-group">1117</span></td>
   </tr>
-  <tr>
-    <td>China UnionPay</td>
-    <td><span class="cc-group">6240</span><span class="cc-group">0086</span><span class="cc-group">3140</span><span class="cc-group">1148</span></td>
-  </tr>
 </table>
 
 **With 3-D Secure**

@@ -138,7 +138,7 @@ If no transaction is yet to be created with the payment object, the payment meth
     <pre>
       ```
       curl https://api.paymill.com/v2.1/preauthorizations \
-        -u <DEIN_PRIVATE_KEY>: \
+        -u <YOUR_PRIVATE_KEY>: \
         -d "payment=pay_d43cf0ee969d9847512b" \
         -d "amount=4200" \
         -d "currency=EUR"
@@ -177,7 +177,7 @@ Create a new transaction with one of the payment types that are assigned to your
     <pre>
       ```
       curl https://api.paymill.com/v2.1/transactions \
-        -u <DEIN_PRIVATE_KEY>: \
+        -u <YOUR_PRIVATE_KEY>: \
         -d "amount=4200" \
         -d "currency=EUR" \
         -d "payment=pay_2f82a672574647cd911d" \
@@ -191,7 +191,7 @@ Create a new transaction with one of the payment types that are assigned to your
     <pre>
       ```
       curl https://api.paymill.com/v2.1/transactions \
-        -u <DEIN_PRIVATE_KEY>: \
+        -u <YOUR_PRIVATE_KEY>: \
         -d "amount=4200" \
         -d "currency=EUR" \
         -d "client=client_c781b1d2f7f0f664b4d9" \

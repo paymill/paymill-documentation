@@ -14,16 +14,6 @@ Please note that this restriction only applies to credit card data, all other fu
   Our credit card frame is available for Chrome, Firefox, Safari and Opera but only for Internet Explorer 8 and above for compatibility and security reasons.
 </div>
 
-## Basic Setup
-
-Please use the JavaScript bridge at https://bridge.paymill.com/dss3 instead of https://bridge.paymill.com to use the credit card frame.
-
-```
-<script src="https://bridge.paymill.com/dss3"></script>
-```
-
-Before we bring the new solution to the standard version of our bridge, we have it available at a separate URL. Later this year we will bring this functionality to the standard version. Once we have updated our standard version, you can move back to the standard URL.
-
 ### Embedding the credit card frame
 
 Our bridge provides a method `embedFrame(container, options, callback)` to embed a credit card frame in your page which can subsequently be customized to your needs.
@@ -72,16 +62,31 @@ paymill.embedFrame(container, {
 }, callback);
 ```
 
-Currently, the following languages are supported:
+**Available languages:**
 
-1. English `en`
-2. German `de`
-3. French `fr`
-4. Italian `it`
-5. Spanish `es`
-6. Portuguese `pt
+- Czech `cs`
+- Danish `da`
+- English `en`
+- French `fr`
+- German `de`
+- Hungarian `hu`
+- Italian `it`
+- Japanese `ja`
+- Norwegian `no`
+- Norwegian (Bokmål) `nb`
+- Polish `pl`
+- Portuguese `pt`
+- Russian `ru`
+- Slovak `sk`
+- Slovenian `sl`
+- Spanish `es`
+- Swedish `sv`
 
-**Additional Options**
+<div class="info">
+If you need additional languages or can even provide a translation yourself, please <a href="mailto:support@paymill.com?subject=PayFrame%20translation">contact us</a>.
+</div>
+
+## Additional Options
 
 After embedding the credit card frame you can take additional measures to control the form's behavior, both while it's loading and being used.
 
