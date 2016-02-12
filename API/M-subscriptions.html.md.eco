@@ -1094,6 +1094,6 @@ Available [filters](#filter-entries):
   - `created_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `updated_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
   - `canceled_at=<timestamp> | <timestamp (from)>-<timestamp (to)>`
-  - `payment_type=creditcard|debit`
+  - `payment_type=creditcard|debit|paypal`
   - `is_deleted=1|0`
   - `mandate_reference=<string>`
