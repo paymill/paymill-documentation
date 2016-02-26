@@ -72,10 +72,12 @@ paymill.embedFrame(container, {
 - Hungarian `hu`
 - Italian `it`
 - Japanese `ja`
+- Latvian `lv`
 - Norwegian `no`
 - Norwegian (Bokmål) `nb`
 - Polish `pl`
 - Portuguese `pt`
+- Romanian `ro`
 - Russian `ru`
 - Slovak `sk`
 - Slovenian `sl`
