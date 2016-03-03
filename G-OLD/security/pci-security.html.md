@@ -1,6 +1,6 @@
 ---
 title: "PCI Security"
-menuTitle: "PCI Security"
+menu: "PCI Security"
 type: "guide"
 status: "published"
 menuOrder: 2

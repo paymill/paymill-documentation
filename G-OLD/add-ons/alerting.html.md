@@ -1,6 +1,6 @@
 ---
 title: "Alerting"
-menuTitle: "Alerting"
+menu: "Alerting"
 type: "guide"
 status: "draft"
 order: 2

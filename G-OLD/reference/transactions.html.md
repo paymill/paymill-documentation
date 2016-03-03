@@ -3,7 +3,7 @@ title: "Transactions"
 menu: "Transactions"
 type: "guide"
 status: "published"
-menuOrder: 7
+menuOrder: 1
 ---
 
 In this document we want to show you some basic and advanced use cases with PAYMILL transactions. Please see our [API reference](/API) for more details on the capabilities of our transaction API.

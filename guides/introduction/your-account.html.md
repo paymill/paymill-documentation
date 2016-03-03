@@ -1,51 +1,29 @@
 ---
-title: "Your Account"
-menu: "Your Account"
+title: "Your PAYMILL Account"
+menuTitle: "Your PAYMILL Account"
 type: "guide"
 status: "published"
-menuOrder: 7
+menuOrder: 1
 ---
 
-Here are a few basic features and processes that you should be familiar with before switching from test mode to live mode.
+Before you can start using the API you need a PAYMILL account.
 
-## 1. Test Mode and Live Mode
+## Creating a PAYMILL account
 
-Each account has [a test mode and a live mode](http://app.paymill.com). All API requests and [API references](/API) work in both settings. Objects in live mode cannot affect objects in test mode and vice versa. In test mode, credit card transactions are not submitted for billing.
+Creating a PAYMILL account is free and only takes a couple of minutes.
 
-## 2. API-Keys
+Go to https://app.paymill.com/user/register and fill-in the form.
 
-Each mode has its own set of public and private keys. Only the test keys can be used in test mode. Test mode and live mode each consist of 2 pairs of keys:
+![Creating an account](/guides/images/your_account-01.jpg)
 
-<p class="info">
-**Public-Key:**
-This key is accessible to everyone. Its purpose is to identify your [account](http://app.paymill.com) with PAYMILL. The key is represented in the form as a JavaScript variable.
 
-**Private-Key:**
-This key may not be published and is to be kept confidential. It is required on your server for communicating with the PAYMILL API. Requests are then authorized by means of the token and the private key.
-</p>
+## The Merchant Centre
 
-## 3. Activating Your Account for Live Mode
+Once you finished creating your account, you will have access to the Merchant Centre. It is the interface allowing you to manage everything about your account.
 
-Before activating your [account](http://app.paymill.com), you can only work with PAYMILL in test mode and won't be able to carry out any live [transactions](/guides/introduction/payment-processing.html). The live keys will not be visible to you.
+![Merchant Centre dashboard](/guides/images/your_account-02.jpg)
 
-It is very easy to activate your account. You provide us some information about your product, your business and your personal relationship to the business.
 
-Once you activate your account and we have received and validated your documents, the live keys will be generated and available to be downloaded.
+{>> TODO: Complete the guide <<}
 
-As soon as you have received the keys, you will be able to carry out payment [transactions](/guides/introduction/payment-processing.html) directly. You will also be sent a confirmation e-mail.
-
-## 4. 3-D Secure
-
-We are pleased that we can offer you the safe [3-D Secure](http://en.wikipedia.org/wiki/3-D_Secure) credit card payment. This relieves you from most fraud problems that may arise and ensures you your amounts paid.
-
-We'll integrate it into PAYMILL for security reasons and will only accept payments from 01.11.2012 with 3-D Secure by default, if the card is enabled for it. For further questions about 3-D Secure please contact our [Support team](mailto:support@paymill.com).
-
-<p class="info">
-When a card with 3-D Secure enabled is submitted, our Bridge will open an iframe on top of your page, so that the user can enter his verification code. For more details about it and for customization options, please see the [PAYMILL Bridge documentation](/guides/reference/bridge.html).
-</p>
-
-You can learn more about 3-D Secure in our [FAQs](https://www.paymill.com/faq).
-
-## 5. Direct Debit (only for Germany)
-
-The payment method Direct Debit is currently only available in Germany, the launch of SEPA in further countries is in the making, we will keep you updated on this.
+{>> @yann Mark it to be moved out of the Dev Center <<}

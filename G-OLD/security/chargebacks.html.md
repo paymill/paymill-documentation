@@ -1,6 +1,6 @@
 ---
 title: "Chargebacks"
-menuTitle: "Chargebacks"
+menu: "Chargebacks"
 type: "guide"
 status: "published"
 menuOrder: 4

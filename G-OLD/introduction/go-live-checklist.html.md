@@ -6,7 +6,7 @@ status: "published"
 menuOrder: 8
 ---
 
-<!-- TODO: Style the list + make dynamic checks -->
+{>> TODO: Style the list + make dynamic checks <<}
 
 You are almost ready to switch to live-mode and and accept payments from your customers. To ensure a smooth transition, please make sure to consider the following requirements:
 

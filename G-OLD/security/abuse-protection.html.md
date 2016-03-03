@@ -1,6 +1,6 @@
 ---
 title: "Abuse Protection"
-menuTitle: "Abuse Protection"
+menu: "Abuse Protection"
 type: "guide"
 status: "published"
 menuOrder: 3

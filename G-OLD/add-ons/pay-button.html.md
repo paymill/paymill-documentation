@@ -1,6 +1,6 @@
 ---
 title: "PayButton"
-menuTitle: "PayButton"
+menu: "PayButton"
 type: "guide"
 status: "published"
 menuOrder: 1

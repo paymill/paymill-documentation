@@ -1,12 +1,10 @@
 ---
-title: "PAYMILL Onboarding"
-menuTitle: "Onboarding"
+title: "PAYMILL on-boarding explained"
+menu: "Onboarding"
 type: "guide"
 status: "published"
-menuOrder: 1
+menuOrder: 6
 ---
-
-<!-- TODO: mark to be moved out of the Dev Center -->
 
 The on-boarding process with PAYMILL differs slightly depending upon the combination of payment methods selected by the merchant.
 

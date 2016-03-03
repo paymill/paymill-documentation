@@ -1,6 +1,6 @@
 ---
 title: "Security Standards"
-menuTitle: "Security Standards"
+menu: "Security Standards"
 type: "guide"
 status: "published"
 menuOrder: 1
@@ -170,6 +170,6 @@ We would like to thank the following people who helped improve the security of P
 - Bharat Sewani,              [@bharatsewani199](https://twitter.com/bharatsewani199)
 - SaifAllah benMassaoud       [@benmassaou](https://twitter.com/benmassaou)
 - Ahmed Adel Abdelfattah,     [@00SystemError00](https://twitter.com/00SystemError00)
-- Pratap Chandra
+- Pratap Chandra 
 - Sree Visakh Jain,            [@sree_visakh](https://twitter.com/@sree_visakh)
 - Ketankumar B. Godhani        [@KBGodhani](https://twitter.com/KBGodhani)

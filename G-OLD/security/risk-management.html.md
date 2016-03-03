@@ -1,6 +1,6 @@
 ---
 title: "Risk Management"
-menuTitle: "Risk Management"
+menu: "Risk Management"
 type: "guide"
 status: "published"
 menuOrder: 5
