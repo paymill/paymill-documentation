@@ -29,10 +29,10 @@ The PAYMILL Bridge offers you full flexibility in your checkout design and acces
 Due to PCI DSS 3.0 requirements, defining a custom credit card form could mean that you need to annually fill in an extended form of self-assessment questionnaire (SAQ A-EP).
 </div>
 
-{>> TODO: Insert link to the Bridge guide <<}
+{>> TODO: Insert link to the Bridge guide and cc integration guide <<}
 
 ### With the PAYMILL Bridge PayFrame
 
 In order to be (or stay) eligible for the simpler form of self assessment (SAQ A), you need to move all credit card data out of the scope of your website. For that purpose we offer an **iframe-based** credit card form that achieves SAQ A eligibility.
 
-{>> TODO: Insert link to PayFrame guide <<}
+{>> TODO: Insert link to PayFrame and Bridge guide <<}

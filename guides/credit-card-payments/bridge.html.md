@@ -6,6 +6,8 @@ status: "published"
 menuOrder: 2
 ---
 
+{>> TODO: Adapt content to be a follow-up of the generic bridge guide <<}
+
 The PAYMILL Bridge offers you full flexibility in your checkout design and access to the full set of features PAYMILL has to offer.
 <p>
 Note: Due to PCI DSS 3.0 requirements, defining a custom credit card form could mean that you need to annually fill in an extended form of self-assessment questionnaire (SAQ A-EP).  If you would like to be (or stay) eligible for the simpler form of self-assessment (SAQ A), we strongly encourage you to embed our <a href="/guides/reference/bridge-payframe.html">PayFrame</a> solution, this will make PCI 3.0 compliance more convenient for you.
@@ -148,7 +150,7 @@ The following errors can be returned in the case of credit card payment
   - `field_invalid_card_holder`       : Invalid cardholder
   - `field_invalid_amount_int`        : Invalid or missing amount for 3-D Secure
   - `field_invalid_amount`            : Invalid or missing amount for 3-D Secure. **deprecated , [see blog post](https://blog.paymill.com/about-rounding-floats-new-bridge-parameter/)**
-  - `field_invalid_currency`          : Invalid or missing currency code for 3-D Secure  
+  - `field_invalid_currency`          : Invalid or missing currency code for 3-D Secure
 
 Following error codes can be returned with direct debit:
 

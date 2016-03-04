@@ -6,6 +6,8 @@ status: "published"
 menuOrder: 3
 ---
 
+{>> TODO: Adapt content to be a follow-up of the generic bridge guide <<}
+
 PCI DSS 3.0 introduces a new set of requirements for merchants accepting credit card payments. In order to be (or stay) eligible for the simpler form of self assessment (SAQ A), we need to move all credit card data out of the scope of the merchant's website. We therefore offer an **iframe-based credit card form** that achieves SAQ A eligibility.
 
 Please note that this restriction only applies to credit card data, all other functionality is unaffected. In particular, direct debit payments are processed just like before. Merchants can even choose to keep collecting credit card data on their own site, but they will have to comply with SAQ A-EP accordingly.

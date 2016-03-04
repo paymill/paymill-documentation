@@ -16,7 +16,7 @@ In order to comply with PCI DSS 3.0 and be eligible for SAQ-A, you need to use o
 
 For the purpose of this guide, let's assume the integration on your site looks something like this:
 
-```
+```html
 <!-- Payment form -->
 <form id="payment-form" action="/store/orders" method="post">
 
