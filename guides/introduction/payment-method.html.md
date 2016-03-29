@@ -78,7 +78,7 @@ You must have an account with MOTO (Mail Order/Telephone Order) activated.
 
   <div class="tab-pane" id="create-payment-method-curl">
     For the creation of a payment object via API you must enter a token. You can get this token through the [PAYMILL Bridge](/guides/reference/bridge). 
-</div>
+  </div>
 
 
 
@@ -106,8 +106,8 @@ You must have an account with MOTO (Mail Order/Telephone Order) activated.
 
     You can find examples for additional programming languages in our [API documentation](/API)
 
-  </div>
 </div>
+
 
 
 <p class="important">
