@@ -6,7 +6,7 @@ status: "published"
 order: 4
 ---
 
-PAYMILL Connect gives a third party application the right to create transactions on hour behalf.
+PAYMILL Connect gives a third party application the right to create transactions on our behalf.
 
 For example if you created a mobile application using our [Mobile SDK](/guides/integration/mobile-sdk.html) and want to allow it to create transactions directly,
 Connect is the way to go.
