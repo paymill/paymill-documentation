@@ -57,6 +57,7 @@ These codes are 5-digit numbers whereas the first digit indicates whether the re
 - `40401`: Amount too low or zero
 - `40402`: Usage field too long
 - `40403`: Currency not allowed
+- `40404`: Refund amount exceeds the possible value
 - `40410`: Problem with shopping cart data
 - `40420`: Problem with address data
 - `40500`: Permission error with acquirer API
