@@ -161,6 +161,7 @@ Currently, the following languages are supported
 - Slovenian `sl`
 - Spanish `es`
 - Swedish `sv`
+- Dutch `nl`
 
 ### 3. Request a token using the embedded frame
 
