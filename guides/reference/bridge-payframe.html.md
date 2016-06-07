@@ -83,6 +83,7 @@ paymill.embedFrame(container, {
 - Slovenian `sl`
 - Spanish `es`
 - Swedish `sv`
+- Dutch `nl`
 
 <div class="info">
 If you need additional languages or can even provide a translation yourself, please <a href="mailto:support@paymill.com?subject=PayFrame%20translation">contact us</a>.
