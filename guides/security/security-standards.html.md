@@ -171,5 +171,8 @@ We would like to thank the following people who helped improve the security of P
 - SaifAllah benMassaoud       [@benmassaou](https://twitter.com/benmassaou)
 - Ahmed Adel Abdelfattah,     [@00SystemError00](https://twitter.com/00SystemError00)
 - Pratap Chandra 
-- Sree Visakh Jain,            [@sree_visakh](https://twitter.com/@sree_visakh)
-- Ketankumar B. Godhani        [@KBGodhani](https://twitter.com/KBGodhani)
+- Sree Visakh Jain,           [@sree_visakh](https://twitter.com/@sree_visakh)
+- Ketankumar B. Godhani       [@KBGodhani](https://twitter.com/KBGodhani)
+- Nikhil Mittal               [@nikhilmittal641](https://twitter.com/nikhilmittal641)
+- Mansoor Gilal               [@MansoorGilal](https://twitter.com/MansoorGilal)
+- Mandeep Jadon               [@1337tr0lls](https://twitter.com/1337tr0lls)

@@ -49,7 +49,10 @@ In order to store the credit card data of a client, you must create his profile 
 
 
 ## 2. Create payment method
-
+<p class="important">
+<span class="heading">**Requirements:**</span>
+You must have an account with MOTO (Mail Order/Telephone Order) activated.
+</p>
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#create-payment-method-mc" role="tab" data-toggle="tab">Merchant Centre</a></li>
   <li><a href="#create-payment-method-curl" role="tab" data-toggle="tab">CURL</a></li>
@@ -74,8 +77,8 @@ In order to store the credit card data of a client, you must create his profile 
   </div>
 
   <div class="tab-pane" id="create-payment-method-curl">
-    For the creation of a payment object via API you must enter a [token](https://support.paymill.com/hc/en-us/articles/201805608-What-exactly-is-a-token-). You can get this token through the [PAYMILL Bridge](/guides/reference/paymill-bridge.html). You can also find additional information on our [support page](https://support.paymill.com/hc/en-us/articles/200261507-How-can-I-store-credit-card-data-without-charging-a-transaction-immediately-).
-
+    For the creation of a payment object via API you must enter a token. You can get this token through the [PAYMILL Bridge](/guides/reference/bridge). 
+  </div>
 
 
 
@@ -103,8 +106,8 @@ In order to store the credit card data of a client, you must create his profile 
 
     You can find examples for additional programming languages in our [API documentation](/API)
 
-  </div>
 </div>
+
 
 
 <p class="important">

@@ -33,7 +33,7 @@ Our call to the webhook / email includes a JSON encoded event object with detail
   <li>client.updated: returns a [client-object](#-client-object) if a client was updated</li>
   <li>subscription.created: returns a [subscription-object](#-subscription-object)</li>
   <li>subscription.updated: returns a [subscription-object](#-subscription-object)</li>
-  <li>subscription.deleted: returns a [subscription-object](#-subscription-object)</li>
+  <li>subscription.deleted: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)</li>
   <li>subscription.succeeded: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)</li>
   <li>subscription.failed: returns a [transaction-object](#-transaction-object) and a [subscription-object](#-subscription-object)</li>
   <li>subscription.expiring: returns a [subscription-object](#-subscription-object)</li>
