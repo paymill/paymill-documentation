@@ -66,6 +66,7 @@ paymill.embedFrame(container, {
 
 - Czech `cs`
 - Danish `da`
+- Dutch `nl`
 - English `en`
 - French `fr`
 - German `de`
