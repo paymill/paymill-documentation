@@ -144,6 +144,7 @@ Currently, the following languages are supported
 
 - Czech `cs`
 - Danish `da`
+- Dutch `nl`
 - English `en`
 - French `fr`
 - German `de`
@@ -161,7 +162,6 @@ Currently, the following languages are supported
 - Slovenian `sl`
 - Spanish `es`
 - Swedish `sv`
-- Dutch `nl`
 - Turkish `tr`
 
 ### 3. Request a token using the embedded frame
