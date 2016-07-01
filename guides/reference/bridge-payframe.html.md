@@ -84,7 +84,6 @@ paymill.embedFrame(container, {
 - Slovenian `sl`
 - Spanish `es`
 - Swedish `sv`
-- Dutch `nl`
 - Turkish `tr`
 
 <div class="info">
