@@ -43,7 +43,7 @@ Unique identifier for this credit card payment
 Card type. eg. visa, mastercard ...
 
 **country:**        _string / null_
-Country
+Customer address country. E.g. DE
 
 **expire_month:**   _string_
 Expiry month of the credit card
