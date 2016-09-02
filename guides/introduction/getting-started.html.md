@@ -14,7 +14,7 @@ If you'd like to get a quick overview of PAYMILL integration process follow alon
 
 ### PHP
 
-PAYMILL can be integrated in almost any technological stack. Check out the list of the supported languages in our [Libraries](guides/interation/libraries.html) page.
+PAYMILL can be integrated in almost any technological stack. Check out the list of the supported languages in our [Libraries](https://developers.paymill.com/guides/integration/libraries.html) page.
 
 For the purpose of this guide, we will use PHP. Don't worry if you are not a PHP expert, it's meant to demonstrate the concepts that you can apply to your own prefered technology.
 
