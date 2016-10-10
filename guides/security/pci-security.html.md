@@ -53,8 +53,6 @@ The following documents will guide you on how to implement and migrate to the Pa
 
 Guide on how to embed the PCI 3.0 PayFrame solution: [Bridge PayFrame](/guides/reference/bridge-payframe.html)
 
-Guide on how to migrate from the old API bridge solution to the new PCI 3.0 compliant PayFrame solution: [Bridge PayFrame Migration Guide](/guides/reference/bridge-payframe-migration.html)
-
 **Note:** if you are currently using one of the following plugins supported by PAYMILL, you will need to update to the versions stated below. Then the PayFrame will be enabled by default. The respective plugin versions will be released in the order you see below in the upcoming weeks:
 
 - Shopware: PAYMILL plugin v1.6.0

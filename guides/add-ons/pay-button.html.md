@@ -46,6 +46,8 @@ Your personal API keys (live and test) can be found by logging into your PAYMILL
         data-amount="250"
         data-currency="EUR"
         data-public-key="517113797587d2ba3ee19bd646ffb7f1"
+        data-email="customer@test.com" // Customers email address
+        data-email-field="true" // true if data-email not set
         data-elv="true" // Only for ELV payments
         data-lang="de-DE" // Optional language Code
         data-width="180" // Optional width of the paybutton
@@ -56,6 +58,8 @@ Your personal API keys (live and test) can be found by logging into your PAYMILL
     </script>
 </form>
 ```
+
+If you already have requested your customers email address, you should provide the email address with the `data-email` attribute. If you haven´t requested the email address yet please use the `data-email-field` attribute to show the email input field in the PayButton form.
 
 ## Subscription: Embed Code for your website
 
@@ -72,6 +76,8 @@ Your personal API keys (live and test) can be found by logging into your PAYMILL
         data-amount="250"
         data-currency="EUR"
         data-public-key="517113797587d2ba3ee19bd646ffb7f1"
+        data-email="customer@test.com" // Customers email address
+        data-email-field="true" // true if data-email not set
         data-elv="false" // Only for ELV payments
         data-lang="en-GB" // Optional language Code
         >
@@ -90,12 +96,14 @@ Property             | Description                                              
 `data-amount`        | How much money to charge                                                                     | Yes
 `data-currency`      | The currency to charge                                                                       | No, defaults to "EUR"
 `data-public-key`    | Your PAYMILL key                                                                             | Yes
+`data-email`         | Your customers email address                                                                 | Optional (Either `data-email` or `data-email-field` is required)
+`data-email-field`   | Show email address input field                                                               | Optional (Either `data-email` or `data-email-field` is required)
 `data-elv`           | true                                                                                         | Only for ELV payments
 `data-lang`          | Language Code                                                                                | Optional parameter "de-DE", "en-GB", "es-ES", "fr-FR", "it-IT", "pt-PT"
-`data-width`         | Width of the paybutton                                                                       | No, defaults to 220px
-`data-height`        | Height of the paybutton                                                                      | No, defaults to 42px
-`data-inline`        | Set to "true" to render the button inline, without the iframe wrapper and no default CSS.    | No, false by default
-`data-logo`          | Set to a relative image URL to display a custom logo. Set to 'false' to show no logo at all. | No, shows the paymill signet by default
+`data-width`         | Width of the PayButton                                                                       | No, defaults to 220px
+`data-height`        | Height of the PayButton                                                                      | No, defaults to 42px
+`data-inline`        | Set to "true" to render the button inline, without the iFrame wrapper and no default CSS.    | No, false by default
+`data-logo`          | Set to a relative image URL to display a custom logo. Set to 'false' to show no logo at all. | No, shows the PAYMILL signet by default
 
 
 Learn more about test credit cards and test bank account numbers under [this page](/guides/reference/testing.html).
@@ -116,7 +124,7 @@ The PayButton generates no direct transaction for your shop, only a token in a s
 
 ## Configure the PayButton on the server-side
 
-The easiest way to fully integrate the PayButton is to use our [PayButton example](https://github.com/paymill/paybutton-examples). Here you only need to insert the amount, the currency and your private key in request.php, copy all files to your webserver and at the end you get a "Transaction successful" message. We do the rest for you.
+The easiest way to fully integrate the PayButton is to use our [PayButton example](https://github.com/paymill/paybutton-examples). Here you only need to insert the amount, the currency and your private key in request.php, copy all files to your web server and at the end you get a "Transaction successful" message. We do the rest for you.
 For a subscription you can also insert an interval in subscription.php.
 
 <p class="important">

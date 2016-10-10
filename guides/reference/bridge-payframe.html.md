@@ -6,7 +6,7 @@ status: "published"
 menuOrder: 3
 ---
 
-PCI DSS 3.0 introduces a new set of requirements for merchants accepting credit card payments. In order to be (or stay) eligible for the simpler form of self assessment (SAQ A), we need to move all credit card data out of the scope of the merchant's website. We therefore offer an **iframe-based credit card form** that achieves SAQ A eligibility.
+PCI DSS 3.0 introduces a new set of requirements for merchants accepting credit card payments. In order to be (or stay) eligible for the simpler form of self assessment (SAQ A), we need to move all credit card data out of the scope of the merchant's website. We therefore offer an **iFrame-based credit card form** that achieves SAQ A eligibility.
 
 Please note that this restriction only applies to credit card data, all other functionality is unaffected. In particular, direct debit payments are processed just like before. Merchants can even choose to keep collecting credit card data on their own site, but they will have to comply with SAQ A-EP accordingly.
 
@@ -43,10 +43,10 @@ paymill.embedFrame(document.getElementById('credit-card-fields'), options, callb
 paymill.embedFrame($('#credit-card-fields'), options, callback);
 ```
 
-This loads an iframe containing the new credit card frame. Customization settings passed in `options` will be applied to the form inside the `iframe`. Finally, callback will be called with the result of the embedding operation (see next section).
+This loads an iFrame containing the new credit card frame. Customization settings passed in `options` will be applied to the form inside the `iFrame`. Finally, callback will be called with the result of the embedding operation (see next section).
 
 <div class="important">
-  We strongly suggest setting a Content-Security-Policy header to control where scripts or iframes are allowed to be loaded from or connect to. For example:
+  We strongly suggest setting a Content-Security-Policy header to control where scripts or iFrames are allowed to be loaded from or connect to. For example:
   <br>
   `default-src 'self'; frame-src 'self' *; script-src 'self' *.paymill.com *.paymill.de 'unsafe-inline'; connect-src 'self' *.paymill.com *.paymill.de; style-src 'self' *.paymill.com *.paymill.de 'unsafe-inline';`
 </div>
@@ -113,7 +113,7 @@ paymill.embedFrame(container, options, function(error) {
 If the callback is called without an error object, the credit card form is ready to be used. You might want to hide the container element until the frame has loaded and only show it then.
 
 <div class="info">
-  If the frame failed to load, no iframe element will be added to the DOM. You can safely call embedFrame again to retry.
+  If the frame failed to load, no iFrame element will be added to the DOM. You can safely call embedFrame again to retry.
 </div>
 
 The following errors can occur during frame load:
@@ -123,11 +123,11 @@ The following errors can occur during frame load:
 
 ### Handling content resizing
 
-The dimensions of the iframe's content can change due to several factors like stylesheets loading, error messages being shown or CSS transitions or animations.
+The dimensions of the iFrame's content can change due to several factors like stylesheets loading, error messages being shown or CSS transitions or animations.
 
-By default, the iframe automatically resizes **vertically** to fit its content. This means the iframe element will have a width of 100% but a variable height, starting with `0px` until the frame has loaded.
+By default, the iFrame automatically resizes **vertically** to fit its content. This means the iFrame element will have a width of 100% but a variable height, starting with `0px` until the frame has loaded.
 
-You can disable this behavior by setting a flag in the `options parameter of `embedFrame`. If you do this, the iframe will have its height also set to `100%`. We recommend setting a fixed container height to accommodate the iframe content.
+You can disable this behavior by setting a flag in the `options parameter of `embedFrame`. If you do this, the iFrame will have its height also set to `100%`. We recommend setting a fixed container height to accommodate the iFrame content.
 
 ```javascript
 // Disable auto-resize.
@@ -136,20 +136,20 @@ paymill.embedFrame(container, {
 }, callback);
 ```
 
-Alternatively, you can take over the resizing process by providing a custom resizing function. The iframe will still have width and height set to `100%` in the beginning, but your function will be called each time the iframe needs a resize. It will be passed an `attrs` parameter containing relevant attributes (currently only the content's height) so you can manipulate the container element accordingly.
+Alternatively, you can take over the resizing process by providing a custom resizing function. The iFrame will still have width and height set to `100%` in the beginning, but your function will be called each time the iFrame needs a resize. It will be passed an `attrs` parameter containing relevant attributes (currently only the content's height) so you can manipulate the container element accordingly.
 
 ```javascript
 // Provide custom resizing function.
 paymill.embedFrame(container, {
   resize: function(attrs) {
     container.style.height = attrs.height + 'px';
-    // Make other adjustments based on iframe dimensions.
+    // Make other adjustments based on iFrame dimensions.
   }
 }, callback);
 ```
 
 <div class="info">
-With both disabled and custom resizing, the iframe has width and height set to `100%` to fit its container element. It's highly recommended that you only style the container since you have full control over it. The iframe, on the other hand, won't be available until it has loaded and might be removed from the DOM if loading fails.
+With both disabled and custom resizing, the iFrame has width and height set to `100%` to fit its container element. It's highly recommended that you only style the container since you have full control over it. The iFrame, on the other hand, won't be available until it has loaded and might be removed from the DOM if loading fails.
 </div>
 
 ## Tokenization
@@ -163,7 +163,8 @@ A token can be obtained using the method `createTokenViaFrame(options, callback)
 ```
 paymill.createTokenViaFrame({
   amount_int: 4200,
-  currency: 'EUR'
+  currency: 'EUR',
+  email: 'test@customer.com'
 }, function(error, result) {
   // Handle error or process result.
   if (error) {
@@ -195,7 +196,8 @@ Additionally, inline error messages will be displayed automatically next to the 
 ```javascript
 paymill.createTokenViaFrame({
   amount_int: 4200,
-  currency: 'EUR'
+  currency: 'EUR',
+  email: 'test@customer.com'
 }, function(error, result) {
   // Handle error or process result.
   if (error) {
@@ -213,7 +215,7 @@ In addition to the errors of createToken, the following errors can occur when us
 
 ### Using 3-D Secure
 
-3-D Secure is also available with the credit card frame and handling remains the same: The default modal dialog will be diplayed automatically or you handle it yourself by providing the optional tdsInit and tdsCleanup callbacks.
+3-D Secure is also available with the credit card frame and handling remains the same: The default modal dialog will be displayed automatically or you handle it yourself by providing the optional tdsInit and tdsCleanup callbacks.
 
 ```javascript
 paymill.createTokenViaFrame(data, callback, tdsInit, tdsCleanup);
