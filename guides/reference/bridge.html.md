@@ -37,7 +37,8 @@ paymill.createToken({
   cvc:            $('.card-cvc').val(),          // required
   amount_int:     $('.card-amount-int').val(),   // required, e.g. "4900" for 49.00 EUR
   currency:       $('.currency').val(),          // required
-  cardholder:     $('.card-holdername').val()    // optional
+  cardholder:     $('.card-holdername').val(),   // required
+  email:          $('.email').val()              // required
 },
 paymillResponseHandler);
 ```
@@ -46,16 +47,15 @@ Mandatory fields:
 
 The JSON object has to contain the following mandatory fields for the paymill.createToken function:
 
-  - `number`      : The credit card number has to be a string without any spaces.
-  - `exp_month`   : Two-digit month number for the expiration date
-  - `exp_year`    : Four-digit year number for the expiration date
-  - `cvc`         : 3 or 4 digits check number
-  - `amount_int`  : Transaction amount in the smallest currency unit (integer), e.g. `345` for 3.45 €
-  - `currency`    : Three character currency code (ISO 4217) of the transaction, eg. `EUR` or `GBP`
-
-Optional fields:
-
+  - `number`     : The credit card number has to be a string without any spaces.
+  - `exp_month`  : Two-digit month number for the expiration date
+  - `exp_year`   : Four-digit year number for the expiration date
+  - `cvc`        : 3 or 4 digits check number
+  - `amount_int` : Transaction amount in the smallest currency unit (integer), e.g. `345` for 3.45 €
+  - `currency`   : Three character currency code (ISO 4217) of the transaction, eg. `EUR` or `GBP`
   - `cardholder` : Name of the cardholder
+  - `email`      : Email address of your customer
+  
 
 Mandatory for direct debit:
 
@@ -146,6 +146,7 @@ The following errors can be returned in the case of credit card payment
   - `field_invalid_card_exp`          : Card is no longer valid or has expired
   - `field_invalid_card_cvc`          : Invalid checking number
   - `field_invalid_card_holder`       : Invalid cardholder
+  - `field_invalid_email`             : Invalid email address
   - `field_invalid_amount_int`        : Invalid or missing amount for 3-D Secure
   - `field_invalid_amount`            : Invalid or missing amount for 3-D Secure. **deprecated , [see blog post](https://blog.paymill.com/about-rounding-floats-new-bridge-parameter/)**
   - `field_invalid_currency`          : Invalid or missing currency code for 3-D Secure  
