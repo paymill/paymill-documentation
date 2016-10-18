@@ -64,8 +64,10 @@ curl https://api.paymill.com/v2.1/subscriptions \
   -d "amount=3000" \
   -d "currency=EUR" \
   -d "interval=1 week,monday" \
-  -d "trial_period_days=30"
+  -d "start_at=<UNIX_TIMESTAMP>"
 ```
+
+Please note that you have to set a trial period that is differing from the one set in the offer as a specific date in form of a unix timestamp (as opposed to a number of days as you would do it in the offer).
 
 ### Creating a subscription without an offer
 
