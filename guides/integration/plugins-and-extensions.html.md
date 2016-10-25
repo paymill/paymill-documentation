@@ -254,6 +254,12 @@ PAYMILL-Payment-Plugin for Virtuemart 2.x, tested with Joomla 2.5x and Virtuemar
 
 Server Ping offers a [PAYMILL module](https://www.serverping.net/clients/cart.php?gid=3).
 
+### Snipcart
+
+Accept payments on your Snipcart store in a flash with your PAYMILL credentials. Enable PAYMILL in your merchant dashboard and start processing secure transactions via a custom shopping cart. 
+
+[See instructions here](http://docs.snipcart.com/merchant-dashboard/store-configurations#1-payment-gateway)
+
 <div class="important">
   Please note that only community support is provided. For additional features and professional support please consider our supported solutions above.
 </div>
