@@ -253,7 +253,7 @@ curl https://api.paymill.com/v2.1/webhooks \
     "data" : {
             "id" : "hook_40237e20a7d5a231d99b",
             "email" : "<your-webhook-email>",
-            "livemode" : false,
+            "livemode" : true,
             "event_types" : [
                 "transaction.succeeded",
                 "transaction.failed"
@@ -269,6 +269,7 @@ curl https://api.paymill.com/v2.1/webhooks \
 
 With this call you can create a webhook to a url via the API.
 
+E-Mail webhooks are only available for livemode.
 
 ### Attributes
 
