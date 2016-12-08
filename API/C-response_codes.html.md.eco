@@ -23,6 +23,7 @@ These codes are 5-digit numbers whereas the first digit indicates whether the re
 - `20203`: Reversed due to complaint by buyer
 - `20204`: Payment has been refunded
 - `20300`: Reversal has been canceled
+- `22000`: Initiation of transaction successful
 
 - `30000`: Transaction still in progress
 - `30100`: Transaction has been accepted
@@ -62,6 +63,7 @@ These codes are 5-digit numbers whereas the first digit indicates whether the re
 - `40420`: Problem with address data
 - `40500`: Permission error with acquirer API
 - `40510`: Rate limit reached for acquirer API
+- `42000`: Initiation of transaction failed
 
 - `50000`: Problem with back end
 - `50001`: Country blacklisted
