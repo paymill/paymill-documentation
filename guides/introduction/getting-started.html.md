@@ -233,8 +233,7 @@ The only thing left to do is to add your **PAYMILL Public API Key**
 
 That's it for the client side.
 
-**Note:** if you do not verify a token within 5 minutes by doing a preauthorisation or transaction then it will become invalid and cannot be used anymore. In this case the attempt will be shown in the PAYMILL Merchant Centre as `failed` transaction with the response code `42000: Initiation of transaction failed`. In case of a successful tokenization it will show the attempt with status `open` and the response code `22000: Initiation of transaction successful`. When you create a successful transaction with this token the status will change to `closed` with response code `20000: Operation successful`.
-
+**Note:** if you do not verify a token within 5 minutes by doing a preauthorisation or transaction then it will become invalid and cannot be used anymore. In this case the attempt will be shown in the PAYMILL Merchant Centre as `failed` transaction with the response code `42000: Initiation of transaction failed`. In case of a successful tokenization it will show the attempt with status `open` and the response code `22000: Initiation of transaction successful`. When you create a successful transaction with this token the status will change to `closed` with response code `20000: Operation successful`. When the initiated transaction is not completed within 5min the status will change to `failed` with response code `42410: Initiation of transaction expired`.
 
 ### Create the transaction on your server
 
