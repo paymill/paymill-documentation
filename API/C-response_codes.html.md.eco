@@ -64,6 +64,7 @@ These codes are 5-digit numbers whereas the first digit indicates whether the re
 - `40500`: Permission error with acquirer API
 - `40510`: Rate limit reached for acquirer API
 - `42000`: Initiation of transaction failed
+- `42410`: Initiation of transaction expired
 
 - `50000`: Problem with back end
 - `50001`: Country blacklisted
@@ -109,7 +110,7 @@ These codes are 5-digit numbers whereas the first digit indicates whether the re
 - `50800`: Preauthorisation failed
 - `50810`: Authorisation has been voided
 - `50820`: Authorisation period expired
-
+- `51200`: Problem with payment data
 
 Some [JSON](http://en.wikipedia.org/wiki/Json) objects like [transactions](#transactions) or [refunds](#refunds) include a response code, which specifies more detailed information about the outcome of a preceding request.
 
