@@ -178,3 +178,5 @@ We would like to thank the following people who helped improve the security of P
 - Mandeep Jadon               [@1337tr0lls](https://twitter.com/1337tr0lls)
 - Chirag Solanki              [@chirag77solanki](https://twitter.com/chirag77solanki)
 - Muzamil Shah                [@muzamilshah254](https://twitter.com/muzamilshah254)
+- Ehraz Ahmed                 [@ehrazofficial](https://twitter.com/ehrazofficial)
+- Tommy DeVoss                [@thedawgyg](https://twitter.com/thedawgyg)
