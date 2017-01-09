@@ -180,3 +180,4 @@ We would like to thank the following people who helped improve the security of P
 - Muzamil Shah                [@muzamilshah254](https://twitter.com/muzamilshah254)
 - Ehraz Ahmed                 [@ehrazofficial](https://twitter.com/ehrazofficial)
 - Tommy DeVoss                [@thedawgyg](https://twitter.com/thedawgyg)
+- Suleman Malik               [@sulemanmalik_3](https://twitter.com/sulemanmalik_3)
