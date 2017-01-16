@@ -54,7 +54,7 @@ In addition to the mandatory parameters listed above, you can also specify the f
 - `items`: The list of purchased items related to this transaction. Each item must have a *name*, *amount* and *quantity*. Additionally you can specify a *description*, the *item reference (e.g. EAN/SKU)* and the *URL of the item in your shop*.
 - `shipping_amount`: Shipping cost (in cents). Included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
 - `handling_amount`: Handling cost (in cents) included in the transaction amount. Only necessary if you provide a shopping cart and the item total doesn't match the transaction amount.
-- `client`: **PAYMILL client ID** (e.g. "client_88a388d9dd48f86c3136"). A new **Transaction** will create a new **Payment**. If you specify a **Client**, the new **Payment** will be attached to it. See the [guide](/guides/paypal/payment-method) about **PayPal Payments** for further information.
+- `client`: **PAYMILL client ID** (e.g. "client_88a388d9dd48f86c3136"). A new **Transaction** will create a new **Payment**. If you specify a **Client**, the new **Payment** will be attached to it.
 
 You can find more information about **Transactions** in the [corresponding guide](/guides/reference/transactions.html).
 
