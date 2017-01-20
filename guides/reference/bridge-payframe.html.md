@@ -121,9 +121,10 @@ Don’t forget to close the script after this has been done with </script>
 
 By default, the credit card form uses English for labels, placeholders and error messages. Simply specify the corresponding language code using `lang` in the `options` parameter of `embedFrame`. As this was already defined above, all you have to do is insert another language here in oder to change the language of the payframe.
 
-```      var options = {
-        lang: 'en'
-        };
+```     
+var options = {
+    lang: 'en'
+     };
 ```
 
 **Available languages:**
