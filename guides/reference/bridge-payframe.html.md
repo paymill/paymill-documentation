@@ -104,12 +104,12 @@ var submitForm = function() {
           );
         }
 ```
-The amount, currency and email fields are required and have to be submitted! Afterward if there are no errors, the token is appended to the form which is then submitted. 
-Your response handler receives the same `error and `result` object as before and doesn't have to change.
+The amount, currency and email fields are required and have to be submitted! Afterwards, if there are no errors, the token is appended to the form which is then submitted. 
+Your response handler receives the same `error` and `result` object as before and doesn't have to change.
 
 In addition to the errors of `createToken`, which can be found in the Documentation about our bridge, the following errors can occur when using `createTokenViaFrame`:
 
-- `frame_not_found - no credit card frame was found, make sure you have called `embedFrame` successfully
+- `frame_not_found` - no credit card frame was found, make sure you have called `embedFrame` successfully
 
 <div class="important">
   The regular `createToken` still exists and continues to be the appropriate method for creating **direct debit** tokens.
@@ -165,7 +165,7 @@ The dimensions of the iFrame's content can change due to several factors like st
 
 By default, the iFrame automatically resizes **vertically** to fit its content. This means the iFrame element will have a width of 100% but a variable height, starting with `0px` until the frame has loaded.
 
-You can disable this behavior by setting a flag in the `options parameter. If you do this, the iFrame will have its height also set to `100%`. We recommend setting a fixed container height to accommodate the iFrame content.
+You can disable this behavior by setting a flag in the `options parameter`. If you do this, the iFrame will have its height also set to `100%`. We recommend setting a fixed container height to accommodate the iFrame content.
 
 ```
  var options = {
@@ -197,3 +197,26 @@ With both disabled and custom resizing, the iFrame has width and height set to `
 ```javascript
 paymill.createTokenViaFrame(data, callback, tdsInit, tdsCleanup);
 ```
+### Submitting the form for further work
+
+The only thing left to do is to define the body, the form itself and the submit button.
+This will submit the form to our desired file for further handling. You can check the API reference [here](https://developers.paymill.com/API/index)!
+
+```
+  </head>
+    // the initPayframe() has to wait for everything to load
+    <body onload = "initPayFrame()">
+      // please specify the file with which you handel the received token in the filed action ="yourfile"
+      <form id = "payment-form" action = "request.php" method = "POST">
+        <div id = "credit-card-fields"></div>
+        // here you can specify any other fields you have in your checkout
+        <input id = "paymillToken" name = "paymillToken" type = "hidden" />
+        //insert a button to submit the form
+        <input type = "button" value = "Submit" onclick = "submitForm()">
+      </form>
+
+    </body>
+</html>
+```
+The above example code calls the initPayframe on load, then defines the request.php and the file to submit the form to. If you have any further fields in your checkout you would like to add, you can add them after `<div id = "credit-card-fields"></div>`.
+Last step is the definition of what the submit button does. That's it! You're ready to use the Payframe solution from PAYMILL
