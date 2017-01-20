@@ -35,9 +35,9 @@ Second the Paymill bridge has to be loaded. This looks like this:
 Our bridge provides a method `embedFrame(container, options, callback)` to embed a credit card frame in your page which can subsequently be customized to your needs. Please be aware that this whole next part hast to be a part of Javascript. Meaning it has to be inside the following:
 ```
 <script type = “text/javascript”>
-.//the whole next part
-.//should be in 
-.//here!
+//the whole next part
+//should be in 
+//here!
 </script>
 ```
 Now we can define options and callback. The code for this can be taken from this example: 
