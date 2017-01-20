@@ -39,7 +39,7 @@ Our bridge provides a method `embedFrame(container, options, callback)` to embed
 .//should be in 
 .//here!
 </script>
-
+```
 Now we can define options and callback. The code for this can be taken from this example: 
 
 ```
