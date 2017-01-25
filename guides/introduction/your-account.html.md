@@ -21,7 +21,7 @@ Each mode has its own set of public and private keys. Only the test keys can be 
 This key is accessible to everyone. Its purpose is to identify your [account](http://app.paymill.com) with PAYMILL. The key is represented in the form as a JavaScript variable.
 
 **Private-Key:**
-This key may not be published and is to be kept confidential. It is required on your server for communicating with the PAYMILL API. Requests are then authorized by means of the token and the private key.
+This key may not be published and is to be kept confidential. It is required on your server for communicating with the PAYMILL API. Requests are then authorized by means of the token and the private key. In case that your private key might have been exposed to the public then we strongly recommend you to change the private key. You can generate a new privte key in our Merchant Centre by clicking on the button next to it. This will change the private live key with immediate effect.
 </p>
 
 ## 3. Activating Your Account for Live Mode
