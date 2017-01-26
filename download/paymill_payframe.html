@@ -5,7 +5,7 @@ In some cases some adjustemnts will be necessary! Thank you for choosing Paymill
 -->
 <html>
   <head>
-      <!-- first a script is required to load supply the PAYMILL_PUBLIC_KEY -->
+      <!-- first a script is required to supply the PAYMILL_PUBLIC_KEY -->
       <script type="text/javascript">
         var PAYMILL_PUBLIC_KEY = '<YOUR PUBLIC KEY>';
         var VALIDATE_CVC = true;
@@ -35,12 +35,12 @@ In some cases some adjustemnts will be necessary! Thank you for choosing Paymill
           paymill.embedFrame('credit-card-fields', options, callback);
         }
 
-        //The form has to be submitted
+        // Te submit button in the frame will call this function when the buton is clicked
         var submitForm = function() {
           paymill.createTokenViaFrame({
               amount_int: 4200; //amount has to be submitted in cents: 4200 for 4.20€
-              currency: 'EUR';
-              email: 'test€customer.com';},
+              currency: 'EUR'; //required
+              email: 'test€customer.com';}, //required
               //Handle the error
               function(error, result){
                 if(error){
