@@ -221,6 +221,6 @@ This will submit the form to our desired file for further handling. You can chec
     </body>
 </html>
 ```
-The above example code calls the initPayframe on load, then defines the request.php and the file to submit the form to. If you have any further fields in your checkout you would like to add, you can add them after `<div id = "credit-card-fields"></div>`.
+The above example code calls the initPayframe on load, then defines the request.php as the file to submit the form to. If you have any further fields in your checkout you would like to add, you can add them after `<div id = "credit-card-fields"></div>`.
 Last step is the definition of what the submit button does. That's it! You're ready to use the Payframe solution from PAYMILL!
-You can download an example file (NOTE: adjustments necessary!) here.
+You can view and download an example file [here](https://github.com/Savaage/paymill-documentation/blob/MR11/download/paymill_payframe.html). 
