@@ -5,71 +5,67 @@ In some cases some adjustemnts will be necessary! Thank you for choosing Paymill
 -->
 <html>
   <head>
-      <!-- first a script is required to supply the PAYMILL_PUBLIC_KEY -->
-      <script type="text/javascript">
-        var PAYMILL_PUBLIC_KEY = '<YOUR PUBLIC KEY>';
-        var VALIDATE_CVC = true;
-      </script>
-
-      <!-- here the bridge has to be loadded -->
-      <script type="text/javascript" src = "https://bridge.paymill.com/"></script>
-
-      <!-- here the parameters are defined which can be supplied when calling the new payframe -->
-      <script type = "text/javascript">
-      // first the options. For more options and languages visit: https://developers.paymill.com/guides/reference/bridge-payframe
-        var options = {
-          lang: 'en'
-        }
+    <!-- first a JS is required to supply the PAYMILL_PUBLIC_KEY -->
+    <script type="text/javascript">
+      var PAYMILL_PUBLIC_KEY = '<YOUR_PUBLIC_KEY>';
+      var VALIDATE_CVC = true;
+    </script>
+    <!-- here the bridge has to be loadded -->
+    <script type="text/javascript" src = "https://bridge.paymill.com/"></script>
+    <!-- here the parameters are defined which can be supplied when calling the new payframe-->
+    <script type = "text/javascript">
+    // first the options. For more options and languages visit: https://developers.paymill.com/guides/reference/bridge-payframe
+      var options = {
+        lang: 'en'
+        };
         // here the callback is defined, can be customized
-        var callback = function(error){
-          if(error){
-            console.log(error.apierror,error.message);
+      var callback = function(error){
+        if(error){
+          console.log(error.apierror,error.message);
           }
           else {
-
           }
-        };
-
-        // here the payframe is called with the above defined parameters
-        var initPayframe = function() {
-          paymill.embedFrame('credit-card-fields', options, callback);
-        }
-
-        // Te submit button in the frame will call this function when the buton is clicked
-        var submitForm = function() {
-          paymill.createTokenViaFrame({
-              amount_int: 4200; //amount has to be submitted in cents: 4200 for 4.20€
-              currency: 'EUR'; //required
-              email: 'test€customer.com';}, //required
-              //Handle the error
-              function(error, result){
-                if(error){
-                  console.log(error.apierror, error.message);
-                }
-                else {
-                  console.log(result.token);
-                  //the token has to be part of the form which is submitted in order to process it
-                  var form = document.getElementById("payment-form");
-                  var token Field = document.getElementById("paymillToken");
-                  tokenField.value = result.token;
-                  form.submit();
-                }
+       };
+       // here the payframe is called with the above defined parameters
+       var initPayframe = function() {
+         paymill.embedFrame('credit-card-fields', options, callback);
+       };
+        //The submit button will call this function
+       var submitForm = function() {
+         paymill.createTokenViaFrame({
+            amount_int: 4200, //required
+            currency: 'EUR', //required
+            email: 'test@customer.com' //required
+            },
+         function(error, result) {
+              // Handle error or process result.
+            if (error) {
+              // Token could not be created, check error object for reason.
+              console.log(error.apierror, error.message);
+            }
+              // Token was created successfully and can be sent to backend.
+            else {
+              console.log(result.token);
+              var form = document.getElementById("payment-form");
+              var tokenField = document.getElementById("paymillToken");
+              tokenField.value = result.token;
+              form.submit();
               }
-            );
-          }
-      //close the script and the header‚
-      </script>
+            }
+          );
+        }
+      //close the script and the header
+    </script>
   </head>
-    // the initPayframe() has to wait for everything to load
-    <body onload = "initPayFrame()">
-      // please specify the file with which you handle the received token in the filed action ="yourfile"
+    <!-- the initPayframe() (defined in line 26) has to wait for everything to load -->
+    <body onload = "initPayframe()">
+      <!-- please specify the file with which you handle the received token in the filed action ="yourfile" -->
       <form id = "payment-form" action = "request.php" method = "POST">
         <div id = "credit-card-fields"></div>
-        // here you can specify any other fields you have in your checkout
+        <!-- here you can specify any other fields you have in your checkout -->
         <input id = "paymillToken" name = "paymillToken" type = "hidden" />
-        //insert a button to submit the form
+        <!--insert a button to submit the form -->
         <input type = "button" value = "Submit" onclick = "submitForm()">
       </form>
-
     </body>
 </html>
