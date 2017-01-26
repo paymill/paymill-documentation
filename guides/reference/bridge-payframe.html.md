@@ -21,7 +21,7 @@ First your Paymill public key has to be loaded. This is done with JS and can loo
 
 ```
 <script type="text/javascript">
-      var PAYMILL_PUBLIC_KEY = '2733005259312dcc48f078d54f2096b6';
+      var PAYMILL_PUBLIC_KEY = '<YOUR_PUBLIC_KEY>';
       var VALIDATE_CVC = true;
     </script>
 ```
