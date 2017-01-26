@@ -10,11 +10,12 @@ PCI DSS 3.0 introduces a new set of requirements for merchants accepting credit 
 
 Please note that this restriction only applies to credit card data, all other functionality is unaffected. In particular, direct debit payments are processed just like before. Merchants can even choose to keep collecting credit card data on their own site, but they will have to comply with SAQ A-EP accordingly.
 
-<div class="info">
-  Our credit card frame is available for Chrome, Firefox, Safari and Opera but only for Internet Explorer 8 and above for compatibility and security reasons.
-</div>
 
-### Loading the necessary Scripts
+_Our credit card frame is available for Chrome, Firefox, Safari and Opera but only for Internet Explorer 8 and above for compatibility and security reasons._
+
+
+
+### Load the Paymill Bridge and your public key
 
 First your Paymill public key has to be loaded. This is done with JS and can look like this:
 
@@ -24,7 +25,7 @@ First your Paymill public key has to be loaded. This is done with JS and can loo
       var VALIDATE_CVC = true;
     </script>
 ```
-Second the Paymill bridge has to be loaded. This looks like this:
+Second the Paymill bridge has to be loaded. This can look like this:
 
 ```
 <script type="text/javascript" src = "https://bridge.paymill.com/"></script>
@@ -32,21 +33,23 @@ Second the Paymill bridge has to be loaded. This looks like this:
 
 ### Embedding the credit card frame
 
-Our bridge provides a method `embedFrame(container, options, callback)` to embed a credit card frame in your page which can subsequently be customized to your needs. Please be aware that this whole next part hast to be a part of Javascript. Meaning it has to be inside the following:
+Our bridge provides a method `embedFrame(container, options, callback)` to embed a credit card frame in your page which can subsequently be customized to your needs. Please be aware that this whole next part hast to be a part of a Javascript. Meaning it has to be inside the following:
 ```
 <script type = “text/javascript”>
-//the whole next part
-//should be in 
-//here!
+.
+.
+.
 </script>
 ```
+
+### Define the parameters of the method embedFrame
+
 Now we can define options and callback. The code for this can be taken from this example: 
 
 ```
       var options = {
         lang: 'en'
         };
-
 
       var callback = function(error){
 	//Frame could not be loaded, check error object for reason
@@ -79,12 +82,13 @@ Now we can embed the frame. For his purpose we can define function initPayframe:
 ### Creating a Token and submitting the form
 
 The last step is to define the submit button functionality. For this purpose the function submitForm can be defined. This function will call the paymill.createTokenViaFrame. It can look like this: 
+
 ```
 var submitForm = function() {
          paymill.createTokenViaFrame({
-            amount_int: 420, // 420 for 4.20 amount_int hast to be an integer
-            currency: 'EUR',
-            email: 'test@customer.com'
+            amount_int: 420, // 420 for 4.20 amount_int hast to be an integer, required
+            currency: 'EUR', // required
+            email: 'test@customer.com' //required
             },
          function(error, result) {
               // Handle error or process result.
@@ -94,7 +98,9 @@ var submitForm = function() {
             }
               // Token was created successfully and can be sent to backend.
             else {
+	      // If you want to log the response in the console
               console.log(result.token);
+	      // Fetch the token, and add it to the form, which is then submitted to your server
               var form = document.getElementById("payment-form");
               var tokenField = document.getElementById("paymillToken");
               tokenField.value = result.token;
@@ -104,27 +110,27 @@ var submitForm = function() {
           );
         }
 ```
-The amount, currency and email fields are required and have to be submitted! Afterwards, if there are no errors, the token is appended to the form which is then submitted. 
+The amount, currency and email fields are required and have to be submitted! Afterwards if there are no errors, the token is appended to the form which is then submitted to your server. 
 Your response handler receives the same `error` and `result` object as before and doesn't have to change.
 
-In addition to the errors of `createToken`, which can be found in the Documentation about our bridge, the following errors can occur when using `createTokenViaFrame`:
+In addition to the errors of `createToken`, which can be found in the Documentation about our [JS Bridge](https://developers.paymill.com/guides/reference/bridge), the following errors can occur when using `createTokenViaFrame`:
 
 - `frame_not_found` - no credit card frame was found, make sure you have called `embedFrame` successfully
 
-<div class="important">
-  The regular `createToken` still exists and continues to be the appropriate method for creating **direct debit** tokens.
-</div>
 
-Don’t forget to close the script after this has been done with </script>
+_The regular `createToken` still exists and continues to be the appropriate method for creating **direct debit** tokens._
+
+
+Don’t forget to close the script after this has been done with `</script>` !
 
 ### Choosing a language
 
 By default, the credit card form uses English for labels, placeholders and error messages. Simply specify the corresponding language code using `lang` in the `options` parameter of `embedFrame`. As this was already defined above, all you have to do is insert another language here in oder to change the language of the payframe.
 
-```     
-var options = {
-    lang: 'en'
-     };
+```    
+	var options = {
+        lang: 'en'
+        };
 ```
 
 **Available languages:**
@@ -151,11 +157,9 @@ var options = {
 - Swedish `sv`
 - Turkish `tr`
 
-<div class="info">
-If you need additional languages or can even provide a translation yourself, please <a href="mailto:support@paymill.com?subject=PayFrame%20translation">contact us</a>.
-</div>
+_If you need additional languages or can even provide a translation yourself, please <a href="mailto:support@paymill.com?subject=PayFrame%20translation">contact us</a>._
 
-## Additional Options
+### Additional Options
 
 After embedding the credit card frame you can take additional measures to control the form's behavior, both while it's loading and being used. 
 
@@ -166,7 +170,7 @@ The dimensions of the iFrame's content can change due to several factors like st
 
 By default, the iFrame automatically resizes **vertically** to fit its content. This means the iFrame element will have a width of 100% but a variable height, starting with `0px` until the frame has loaded.
 
-You can disable this behavior by setting a flag in the `options parameter`. If you do this, the iFrame will have its height also set to `100%`. We recommend setting a fixed container height to accommodate the iFrame content.
+You can disable this behavior by setting a flag in the `options` parameter. If you do this, the iFrame will have its height also set to `100%`. We recommend setting a fixed container height to accommodate the iFrame content.
 
 ```
  var options = {
@@ -187,9 +191,7 @@ Alternatively, you can take over the resizing process by providing a custom resi
   };
 ```
 
-<div class="info">
-With both disabled and custom resizing, the iFrame has width and height set to `100%` to fit its container element. It's highly recommended that you only style the container since you have full control over it. The iFrame, on the other hand, won't be available until it has loaded and might be removed from the DOM if loading fails.
-</div>
+_With both disabled and custom resizing, the iFrame has width and height set to `100%` to fit its container element. It's highly recommended that you only style the container since you have full control over it. The iFrame, on the other hand, won't be available until it has loaded and might be removed from the DOM if loading fails._
 
 ### Using 3-D Secure
 
