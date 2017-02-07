@@ -8,7 +8,6 @@ In some cases some adjustemnts will be necessary! Thank you for choosing Paymill
     <!-- first a JS is required to supply the PAYMILL_PUBLIC_KEY -->
     <script type="text/javascript">
       var PAYMILL_PUBLIC_KEY = '<YOUR_PUBLIC_KEY>';
-      var VALIDATE_CVC = true;
     </script>
     <!-- here the bridge has to be loadded -->
     <script type="text/javascript" src = "https://bridge.paymill.com/"></script>
@@ -59,7 +58,7 @@ In some cases some adjustemnts will be necessary! Thank you for choosing Paymill
   </head>
     <!-- the initPayframe() (defined in line 26) has to wait for everything to load -->
     <body onload = "initPayframe()">
-      <!-- please specify the file with which you handle the received token in the filed action ="yourfile" -->
+      <!-- please specify the file with which you handle the received token in the filed action ="request.php" -->
       <form id = "payment-form" action = "request.php" method = "POST">
         <div id = "credit-card-fields"></div>
         <!-- here you can specify any other fields you have in your checkout -->

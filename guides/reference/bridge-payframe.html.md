@@ -6,14 +6,13 @@ status: "published"
 menuOrder: 3
 ---
 
-PCI DSS 3.0 introduces a new set of requirements for merchants accepting credit card payments. In order to be (or stay) eligible for the simpler form of self assessment (SAQ A), we need to move all credit card data out of the scope of the merchant's website. We therefore offer an **iFrame-based credit card form** that achieves SAQ A eligibility.
-
-Please note that this restriction only applies to credit card data, all other functionality is unaffected. In particular, direct debit payments are processed just like before. Merchants can even choose to keep collecting credit card data on their own site, but they will have to comply with SAQ A-EP accordingly.
+PCI DSS 3.0 introduces a new set of requirements for merchants accepting credit card payments. In order to be (or stay) eligible for the simpler form of self assessment (SAQ A), we need to move all credit card data out of the scope of the merchant's website. We therefore offer an **iFrame-based credit card form** that achieves SAQ A eligibility. You can find out more information on the SAQ-A questionnaire [here](https://www.pcisecuritystandards.org/documents/SAQ_A_v3.pdf).
+This guide explains how to integrate the Payframe and receive a token from Paymill.
 
 
 _Our credit card frame is available for Chrome, Firefox, Safari and Opera but only for Internet Explorer 8 and above for compatibility and security reasons._
 
-
+You can view and download an example file [here](https://github.com/Savaage/paymill-documentation/blob/MR11/download/paymill_payframe.html).
 
 ### Load the Paymill Bridge and your public key
 
@@ -22,7 +21,6 @@ First your Paymill public key has to be loaded. This is done with JS and can loo
 ```
 <script type="text/javascript">
       var PAYMILL_PUBLIC_KEY = '<YOUR_PUBLIC_KEY>';
-      var VALIDATE_CVC = true;
     </script>
 ```
 Second the Paymill bridge has to be loaded. This can look like this:
@@ -33,7 +31,7 @@ Second the Paymill bridge has to be loaded. This can look like this:
 
 ### Embedding the credit card frame
 
-Our bridge provides a method `embedFrame(container, options, callback)` to embed a credit card frame in your page which can subsequently be customized to your needs. Please be aware that this whole next part hast to be a part of a Javascript. Meaning it has to be inside the following:
+Our bridge provides a method `embedFrame(container, options, callback)` to embed a credit card frame in your page which can subsequently be customized to your needs. Please be aware that the whole next part hast to be a part of a Javascript. Meaning it has to be inside the following:
 ```
 <script type = “text/javascript”>
 .
@@ -44,7 +42,7 @@ Our bridge provides a method `embedFrame(container, options, callback)` to embed
 
 ### Define the parameters of the method embedFrame
 
-Now we can define options and callback. The code for this can be taken from this example: 
+Now we can define options and callback. The code for this can be taken from this example:
 
 ```
       var options = {
@@ -62,7 +60,7 @@ Now we can define options and callback. The code for this can be taken from this
           }
        };
 ```
-Further language options are listed below. 
+Further language options are listed below.
 
 If the callback is called without an error object, the credit card form is ready to be used. You might want to hide the container element until the frame has loaded and only show it then.
 
@@ -81,7 +79,7 @@ Now we can embed the frame. For his purpose we can define function initPayframe:
 ```
 ### Creating a Token and submitting the form
 
-The last step is to define the submit button functionality. For this purpose the function submitForm can be defined. This function will call the paymill.createTokenViaFrame. It can look like this: 
+The last step is to define the submit button functionality. For this purpose the function submitForm can be defined. This function will call the paymill.createTokenViaFrame. It can look like this:
 
 ```
 var submitForm = function() {
@@ -110,18 +108,40 @@ var submitForm = function() {
           );
         }
 ```
-The amount, currency and email fields are required and have to be submitted! Afterwards if there are no errors, the token is appended to the form which is then submitted to your server. 
+The amount, currency and email fields are required and have to be submitted! Afterwards if there are no errors, the token is appended to the form which is then submitted to your server.
 Your response handler receives the same `error` and `result` object as before and doesn't have to change.
 
-In addition to the errors of `createToken`, which can be found in the Documentation about our [JS Bridge](https://developers.paymill.com/guides/reference/bridge), the following errors can occur when using `createTokenViaFrame`:
+The following errors can occur when using `createTokenViaFrame`:
 
-- `frame_not_found` - no credit card frame was found, make sure you have called `embedFrame` successfully
+  - `frame_not_found`                 : no credit card frame was found, make sure you have called `embedFrame` successfully
+  - `internal_server_error`           : Communication with PSP failed
+  - `invalid_public_key`              : Invalid Public Key
+  - `invalid_payment_data`            : not permitted for this method of payment, credit card type, currency or country
+  - `unknown_error`                   : Unknown Error
+
+The following errors can be returned in the case of credit card payment
+
+  - `3ds_cancelled`                   : Password Entry of 3-D Secure password was cancelled by the user
+  - `field_invalid_card_number`       : Missing or invalid creditcard number
+  - `field_invalid_card_exp_year`     : Missing or invalid expiry year
+  - `field_invalid_card_exp_month`    : Missing or invalid expiry month
+  - `field_invalid_card_exp`          : Card is no longer valid or has expired
+  - `field_invalid_card_cvc`          : Invalid checking number
+  - `field_invalid_card_holder`       : Invalid cardholder
+  - `field_invalid_email`             : Invalid email address
+  - `field_invalid_amount_int`        : Invalid or missing amount for 3-D Secure
+  - `field_invalid_amount`            : Invalid or missing amount for 3-D Secure. **deprecated , [see blog post](https://blog.paymill.com/about-rounding-floats-new-bridge-parameter/)**
+  - `field_invalid_currency`          : Invalid or missing currency code for 3-D Secure  
 
 
 _The regular `createToken` still exists and continues to be the appropriate method for creating **direct debit** tokens._
 
+The whole part explained above was part of the Javascript, and all Javascripts were in the head. Make sure these steps are done:
+1. load your public key
+2. load the Paymill bridge.
+3. call ´embedFrame´ and appended the token to the form and defined the submit button functionality.
 
-Don’t forget to close the script after this has been done with `</script>` !
+If this is done, please close the last JS with </script> and close the head </head>.
 
 ### Choosing a language
 
@@ -161,7 +181,7 @@ _If you need additional languages or can even provide a translation yourself, pl
 
 ### Additional Options
 
-After embedding the credit card frame you can take additional measures to control the form's behavior, both while it's loading and being used. 
+After embedding the credit card frame you can take additional measures to control the form's behavior, both while it's loading and being used.
 
 
 ### Handling content resizing
@@ -207,14 +227,14 @@ This will submit the form to our desired file for further handling. You can chec
 
 ```
   </head>
-    // the initPayframe() has to wait for everything to load
+    <!-- the initPayframe() has to wait for everything to load -->
     <body onload = "initPayFrame()">
-      // please specify the file with which you handel the received token in the filed action ="yourfile"
+      <!-- please specify the file with which you handle the received token in the filed action ="request.php" -->
       <form id = "payment-form" action = "request.php" method = "POST">
         <div id = "credit-card-fields"></div>
-        // here you can specify any other fields you have in your checkout
+        <!-- here you can specify any other fields you have in your checkout -->
         <input id = "paymillToken" name = "paymillToken" type = "hidden" />
-        //insert a button to submit the form
+        <!-- insert a button to submit the form -->
         <input type = "button" value = "Submit" onclick = "submitForm()">
       </form>
 
@@ -223,4 +243,4 @@ This will submit the form to our desired file for further handling. You can chec
 ```
 The above example code calls the initPayframe on load, then defines the request.php as the file to submit the form to. If you have any further fields in your checkout you would like to add, you can add them after `<div id = "credit-card-fields"></div>`.
 Last step is the definition of what the submit button does. That's it! You're ready to use the Payframe solution from PAYMILL!
-You can view and download an example file [here](https://github.com/Savaage/paymill-documentation/blob/MR11/download/paymill_payframe.html). 
+You can view and download an example file [here](https://github.com/Savaage/paymill-documentation/blob/MR11/download/paymill_payframe.html).
