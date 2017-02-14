@@ -62,7 +62,7 @@ Shop plugins are the fastest and easiest way to have online payments ready for y
 
   <div class="links">
     <div class="logo">
-      ![Prestashop](https://www.paymill.com/files/devcenter_temp/prestashop_logo_plugins.png)
+      ![Prestashop](https://static.paymill.com/r/a8332dcf722a7a9b4906667ae70cdb9a48126f6d/img/logos/logo-prestashop.png)
     </div>
 
   <a href="http://addons.prestashop.com/de/zahlung-prestashop-module/17640-pigmbhpaymill.html" class="btn btn-primary">Download</a>  
