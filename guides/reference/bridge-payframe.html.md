@@ -44,7 +44,7 @@ Our bridge provides a method `embedFrame(container, options, callback)` to embed
 
 Now we can define options and callback. The code for this can be taken from this example:
 
-```
+```javascript
       var options = {
         lang: 'en'
         };
@@ -71,7 +71,7 @@ The following errors can occur during frame load:
 
 Now we can embed the frame. For his purpose we can define function initPayframe:
 
-```
+```javascript
        var initPayframe = function() {
          paymill.embedFrame('credit-card-fields', options, callback);
        };
@@ -81,7 +81,7 @@ Now we can embed the frame. For his purpose we can define function initPayframe:
 
 The last step is to define the submit button functionality. For this purpose the function submitForm can be defined. This function will call the paymill.createTokenViaFrame. It can look like this:
 
-```
+```javascript
 var submitForm = function() {
          paymill.createTokenViaFrame({
             amount_int: 420, // 420 for 4.20 amount_int hast to be an integer, required
@@ -137,9 +137,10 @@ The following errors can be returned in the case of credit card payment
 _The regular `createToken` still exists and continues to be the appropriate method for creating **direct debit** tokens._
 
 The whole part explained above was part of the Javascript, and all Javascripts were in the head. Make sure these steps are done:
+
 1. load your public key
 2. load the Paymill bridge.
-3. call ´embedFrame´ and appended the token to the form and defined the submit button functionality.
+3. call `embedFrame` and append the token to the form and define the submit button functionality.
 
 If this is done, please close the last JS with </script> and close the head </head>.
 
@@ -147,7 +148,7 @@ If this is done, please close the last JS with </script> and close the head </he
 
 By default, the credit card form uses English for labels, placeholders and error messages. Simply specify the corresponding language code using `lang` in the `options` parameter of `embedFrame`. As this was already defined above, all you have to do is insert another language here in oder to change the language of the payframe.
 
-```    
+```javascript  
 	var options = {
         lang: 'en'
         };
@@ -192,7 +193,7 @@ By default, the iFrame automatically resizes **vertically** to fit its content. 
 
 You can disable this behavior by setting a flag in the `options` parameter. If you do this, the iFrame will have its height also set to `100%`. We recommend setting a fixed container height to accommodate the iFrame content.
 
-```
+```javascript
  var options = {
         lang: 'en'
         resize: false
@@ -201,7 +202,7 @@ You can disable this behavior by setting a flag in the `options` parameter. If y
 
 Alternatively, you can take over the resizing process by providing a custom resizing function. The iFrame will still have width and height set to `100%` in the beginning, but your function will be called each time the iFrame needs a resize. It will be passed an `attrs` parameter containing relevant attributes (currently only the content's height) so you can manipulate the container element accordingly.
 
-```
+```javascript
 // Provide custom resizing function.
  var options = {
   resize: function(attrs) {
@@ -225,11 +226,11 @@ paymill.createTokenViaFrame(data, callback, tdsInit, tdsCleanup);
 The only thing left to do is to define the body, the form itself and the submit button.
 This will submit the form to our desired file for further handling. You can check the API reference [here](https://developers.paymill.com/API/index)!
 
-```
+```html
   </head>
     <!-- the initPayframe() has to wait for everything to load -->
     <body onload = "initPayFrame()">
-      <!-- please specify the file with which you handle the received token in the filed action ="request.php" -->
+      <!-- please specify the file with which you handle the received token in the field action ="request.php" -->
       <form id = "payment-form" action = "request.php" method = "POST">
         <div id = "credit-card-fields"></div>
         <!-- here you can specify any other fields you have in your checkout -->
@@ -243,4 +244,5 @@ This will submit the form to our desired file for further handling. You can chec
 ```
 The above example code calls the initPayframe on load, then defines the request.php as the file to submit the form to. If you have any further fields in your checkout you would like to add, you can add them after `<div id = "credit-card-fields"></div>`.
 Last step is the definition of what the submit button does. That's it! You're ready to use the Payframe solution from PAYMILL!
-You can view and download an example file [here](https://github.com/Savaage/paymill-documentation/blob/MR11/download/paymill_payframe.html).
+You can view and download an example file [here](https://github.com/paymill/paymill-documentation/blob/master/download/paymill_payframe.html).
+A file that will create a transaction if used together with the Payframe can be found here: [here](https://github.com/paymill/paymill-documentation/tree/master/download/request.php).
