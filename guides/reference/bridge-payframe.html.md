@@ -177,6 +177,7 @@ By default, the credit card form uses English for labels, placeholders and error
 - Spanish `es`
 - Swedish `sv`
 - Turkish `tr`
+- Finish `fi`
 
 _If you need additional languages or can even provide a translation yourself, please <a href="mailto:support@paymill.com?subject=PayFrame%20translation">contact us</a>._
 
