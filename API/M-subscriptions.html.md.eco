@@ -99,7 +99,7 @@ Unix-Timestamp for the cancel date
 payment object for credit card or direct debit
 
 **mandate_reference:**     _string or null_
-SEPA mandate reference, can be optionally specified for direct debit transactions. If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
+SEPA mandate reference, can be optionally specified for direct debit transactions (necessary for recurring direct debit transactions). If specified for other payment methods, it has no effect but must still be valid. If specified, the string must not be empty, can be up to 35 characters long and may contain digits 0-9, letters a-z A-Z, allowed special characters: ‘ , . : + - / ( ) ?
 
 **client:**                _[client object](#-client-object)  _
 client object
