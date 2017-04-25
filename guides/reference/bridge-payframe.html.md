@@ -18,22 +18,22 @@ You can view and download an example file [here](https://github.com/Savaage/paym
 
 First your Paymill public key has to be loaded. This is done with JS and can look like this:
 
-```
+```HTML
 <script type="text/javascript">
-      var PAYMILL_PUBLIC_KEY = '<YOUR_PUBLIC_KEY>';
+      var PAYMILL_PUBLIC_KEY='<YOUR_PUBLIC_KEY>';
     </script>
 ```
 Second the Paymill bridge has to be loaded. This can look like this:
 
-```
-<script type="text/javascript" src = "https://bridge.paymill.com/"></script>
+```HTML
+<script type="text/javascript" src="https://bridge.paymill.com/"></script>
 ```
 
 ### Embedding the credit card frame
 
 Our bridge provides a method `embedFrame(container, options, callback)` to embed a credit card frame in your page which can subsequently be customized to your needs. Please be aware that the whole next part hast to be a part of a Javascript. Meaning it has to be inside the following:
-```
-<script type = “text/javascript”>
+```HTML
+<script type="text/javascript">
 .
 .
 .
@@ -50,7 +50,7 @@ Now we can define options and callback. The code for this can be taken from this
         };
 
       var callback = function(error){
-	//Frame could not be loaded, check error object for reason
+	//Frame could not be loaded, check error object for the reason
         if(error){
           console.log(error.apierror,error.message);
 	// Example: "container_not_found"
@@ -84,7 +84,7 @@ The last step is to define the submit button functionality. For this purpose the
 ```javascript
 var submitForm = function() {
          paymill.createTokenViaFrame({
-            amount_int: 420, // 420 for 4.20 amount_int hast to be an integer, required
+            amount_int: 420, // 420 for 4.20 amount_int has to be an integer, required
             currency: 'EUR', // required
             email: 'test@customer.com' //required
             },
@@ -227,23 +227,23 @@ paymill.createTokenViaFrame(data, callback, tdsInit, tdsCleanup);
 The only thing left to do is to define the body, the form itself and the submit button.
 This will submit the form to our desired file for further handling. You can check the API reference [here](https://developers.paymill.com/API/index)!
 
-```html
+```HTML
   </head>
     <!-- the initPayframe() has to wait for everything to load -->
-    <body onload = "initPayFrame()">
+    <body onload="initPayFrame()">
       <!-- please specify the file with which you handle the received token in the field action ="request.php" -->
-      <form id = "payment-form" action = "request.php" method = "POST">
-        <div id = "credit-card-fields"></div>
+      <form id="payment-form" action="request.php" method="POST">
+        <div id="credit-card-fields"></div>
         <!-- here you can specify any other fields you have in your checkout -->
-        <input id = "paymillToken" name = "paymillToken" type = "hidden" />
+        <input id="paymillToken" name="paymillToken" type="hidden" />
         <!-- insert a button to submit the form -->
-        <input type = "button" value = "Submit" onclick = "submitForm()">
+        <input type="button" value="Submit" onclick="submitForm()">
       </form>
 
     </body>
 </html>
 ```
-The above example code calls the initPayframe on load, then defines the request.php as the file to submit the form to. If you have any further fields in your checkout you would like to add, you can add them after `<div id = "credit-card-fields"></div>`.
+The above example code calls the initPayframe on load, then defines the request.php as the file to submit the form to. If you have any further fields in your checkout you would like to add, you can add them after `<div id="credit-card-fields"></div>`.
 Last step is the definition of what the submit button does. That's it! You're ready to use the Payframe solution from PAYMILL!
 You can view and download an example file [here](https://github.com/paymill/paymill-documentation/blob/master/download/paymill_payframe.html).
 A file that will create a transaction if used together with the Payframe can be found here: [here](https://github.com/paymill/paymill-documentation/tree/master/download/request.php).
