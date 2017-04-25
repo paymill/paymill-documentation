@@ -49,9 +49,9 @@ Now we can define options and callback. The code for this can be taken from this
         lang: 'en'
         };
 
-      var callback = function(error){
+      var callback = function(error) {
 	//Frame could not be loaded, check error object for the reason
-        if(error){
+        if(error) {
           console.log(error.apierror,error.message);
 	// Example: "container_not_found"
           }
@@ -83,7 +83,7 @@ The last step is to define the submit button functionality. For this purpose the
 
 ```javascript
 var submitForm = function() {
-         paymill.createTokenViaFrame({
+         paymill.createTokenViaFrame( {
             amount_int: 420, // 420 for 4.20 amount_int has to be an integer, required
             currency: 'EUR', // required
             email: 'test@customer.com' //required
@@ -235,9 +235,9 @@ This will submit the form to our desired file for further handling. You can chec
       <form id="payment-form" action="request.php" method="POST">
         <div id="credit-card-fields"></div>
         <!-- here you can specify any other fields you have in your checkout -->
-        <input id="paymillToken" name="paymillToken" type="hidden" />
+        <input type="hidden" id="paymillToken" name="paymillToken" />
         <!-- insert a button to submit the form -->
-        <input type="button" value="Submit" onclick="submitForm()">
+        <input type="button" value="Submit" onclick="submitForm()" />
       </form>
 
     </body>
