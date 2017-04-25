@@ -20,8 +20,8 @@ First your Paymill public key has to be loaded. This is done with JS and can loo
 
 ```HTML
 <script type="text/javascript">
-      var PAYMILL_PUBLIC_KEY='<YOUR_PUBLIC_KEY>';
-    </script>
+    var PAYMILL_PUBLIC_KEY='<YOUR_PUBLIC_KEY>';
+</script>
 ```
 Second the Paymill bridge has to be loaded. This can look like this:
 
@@ -45,20 +45,19 @@ Our bridge provides a method `embedFrame(container, options, callback)` to embed
 Now we can define options and callback. The code for this can be taken from this example:
 
 ```javascript
-      var options = {
-        lang: 'en'
-        };
+var options = {
+    lang: 'en'
+};
 
-      var callback = function(error) {
-	//Frame could not be loaded, check error object for the reason
-        if (error) {
-          console.log(error.apierror,error.message);
+var callback = function(error) {
+    //Frame could not be loaded, check error object for the reason
+    if (error) {
 	// Example: "container_not_found"
-          }
-	//Frame was loaded successfully
-          else {
-          }
-       };
+        console.log(error.apierror,error.message);
+    } else {
+        //Frame was loaded successfully
+    }
+};
 ```
 Further language options are listed below.
 
@@ -72,10 +71,9 @@ The following errors can occur during frame load:
 Now we can embed the frame. For his purpose we can define function initPayframe:
 
 ```javascript
-       var initPayframe = function() {
-         paymill.embedFrame('credit-card-fields', options, callback);
-       };
-
+var initPayframe = function() {
+    paymill.embedFrame('credit-card-fields', options, callback);
+};
 ```
 ### Creating a Token and submitting the form
 
@@ -83,30 +81,28 @@ The last step is to define the submit button functionality. For this purpose the
 
 ```javascript
 var submitForm = function() {
-         paymill.createTokenViaFrame({
-            amount_int: 420, // 420 for 4.20 amount_int has to be an integer, required
-            currency: 'EUR', // required
-            email: 'test@customer.com' //required
-            },
-         function(error, result) {
-              // Handle error or process result.
-            if (error) {
-                // Token could not be created, check error object for reason.
-              console.log(error.apierror, error.message);
-            }
-              // Token was created successfully and can be sent to backend.
-            else {
-	      // If you want to log the response in the console
-              console.log(result.token);
-	      // Fetch the token, and add it to the form, which is then submitted to your server
-              var form = document.getElementById("payment-form");
-              var tokenField = document.getElementById("paymillToken");
-              tokenField.value = result.token;
-              form.submit();
-              }
-            }
-          );
+    paymill.createTokenViaFrame({
+        amount_int: 420, // 420 for 4.20 amount_int has to be an integer, required
+        currency: 'EUR', // required
+        email: 'test@customer.com' //required
+    },
+    function(error, result) {
+        // Handle error or process result.
+        if (error) {
+            // Token could not be created, check error object for reason.
+            console.log(error.apierror, error.message);
+        } else {
+            // Token was created successfully and can be sent to backend.
+	    // If you want to log the response in the console
+            console.log(result.token);
+	    // Fetch the token, and add it to the form, which is then submitted to your server
+            var form = document.getElementById("payment-form");
+            var tokenField = document.getElementById("paymillToken");
+            tokenField.value = result.token;
+            form.submit();
         }
+    });
+}
 ```
 The amount, currency and email fields are required and have to be submitted! Afterwards if there are no errors, the token is appended to the form which is then submitted to your server.
 Your response handler receives the same `error` and `result` object as before and doesn't have to change.
@@ -149,9 +145,9 @@ If this is done, please close the last JS with </script> and close the head </he
 By default, the credit card form uses English for labels, placeholders and error messages. Simply specify the corresponding language code using `lang` in the `options` parameter of `embedFrame`. As this was already defined above, all you have to do is insert another language here in oder to change the language of the payframe.
 
 ```javascript  
-	var options = {
-        lang: 'en'
-        };
+var options = {
+    lang: 'en'
+};
 ```
 
 **Available languages:**
@@ -195,22 +191,22 @@ By default, the iFrame automatically resizes **vertically** to fit its content. 
 You can disable this behavior by setting a flag in the `options` parameter. If you do this, the iFrame will have its height also set to `100%`. We recommend setting a fixed container height to accommodate the iFrame content.
 
 ```javascript
- var options = {
-        lang: 'en'
-        resize: false
-        };
+var options = {
+    lang: 'en'
+    resize: false
+};
 ```
 
 Alternatively, you can take over the resizing process by providing a custom resizing function. The iFrame will still have width and height set to `100%` in the beginning, but your function will be called each time the iFrame needs a resize. It will be passed an `attrs` parameter containing relevant attributes (currently only the content's height) so you can manipulate the container element accordingly.
 
 ```javascript
 // Provide custom resizing function.
- var options = {
-  resize: function(attrs) {
-    container.style.height = attrs.height + 'px';
-    // Make other adjustments based on iFrame dimensions.
+var options = {
+    resize: function(attrs) {
+        container.style.height = attrs.height + 'px';
+        // Make other adjustments based on iFrame dimensions.
     }
-  };
+};
 ```
 
 _With both disabled and custom resizing, the iFrame has width and height set to `100%` to fit its container element. It's highly recommended that you only style the container since you have full control over it. The iFrame, on the other hand, won't be available until it has loaded and might be removed from the DOM if loading fails._
@@ -228,18 +224,17 @@ The only thing left to do is to define the body, the form itself and the submit 
 This will submit the form to our desired file for further handling. You can check the API reference [here](https://developers.paymill.com/API/index)!
 
 ```HTML
-  </head>
+    </head>
     <!-- the initPayframe() has to wait for everything to load -->
     <body onload="initPayFrame()">
-      <!-- please specify the file with which you handle the received token in the field action ="request.php" -->
-      <form id="payment-form" action="request.php" method="POST">
-        <div id="credit-card-fields"></div>
-        <!-- here you can specify any other fields you have in your checkout -->
-        <input type="hidden" id="paymillToken" name="paymillToken" />
-        <!-- insert a button to submit the form -->
-        <input type="button" value="Submit" onclick="submitForm()" />
-      </form>
-
+        <!-- please specify the file with which you handle the received token in the field action ="request.php" -->
+        <form id="payment-form" action="request.php" method="POST">
+            <div id="credit-card-fields"></div>
+            <!-- here you can specify any other fields you have in your checkout -->
+            <input type="hidden" id="paymillToken" name="paymillToken" />
+            <!-- insert a button to submit the form -->
+            <input type="button" value="Submit" onclick="submitForm()" />
+        </form>
     </body>
 </html>
 ```
