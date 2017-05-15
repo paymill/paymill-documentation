@@ -12,7 +12,7 @@ This guide explains how to integrate the Payframe and receive a token from Paymi
 
 _Our credit card frame is available for Chrome, Firefox, Safari and Opera but only for Internet Explorer 8 and above for compatibility and security reasons._
 
-You can view and download an example file [here](https://github.com/Savaage/paymill-documentation/blob/MR11/download/paymill_payframe.html).
+You can view and download an example file [here](https://github.com/paymill/paymill-documentation/blob/master/download/paymill_payframe.html).
 
 ### Load the Paymill Bridge and your public key
 
