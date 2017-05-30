@@ -16,12 +16,12 @@ Through PAYMILL's API you can now easily integrate PayPal payments into your exi
 
   <li class="arrow_box">
     <i class="fa fa-code"></i>
-    [Add](/guides/paypal/transactions) a Sofort button to your checkout
+    Add a Sofort button to your checkout
   </li>
 
   <li class="arrow_box">
     <i class="fa fa-check-square-o"></i>
-    Create a [Transaction Checksum](/guides/paypal/transactions#creating-a-checksum)
+    Create a [Transaction Checksum](/guides/sofort/transactions#Creating-a-Sofort-Checksum)
   </li>
 
   <li class="box">
