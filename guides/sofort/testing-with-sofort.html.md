@@ -63,7 +63,7 @@ paymill.createTransaction({
 Once you call this function, our JS Bridge will recognize the type of the checksum and create the transaction. You will be redirected to our test page. This page is only meant to serve as a Test environment.
 The page looks like this:
 
-![](/paymill-documentation/guides/images/Sofort-Test-Mode.png)
+![](/guides/images/Sofort-Test-Mode.png)
 
 Clicking on the "Log In" button will redirect you to your **return_url**, that you have specified in the checksum.
 Clicking on the "Terminate Session" will redirect you to the **cancel_url** you specified previously in the checksum.
