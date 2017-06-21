@@ -3,13 +3,13 @@ title: "Testing Sofort"
 menuTitle: "Testing"
 type: "guide"
 status: "published"
-menuOrder: 4
+menuOrder: 3
 ---
 
 If you'd like to test Sofort, you can do so with Paymill Test keys!
 Please be aware that when using **Test Keys** no transactions will be executed. You only simulate the behavior of our system in a live environment.
 
-First of all, exactly as in Live mode you must create a checksum. This is done via our API and as identification your test private API key is required. The call looks like this:
+First of all, exactly as in Live mode you must create a checksum. This is done via our API and as identification your **test private API key** is required. The call looks like this:
 
 ```bash
 curl https://api.paymill.com/v2.1/checksums \
