@@ -9,11 +9,11 @@ menuOrder: 2
 Processing **Sofort Transactions** through **PAYMILL** is easy:
 
 1. Add a *Sofort* button to your checkout
-2. Create a [Sofort Checksum](#creating-a-Sofort-checksum) on your server.
+2. Create a [Sofort Checksum](#creating-a-sofort-checksum) on your server.
 3. Pass the **Checksum ID** to your website front-end and use the [PAYMILL Bridge](https://developers.paymill.com/guides/reference/bridge) to start **Sofort Checkout**.
 4. Handle the customer returning to your site along with information about the transaction result.
 
-### Creating a Sofort Checksum
+### Creating a Sofort checksum
 
 Before starting a **Sofort Checkout** from your website, you need to create a [Transaction Checksum](https://developers.paymill.com/API/#checksums) on your server.
 
@@ -35,7 +35,7 @@ Some **Transaction** data can be added to the Sofort **Checksum**. More details 
 - `billing_address[postal_code]` : The postal code of the customer
 - `client_email` : Email address of the customer
 - `return_url`: The URL where the customer is redirected when he completed a **Sofort checkout**. The **Transaction status** can be `successful`, `failed` or `pending`. The **Transaction ID** and **status** are passed as URL parameters.
-- `cancel_url`: The URL where the customer is redirected when he cancels the **Sofort checkout**. More information on the handling a cancelled transaction can be found [here](/guides/sofort/transactions#Handling-cancelled-payments).
+- `cancel_url`: The URL where the customer is redirected when he cancels the **Sofort checkout**. More information on the handling a cancelled transaction can be found [here](/guides/sofort/transactions#handling-cancelled-payments).
 
 
 **Optional Parameters**
@@ -101,7 +101,7 @@ In `test mode` your customer is redirected to your cancel_url without any additi
 Example URL called for a cancelled transaction in `test mode`:
 
 ```http
-https://www.example.com/shop/checkout/retry
+https://requestb.in/xabkgtxa
 ```
 
 In `live mode` however a transaction will be created and the cancel_url will have parameters added to it.
