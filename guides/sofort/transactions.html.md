@@ -13,7 +13,7 @@ Processing **Sofort Transactions** through **PAYMILL** is easy:
 3. Pass the **Checksum ID** to your website front-end and use the [PAYMILL Bridge](https://developers.paymill.com/guides/reference/bridge) to start **Sofort Checkout**.
 4. Handle the customer returning to your site along with information about the transaction result.
 
-### Creating a Sofort checksum
+### Creating a Sofort Checksum
 
 Before starting a **Sofort Checkout** from your website, you need to create a [Transaction Checksum](https://developers.paymill.com/API/#checksums) on your server.
 
@@ -67,7 +67,7 @@ curl https://api.paymill.dev/v2.1/checksums \
 
 You can find more information about **Transactions** in the [corresponding guide](/guides/reference/transactions.html).
 
-#### Starting a SOFORT payment checkout
+#### Starting a SOFORT Payment Checkout
 
 **Sofort Transactions** are initiated on your website. The customer is redirected to the **Sofort Website** to finish the transaction with their **Online Banking Account** and is returned to your site afterwards where you can handle the result.
 
@@ -90,7 +90,7 @@ paymill.createTransaction({
 });
 ```
 
-#### Handling cancelled payments
+#### Handling Cancelled Payments
 
 When a customer cancels during **Sofort Checkout**, he will be redirected to the `cancel_url` you provided during **Checksum creation**. On this URL you can offer your customer to review or modify his order and restart the checkout. You can handle this scenario how you see fit. Please note that our system will react differently in live and test mode.
 
@@ -111,7 +111,7 @@ https://requestb.in/xabkgtxa?paymill_trx_id=tran_f9ac7ffa300d2e98944dfc389d19&pa
 
 This will help you have an overview why the transaction was not successful and how many customers cancelled the transaction.
 
-#### Handling transaction results
+#### Handling Transaction Results
 
 Upon a successful **Sofort Checkout**, the customer is redirected to the `return_url` you provided during **Checksum creation**. At this point, a **Transaction** has been created. The transaction result is provided using the following URL parameters:
 
@@ -127,7 +127,7 @@ https://requestb.in/1jux9n71?paymill_trx_id=tran_94619af97ebcb49b56340e07848f&pa
 ```
 
 <p class="important">
-While you receive transaction data via URL parameters, **you need to verify transaction integrity yourself**. Simply use the **Transaction ID** to query our API and check if the transaction exists and has the specified status. See the section Retrieving transaction details below for more information. Or set up a webhook with an event transaction.successful.
+While you receive transaction data via URL parameters, **you need to verify transaction integrity yourself**. Simply use the **Transaction ID** to query our API and check if the transaction exists and has the specified status. See the section **Retrieving transaction details** below for more information. Or set up a webhook with an event transaction.successful.
 </p>
 
 
