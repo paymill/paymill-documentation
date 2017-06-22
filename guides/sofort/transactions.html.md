@@ -26,8 +26,6 @@ Some **Transaction** data can be added to the Sofort **Checksum**. More details 
 - `checksum_type`: Needs to be set to `sofort` so that the **Checksum** will create a **Sofort Transaction**.
 - `amount`: Transaction amount as an integer, e.g. Euro cents. It must be the overall sum of all transaction components.
 - `currency`: Currency code for this transaction. For Sofort only `EUR` is allowed.
-- `billing_address` is an address object. More info can be found [here](https://developers.paymill.com/API/index#address-object) You must pass the following values when creating the checksum:
-
 - `billing_address[name]` : First and Last name of the customer.
 - `billing_address[country]` : Country of the customer in 2-letter country code according to [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 - `billing_address[street_address]`: The street address of the customer
@@ -35,7 +33,7 @@ Some **Transaction** data can be added to the Sofort **Checksum**. More details 
 - `billing_address[postal_code]` : The postal code of the customer
 - `client_email` : Email address of the customer
 - `return_url`: The URL where the customer is redirected when he completed a **Sofort checkout**. The **Transaction status** can be `successful`, `failed` or `pending`. The **Transaction ID** and **status** are passed as URL parameters.
-- `cancel_url`: The URL where the customer is redirected when he cancels the **Sofort checkout**. More information on the handling a cancelled transaction can be found [here](/guides/sofort/transactions#handling-cancelled-payments).
+- `cancel_url`: The URL where the customer is redirected when he cancels the **Sofort checkout**. More information on the handling of a cancelled transaction can be found below in the section **Handling cancelled payments**.
 
 
 **Optional Parameters**
@@ -96,7 +94,7 @@ paymill.createTransaction({
 
 When a customer cancels during **Sofort Checkout**, he will be redirected to the `cancel_url` you provided during **Checksum creation**. On this URL you can offer your customer to review or modify his order and restart the checkout. You can handle this scenario how you see fit. Please note that our system will react differently in live and test mode.
 
-In `test mode` your customer is redirected to your cancel_url without any additional parameters.
+In `test mode` your customer is redirected to your cancel_url without any additional parameters. Also be aware that in `test mode` no transaction will be created and that is the reason no parameters are added to the URL.
 
 Example URL called for a cancelled transaction in `test mode`:
 
@@ -128,9 +126,8 @@ You can see an example of a successful transaction response here (in the case th
 https://requestb.in/1jux9n71?paymill_trx_id=tran_94619af97ebcb49b56340e07848f&paymill_trx_status=closed&paymill_response_code=20000&paymill_mode=test
 ```
 
-
 <p class="important">
-While you receive transaction data via URL parameters, **you need to verify transaction integrity yourself**. Simply use the **Transaction ID** to query our API and check if the transaction exists and has the specified status. See [retrieving transaction details](#retrieving-transaction-details) for more information. Or set up a webhook with an event transaction.successful.
+While you receive transaction data via URL parameters, **you need to verify transaction integrity yourself**. Simply use the **Transaction ID** to query our API and check if the transaction exists and has the specified status. See the section Retrieving transaction details below for more information. Or set up a webhook with an event transaction.successful.
 </p>
 
 
