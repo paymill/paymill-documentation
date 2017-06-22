@@ -24,6 +24,11 @@ Through PAYMILL's API you can now easily integrate SOFORT payments into your exi
     Create a [Transaction Checksum](/guides/sofort/transactions#creating-a-sofort-checksum) on your server.
   </li>
 
+  <li class="arrow_box">
+    <i class="fa fa-code"></i>
+    Use the checksum you created in the previous step and our JS Bridge to initiate a [Sofort transaction](/guides/sofort/transactions#starting-a-sofort-payment-checkout) and start the checkout process at Sofort.
+  </li>
+
   <li class="box">
     <i class="fa fa-cogs"></i>
     Handle the [results](/guides/sofort/transactions#handling-transaction-results) / [cancellation](/guides/sofort/transactions#handling-cancelled-payments)
