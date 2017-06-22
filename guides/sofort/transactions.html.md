@@ -127,15 +127,7 @@ https://requestb.in/1jux9n71?paymill_trx_id=tran_94619af97ebcb49b56340e07848f&pa
 ```
 
 <p class="important">
-While you receive transaction data via URL parameters, <b> you need to verify transaction integrity yourself </b>. Simply use the **Transaction ID** to query our API and check if the transaction exists and has the specified status. See the section **Retrieving transaction details** below for more information. Or set up a webhook with an event transaction.successful.
-</p>
-
-<p class="important">
-If you specify a shopping cart, **the items total must match the transaction total amount**.
-<br>
-In case there is a difference, please use shipping and handling costs to match this **total amount**.
-<br><br>
-These parameters are not required if you didn't specify a shopping cart.
+While you receive transaction data via URL parameters, **you need to verify transaction integrity yourself**. Simply use the **Transaction ID** to query our API and check if the transaction exists and has the specified status. See the section **Retrieving transaction details** below for more information. Or set up a webhook with an event transaction.successful.
 </p>
 
 
