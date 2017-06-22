@@ -21,7 +21,7 @@ Through PAYMILL's API you can now easily integrate SOFORT payments into your exi
 
   <li class="arrow_box">
     <i class="fa fa-check-square-o"></i>
-    Create a [Transaction Checksum](/guides/sofort/transactions#Creating-a-Sofort-Checksum)
+    Create a [Transaction Checksum](/guides/sofort/transactions#creating-a-sofort-checksum)
   </li>
 
   <li class="box">

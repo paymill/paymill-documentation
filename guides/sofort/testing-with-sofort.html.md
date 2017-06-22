@@ -46,8 +46,7 @@ The response from our side looks like this:
   "mode": "test"
 }
 ```
-Now You can use the checksum to create a transaction. Please make sure you are using the "id" and not the "data"!
-Our bridge contains a function paymill.createTransaction():
+Now you can use the bridge and the checksum to create a transaction. Please make sure you are using the checksum "id" and not the the checksum "data", when calling the following JS bridge function:
 
 ```Javascript
 paymill.createTransaction({

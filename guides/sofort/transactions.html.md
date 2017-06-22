@@ -25,17 +25,17 @@ Some **Transaction** data can be added to the Sofort **Checksum**. More details 
 
 - `checksum_type`: Needs to be set to `sofort` so that the **Checksum** will create a **Sofort Transaction**.
 - `amount`: Transaction amount as an integer, e.g. Euro cents. It must be the overall sum of all transaction components.
-- `currency`: Currency code for this transaction. For Sofort only EUR is allowed.
-- `billing_address` is mandatory for SOFORT transactions. You must pass the following values when creating the checksum:
+- `currency`: Currency code for this transaction. For Sofort only `EUR` is allowed.
+- `billing_address` is an address object. More info can be found [here](https://developers.paymill.com/API/index#address-object) You must pass the following values when creating the checksum:
 
 - `billing_address[name]` : First and Last name of the customer.
 - `billing_address[country]` : Country of the customer in 2-letter country code according to [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 - `billing_address[street_address]`: The street address of the customer
-- `billing_address[city]` : the city of the customer
-- `billing_address[postal_code]` : the postal code of the customer
+- `billing_address[city]` : The city of the customer
+- `billing_address[postal_code]` : The postal code of the customer
 - `client_email` : Email address of the customer
-- `return_url`: The URL where the customer is redirected when he completed a **Sofort checkout** and a transaction was created. The **Transaction status** can be `successful`, `failed` or `pending`. The **Transaction ID** and **status** are passed as URL parameters.
-- `cancel_url`: The URL where the customer is redirected when he cancels the **Sofort checkout**. At this URL you can offer your customer to review or modify the order and restart the checkout.
+- `return_url`: The URL where the customer is redirected when he completed a **Sofort checkout**. The **Transaction status** can be `successful`, `failed` or `pending`. The **Transaction ID** and **status** are passed as URL parameters.
+- `cancel_url`: The URL where the customer is redirected when he cancels the **Sofort checkout**. More information on the handling a cancelled transaction can be found [here](/guides/sofort/transactions#Handling-cancelled-payments).
 
 
 **Optional Parameters**
@@ -44,8 +44,7 @@ Some **Transaction** data can be added to the Sofort **Checksum**. More details 
 - `client`: **PAYMILL client ID** (e.g. "client_88a388d9dd48f86c3136"). A new **Transaction** will create a new **Payment**. If you specify a **Client**, the new **Payment** will be attached to it.
 - `billing_address[phone]` : The telephone number of the customer
 
-You can choose to provide the checksum with these values, they will be displayed in the transaction details in your Merchant Centre.
-It is possible to create the Sofort transaction without these values.
+These values will be displayed in the transaction details in your Merchant Centre.
 
 Example checksum parameters for a Sofort transaction:
 
@@ -70,14 +69,14 @@ curl https://api.paymill.dev/v2.1/checksums \
 
 You can find more information about **Transactions** in the [corresponding guide](/guides/reference/transactions.html).
 
-#### STARTING A SOFORT PAYMENT CHECKOUT
+#### Starting a SOFORT payment checkout
 
-**Sofort Transactions** are initiated on your website. The customer is redirected to the **Sofort Website** to finish the transaction with their **Online Banking Account** and are returned to your site afterwards where you can handle the result.
+**Sofort Transactions** are initiated on your website. The customer is redirected to the **Sofort Website** to finish the transaction with their **Online Banking Account** and is returned to your site afterwards where you can handle the result.
 
 To add the **Sofort Checkout** to your website:
 
 1. Include the [PAYMILL JavaScrip Bridge](https://developers.paymill.com/guides/reference/bridge)
-2. Use our JS bridge to start a **Sofort Checkout** when the button is clicked
+2. Use our JS bridge to start a **Sofort Checkout** when the customer chooses **Sofort**
 3. Provide a callback to handle any errors happening during payment setup (e.g. invalid data)
 
 Inside the Javascript this function muss be called with the checksum ID you received earlier.
@@ -93,19 +92,28 @@ paymill.createTransaction({
 });
 ```
 
-#### HANDLING CANCELED PAYMENTS
+#### Handling cancelled payments
 
-When a customer cancels during **Sofort Checkout**, he will be redirected to the `cancel_url` you provided during **Checksum creation**. On this URL you can offer your customer to review or modify his order and restart the checkout. You can handle this scenario how you see fit.
+When a customer cancels during **Sofort Checkout**, he will be redirected to the `cancel_url` you provided during **Checksum creation**. On this URL you can offer your customer to review or modify his order and restart the checkout. You can handle this scenario how you see fit. Please note that our system will react differently in live and test mode.
 
-Since no transaction was created at this point, the customer is simply redirected to your `cancel_url` without any additional parameters.
+In `test mode` your customer is redirected to your cancel_url without any additional parameters.
 
-Example URL called for a cancelled transaction:
+Example URL called for a cancelled transaction in `test mode`:
 
 ```http
 https://www.example.com/shop/checkout/retry
 ```
 
-#### HANDLING TRANSACTION RESULTS
+In `live mode` however a transaction will be created and the cancel_url will have parameters added to it.
+You can see an example of the cancel_url that is being called in `live mode` here:
+
+```http
+https://requestb.in/xabkgtxa?paymill_trx_id=tran_f9ac7ffa300d2e98944dfc389d19&paymill_trx_status=failed&paymill_response_code=50700&paymill_mode=live
+```
+
+This will help you have an overview why the transaction was not successful and how many customers cancelled the transaction.
+
+#### Handling transaction results
 
 Upon a successful **Sofort Checkout**, the customer is redirected to the `return_url` you provided during **Checksum creation**. At this point, a **Transaction** has been created. The transaction result is provided using the following URL parameters:
 
@@ -133,8 +141,6 @@ After a transaction has completed, you can retrieve additional transaction detai
 ```bash
 curl https://api.paymill.com/v2.1/transactions/tran_5188e355f984445d4b66a45c43fa \
   -u "<YOUR_PRIVATE_KEY>:"
-```
-
 ```
 
 Furthermore you can find a transaction by using the description filter. You should always store a unique identifier (e.g. "shopping_cart_1234") to your transaction description to be able to recover transactions also by your own identifiers.
