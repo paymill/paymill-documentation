@@ -26,6 +26,6 @@ Through PAYMILL's API you can now easily integrate SOFORT payments into your exi
 
   <li class="box">
     <i class="fa fa-cogs"></i>
-    Handle the [results](/guides/sofort/transactions#handling-transaction-results) / [cancellation](/guides/sofort/transactions#handling-canceled-payments)
+    Handle the [results](/guides/sofort/transactions#handling-transaction-results) / [cancellation](/guides/sofort/transactions#handling-cancelled-payments)
   </li>
 </ul>
