@@ -128,7 +128,6 @@ The easiest way to fully integrate the PayButton is to use our [PayButton exampl
 For a subscription you can also insert an interval in subscription.php.
 
 <p class="important">
-  To use `request.php` you need to upload `paymill.crt` into the same directory on your server.
   The following requirements must be met for the server-side configuration:
   You will need access to your server to install and run server-side scripts.
   PHP equal or higher than 5.2 and cURL must be installed on the server.
@@ -152,7 +151,7 @@ Either create a config.php with the specific configuration parameters, or define
 ```
 
 <p class="info">
-  The public and private keys must be exchanged for live operations - Don’t forget that!
+  The public and private keys must be exchanged for live operations - Don't forget that!
 </p>
 
 This part of the script gets the token that was passed as a form variable via POST (`$token = $_POST['paymillToken'];`) and generates a transaction object that is passed to the API PAYMILL.
