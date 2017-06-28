@@ -441,6 +441,29 @@ the email for the webhook
 **active:**        _boolean_
 activate / deactivate webhook
 
+## Delete a `Webhook`
+
+> Request
+
+```bash
+curl https://api.paymill.com/v2.1/webhooks/hook_461a4c53e4d4ebad997b \
+   -u <YOUR_PRIVATE_KEY>:\
+   -X DELETE
+```
+> Response
+
+```json
+{
+  "data": [],
+  "mode": "test"
+}
+```
+This function deletes the Webhook.
+
+### Attributes
+
+**id:**                _string_  
+Unique identifier for the webhook
 
 ## List `Webhooks`
 
@@ -512,7 +535,7 @@ curl https://api.paymill.com/v2.1/webhooks/ \
 }
 ```
 
-This function returns a JSON object with a list of subscriptions. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
+This function returns a JSON object with a list of webhooks. In which order this list is returned depends on the optional parameter [order](#sort-entries). The following parameters can be used:
 
   - count
   - offset
