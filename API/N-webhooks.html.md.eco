@@ -441,7 +441,7 @@ the email for the webhook
 **active:**        _boolean_
 activate / deactivate webhook
 
-## Delete a `Webhook`
+## Remove `Webhook`
 
 > Request
 
