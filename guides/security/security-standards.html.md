@@ -183,3 +183,5 @@ We would like to thank the following people who helped improve the security of P
 - Suleman Malik               [@sulemanmalik_3](https://twitter.com/sulemanmalik_3)
 - Harikrishnan                [@hari_cybex](https://twitter.com/hari_cybex)
 - Vismit Sudhir Rakhecha      [@rvismit](https://twitter.com/rvismit)
+- Pal Patel
+- M.Harsha Vardhan            [@harshah3r3](https://twitter.com/harshah3r3)
