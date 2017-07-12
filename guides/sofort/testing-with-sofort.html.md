@@ -67,4 +67,4 @@ The page looks like this:
 Clicking on the "Log In" button will redirect you to your **return_url**, that you have specified in the checksum.
 Clicking on the "Terminate Session" will redirect you to the **cancel_url** you specified previously in the checksum.
 This page shows you a mockup of what your customers will see when they get redirected to **Sofort**.
-You do not have to store the *Sofort transaction ID*, as we will show this to you in the PAYMILL Merchant Centre und the transaction details.
+You do not have to store the *Sofort transaction ID*, as we will show this to you in the PAYMILL Merchant Centre under the transaction details.
