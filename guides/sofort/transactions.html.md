@@ -48,7 +48,7 @@ These values will be displayed in the transaction details in your Merchant Centr
 Example checksum parameters for a Sofort transaction:
 
 ```bash
-curl https://api.paymill.dev/v2.1/checksums \
+curl https://api.paymill.com/v2.1/checksums \
   -u "<YOUR_PRIVATE_KEY>"\
   -d "checksum_type=sofort"\
   -d "amount=100"\
