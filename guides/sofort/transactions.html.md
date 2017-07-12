@@ -28,20 +28,20 @@ Some **Transaction** data can be added to the Sofort **Checksum**. More details 
 - `amount`: Transaction amount as an integer, e.g. Euro cents. It must be the overall sum of all transaction components.
 - `currency`: Currency code for this transaction. For Sofort only `EUR` is allowed.
 - `billing_address[name]` : First and Last name of the customer.
-- `billing_address[country]` : Country of the customer in 2-letter country code according to [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-- `billing_address[street_address]`: The street address of the customer
-- `billing_address[city]` : The city of the customer
-- `billing_address[postal_code]` : The postal code of the customer
-- `client_email` : Email address of the customer
+- `billing_address[country]` : Country of the customer in 2-letter country code according to [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+- `billing_address[street_address]`: The street address of the customer.
+- `billing_address[city]` : The city of the customer.
+- `billing_address[postal_code]` : The postal code of the customer.
+- `client_email` : Email address of the customer.
 - `return_url`: The URL where the customer is redirected when he completed a **Sofort checkout**. The **Transaction status** can be `successful`, `failed` or `pending`. The **Transaction ID** and **status** are passed as URL parameters.
 - `cancel_url`: The URL where the customer is redirected when he cancels the **Sofort checkout**. More information on the handling of a cancelled transaction can be found below in the section **Handling cancelled payments**.
 
 
 **Optional Parameters**
 
-- `description` : Description of the transaction, which will be displayed in the Merchant Centre
+- `description` : Description of the transaction, which will be displayed in the Merchant Centre.
 - `client`: **PAYMILL client ID** (e.g. "client_88a388d9dd48f86c3136"). A new **Transaction** will create a new **Payment**. If you specify a **Client**, the new **Payment** will be attached to it.
-- `billing_address[phone]` : The telephone number of the customer
+- `billing_address[phone]` : The telephone number of the customer.
 
 These values will be displayed in the transaction details in your Merchant Centre.
 
@@ -61,9 +61,9 @@ curl https://api.paymill.com/v2.1/checksums \
   -d "billing_address[phone]=123123123"
   -d "customer_email=test@customer.de"\
   -d "description=Test Transaction"\
-  -d "client=client_88a388d9dd48f86c3136a4s"
-  -d "return_url=http://requestb.in/1cg1r3a1"\
-  -d "cancel_url=http://requestb.in/1cg1r3a1"
+  -d "client=client_88a388d9dd48f86c3136a4s"\
+  -d "return_url=https://www.example.com/store/checkout/result"\
+  -d "cancel_url=https://www.example.com/store/checkout/retry"
 ```
 
 You can find more information about **Transactions** in the [corresponding guide](/guides/reference/transactions.html).
@@ -102,32 +102,32 @@ In `test mode` your customer is redirected to your cancel_url without any additi
 Example URL called for a cancelled transaction in `test mode`:
 
 ```http
-https://requestb.in/xabkgtxa
+https://www.example.com/store/checkout/retry
 ```
 
 In `live mode` however a transaction will be created and the cancel_url will have parameters added to it.
 You can see an example of the cancel_url that is being called in `live mode` here:
 
 ```http
-https://requestb.in/xabkgtxa?paymill_trx_id=tran_f9ac7ffa300d2e98944dfc389d19&paymill_trx_status=failed&paymill_response_code=50700&paymill_mode=live
+https://www.example.com/store/checkout/retry?paymill_trx_id=tran_f9ac7ffa300d2e98944dfc389d19&paymill_trx_status=failed&paymill_response_code=50700&paymill_mode=live
 ```
 
-This will help you have an overview why the transaction was not successful and how many customers cancelled the transaction.
+This will help you have an overview why the transaction was not successful and how many customers cancelled their transactions.
 
 
 ### Handling Transaction Results
 
 Upon a successful **Sofort Checkout**, the customer is redirected to the `return_url` you provided during **Checksum creation**. At this point, a **Transaction** has been created. The transaction result is provided using the following URL parameters:
 
-- `paymill_trx_id`: **PAYMILL Transaction ID**, used to identify the transaction in **PAYMILL's system**
-- `sofort_trx_id`: **Sofort Transaction ID**, used to identify the transaction in **Sofort's system**
+- `paymill_trx_id`: **PAYMILL Transaction ID**, used to identify the transaction in **PAYMILL's system**.
+- `sofort_trx_id`: **Sofort Transaction ID**, used to identify the transaction in **Sofort's system**.
 - `paymill_response_code`: Response code providing more details about the transaction status. See the [API Reference](https://developers.paymill.com/API/#response-codes) for more details on response codes.
 - `paymill_mode`: Indicates if the transaction was made in `live` or test `mode`.
 
 You can see an example of a successful transaction response here (in the case the return_url was https://requestb.in/1jux9n71):
 
 ```http
-https://requestb.in/1jux9n71?paymill_trx_id=tran_94619af97ebcb49b56340e07848f&paymill_trx_status=closed&paymill_response_code=20000&paymill_mode=test
+https://www.example.com/store/checkout/result?paymill_trx_id=tran_94619af97ebcb49b56340e07848f&paymill_trx_status=closed&paymill_response_code=20000&paymill_mode=test
 ```
 
 <p class="important">
