@@ -58,7 +58,7 @@ curl https://api.paymill.com/v2.1/checksums \
   -d "billing_address[postal_code]=12345"\
   -d "billing_address[country]=DE"\
   -d "billing_address[city]=Munich"\
-  -d "billing_address[phone]=123123123"
+  -d "billing_address[phone]=123123123"\
   -d "customer_email=test@customer.de"\
   -d "description=Test Transaction"\
   -d "client=client_88a388d9dd48f86c3136a4s"\
