@@ -99,8 +99,7 @@ In order to test the payment process, you may use the following credit card numb
 **Visa**:       4111111111111111 <br>
 **Mastercard**: 5105105105105100 <br>
 **Maestro UK**: 6799851000000032 <br>
-**Discover**:   6011587918359498 (Support by Paymill is planned) <br>
-**Solo**:       6334580500000000 (Support by Paymill is planned) <br>
+**Discover**:   6011587918359498 <br>
 <br>
 Please, always enter an expiration date in the future. Expiration dates in the past will cause the transaction to fail.
 <br><br>
