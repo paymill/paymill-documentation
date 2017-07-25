@@ -60,6 +60,18 @@ That way nothing can go wrong. Moreover, the system won't have any difficulty ac
     <td>Discover</td>
     <td><span class="cc-group">6011</span><span class="cc-group">1111</span><span class="cc-group">1111</span><span class="cc-group">1117</span></td>
   </tr>
+   <tr>
+    <td>Mastercard (new Bin)</td>
+    <td><span class="cc-group">2223</span><span class="cc-group">0000</span><span class="cc-group">4840</span><span class="cc-group">0011</span></td>
+  </tr>
+   <tr>
+    <td>VISA (13 Digit)</td>
+    <td><span class="cc-group">4911</span><span class="cc-group">8300</span><span class="cc-group">0000</span><span class="cc-group">0</span></td>
+  </tr>
+     <tr>
+    <td>Maestro (19 digit)</td>
+    <td><span class="cc-group">4911</span><span class="cc-group">8300</span><span class="cc-group">0000</span><span class="cc-group">0000</span><span class="cc-group">019</span></td>
+  </tr>
 </table>
 
 **With 3-D Secure**
