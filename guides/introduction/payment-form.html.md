@@ -191,7 +191,7 @@ Every payment form that you send to Paymill should be sent via SSL for security 
 
 ## 3. Setting up and Integrating a Payment Form
 
-Creating a Token
+### Creating a Token
 
 In order to create a unique token, the credit card data needs to be verified and converted.
 
@@ -232,7 +232,7 @@ For example, a successful response (response object) with the following characte
 }
 ```
 
-Data Transfer to Your Server
+### Data Transfer to Your Server
 
 The response (response object) for the form data is picked up by the PaymillResponseHandler function and transferred to your website:
 
