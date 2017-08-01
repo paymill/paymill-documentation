@@ -191,7 +191,7 @@ These libraries are not hosted or maintained by PAYMILL. We cannot guarantee the
 
 ---------------------
 
-**ColdFusion** by [Richard Herbert](http://www.cfpaymill.com): More information on [GitHub](https://github.com/richardherbert/cfPaymill).
+**ColdFusion** by [Richard Herbert](https://github.com/richardherbert/): More information on [GitHub](https://richardherbert.github.io/cfpaymill/).
 
 ---------------------
 
