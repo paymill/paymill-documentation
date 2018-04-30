@@ -187,3 +187,4 @@ We would like to thank the following people who helped improve the security of P
 - M.Harsha Vardhan            [@harshah3r3](https://twitter.com/harshah3r3)
 - SHWETABH SUMAN              [@SHWETABHSUMAN11](https://twitter.com/SHWETABHSUMAN11)
 - Rohan Kumar Birtia          [@C0ld_b00t3r](https://twitter.com/C0ld_b00t3r)
+- Irtaza Shaikh               [@irtaza71977184](https://twitter.com/irtaza71977184)
