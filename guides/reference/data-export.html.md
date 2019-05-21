@@ -53,4 +53,4 @@ Credit card data from a merchant of PAYMILL shall be exported because the mercha
 
 **Transactions considered for the data export:**
 
-From the available transactions of a merchant from PAYMILL the payment methods and payment types will be considered for the export.
+From the the available transactions of a merchant from PAYMILL the payment methods and payment types will be considered for the export.
