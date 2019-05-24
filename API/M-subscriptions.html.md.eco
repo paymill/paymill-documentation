@@ -66,7 +66,7 @@ a one-time amount in cents, will charge once only
 [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code
 
 **interval:**              _string_
-Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY
+Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] Example: 2 DAYS
 
 **name:**                  _string / null_
 name of the subscription
@@ -130,7 +130,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
   -d "payment=pay_5e078197cde8a39e4908f8aa" \
   -d "amount=3000" \
   -d "currency=EUR" \
-  -d "interval=1 week,monday" \
+  -d "interval=1 week" \
   -d "name=Example Subscription" \
   -d "period_of_validity=2 YEAR" \
   -d "start_at=1400575533"
@@ -171,7 +171,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
             "temp_amount":null,
             "currency":"EUR",
             "name":"Example Subscription",
-            "interval":"1 WEEK,MONDAY",
+            "interval":"1 WEEK",
             "trial_start":1399908040,
             "trial_end":1400575532,
             "period_of_validity":"2 YEAR",
@@ -273,7 +273,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
   -d "offer=offer_b33253c73ae0dae84ff4" \
   -d "amount=3000" \
   -d "currency=EUR" \
-  -d "interval=1 week,monday" \
+  -d "interval=1 week" \
   -d "name=Example Subscription" \
   -d "period_of_validity=2 YEAR" \
   -d "start_at=1400575533"
@@ -315,7 +315,7 @@ curl https://api.paymill.com/v2.1/subscriptions \
             "temp_amount":null,
             "currency":"EUR",
             "name":"Example Subscription",
-            "interval":"1 WEEK,MONDAY",
+            "interval":"1 WEEK",
             "trial_start":1399908040,
             "trial_end":1400575532,
             "period_of_validity":"2 YEAR",
@@ -364,7 +364,7 @@ the amount of the subscription in cents (is required if no offer id is given)
 [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (is required if no offer id is given)
 
 **interval:**            _string_
-charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] Example: 2 DAYS, MONDAY ( is required if no offer id is given)
+charged. Format: number DAY | WEEK | MONTH | YEAR Example: 2 DAYS (is required if no offer id is given)
 
 **name:**                _string / null_
 name of the subscription (optional)
@@ -426,7 +426,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dc180b755d10da324864 \
             "temp_amount":null,
             "currency":"EUR",
             "name":"Example Subscription",
-            "interval":"1 WEEK,MONDAY",
+            "interval":"1 WEEK",
             "trial_start":1399908040,
             "trial_end":1400575532,
             "period_of_validity":"2 YEAR",
@@ -475,7 +475,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
   -u <YOUR_PRIVATE_KEY>: \
   -d "payment=pay_95ba26ba2c613ebb0ca8" \
   -d "currency=USD" \
-  -d "interval=1 month,friday" \
+  -d "interval=1 month" \
   -d "name=Changed Subscription" \
   -d "period_of_validity=14 MONTH" \
   -d "trial_end=false" \
@@ -518,7 +518,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
             "temp_amount":null,
             "currency":"USD",
             "name":"Changed Subscription",
-            "interval":"1 MONTH,FRIDAY",
+            "interval":"1 MONTH",
             "trial_start":1399908040,
             "trial_end":null,
             "period_of_validity":"12 MONTH",
@@ -586,7 +586,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
         "temp_amount":"1234",
         "currency":"EUR",
         "name":"Example Subscription",
-        "interval":"1 WEEK,MONDAY",
+        "interval":"1 WEEK",
         "trial_start":1398271207,
         "trial_end":1399196896,
         "period_of_validity":"2 YEAR",
@@ -654,7 +654,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
         "temp_amount":null,
         "currency":"EUR",
         "name":"Example Subscription",
-        "interval":"1 WEEK,MONDAY",
+        "interval":"1 WEEK",
         "trial_start":1398271207,
         "trial_end":1399196896,
         "period_of_validity":"2 YEAR",
@@ -720,7 +720,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
         "temp_amount":null,
         "currency":"EUR",
         "name":"Example Subscription",
-        "interval":"1 WEEK,MONDAY",
+        "interval":"1 WEEK",
         "trial_start":1398271207,
         "trial_end":1399196896,
         "period_of_validity":"2 YEAR",
@@ -785,7 +785,7 @@ deactivate a subscription or reactivate it, false: reactivate, true: deactivate 
 [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) formatted currency code (optional)
 
 **interval:**             _string_
-Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR [, WEEKDAY] (optional)
+Defining how often the client should be charged. Format: number DAY | WEEK | MONTH | YEAR
 
 **name:**                 _string_
 name of the subscription (optional)
@@ -847,7 +847,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_dea86e5c65b2087202e3 \
         "temp_amount":null,
         "currency":"EUR",
         "name":"Example Subscription",
-        "interval":"1 WEEK,MONDAY",
+        "interval":"1 WEEK",
         "trial_start":1398271207,
         "trial_end":1399196896,
         "period_of_validity":"2 YEAR",
@@ -914,7 +914,7 @@ curl https://api.paymill.com/v2.1/subscriptions/sub_d68bcdc8656a7932eb44 \
         "temp_amount":null,
         "currency":"EUR",
         "name":"Example Subscription",
-        "interval":"1 WEEK,MONDAY",
+        "interval":"1 WEEK",
         "trial_start":1398271207,
         "trial_end":1399196896,
         "period_of_validity":"2 YEAR",
